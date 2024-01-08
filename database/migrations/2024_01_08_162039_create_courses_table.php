@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('steps_learning', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('number');
-            $table->foreignId('group_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('icon');
+            $table->text('description');
+            $table->foreignId('group_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('steps_learning');
+        Schema::dropIfExists('courses');
     }
 };
