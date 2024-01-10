@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('icon');
-            $table->text('description');
+            $table->text('description')->nullable;
+            $table->double('price')->default(0);
             $table->foreignId('group_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
