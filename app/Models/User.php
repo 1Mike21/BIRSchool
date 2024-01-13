@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -55,4 +57,26 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function courses(): BelongsToMany {
+      return $this->belongsToMany(Course::class, 'course_user', 'user_id', 'course_id')->withPivot('with_mentor', 'is_completed', 'progress');
+    }
+
+    public function homeworks(): BelongsToMany {
+      return $this->belongsToMany(Homework::class, 'homework_user', 'user_id', 'homework_id')->withPivot('answer', 'is_checked', 'comment');
+    }
+
+    public function codespaces(): HasMany {
+      return $this->hasMany(CodeSpace::class);
+    }
+
+    public function certificates(): HasMany {
+      return $this->hasMany(Certificate::class);
+    }
+
+    public function reviews(): hasMany {
+      return $this->hasMany(Review::class);
+    }
+
+
 }
