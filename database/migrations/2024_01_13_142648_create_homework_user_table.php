@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_user', function (Blueprint $table) {
+        Schema::create('homework_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
-            $table->foreignId('course_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
-            $table->boolean('with_mentor')->default(false);
-            $table->boolean('is_completed')->default(false);
-            $table->integer('progress');
+            $table->foreignId('homework_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
+            $table->text('answer');
+            $table->boolean('is_checked')->default(false);
+            $table->text('comment');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_user');
+        Schema::dropIfExists('homework_user');
     }
 };
