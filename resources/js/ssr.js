@@ -1,3 +1,5 @@
+import '../css/app.css';
+
 import { createSSRApp, h } from 'vue';
 import { renderToString } from '@vue/server-renderer';
 import { createInertiaApp } from '@inertiajs/vue3';
@@ -22,7 +24,10 @@ createServer((page) =>
                 });
         },
         progress: {
+          delay: 250,
           color: '#4B5563',
+          includeCSS: true,
+          showSpinner: true,
         },
     })
 );
