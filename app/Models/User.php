@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -66,7 +67,7 @@ class User extends Authenticatable
       return $this->belongsToMany(Homework::class, 'homework_user', 'user_id', 'homework_id')->withPivot('answer', 'is_checked', 'comment');
     }
 
-    public function codespaces(): HasMany {
+    public function codeSpaces(): HasMany {
       return $this->hasMany(CodeSpace::class);
     }
 
@@ -76,6 +77,11 @@ class User extends Authenticatable
 
     public function reviews(): hasMany {
       return $this->hasMany(Review::class);
+    }
+
+    public function polyResources(): MorphMany
+    {
+      return $this->morphMany(PolyResource::class, 'resourceable');
     }
 
 

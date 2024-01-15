@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GroupResource;
+use App\Models\PolyResource;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreGroupResourceRequest;
-use App\Http\Requests\UpdateGroupResourceRequest;
+use App\Http\Requests\StorePolyResourceRequest;
+use App\Http\Requests\UpdatePolyResourceRequest;
 
-class GroupResourceController extends Controller
+class PolyResourceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +28,7 @@ class GroupResourceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreGroupResourceRequest $request)
+    public function store(StorePolyResourceRequest $request)
     {
         //
     }
@@ -36,7 +36,7 @@ class GroupResourceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(GroupResource $groupResource)
+    public function show(PolyResource $polyResource)
     {
         //
     }
@@ -44,7 +44,7 @@ class GroupResourceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(GroupResource $groupResource)
+    public function edit(PolyResource $polyResource)
     {
         //
     }
@@ -52,7 +52,7 @@ class GroupResourceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateGroupResourceRequest $request, GroupResource $groupResource)
+    public function update(UpdatePolyResourceRequest $request, PolyResource $polyResource)
     {
         //
     }
@@ -60,7 +60,7 @@ class GroupResourceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(GroupResource $groupResource)
+    public function destroy(PolyResource $polyResource)
     {
         //
     }

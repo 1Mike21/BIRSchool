@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class GroupResource extends Model
+class PolyResource extends Model
 {
     use HasFactory;
 
@@ -14,10 +14,12 @@ class GroupResource extends Model
       'title',
       'text',
       'img',
-      'group_id'
+      'resourceable_id',
+      'resourceable_type'
     ];
 
-    public function group(): BelongsTo {
-      return $this->belongsTo(Group::class);
+    public function resourceable(): MorphTo
+    {
+      return $this->morphTo();
     }
 }

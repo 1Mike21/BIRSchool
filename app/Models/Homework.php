@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Homework extends Model
 {
@@ -23,5 +24,10 @@ class Homework extends Model
 
     public function theme(): BelongsTo {
       return $this->belongsTo(Theme::class);
+    }
+
+    public function polyResources(): MorphMany
+    {
+      return $this->morphMany(PolyResource::class, 'resourceable');
     }
 }

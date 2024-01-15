@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Group extends Model
 {
@@ -17,7 +18,7 @@ class Group extends Model
       'level',
     ];
 
-    public function stepslearning(): HasMany {
+    public function stepsLearning(): HasMany {
       return $this->hasMany(StepLearning::class);
     }
 
@@ -25,8 +26,8 @@ class Group extends Model
       return $this->hasMany(Course::class);
     }
 
-    public function groupresources(): HasMany {
-      return $this->hasMany(GroupResource::class);
+    public function polyResources(): MorphMany {
+      return $this->morphMany(PolyResource::class, 'resourceable');
     }
 
 

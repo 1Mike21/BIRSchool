@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('group_resources', function (Blueprint $table) {
+        Schema::create('poly_resources', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('text');
+            $table->string('title')->nullable();
+            $table->text('text')->nullable();
             $table->string('img');
-            $table->foreignId('group_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->morphs('resourceable');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('group_resources');
+        Schema::dropIfExists('poly_resources');
     }
 };
