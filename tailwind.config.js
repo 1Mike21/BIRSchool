@@ -17,6 +17,13 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            boxShadow: {
+              inset: '0 0 10px 0 rgb(187 38 73) inset, 0 0 10px 4px rgb(187 38 73)'
+            },
+            colors: {
+              darkblue: 'rgb(39,39,58)',
+              red: '#BB2649',
+            }
         },
     },
 
