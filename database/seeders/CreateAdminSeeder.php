@@ -17,10 +17,10 @@ class CreateAdminSeeder extends Seeder
     public function run(): void
     {
       $admin = User::create([
-        'name' => 'Михаил',
-        'surname' => 'Соколов',
-        'email' => 'mihail.sokolov21@yandex.ru',
-        'password' => Hash::make('12345'),
+        'name' => 'Admin',
+        'surname' => 'Admin',
+        'email' => 'admin@yandex.ru',
+        'password' => Hash::make('12345678'),
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now(),
       ]);
