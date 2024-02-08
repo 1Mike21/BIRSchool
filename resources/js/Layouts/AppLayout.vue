@@ -93,6 +93,9 @@
                       Все курсы
                     </NavLink>
                     <NavLink :href="route('dashboard')">
+                      Мои курсы
+                    </NavLink>
+                    <NavLink :href="route('dashboard')">
                       Мой код
                     </NavLink>
                     <NavLink :href="route('dashboard')">
@@ -181,6 +184,9 @@
                 Все курсы
               </ResponsiveNavLink>
               <ResponsiveNavLink :href="route('dashboard')">
+                Мои курсы
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('dashboard')">
                 Мой код
               </ResponsiveNavLink>
               <ResponsiveNavLink :href="route('dashboard')">
@@ -247,6 +253,7 @@
 <script setup>
 import { ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown.vue';
@@ -272,6 +279,6 @@ const logout = () => {
   @apply w-48 h-14 lg:w-64 lg:h-20
 }
 .btn-login {
-  @apply border-0 rounded-full bg-red hover:bg-inherit text-white py-4 px-8 text-xl font-bold text-center no-underline whitespace-nowrap  hover:shadow-inset
+  @apply border-0 rounded-full bg-red hover:bg-inherit text-white py-3 px-8 text-xl font-bold text-center no-underline whitespace-nowrap  hover:shadow-inset
 }
 </style>
