@@ -5,7 +5,7 @@
 
     <header class="header">
         <!-- Primary Navigation Menu -->
-        <nav class="container mx-auto lg:px-8">
+        <nav class="lg:px-8">
           <div class="flex justify-between gap-4 mb-8 lg:mb-0">
             <div class="flex">
               <!-- Logo -->
@@ -179,7 +179,7 @@
     </header>
 
     <!-- Page Content -->
-    <main class="mx-auto container">
+    <main class="mx-auto container grow px-6">
       <slot />
     </main>
 
@@ -242,7 +242,7 @@ const logout = () => {
 </script>
 <style>
 .header {
-  @apply sticky top-0 px-6 left-0 mb-4 sm:mb-8 md:mb-14 lg:mb-20 mt-5 z-10 bg-darkblue;
+  @apply container mx-auto sticky top-0 px-6 left-0 mb-4 sm:mb-8 md:mb-14 lg:mb-20 mt-5 z-10 bg-darkblue;
 }
 .navbar-brand {
   @apply w-40 h-14 lg:w-64 lg:h-20
@@ -251,10 +251,10 @@ const logout = () => {
   @apply border-0 rounded-full bg-red hover:bg-inherit text-white py-3 px-8 text-xl font-bold text-center no-underline whitespace-nowrap  hover:shadow-inset
 }
 .footer {
-  @apply text-white px-6 mt-4 sm:mt-8 md:mt-14 lg:mt-20
+  @apply container mx-auto text-white px-6 mt-4 sm:mt-8 md:mt-14 lg:mt-20
 }
 .footer__contact {
-  @apply container mx-auto grid justify-center md:justify-items-end gap-4 lg:gap-1 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12  pb-3
+  @apply grid justify-center md:justify-items-end gap-4 lg:gap-1 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12  pb-3
 }
 .footer__contact-item {
   @apply col-span-full sm:col-span-1 md:col-span-2 lg:col-span-4
