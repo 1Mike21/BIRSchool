@@ -5,3 +5,7 @@
 [x-cloak] {
     display: none;
 }
+
+#app {
+  @apply flex flex-col min-h-screen justify-between
+}
