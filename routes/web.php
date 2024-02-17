@@ -33,3 +33,7 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+Route::get('/index', function () {
+  return Inertia::render('Index');
+})->name('index');
