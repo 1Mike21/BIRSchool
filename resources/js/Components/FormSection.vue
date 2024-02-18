@@ -11,15 +11,12 @@ const hasActions = computed(() => !! useSlots().actions);
 <template>
     <div class="md:grid md:grid-cols-3 md:gap-6">
         <SectionTitle>
-            <template #title>
-                <slot name="title" />
-            </template>
-          </SectionTitle>
-          <SectionDescription>
-            <template #description>
-              <slot name="description" />
-            </template>
-          </SectionDescription>
+          <slot/>
+        </SectionTitle>
+
+        <SectionDescription>
+          <slot/>
+        </SectionDescription>
 
         <div class="mt-5 md:mt-0 md:col-span-2">
             <form @submit.prevent="$emit('submitted')">
