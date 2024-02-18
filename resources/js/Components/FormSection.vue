@@ -1,6 +1,7 @@
 <script setup>
 import { computed, useSlots } from 'vue';
 import SectionTitle from './SectionTitle.vue';
+import SectionDescription from '@/Components/SectionDescription.vue';
 
 defineEmits(['submitted']);
 
@@ -13,10 +14,12 @@ const hasActions = computed(() => !! useSlots().actions);
             <template #title>
                 <slot name="title" />
             </template>
+          </SectionTitle>
+          <SectionDescription>
             <template #description>
-                <slot name="description" />
+              <slot name="description" />
             </template>
-        </SectionTitle>
+          </SectionDescription>
 
         <div class="mt-5 md:mt-0 md:col-span-2">
             <form @submit.prevent="$emit('submitted')">
