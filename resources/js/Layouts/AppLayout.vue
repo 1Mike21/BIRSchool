@@ -185,7 +185,7 @@
 
   <footer class="footer">
     <div class="footer__contact">
-      <div class="footer__contact-item">
+      <div class="footer__contact-item lg:max-w-[260px]">
         <h3 class="text-[28px] mb-1">Контакты</h3>
         <p class="footer__contact-text">ООО "РАУМЛИНК ГРУПП"</p>
         <p class="footer__contact-title">Юридический адрес :</p>
@@ -193,7 +193,7 @@
         <p class="footer__contact-title">Почтовый адрес :</p>
         <p class="footer__contact-text">107150, город Москва, Бойцовая 27, офис 326.</p>
       </div>
-      <div class="footer__contact-item self-center">
+      <div class="footer__contact-item self-center md:justify-self-center">
         <p class="footer__contact-text"><b>ОГРН:</b> 1187746051371</p>
         <p class="footer__contact-text"><b>ИНН/КПП:</b> 7726420671/772601001</p>
         <div class="mt-4">
@@ -248,13 +248,13 @@ const logout = () => {
   @apply w-40 h-14 lg:w-64 lg:h-20
 }
 .btn-login {
-  @apply border-0 rounded-full self-center bg-red hover:bg-inherit text-white py-3 px-8 text-xl font-bold text-center no-underline whitespace-nowrap  hover:shadow-inset
+  @apply border-0 rounded-full self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap  hover:shadow-inset
 }
 .footer {
   @apply container mx-auto text-white px-4 mt-4 sm:mt-8 md:mt-14 lg:mt-20
 }
 .footer__contact {
-  @apply grid justify-center md:justify-items-end gap-4 lg:gap-1 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12  pb-3
+  @apply grid justify-center gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 pb-3
 }
 .footer__contact-item {
   @apply col-span-full sm:col-span-1 md:col-span-2 lg:col-span-4
