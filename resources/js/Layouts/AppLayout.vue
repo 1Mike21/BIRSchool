@@ -24,7 +24,7 @@
               <NavLink :href="route('dashboard')">
                 Мой код
               </NavLink>
-              <NavLink :href="route('dashboard')">
+              <NavLink :href="route('contacts')">
                 Контакты
               </NavLink>
             </ul>
@@ -123,7 +123,7 @@
             <ResponsiveNavLink :href="route('dashboard')">
               Мой код
             </ResponsiveNavLink>
-            <ResponsiveNavLink :href="route('dashboard')">
+            <ResponsiveNavLink :href="route('contacts')">
               Контакты
             </ResponsiveNavLink>
           </ul>
@@ -240,29 +240,30 @@ const logout = () => {
   router.post(route('logout'));
 };
 </script>
+
 <style>
-.header {
-  @apply container mx-auto sticky top-0 px-4 left-0 mt-5 z-10 bg-darkblue;
-}
-.navbar-brand {
-  @apply w-40 h-14 lg:w-64 lg:h-20;
-}
-.btn-login {
-  @apply border-0 rounded-28 self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap  hover:shadow-inset;
-}
-.footer {
-  @apply container mx-auto text-white px-4;
-}
-.footer__contact {
-  @apply grid justify-center gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 pb-3;
-}
-.footer__contact-item {
-  @apply col-span-full sm:col-span-1 md:col-span-2 lg:col-span-4;
-}
-.footer__contact-text {
-  @apply pb-2 text-sm mt-0 mb-0;
-}
-.footer__contact-title {
-  @apply font-bold text-base;
-}
+  .header {
+    @apply container mx-auto sticky top-0 px-4 left-0 mt-5 z-10 bg-darkblue;
+  }
+  .navbar-brand {
+    @apply w-40 h-14 lg:w-64 lg:h-20;
+  }
+  .btn-login {
+    @apply border-0 rounded-28 self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap hover:shadow-inset;
+  }
+  .footer {
+    @apply container mx-auto text-white px-4;
+  }
+  .footer__contact {
+    @apply grid justify-center gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 pb-3;
+  }
+  .footer__contact-item {
+    @apply col-span-full sm:col-span-1 md:col-span-2 lg:col-span-4;
+  }
+  .footer__contact-text {
+    @apply pb-2 text-sm mt-0 mb-0;
+  }
+  .footer__contact-title {
+    @apply font-bold text-base;
+  }
 </style>
