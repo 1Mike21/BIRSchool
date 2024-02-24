@@ -23,6 +23,12 @@ export default {
             colors: {
               darkblue: 'rgb(39,39,58)',
               red: '#BB2649',
+            },
+            margin: {
+              '85': '85px',
+            },
+            borderRadius: {
+              '28': '28px'
             }
         },
     },
