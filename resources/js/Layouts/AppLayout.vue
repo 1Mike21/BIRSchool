@@ -3,7 +3,7 @@
 
   <Banner />
 
-  <header class="header">
+  <header class="header indent_section_bottom">
     <!-- Navigation Menu -->
     <div class="py-3">
       <div class="gap-4 flex justify-between mb-8 lg:mb-0">
@@ -183,7 +183,7 @@
     <slot />
   </main>
 
-  <footer class="footer">
+  <footer class="footer indent_section_top">
     <div class="footer__contact">
       <div class="footer__contact-item lg:max-w-[260px]">
         <h3 class="text-[28px] mb-1">Контакты</h3>
@@ -242,16 +242,16 @@ const logout = () => {
 </script>
 <style>
 .header {
-  @apply container mx-auto sticky top-0 px-4 left-0 mb-4 sm:mb-8 md:mb-14 lg:mb-20 mt-5 z-10 bg-darkblue;
+  @apply container mx-auto sticky top-0 px-4 left-0 mt-5 z-10 bg-darkblue;
 }
 .navbar-brand {
   @apply w-40 h-14 lg:w-64 lg:h-20
 }
 .btn-login {
-  @apply border-0 rounded-full self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap  hover:shadow-inset
+  @apply border-0 rounded-28 self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap  hover:shadow-inset
 }
 .footer {
-  @apply container mx-auto text-white px-4 mt-4 sm:mt-8 md:mt-14 lg:mt-20
+  @apply container mx-auto text-white px-4
 }
 .footer__contact {
   @apply grid justify-center gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 pb-3
