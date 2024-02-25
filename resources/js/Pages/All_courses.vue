@@ -5,8 +5,8 @@
     <SectionTitle class="mb-5">Все курсы</SectionTitle>
     <div class="mb-12 flex justify-between">
       <input class="w-[1080px] h-10 rounded-28 ps-5 text-lg" type="search" placeholder="Поиск...">
-      <button class="bg-white w-[185px] h-10 rounded-28 text-left ps-5 text-lg">По названию</button>
-      <button class="bg-white w-[185px] h-10 rounded-28 text-left ps-5 text-lg">По группе</button>
+      <button class="bg-white w-[185px] h-10 rounded-28 text-lg">По названию</button>
+      <button class="bg-white w-[185px] h-10 rounded-28 text-lg">По группе</button>
     </div>
     <div class="all-courses mb-12">
       <div class="all-courses__item">
