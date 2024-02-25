@@ -37,3 +37,7 @@ Route::middleware([
 Route::get('/contacts', function () {
   return Inertia::render('Contacts');
 })->name('contacts');
+
+Route::get('/all_courses', function () {
+  return Inertia::render('All_courses');
+})->name('all_courses');

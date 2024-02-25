@@ -15,16 +15,16 @@
           <!-- Navigation Links -->
           <nav class="hidden grow items-center 2xl:ml-6 md:block">
             <ul class="hidden mb-2 lg:mb-0 space-x-5 lg:space-x-14 sm:-my-px sm:ms-6 xl:ms-10 sm:flex">
-              <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+              <NavLink :href="route('all_courses')" :active="route().current('all_courses')">
                 Все курсы
               </NavLink>
-              <NavLink :href="route('dashboard')">
+              <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                 Мои курсы
               </NavLink>
-              <NavLink :href="route('dashboard')">
+              <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                 Мой код
               </NavLink>
-              <NavLink :href="route('contacts')">
+              <NavLink :href="route('contacts')" :active="route().current('contacts')">
                 Контакты
               </NavLink>
             </ul>

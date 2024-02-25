@@ -1,0 +1,67 @@
+<template>
+  <Head title="Все курсы"/>
+
+  <section>
+    <SectionTitle class="mb-5">Все курсы</SectionTitle>
+    <div class="mb-12 flex justify-between">
+      <input class="w-[1080px] h-10 rounded-28 ps-5 text-lg" type="search" placeholder="Поиск...">
+      <button class="bg-white w-[185px] h-10 rounded-28 text-left ps-5 text-lg">По названию</button>
+      <button class="bg-white w-[185px] h-10 rounded-28 text-left ps-5 text-lg">По группе</button>
+    </div>
+    <div class="all-courses mb-12">
+      <div class="all-courses__item">
+        <img class="inline mt-4 mb-6" src="img/icon_course/HTML.svg" alt="icon_course">
+        <h3 class="text-red text-2xl mb-6">HTML</h3>
+        <p class="text-2xl mb-6">500 ₽</p>
+        <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
+      </div>
+      <div class="all-courses__item">
+        <img class="inline mt-4 mb-6" src="img/icon_course/CSS.svg" alt="icon_course">
+        <h3 class="text-red text-2xl mb-6">CSS</h3>
+        <p class="text-2xl mb-6">950 ₽</p>
+        <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
+      </div>
+      <div class="all-courses__item">
+        <img class="inline mt-4 mb-6" src="img/icon_course/Git.svg" alt="icon_course">
+        <h3 class="text-red text-2xl mb-6">Git и командная строка</h3>
+        <p class="text-2xl mb-6">1500 ₽</p>
+        <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
+      </div>
+      <div class="all-courses__item">
+        <img class="inline mt-4 mb-6" src="img/icon_course/JavaScript.svg" alt="icon_course">
+        <h3 class="text-red text-2xl mb-6">JavaScript</h3>
+        <p class="text-2xl mb-6">3500 ₽</p>
+        <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
+      </div>
+      <div class="all-courses__item">
+        <img class="inline mt-4 mb-6" src="img/icon_course/React.svg" alt="icon_course">
+        <h3 class="text-red text-2xl mb-6">React</h3>
+        <p class="text-2xl mb-6">5000 ₽</p>
+        <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
+      </div>
+      <div class="all-courses__item">
+        <img class="inline mt-4 mb-6" src="img/icon_course/PHP.svg" alt="icon_course">
+        <h3 class="text-red text-2xl mb-6">PHP</h3>
+        <p class="text-2xl mb-6">3500 ₽</p>
+        <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script setup>
+import SectionTitle from '@/Components/SectionTitle.vue';
+import { Head } from '@inertiajs/vue3';
+</script>
+
+<style scoped>
+  .all-courses {
+    @apply grid grid-cols-3 justify-items-center text-center gap-y-12;
+  }
+  .all-courses__item {
+    @apply bg-white border-[3px] border-red rounded-28 w-[460px] h-72;
+  }
+  .btn-more-detail {
+    @apply border-0 rounded-28 self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:bg-white hover:text-red;
+  }
+</style>
