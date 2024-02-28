@@ -38,6 +38,10 @@ Route::get('/contacts', function () {
   return Inertia::render('Contacts');
 })->name('contacts');
 
-Route::get('/all_courses', function () {
-  return Inertia::render('All_courses');
-})->name('all_courses');
+Route::get('/courses', function () {
+  return Inertia::render('Courses/Index');
+})->name('courses.index');
+
+Route::get('/courses/course', function () {
+  return Inertia::render('Courses/Show');
+})->name('courses.show');

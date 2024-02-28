@@ -15,7 +15,7 @@
           <!-- Navigation Links -->
           <nav class="hidden grow items-center 2xl:ml-6 md:block">
             <ul class="hidden mb-2 lg:mb-0 space-x-5 lg:space-x-14 sm:-my-px sm:ms-6 xl:ms-10 sm:flex">
-              <NavLink :href="route('all_courses')" :active="route().current('all_courses')">
+              <NavLink :href="route('courses.index')" :active="route().current('courses.index')">
                 Все курсы
               </NavLink>
               <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
@@ -114,7 +114,7 @@
       <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }" class="md:hidden">
         <div class="pt-2 pb-6 space-y-1">
           <ul class="mb-2 pb-2 lg:mb-0 sm:-my-px lg:flex">
-            <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+            <ResponsiveNavLink :href="route('courses.index')" :active="route().current('courses.index')">
               Все курсы
             </ResponsiveNavLink>
             <ResponsiveNavLink :href="route('dashboard')">

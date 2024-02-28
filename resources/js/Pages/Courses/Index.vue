@@ -10,37 +10,37 @@
     </div>
     <div class="all-courses mb-12">
       <div class="all-courses__item">
-        <img class="inline mt-4 mb-6" src="img/icon_course/HTML.svg" alt="icon_course">
+        <img class="inline mt-4 mb-6" src="img/icon_course/HTML.svg" alt="Иконка курса">
         <h3 class="text-red text-xl xl:text-2xl mb-6">HTML</h3>
         <p class="text-xl xl:text-2xl mb-6">500 ₽</p>
-        <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
+        <a class="btn-more-detail text-white mb-6" :href="route('courses.show')">Подробнее</a>
       </div>
       <div class="all-courses__item">
-        <img class="inline mt-4 mb-6" src="img/icon_course/CSS.svg" alt="icon_course">
+        <img class="inline mt-4 mb-6" src="img/icon_course/CSS.svg" alt="Иконка курса">
         <h3 class="text-red text-xl xl:text-2xl mb-6">CSS</h3>
         <p class="text-xl xl:text-2xl mb-6">950 ₽</p>
         <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
       </div>
       <div class="all-courses__item">
-        <img class="inline mt-4 mb-6" src="img/icon_course/Git.svg" alt="icon_course">
+        <img class="inline mt-4 mb-6" src="img/icon_course/Git.svg" alt="Иконка курса">
         <h3 class="text-red text-xl xl:text-2xl mb-6">Git и командная строка</h3>
         <p class="text-xl xl:text-2xl mb-6">1500 ₽</p>
         <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
       </div>
       <div class="all-courses__item">
-        <img class="inline mt-4 mb-6" src="img/icon_course/JavaScript.svg" alt="icon_course">
+        <img class="inline mt-4 mb-6" src="img/icon_course/JavaScript.svg" alt="Иконка курса">
         <h3 class="text-red text-xl xl:text-2xl mb-6">JavaScript</h3>
         <p class="text-xl xl:text-2xl mb-6">3500 ₽</p>
         <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
       </div>
       <div class="all-courses__item">
-        <img class="inline mt-4 mb-6" src="img/icon_course/React.svg" alt="icon_course">
+        <img class="inline mt-4 mb-6" src="img/icon_course/React.svg" alt="Иконка курса">
         <h3 class="text-red text-xl xl:text-2xl mb-6">React</h3>
         <p class="text-xl xl:text-2xl mb-6">5000 ₽</p>
         <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
       </div>
       <div class="all-courses__item">
-        <img class="inline mt-4 mb-6" src="img/icon_course/PHP.svg" alt="icon_course">
+        <img class="inline mt-4 mb-6" src="img/icon_course/PHP.svg" alt="Иконка курса">
         <h3 class="text-red text-xl xl:text-2xl mb-6">PHP</h3>
         <p class="text-xl xl:text-2xl mb-6">3500 ₽</p>
         <a class="btn-more-detail text-white mb-6" href="#">Подробнее</a>
