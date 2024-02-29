@@ -62,6 +62,6 @@ import { Head } from '@inertiajs/vue3';
     @apply bg-white border-[3px] border-red rounded-28 w-80 sm:w-72 md:w-[340px] lg:w-72 xl:w-96 2xl:w-[460px] h-72;
   }
   .btn-more-detail {
-    @apply border-0 rounded-28 self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:bg-white hover:text-red;
+    @apply border-0 rounded-28 self-center bg-red text-white ms-3 py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:shadow-inset;
   }
 </style>
