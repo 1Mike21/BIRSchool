@@ -45,3 +45,7 @@ Route::get('/courses', function () {
 Route::get('/courses/course', function () {
   return Inertia::render('Courses/Show');
 })->name('courses.show');
+
+Route::get('/index', function () {
+  return Inertia::render('Index');
+})->name('index');
