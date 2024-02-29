@@ -14,15 +14,9 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+  return Inertia::render('Index');
+})->name('index');
 
 Route::middleware([
     'auth:sanctum',
@@ -46,6 +40,3 @@ Route::get('/courses/course', function () {
   return Inertia::render('Courses/Show');
 })->name('courses.show');
 
-Route::get('/index', function () {
-  return Inertia::render('Index');
-})->name('index');
