@@ -30,12 +30,14 @@ const close = () => {
         :closeable="closeable"
         @close="close"
     >
-        <div class="px-6 py-4">
-            <div class="text-lg font-medium text-gray-900">
+        <div class="py-4">
+            <div class="border-b border-gray-300 font-medium">
+              <div class="px-6 pb-3">
                 <slot name="title" />
+              </div>
             </div>
 
-            <div class="mt-4 text-sm text-gray-600">
+            <div class="mt-4">
                 <slot name="content" />
             </div>
         </div>
