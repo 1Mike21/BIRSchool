@@ -18,10 +18,10 @@
               <NavLink :href="route('courses.index')" :active="route().current('courses.index')">
                 Все курсы
               </NavLink>
-              <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+              <NavLink :href="route('dashboard')">
                 Мои курсы
               </NavLink>
-              <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+              <NavLink :href="route('dashboard')">
                 Мой код
               </NavLink>
               <NavLink :href="route('contacts')" :active="route().current('contacts')">
