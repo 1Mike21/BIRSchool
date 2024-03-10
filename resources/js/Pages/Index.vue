@@ -28,28 +28,28 @@
     <SectionTitle class="mb-11">Получите перспективную творческую профессию в IT</SectionTitle>
     <div class="group-course">
       <div class="group-course__item">
-        <img class="w-16 inline" src="img/icon/image 1.svg" alt="Frontend разработка Pro">
+        <img class="w-16 inline" src="img/icon/image 1.svg" alt="Иконка группы">
         <h4 class="text-red font-medium text-2xl">FrontEnd Pro</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Продвинутый уровень</h5>
         <h6 class="text-white text-base">Освойте с нуля HTML, CSS, и прокачайте свои знания по JS и React</h6>
         <a class="btn-more-detail text-white" href="#">Подробнее</a>
       </div>
       <div class="group-course__item">
-        <img class="w-16 inline" src="img/icon/image 2.svg" alt="Backend разработка Pro">
+        <img class="w-16 inline" src="img/icon/image 2.svg" alt="Иконка группы">
         <h4 class="text-red font-medium text-2xl">BackEnd Pro</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Продвинутый уровень</h5>
         <h6 class="text-white text-base">Освойте с нуля PHP, серверные технологии и фреймворк Laravel</h6>
         <a class="btn-more-detail text-white" href="#">Подробнее</a>
       </div>
       <div class="group-course__item">
-        <img class="w-16 inline" src="img/icon/image 3.svg" alt="Figma">
+        <img class="w-16 inline" src="img/icon/image 3.svg" alt="Иконка группы">
         <h4 class="text-red font-medium text-2xl">Figma для разработчиков</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Базовый уровень</h5>
         <h6 class="text-white text-base">Изучите самый популярный дизайнерский инструмент</h6>
         <a class="btn-more-detail text-white" href="#">Подробнее</a>
       </div>
       <div class="group-course__item">
-        <img class="w-16 inline" src="img/icon/image 4.svg" alt="Git">
+        <img class="w-16 inline" src="img/icon/image 4.svg" alt="Иконка группы">
         <h4 class="text-red font-medium text-2xl">Git и командная строка</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Базовый уровень</h5>
         <h6 class="text-white text-base">Выучите два самых важных инструмента для любого программиста</h6>

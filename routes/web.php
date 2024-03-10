@@ -32,6 +32,10 @@ Route::get('/contacts', function () {
   return Inertia::render('Contacts');
 })->name('contacts');
 
+Route::get('/description', function () {
+  return Inertia::render('DescriptionGroupCourse');
+})->name('description');
+
 Route::get('/courses', function () {
   return Inertia::render('Courses/Index');
 })->name('courses.index');
@@ -39,4 +43,3 @@ Route::get('/courses', function () {
 Route::get('/courses/course', function () {
   return Inertia::render('Courses/Show');
 })->name('courses.show');
-

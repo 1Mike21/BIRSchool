@@ -9,7 +9,7 @@
       <div class="gap-4 flex justify-between mb-8 lg:mb-0">
         <div class="shrink-0 flex justify-between items-center">
           <!-- Logo -->
-          <Link :href="route('dashboard')">
+          <Link :href="route('index')">
             <ApplicationLogo class="navbar-brand"/>
           </Link>
           <!-- Navigation Links -->
@@ -123,7 +123,7 @@
             <ResponsiveNavLink :href="route('dashboard')">
               Мой код
             </ResponsiveNavLink>
-            <ResponsiveNavLink :href="route('contacts')">
+            <ResponsiveNavLink :href="route('contacts')" :active="route().current('contacts')">
               Контакты
             </ResponsiveNavLink>
           </ul>
