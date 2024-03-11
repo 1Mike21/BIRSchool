@@ -32,28 +32,28 @@
         <h4 class="text-red font-medium text-2xl">FrontEnd Pro</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Продвинутый уровень</h5>
         <h6 class="text-white text-base">Освойте с нуля HTML, CSS, и прокачайте свои знания по JS и React</h6>
-        <a class="btn-more-detail text-white" href="#">Подробнее</a>
+        <a class="btn-more-detail text-white" :href="route('groups.show')">Подробнее</a>
       </div>
       <div class="group-course__item">
         <img class="w-16 inline" src="img/icon/image 2.svg" alt="Иконка группы">
         <h4 class="text-red font-medium text-2xl">BackEnd Pro</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Продвинутый уровень</h5>
         <h6 class="text-white text-base">Освойте с нуля PHP, серверные технологии и фреймворк Laravel</h6>
-        <a class="btn-more-detail text-white" href="#">Подробнее</a>
+        <a class="btn-more-detail text-white" :href="route('groups.show')">Подробнее</a>
       </div>
       <div class="group-course__item">
         <img class="w-16 inline" src="img/icon/image 3.svg" alt="Иконка группы">
         <h4 class="text-red font-medium text-2xl">Figma для разработчиков</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Базовый уровень</h5>
         <h6 class="text-white text-base">Изучите самый популярный дизайнерский инструмент</h6>
-        <a class="btn-more-detail text-white" href="#">Подробнее</a>
+        <a class="btn-more-detail text-white" :href="route('groups.show')">Подробнее</a>
       </div>
       <div class="group-course__item">
         <img class="w-16 inline" src="img/icon/image 4.svg" alt="Иконка группы">
         <h4 class="text-red font-medium text-2xl">Git и командная строка</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Базовый уровень</h5>
         <h6 class="text-white text-base">Выучите два самых важных инструмента для любого программиста</h6>
-        <a class="btn-more-detail text-white" href="#">Подробнее</a>
+        <a class="btn-more-detail text-white" :href="route('groups.show')">Подробнее</a>
       </div>
     </div>
   </section>
