@@ -23,33 +23,33 @@
       </p>
     </div>
   </section>
-  <!-- Group course -->
-  <section class="indent_section_bottom">
+  <!-- Group courses -->
+  <section>
     <SectionTitle class="mb-11">Получите перспективную творческую профессию в IT</SectionTitle>
     <div class="group-course">
       <div class="group-course__item">
-        <img class="w-16 inline" src="img/icon/image 1.svg" alt="Иконка группы">
+        <img class="w-16 mx-auto" src="img/icon/image 1.svg" alt="Frontend разработка Pro">
         <h4 class="text-red font-medium text-2xl">FrontEnd Pro</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Продвинутый уровень</h5>
         <h6 class="text-white text-base">Освойте с нуля HTML, CSS, и прокачайте свои знания по JS и React</h6>
         <a class="btn-more-detail text-white" :href="route('groups.show')">Подробнее</a>
       </div>
       <div class="group-course__item">
-        <img class="w-16 inline" src="img/icon/image 2.svg" alt="Иконка группы">
+        <img class="w-16 mx-auto" src="img/icon/image 2.svg" alt="Backend разработка Pro">
         <h4 class="text-red font-medium text-2xl">BackEnd Pro</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Продвинутый уровень</h5>
         <h6 class="text-white text-base">Освойте с нуля PHP, серверные технологии и фреймворк Laravel</h6>
         <a class="btn-more-detail text-white" :href="route('groups.show')">Подробнее</a>
       </div>
       <div class="group-course__item">
-        <img class="w-16 inline" src="img/icon/image 3.svg" alt="Иконка группы">
+        <img class="w-16 mx-auto" src="img/icon/image 3.svg" alt="Figma">
         <h4 class="text-red font-medium text-2xl">Figma для разработчиков</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Базовый уровень</h5>
         <h6 class="text-white text-base">Изучите самый популярный дизайнерский инструмент</h6>
         <a class="btn-more-detail text-white" :href="route('groups.show')">Подробнее</a>
       </div>
       <div class="group-course__item">
-        <img class="w-16 inline" src="img/icon/image 4.svg" alt="Иконка группы">
+        <img class="w-16 mx-auto" src="img/icon/image 4.svg" alt="Git">
         <h4 class="text-red font-medium text-2xl">Git и командная строка</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Базовый уровень</h5>
         <h6 class="text-white text-base">Выучите два самых важных инструмента для любого программиста</h6>
@@ -58,7 +58,7 @@
     </div>
   </section>
   <!-- Slider student portfolio -->
-  <section class="indent_section_bottom">
+  <section class="">
 
   </section>
   <!-- Slider reviews -->
@@ -74,12 +74,12 @@ import { Head } from '@inertiajs/vue3';
 
 <style scoped>
   .group-course {
-    @apply grid grid-cols-2 justify-items-center gap-y-8
+    @apply max-w-4xl mx-auto grid grid-cols-2 justify-items-center gap-8
   }
   .group-course__item {
-    @apply bg-white bg-opacity-5 border-2 border-white rounded-28 text-center h-[310] w-[270px] p-8
+    @apply bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] min-w-[270px] border-white rounded-28 text-center p-3 pb-5
   }
   .btn-more-detail {
-    @apply border-0 rounded-xl self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:bg-white hover:text-red
+    @apply border-0 rounded-xl self-center mt-auto bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:bg-white hover:text-red
   }
 </style>
