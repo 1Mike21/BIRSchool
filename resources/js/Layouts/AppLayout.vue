@@ -207,8 +207,8 @@
         <div><b class="footer__contact-text" >тел.</b> <a class="pb-2 hover:text-red" href="tel:+79017441182">+79017441182</a></div>
         <div><b class="footer__contact-text">e-mail :</b> <a href="mailto:Inbox@bir-team.ru" class="hover:text-red">Inbox@bir-team.ru</a>
           <div class="flex sm:justify-end gap-3 mt-3">
-            <a href="https://vk.com/birteam" target="_blank"><img src="/img/icon_vk.svg" alt="birteam-vk"></a>
-            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon_telegram.svg" alt="birteam-telegram"></a>
+            <a href="https://vk.com/birteam" target="_blank"><img src="/img/icon/icon_vk.svg" alt="birteam-vk"></a>
+            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg" alt="birteam-telegram"></a>
           </div>
         </div>
       </div>
@@ -246,24 +246,24 @@ const logout = () => {
     @apply container mx-auto sticky top-0 px-4 left-0 mt-5 z-10 bg-darkblue;
   }
   .navbar-brand {
-    @apply w-40 h-14 lg:w-64 lg:h-20
+    @apply w-40 h-14 lg:w-64 lg:h-20;
   }
   .btn-login {
-    @apply border-0 rounded-28 self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap  hover:shadow-inset
+    @apply border-0 rounded-28 self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap hover:shadow-inset;
   }
   .footer {
-    @apply container mx-auto text-white px-4
+    @apply container mx-auto text-white px-4;
   }
   .footer__contact {
-    @apply grid justify-center gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 pb-3
+    @apply grid justify-center gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 pb-3;
   }
   .footer__contact-item {
-    @apply col-span-full sm:col-span-1 md:col-span-2 lg:col-span-4
+    @apply col-span-full sm:col-span-1 md:col-span-2 lg:col-span-4;
   }
   .footer__contact-text {
     @apply pb-2 text-sm mt-0 mb-0;
   }
   .footer__contact-title {
-    @apply font-bold text-base
+    @apply font-bold text-base;
   }
 </style>

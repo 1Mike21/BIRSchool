@@ -13,7 +13,7 @@
           С его помощью создают яркие, запоминающиеся проекты, на которые пользователь захочет вернуться.
         </p>
       </div>
-      <img class="w-[427px] h-[427px]" src="img/group_course/1.png" alt="Картинка">
+      <img class="w-[427px] h-[427px] rounded-[20px]" src="/img/group_course/1.png" alt="Картинка">
     </div>
   </section>
   <!-- The running line -->
@@ -36,15 +36,15 @@
   <section class="indent_section_bottom">
     <SectionTitle class="mb-20">Для кого курс?</SectionTitle>
     <div class="flex justify-center text-center gap-10">
-      <div class="w-[416px]">
-        <img class="w-[290px] h-[200px] inline" src="img/group_course/1f.png" alt="Картинка">
+      <div class="w-[416px] rounded-[15px]">
+        <img class="w-[290px] h-[200px] inline" src="/img/group_course/1f.png" alt="Картинка">
         <h3 class="text-red text-xl p-5">Для новичков</h3>
         <p class="text-white">Кто хочет обучиться программированию с нуля. Программа курса рассчитана для начинающих фронтенд-разработчиков
            и построена так, что вы сможете ее освоить даже без технического бэкграунда.
         </p>
       </div>
-      <div class="w-[416px]">
-        <img class="w-[290px] h-[200px] inline" src="img/group_course/2f.png" alt="Картинка">
+      <div class="w-[416px] rounded-[15px]">
+        <img class="w-[290px] h-[200px] inline" src="/img/group_course/2f.png" alt="Картинка">
         <h3 class="text-red text-xl p-5">Для фрилансеров</h3>
         <p class="text-white">
           Кто готов прокачать свои скилы — освоить JavaScript и React, чтобы браться за более комплексные задачи.
@@ -56,7 +56,7 @@
   <!-- Stages of training -->
   <section class="indent_section_bottom">
     <SectionTitle class="mb-10">Этапы обучения</SectionTitle>
-    <ul class="text-white flex justify-center items-center">
+    <ul class="text-white flex justify-between items-center">
       <li class="flex flex-col text-center w-44">
         <span class="h-10 w-10 bg-red rounded-[50%] flex justify-center items-center m-auto font-semibold">1</span>
         <span class="text-sm font-semibold">Изучаем HTML</span>
@@ -95,7 +95,7 @@
         <h3 class="text-white text-[28px]">Сертификат</h3>
         <p class="text-white text-base">Студенты получают сертификат об успешном окончании курса <span class="text-red">«Frontend-разработки»</span>. Текст документа может быть составлен на английском языке.</p>
       </div>
-      <img class="w-[605px]" src="img/group_course/sertificate.png" alt="Сертификат">
+      <img class="w-[605px]" src="/img/group_course/sertificate.png" alt="Сертификат">
     </div>
   </section>
 </template>

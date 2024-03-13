@@ -12,7 +12,7 @@
         </p>
       </div>
       <div class="text-center bg-white border-[3px] border-red rounded-28 px-8 py-7">
-        <img class="w-24 h-24 mb-6 inline" src="/img/icon_course/HTML.svg" alt="Иконка курса">
+        <img class="w-24 h-24 mb-6 inline" src="/img/icon/html5.svg" alt="Иконка курса">
         <p class="text-3xl mb-5">500 ₽</p>
         <a class="btn-buy" href="#">Купить</a>
         <p class="text-lg mt-5">Тем в курсе: 6</p>
@@ -39,6 +39,6 @@ import { Head } from '@inertiajs/vue3';
 
 <style scoped>
   .btn-buy {
-    @apply border-0 rounded-28 self-center bg-red text-white ms-3 py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:shadow-inset;
+    @apply border-0 rounded-28 self-center bg-red text-white py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:shadow-inset;
   }
 </style>
