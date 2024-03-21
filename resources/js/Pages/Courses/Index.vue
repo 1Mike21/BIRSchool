@@ -4,7 +4,7 @@
   <section>
     <SectionTitle class="mb-5">Все курсы</SectionTitle>
     <div class="mb-12 flex justify-between ">
-      <input class="w-72 md:w-[400px] lg:w-[610px] xl:w-[830px] 2xl:w-[1080px] h-10 rounded-28 ps-5 text-sm md:text-base lg:text-lg" type="search" placeholder="Поиск...">
+      <input class="w-72 md:w-[400px] lg:w-[610px] xl:w-[830px] 2xl:w-[1080px] h-10 rounded-28 ps-5 text-sm md:text-base lg:text-lg focus:border-red focus:ring-red" type="search" placeholder="Поиск...">
       <button class="bg-white w-36 lg:w-44 xl:w-[185px] h-10 rounded-28 text-sm md:text-base lg:text-lg">По названию</button>
       <button class="bg-white w-36 lg:w-44 xl:w-[185px] h-10 rounded-28 text-sm md:text-base lg:text-lg">По группе</button>
     </div>

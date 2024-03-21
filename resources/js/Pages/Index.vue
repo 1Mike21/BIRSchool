@@ -74,7 +74,7 @@ import { Head } from '@inertiajs/vue3';
 
 <style scoped>
   .group-course {
-    @apply max-w-4xl mx-auto grid grid-cols-2 justify-items-center gap-8;
+    @apply max-w-3xl mx-auto grid grid-cols-2 justify-items-center gap-8;
   }
   .group-course__item {
     @apply bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] min-w-[270px] border-white rounded-28 text-center p-3 pb-5;
