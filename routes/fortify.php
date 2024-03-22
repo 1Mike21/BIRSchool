@@ -24,13 +24,6 @@ use Laravel\Fortify\RoutePath;
 Route::group(['middleware' => config('fortify.middleware', ['web'])], function () {
   $enableViews = config('fortify.views', true);
 
-  // Authentication...
-  if ($enableViews) {
-    Route::get(RoutePath::for('login', '/login'), [AuthenticatedSessionController::class, 'create'])
-      ->middleware(['guest:' . config('fortify.guard')])
-      ->name('login');
-  }
-
   $limiter = config('fortify.limiters.login');
   $twoFactorLimiter = config('fortify.limiters.two-factor');
   $verificationLimiter = config('fortify.limiters.verification', '6,1');
@@ -65,12 +58,6 @@ Route::group(['middleware' => config('fortify.middleware', ['web'])], function (
 
   // Registration...
   if (Features::enabled(Features::registration())) {
-    if ($enableViews) {
-      Route::get(RoutePath::for('register', '/register'), [RegisteredUserController::class, 'create'])
-        ->middleware(['guest:' . config('fortify.guard')])
-        ->name('register');
-    }
-
     Route::post(RoutePath::for('register', '/register'), [RegisteredUserController::class, 'store'])
       ->middleware(['guest:' . config('fortify.guard')]);
   }

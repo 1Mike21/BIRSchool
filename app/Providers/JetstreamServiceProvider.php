@@ -25,21 +25,6 @@ class JetstreamServiceProvider extends ServiceProvider
    */
   public function boot(): void
   {
-    $this->configurePermissions();
-
-    // Fortify::loginView(function() {
-    //   return Inertia::render('../Components/Login', [
-    //     'canResetPassword' => Route::has('password.request'),
-    //     'status' => session('status'),
-    //   ]);
-    // });
-
-    // Fortify::requestPasswordResetLinkView(function () {
-    //   return Inertia::render('Auth/ForgotPassword', [
-    //     'status' => session('status'),
-    //   ]);
-    // });
-
     Fortify::resetPasswordView(function (Request $request) {
       return Inertia::render('Auth/ResetPassword', [
         'email' => $request->input('email'),
@@ -62,20 +47,5 @@ class JetstreamServiceProvider extends ServiceProvider
     });
 
     Jetstream::deleteUsersUsing(DeleteUser::class);
-  }
-
-  /**
-   * Configure the permissions that are available within the application.
-   */
-  protected function configurePermissions(): void
-  {
-    Jetstream::defaultApiTokenPermissions(['read']);
-
-    Jetstream::permissions([
-      'create',
-      'read',
-      'update',
-      'delete',
-    ]);
   }
 }

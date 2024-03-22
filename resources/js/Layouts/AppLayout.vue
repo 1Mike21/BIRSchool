@@ -31,22 +31,35 @@
             </ul>
           </nav>
         </div>
-        <Link v-if="!$page.props.auth.user" :href="route('dashboard')" class="btn-login hidden md:block" @click="login">
-        Войти
+        <Link
+          v-if="!$page.props.auth.user"
+          :href="route('index')"
+          @click="login"
+          class="btn-login hidden md:block"
+        >
+          Войти
         </Link>
 
         <DialogModal :show="loginAndRegModal" max-width="md" @close="closeModal">
           <template #title>
             <ul class="flex items-center">
               <li class="mr-2">
-                <button @click="changeComponent(Login, 1)" type="button" :id="isActive"
-                  :class="{active: isActive == 1}">
+                <button
+                  :class="{active: isActive == 1}"
+                  :id="isActive"
+                  @click="changeComponent(Login, 1)"
+                  type="button"
+                >
                   Авторизация
                 </button>
               </li>
               <li class="mr-2">
-                <button @click="changeComponent(Register, 2)" type="button" :id="isActive"
-                  :class="{active: isActive == 2}">
+                <button
+                  :class="{active: isActive == 2}"
+                  :id="isActive"
+                  @click="changeComponent(Register, 2)"
+                  type="button"
+                >
                   Регистрация
                 </button>
               </li>
@@ -153,8 +166,13 @@
               Контакты
             </ResponsiveNavLink>
           </ul>
-          <Link v-if="!$page.props.auth.user" :href="route('dashboard')" class="btn-login">
-          Войти
+          <Link
+            v-if="!$page.props.auth.user"
+            :href="route('index')"
+            @click="login"
+            class="btn-login"
+          >
+            Войти
           </Link>
         </div>
 
@@ -275,11 +293,11 @@ const showingNavigationDropdown = ref(false);
 const loginAndRegModal = ref(false);
 
 const login = () => {
-  loginAndRegModal.value = true;
+  loginAndRegModal.value = !loginAndRegModal;
 };
 
 const closeModal = () => {
-  loginAndRegModal.value = false;
+  loginAndRegModal.value = !loginAndRegModal;
 };
 
 const logout = () => {

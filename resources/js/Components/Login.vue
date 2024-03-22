@@ -1,5 +1,4 @@
 <template>
-  <!-- <AuthenticationCard> -->
   <!-- <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
       {{ status }}
     </div> -->
@@ -26,8 +25,6 @@
       </label>
     </div>
 
-    <!-- :href="route('password.request')" -->
-    <!-- v-if="canResetPassword" -->
     <div class="flex items-center justify-end mt-4">
       <button
         type="button"
@@ -41,13 +38,11 @@
       </PrimaryButton>
     </div>
   </form>
-  <!-- </AuthenticationCard> -->
 </template>
 
 <script setup>
-import { Link, useForm } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 import { defineAsyncComponent } from 'vue';
-import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
