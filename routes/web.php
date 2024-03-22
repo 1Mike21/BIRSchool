@@ -22,6 +22,7 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
+
 ])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
@@ -43,3 +44,8 @@ Route::get('/courses', function () {
 Route::get('/courses/course', function () {
   return Inertia::render('Courses/Show');
 })->name('courses.show');
+
+require_once __DIR__ . '/jetstream.php';
+require_once __DIR__ . '/fortify.php';
+
+?>

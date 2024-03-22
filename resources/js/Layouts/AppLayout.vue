@@ -1,4 +1,5 @@
 <template>
+
   <Head :title="title" />
 
   <Banner />
@@ -32,17 +33,57 @@
         </div>
         <Link
           v-if="!$page.props.auth.user"
-          :href="route('dashboard')"
+          :href="route('index')"
+          @click="login"
           class="btn-login hidden md:block"
         >
           Войти
         </Link>
 
-        <div
-          v-if="$page.props.auth.user"
-          class="hidden md:flex sm:items-center ms-1 xl:ms-6"
-        >
-          <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+        <DialogModal :show="loginAndRegModal" max-width="md" @close="closeModal">
+          <template #title>
+            <ul class="flex items-center">
+              <li class="mr-2">
+                <button
+                  :class="{active: isActive == 1}"
+                  :id="isActive"
+                  @click="changeComponent(Login, 1)"
+                  type="button"
+                >
+                  Авторизация
+                </button>
+              </li>
+              <li class="mr-2">
+                <button
+                  :class="{active: isActive == 2}"
+                  :id="isActive"
+                  @click="changeComponent(Register, 2)"
+                  type="button"
+                >
+                  Регистрация
+                </button>
+              </li>
+            </ul>
+
+            <button
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+              @click="closeModal">
+              <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </template>
+          <template #content>
+            <KeepAlive>
+              <component :is="nameComponent" @change-component="changeComponent"/>
+            </KeepAlive>
+          </template>
+        </DialogModal>
+
+        <div v-if="$page.props.auth.user" class="hidden md:flex sm:items-center ms-1 xl:ms-6">
+          <button type="button"
+            class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
             <span class="absolute -inset-1.5" />
             <span class="sr-only">View notifications</span>
             <BellIcon class="h-6 w-6" aria-hidden="true" />
@@ -51,10 +92,8 @@
           <div class="ms-3 relative">
             <Dropdown align="right" width="48">
               <template #trigger>
-                <button
-                  v-if="$page.props.jetstream.managesProfilePhotos"
-                  class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition"
-                >
+                <button v-if="$page.props.jetstream.managesProfilePhotos"
+                  class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                   <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
                     :alt="$page.props.auth.user.name">
                 </button>
@@ -64,8 +103,8 @@
                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
                     {{ $page.props.auth.user.name }}
 
-                    <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-                      viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                      stroke-width="1.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                   </button>
@@ -129,7 +168,8 @@
           </ul>
           <Link
             v-if="!$page.props.auth.user"
-            :href="route('dashboard')"
+            :href="route('index')"
+            @click="login"
             class="btn-login"
           >
             Войти
@@ -137,10 +177,7 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div
-          v-if="$page.props.auth.user"
-          class="pt-4 pb-1 border-t border-gray-200"
-        >
+        <div v-if="$page.props.auth.user" class="pt-4 pb-1 border-t border-gray-200">
           <div class="flex flex-col sm:flex-row items-start sm:items-center px-4">
             <div v-if="$page.props.jetstream.managesProfilePhotos" class="shrink-0 me-5">
               <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
@@ -154,7 +191,8 @@
                 {{ $page.props.auth.user.email }}
               </div>
             </div>
-            <button type="button" class="relative mt-2 sm:ml-auto rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <button type="button"
+              class="relative mt-2 sm:ml-auto rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
               <span class="absolute -inset-1.5" />
               <span class="sr-only">View notifications</span>
               <BellIcon class="h-6 w-6" aria-hidden="true" />
@@ -204,8 +242,10 @@
       </div>
       <div class="footer__contact-item flex flex-col justify-evenly sm:text-end">
         <p class="footer__contact-title">Связаться с нами:</p>
-        <div><b class="footer__contact-text" >тел.</b> <a class="pb-2 hover:text-red" href="tel:+79017441182">+79017441182</a></div>
-        <div><b class="footer__contact-text">e-mail :</b> <a href="mailto:Inbox@bir-team.ru" class="hover:text-red">Inbox@bir-team.ru</a>
+        <div><b class="footer__contact-text">тел.</b> <a class="pb-2 hover:text-red"
+            href="tel:+79017441182">+79017441182</a></div>
+        <div><b class="footer__contact-text">e-mail :</b> <a href="mailto:Inbox@bir-team.ru"
+            class="hover:text-red">Inbox@bir-team.ru</a>
           <div class="flex sm:justify-end gap-3 mt-3">
             <a href="https://vk.com/birteam" target="_blank"><img src="/img/icon/icon_vk.svg" alt="birteam-vk"></a>
             <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg" alt="birteam-telegram"></a>
@@ -213,12 +253,13 @@
         </div>
       </div>
     </div>
-    <p class="text-sm text-center container mx-auto py-3 border-t border-solid border-white">&copy; BIR, {{currentYear}}</p>
+    <p class="text-sm text-center container mx-auto py-3 border-t border-solid border-white">&copy; BIR, {{currentYear}}
+    </p>
   </footer>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineAsyncComponent } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import {BellIcon} from '@heroicons/vue/24/outline'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
@@ -227,14 +268,36 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+const DialogModal = defineAsyncComponent(() => import("@/Components/DialogModal.vue"));
+const Login = defineAsyncComponent(() => import("@/Components/Login.vue"));
+const Register = defineAsyncComponent(() => import("@/Components/Register.vue"));
 
 defineProps({
   title: String,
 });
 
+const nameComponent = ref(Login);
+
+const isActive = ref(1);
+
+const changeComponent = (component, id) => {
+  nameComponent.value = component;
+  isActive.value = id;
+};
+
 const currentYear = new Date().getFullYear();
 
 const showingNavigationDropdown = ref(false);
+
+const loginAndRegModal = ref(false);
+
+const login = () => {
+  loginAndRegModal.value = !loginAndRegModal;
+};
+
+const closeModal = () => {
+  loginAndRegModal.value = !loginAndRegModal;
+};
 
 const logout = () => {
   router.post(route('logout'));
@@ -242,28 +305,31 @@ const logout = () => {
 </script>
 
 <style>
-  .header {
-    @apply container mx-auto sticky top-0 px-4 left-0 mt-5 z-10 bg-darkblue;
-  }
-  .navbar-brand {
-    @apply w-40 h-14 lg:w-64 lg:h-20;
-  }
-  .btn-login {
-    @apply border-0 rounded-28 self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap hover:shadow-inset;
-  }
-  .footer {
-    @apply container mx-auto text-white px-4;
-  }
-  .footer__contact {
-    @apply grid justify-center gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 pb-3;
-  }
-  .footer__contact-item {
-    @apply col-span-full sm:col-span-1 md:col-span-2 lg:col-span-4;
-  }
-  .footer__contact-text {
-    @apply pb-2 text-sm mt-0 mb-0;
-  }
-  .footer__contact-title {
-    @apply font-bold text-base;
-  }
+.active {
+  @apply text-red;
+}
+.header {
+  @apply container mx-auto sticky top-0 px-4 left-0 mb-4 sm:mb-8 md:mb-14 lg:mb-20 mt-5 z-10 bg-darkblue;
+}
+.navbar-brand {
+  @apply w-40 h-14 lg:w-64 lg:h-20;
+}
+.btn-login {
+  @apply border-0 rounded-full self-center bg-red hover:bg-inherit text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap  hover:shadow-inset;
+}
+.footer {
+  @apply container mx-auto text-white px-4 mt-4 sm:mt-8 md:mt-14 lg:mt-20;
+}
+.footer__contact {
+  @apply grid justify-center gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 pb-3;
+}
+.footer__contact-item {
+  @apply col-span-full sm:col-span-1 md:col-span-2 lg:col-span-4;
+}
+.footer__contact-text {
+  @apply pb-2 text-sm mt-0 mb-0;
+}
+.footer__contact-title {
+  @apply font-bold text-base;
+}
 </style>
