@@ -1,15 +1,18 @@
 <template>
-  <Head title="Описание группы курсов"/>
+
+  <Head title="Описание группы курсов" />
 
   <!-- About group course -->
   <section class="indent_section_bottom">
     <SectionTitle class="mb-10">Кто такой Frontend-разработчик?</SectionTitle>
     <div class="flex justify-center gap-10">
       <div class="w-[420px] border-[1px] pb-3 mb-8 border-red rounded-[20px]">
-        <p class="text-white text-xl bg-red rounded-[20px] p-3">Frontend-разработчик программирует клиентскую сторону сайта — то, с чем соприкасается пользователь.
+        <p class="text-white text-xl bg-red rounded-[20px] p-3">Frontend-разработчик программирует клиентскую сторону
+          сайта — то, с чем соприкасается пользователь.
           Для этого нужно хорошо знать язык разметки страницы HTML, стилизации CSS и программировать на JavaScript.
         </p>
-        <p class="text-white text-lg p-3">JavaScript позволяет разрабатывать игры, сайты и сервисы с интересными эффектами.
+        <p class="text-white text-lg p-3">JavaScript позволяет разрабатывать игры, сайты и сервисы с интересными
+          эффектами.
           С его помощью создают яркие, запоминающиеся проекты, на которые пользователь захочет вернуться.
         </p>
       </div>
@@ -20,12 +23,12 @@
   <section class="indent_section_bottom">
     <article class="flex whitespace-nowrap overflow-x-hidden">
       <div class="relative text-red text-[40px]">
-        <ul class="flex animate-marquee">
+        <ul class="flex animate-[marquee_40s_linear_infinite]">
           <li class="m-8">После успешного прохождения курса, Вы можете стать, частью нашей команды.</li>
           <li class="m-8">После успешного прохождения курса, Вы можете стать, частью нашей команды.</li>
           <li class="m-8">После успешного прохождения курса, Вы можете стать, частью нашей команды.</li>
         </ul>
-        <ul class="flex absolute top-0 animate-marquee2">
+        <ul class="flex absolute top-0 animate-[marquee2_40s_linear_infinite]">
           <li class="m-8">После успешного прохождения курса, Вы можете стать, частью нашей команды.</li>
           <li class="m-8">После успешного прохождения курса, Вы можете стать, частью нашей команды.</li>
           <li class="m-8">После успешного прохождения курса, Вы можете стать, частью нашей команды.</li>
@@ -39,8 +42,9 @@
       <div class="w-[416px] rounded-[15px]">
         <img class="w-[290px] h-[200px] inline" src="/img/group_course/1f.png" alt="Картинка">
         <h3 class="text-red text-xl p-5">Для новичков</h3>
-        <p class="text-white">Кто хочет обучиться программированию с нуля. Программа курса рассчитана для начинающих фронтенд-разработчиков
-           и построена так, что вы сможете ее освоить даже без технического бэкграунда.
+        <p class="text-white">Кто хочет обучиться программированию с нуля. Программа курса рассчитана для начинающих
+          фронтенд-разработчиков
+          и построена так, что вы сможете ее освоить даже без технического бэкграунда.
         </p>
       </div>
       <div class="w-[416px] rounded-[15px]">
@@ -93,7 +97,8 @@
     <div class="flex justify-between items-center">
       <div class="w-[600px]">
         <h3 class="text-white text-[28px]">Сертификат</h3>
-        <p class="text-white text-base">Студенты получают сертификат об успешном окончании курса <span class="text-red">«Frontend-разработки»</span>. Текст документа может быть составлен на английском языке.</p>
+        <p class="text-white text-base">Студенты получают сертификат об успешном окончании курса <span
+            class="text-red">«Frontend-разработки»</span>. Текст документа может быть составлен на английском языке.</p>
       </div>
       <img class="w-[605px]" src="/img/group_course/sertificate.png" alt="Сертификат">
     </div>

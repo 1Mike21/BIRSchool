@@ -30,10 +30,6 @@ export default {
             borderRadius: {
               '28': '28px'
             },
-            animation: {
-              marquee: 'marquee 40s linear infinite',
-              marquee2: 'marquee2 40s linear infinite'
-            },
             keyframes: {
               marquee: {
                 '0%': { transform: 'translateX(0%)' },
@@ -42,15 +38,12 @@ export default {
               marquee2: {
                 '0%': { transform: 'translateX(100%)' },
                 '100%': { transform: 'translateX(0%)' }
-              }
-            },
-            keyframes: {
+              },
               'contact-title': {
                 '0%': { 'background-position': '0% 50 %' },
                 '100%': { 'background-position': '100% 50%' }
               },
-
-            }
+            },
         },
     },
 
