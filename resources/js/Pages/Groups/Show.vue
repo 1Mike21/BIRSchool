@@ -34,7 +34,7 @@
     </article>
   </section>
   <section class="indent_section_bottom">
-    <SectionTitle class="mb-20">Для кого курс?</SectionTitle>
+    <SectionTitle class="mb-10">Для кого курс?</SectionTitle>
     <div class="flex justify-center text-center gap-10">
       <div class="w-[416px] rounded-[15px]">
         <img class="w-[290px] h-[200px] inline" src="/img/group_course/1f.png" alt="Картинка">
@@ -56,34 +56,34 @@
   <!-- Stages of training -->
   <section class="indent_section_bottom">
     <SectionTitle class="mb-10">Этапы обучения</SectionTitle>
-    <ul class="text-white flex justify-between items-center">
-      <li class="flex flex-col text-center w-44">
-        <span class="h-10 w-10 bg-red rounded-[50%] flex justify-center items-center m-auto font-semibold">1</span>
-        <span class="text-sm font-semibold">Изучаем HTML</span>
+    <ul class="steps-learning">
+      <li class="steps-learning__item steps-learning__line">
+        <span class="steps-learning__item-count">1</span>
+        <span class="text-sm font-semibold mt-3">Изучаем HTML</span>
       </li>
-      <li class="flex flex-col text-center w-44">
-        <span class="h-10 w-10 bg-red rounded-[50%] flex justify-center items-center m-auto font-semibold">2</span>
-        <span class="text-sm font-semibold">Изучаем CSS</span>
+      <li class="steps-learning__item steps-learning__line">
+        <span class="steps-learning__item-count">2</span>
+        <span class="text-sm font-semibold mt-3">Изучаем CSS</span>
       </li>
-      <li class="flex flex-col text-center w-44">
-        <span class="h-10 w-10 bg-red rounded-[50%] flex justify-center items-center m-auto font-semibold">3</span>
-        <span class="text-sm font-semibold">Создаем мини-сайт используя HTML и CSS</span>
+      <li class="steps-learning__item steps-learning__line">
+        <span class="steps-learning__item-count">3</span>
+        <span class="text-sm font-semibold mt-3">Создаем мини-сайт используя HTML и CSS</span>
       </li>
-      <li class="flex flex-col text-center w-44">
-        <span class="h-10 w-10 bg-red rounded-[50%] flex justify-center items-center m-auto font-semibold">4</span>
-        <span class="text-sm font-semibold">Верстка лендинга по макету из Figma</span>
+      <li class="steps-learning__item steps-learning__line">
+        <span class="steps-learning__item-count">4</span>
+        <span class="text-sm font-semibold mt-3">Верстка лендинга по макету из Figma</span>
       </li>
-      <li class="flex flex-col text-center w-44">
-        <span class="h-10 w-10 bg-red rounded-[50%] flex justify-center items-center m-auto font-semibold">5</span>
-        <span class="text-sm font-semibold"> Изучаем JavaScript</span>
+      <li class="steps-learning__item steps-learning__line">
+        <span class="steps-learning__item-count">5</span>
+        <span class="text-sm font-semibold mt-3"> Изучаем JavaScript</span>
       </li>
-      <li class="flex flex-col text-center w-44">
-        <span class="h-10 w-10 bg-red rounded-[50%] flex justify-center items-center m-auto font-semibold">6</span>
-        <span class="text-sm font-semibold">Создаем сайт используя HTML, CSS и JS</span>
+      <li class="steps-learning__item steps-learning__line">
+        <span class="steps-learning__item-count">6</span>
+        <span class="text-sm font-semibold mt-3">Создаем сайт используя HTML, CSS и JS</span>
       </li>
-      <li class="flex flex-col text-center w-44">
-        <span class="h-10 w-10 bg-red rounded-[50%] flex justify-center items-center m-auto font-semibold">7</span>
-        <span class="text-sm font-semibold">Изучаем React. Делаем финальный проект</span>
+      <li class="steps-learning__item steps-learning__line">
+        <span class="steps-learning__item-count">7</span>
+        <span class="text-sm font-semibold mt-3">Изучаем React. Делаем финальный проект</span>
       </li>
     </ul>
   </section>
@@ -106,5 +106,13 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <style scoped>
-
+.steps-learning {
+  @apply text-white flex py-5 px-2 relative overflow-x-auto max-w-7xl mx-auto;
+}
+.steps-learning__item {
+  @apply flex flex-col text-center px-5 min-w-44 max-w-full relative after:content-[""] after:absolute after:left-0 after:top-5 after:bg-red after:w-full after:h-[2px] after:translate-x-1/2 after:-z-10 last:after:w-0;
+}
+.steps-learning__item-count {
+  @apply h-10 w-10 rounded-full flex justify-center items-center mx-auto z-10 relative font-semibold after:content-[""] after:h-10 after:w-10 after:bg-red after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:-z-10 after:text-white before:content-[""] before:h-3 before:w-5 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-2/3 before:-rotate-45 before:text-white;
+}
 </style>
