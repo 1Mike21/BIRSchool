@@ -112,7 +112,7 @@ import { Head } from '@inertiajs/vue3';
 
 <style scoped>
 .steps-learning {
-  @apply text-white flex py-5 px-2 relative overflow-x-auto max-w-7xl mx-auto;
+  @apply text-white flex py-5 px-2 relative overflow-x-auto scrollbar max-w-7xl mx-auto;
 }
 .steps-learning__item {
   @apply flex flex-col text-center px-5 min-w-44 max-w-full relative after:content-[""] after:absolute after:left-0 after:top-5 after:bg-red after:w-full after:h-[2px] after:translate-x-1/2 after:-z-10 last:after:w-0;

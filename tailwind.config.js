@@ -47,6 +47,5 @@ export default {
         },
     },
 
-    // , require('tailwind-scrollbar')({ nocompatible: true })
-    plugins: [forms, typography, require("@xpd/tailwind-3dtransforms")],
+  plugins: [forms, typography, require("@xpd/tailwind-3dtransforms"), require('tailwind-scrollbar')({ nocompatible: true })],
 };

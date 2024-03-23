@@ -7,11 +7,11 @@
 }
 
 #app {
-  @apply flex flex-col min-h-screen justify-between
+  @apply flex flex-col min-h-screen justify-between;
 }
 .indent_section_bottom {
-  @apply mb-4 sm:mb-8 md:mb-14 lg:mb-85
+  @apply mb-4 sm:mb-8 md:mb-14 lg:mb-85;
 }
 .indent_section_top {
-  @apply mt-4 sm:mt-8 md:mt-14 lg:mt-85
+  @apply mt-4 sm:mt-8 md:mt-14 lg:mt-85;
 }
