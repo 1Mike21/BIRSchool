@@ -27,6 +27,6 @@ import { Head } from '@inertiajs/vue3';
 
 <style scoped>
   .title {
-    @apply text-center text-[56px] tracking-normal max-md:text-4xl leading-none font-bold bg-clip-text bg-[url('img/line.png')] bg-repeat-y text-transparent backface-hidden translate-3d-0 animate-[contact-title_80s_linear_infinite];
+    @apply text-center text-[56px] tracking-normal max-md:text-4xl leading-none font-bold bg-clip-text bg-[url('/img/line.png')] bg-repeat-y text-transparent backface-hidden translate-3d-0 animate-[contact-title_80s_linear_infinite];
   }
 </style>
