@@ -27,12 +27,6 @@ import { Head } from '@inertiajs/vue3';
 
 <style scoped>
   .title {
-    @apply text-center bg-clip-text max-md:text-4xl text-[56px] leading-none font-bold bg-[url('img/line.png')] bg-repeat-y;
-    /* Animate Background Image */
-    -webkit-text-fill-color: transparent;
-    -webkit-animation: aitf 80s linear infinite;
-    /* Activate hardware acceleration for smoother animations */
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
+    @apply text-center text-[56px] tracking-normal max-md:text-4xl leading-none font-bold bg-clip-text bg-[url('/img/line.png')] bg-repeat-y text-transparent backface-hidden translate-3d-0 animate-[contact-title_80s_linear_infinite];
   }
 </style>
