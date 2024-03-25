@@ -31,14 +31,13 @@
             </ul>
           </nav>
         </div>
-        <Link
+        <button
           v-if="!$page.props.auth.user"
-          :href="route('index')"
           @click="login"
           class="btn-login hidden md:block"
         >
           Войти
-        </Link>
+        </button>
 
         <DialogModal :show="loginAndRegModal" max-width="md" @close="closeModal">
           <template #title>
@@ -166,14 +165,13 @@
               Контакты
             </ResponsiveNavLink>
           </ul>
-          <Link
+          <button
             v-if="!$page.props.auth.user"
-            :href="route('index')"
             @click="login"
             class="btn-login"
           >
             Войти
-          </Link>
+          </button>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -292,11 +290,11 @@ const showingNavigationDropdown = ref(false);
 const loginAndRegModal = ref(false);
 
 const login = () => {
-  loginAndRegModal.value = !loginAndRegModal;
+  loginAndRegModal.value = true;
 };
 
 const closeModal = () => {
-  loginAndRegModal.value = !loginAndRegModal;
+  loginAndRegModal.value = false;
 };
 
 const logout = () => {
