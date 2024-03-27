@@ -1,23 +1,3 @@
-<script setup>
-import { Head, useForm } from '@inertiajs/vue3';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-
-defineProps({
-  // status: String,
-});
-
-const form = useForm({
-  email: '',
-});
-
-const submit = () => {
-  form.post(route('password.email'));
-};
-</script>
-
 <template>
 
   <Head title="Forgot Password" />
@@ -46,3 +26,26 @@ const submit = () => {
     </div>
   </form>
 </template>
+
+<script setup>
+import { Head, useForm } from '@inertiajs/vue3';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+
+defineProps({
+  // status: String,
+});
+
+const emit = defineEmits(['closeModal']);
+
+const form = useForm({
+  email: '',
+});
+
+const submit = () => {
+  form.post(route('password.email'));
+  emit('closeModal');
+};
+</script>

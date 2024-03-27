@@ -32,7 +32,7 @@ Route::group(['middleware' => config('fortify.middleware', ['web'])], function (
     ->middleware(array_filter([
       'guest:' . config('fortify.guard'),
       $limiter ? 'throttle:' . $limiter : null,
-    ]));
+    ]))->name('login');
 
   Route::post(RoutePath::for('logout', '/logout'), [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
@@ -59,7 +59,7 @@ Route::group(['middleware' => config('fortify.middleware', ['web'])], function (
   // Registration...
   if (Features::enabled(Features::registration())) {
     Route::post(RoutePath::for('register', '/register'), [RegisteredUserController::class, 'store'])
-      ->middleware(['guest:' . config('fortify.guard')]);
+      ->middleware(['guest:' . config('fortify.guard')])->name('register');
   }
 
   // Email Verification...
