@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Groups\ShowController;
+use App\Http\Controllers\IndexController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -14,9 +16,7 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-  return Inertia::render('Index');
-})->name('index');
+Route::get('/', IndexController::class)->name('index');
 
 Route::middleware([
     'auth:sanctum',
@@ -33,9 +33,7 @@ Route::get('/contacts', function () {
   return Inertia::render('Contacts');
 })->name('contacts');
 
-Route::get('/groups/group', function () {
-  return Inertia::render('Groups/Show');
-})->name('groups.show');
+Route::get('/groups/{group}', ShowController::class)->name('groups.show');
 
 Route::get('/courses', function () {
   return Inertia::render('Courses/Index');
