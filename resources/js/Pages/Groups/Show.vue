@@ -57,33 +57,12 @@
   <section class="indent_section_bottom">
     <SectionTitle class="mb-10">Этапы обучения</SectionTitle>
     <ul class="steps-learning">
-      <li class="steps-learning__item steps-learning__line">
-        <span class="steps-learning__item-count">1</span>
-        <span class="text-sm font-semibold mt-3">Изучаем HTML</span>
-      </li>
-      <li class="steps-learning__item steps-learning__line">
-        <span class="steps-learning__item-count">2</span>
-        <span class="text-sm font-semibold mt-3">Изучаем CSS</span>
-      </li>
-      <li class="steps-learning__item steps-learning__line">
-        <span class="steps-learning__item-count">3</span>
-        <span class="text-sm font-semibold mt-3">Создаем мини-сайт используя HTML и CSS</span>
-      </li>
-      <li class="steps-learning__item steps-learning__line">
-        <span class="steps-learning__item-count">4</span>
-        <span class="text-sm font-semibold mt-3">Верстка лендинга по макету из Figma</span>
-      </li>
-      <li class="steps-learning__item steps-learning__line">
-        <span class="steps-learning__item-count">5</span>
-        <span class="text-sm font-semibold mt-3"> Изучаем JavaScript</span>
-      </li>
-      <li class="steps-learning__item steps-learning__line">
-        <span class="steps-learning__item-count">6</span>
-        <span class="text-sm font-semibold mt-3">Создаем сайт используя HTML, CSS и JS</span>
-      </li>
-      <li class="steps-learning__item steps-learning__line">
-        <span class="steps-learning__item-count">7</span>
-        <span class="text-sm font-semibold mt-3">Изучаем React. Делаем финальный проект</span>
+      <li
+        class="steps-learning__item steps-learning__line"
+        v-for="step in learningSteps"
+      >
+        <span class="steps-learning__item-count">{{ step.number }}</span>
+        <span class="text-sm font-semibold mt-3">{{ step.title }}</span>
       </li>
     </ul>
   </section>
@@ -93,7 +72,7 @@
     <div class="flex justify-between items-center">
       <div class="w-[600px]">
         <h3 class="text-white text-[28px]">Сертификат</h3>
-        <p class="text-white text-base">Студенты получают сертификат об успешном окончании курса <span class="text-red">«Frontend-разработки»</span>. Текст документа может быть составлен на английском языке.</p>
+        <p class="text-white text-base">Студенты получают сертификат об успешном окончании курса <span class="text-red">«{{ group.title }} - {{ group.level }}»</span>. Текст документа может быть составлен на английском языке.</p>
       </div>
       <img class="w-[605px]" src="/img/group_course/sertificate.png" alt="Сертификат">
     </div>
@@ -103,6 +82,11 @@
 <script setup>
 import SectionTitle from '@/Components/SectionTitle.vue';
 import { Head } from '@inertiajs/vue3';
+
+const props = defineProps({
+  learningSteps: Array,
+  group: Array
+});
 </script>
 
 <style scoped>
