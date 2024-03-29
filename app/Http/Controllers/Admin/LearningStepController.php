@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StepLearning;
+use App\Models\LearningStep;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreStepLearningRequest;
-use App\Http\Requests\UpdateStepLearningRequest;
+use App\Http\Requests\StoreLearningStepRequest;
+use App\Http\Requests\UpdateLearningStepRequest;
 
-class StepLearningController extends Controller
+class LearningStepController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +28,7 @@ class StepLearningController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreStepLearningRequest $request)
+    public function store(StoreLearningStepRequest $request)
     {
         //
     }
@@ -36,7 +36,7 @@ class StepLearningController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(StepLearning $stepLearning)
+    public function show(LearningStep $learningStep)
     {
         //
     }
@@ -44,7 +44,7 @@ class StepLearningController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(StepLearning $stepLearning)
+    public function edit(LearningStep $learningStep)
     {
         //
     }
@@ -52,7 +52,7 @@ class StepLearningController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStepLearningRequest $request, StepLearning $stepLearning)
+    public function update(UpdateLearningStepRequest $request, LearningStep $learningStep)
     {
         //
     }
@@ -60,7 +60,7 @@ class StepLearningController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(StepLearning $stepLearning)
+    public function destroy(LearningStep $learningStep)
     {
         //
     }

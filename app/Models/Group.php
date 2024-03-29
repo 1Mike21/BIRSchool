@@ -18,8 +18,8 @@ class Group extends Model
       'level',
     ];
 
-    public function stepsLearning(): HasMany {
-      return $this->hasMany(StepLearning::class);
+    public function learningSteps(): HasMany {
+      return $this->hasMany(LearningStep::class);
     }
 
     public function courses(): HasMany {
