@@ -17,6 +17,7 @@ class ThemeSeeder extends Seeder
     DB::table('themes')->insert([
       [
         'title' => 'Введение в HTML',
+        'slug' => 'introduction-to-html',
         'content' => '',
         'course_id' => 1,
         'created_at' => Carbon::now(),
@@ -24,6 +25,7 @@ class ThemeSeeder extends Seeder
       ],
       [
         'title' => 'Структура HTML документа',
+        'slug' => 'structure-of-html-document',
         'content' => '',
         'course_id' => 1,
         'created_at' => Carbon::now(),
@@ -31,6 +33,7 @@ class ThemeSeeder extends Seeder
       ],
       [
         'title' => 'Форматирование текста',
+        'slug' => 'text-formatting',
         'content' => '',
         'course_id' => 1,
         'created_at' => Carbon::now(),
@@ -38,6 +41,7 @@ class ThemeSeeder extends Seeder
       ],
       [
         'title' => 'Работа с изображениями и мультимедиа',
+        'slug' => 'working-with-images-and-multimedia',
         'content' => '',
         'course_id' => 1,
         'created_at' => Carbon::now(),
@@ -45,6 +49,7 @@ class ThemeSeeder extends Seeder
       ],
       [
         'title' => 'Таблицы',
+        'slug' => 'tables',
         'content' => '',
         'course_id' => 1,
         'created_at' => Carbon::now(),
@@ -52,6 +57,7 @@ class ThemeSeeder extends Seeder
       ],
       [
         'title' => 'Формы и элементы управления',
+        'slug' => 'forms-and-controls',
         'content' => '',
         'course_id' => 1,
         'created_at' => Carbon::now(),

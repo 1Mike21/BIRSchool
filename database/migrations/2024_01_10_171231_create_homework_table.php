@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('homework', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->nullable()->unique();
             $table->text('description');
             $table->foreignId('theme_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

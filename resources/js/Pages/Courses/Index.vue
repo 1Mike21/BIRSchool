@@ -17,7 +17,7 @@
         <img class="w-16 h-16 inline mt-4 mb-2" :src="course.icon" alt="Иконка курса">
         <h3 class="text-white text-xl xl:text-2xl font-semibold mb-8">{{ course.title }}</h3>
         <p class="text-white text-xl xl:text-2xl mb-10">{{ course.price }} ₽</p>
-        <a class="btn-more-detail text-white mb-6" :href="route('courses.show', course.id)">Подробнее</a>
+        <a class="btn-more-detail text-white mb-6" :href="route('courses.show', course.slug)">Подробнее</a>
       </div>
     </div>
   </section>

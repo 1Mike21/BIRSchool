@@ -17,6 +17,7 @@ class CourseSeeder extends Seeder
       DB::table('courses')->insert([
         [
           'title' => 'HTML',
+          'slug' => 'html',
           'icon' => '/storage/icons/html5.svg',
           'description' => 'Онлайн-курс по HTML - это обучающая программа, целью которой является предоставление студентам фундаментальных знаний и навыков в области
           языка гипертекстовой разметки (HTML). Курс ориентирован на начинающих и тех, кто стремится познакомиться с веб-технологиями.',
@@ -28,6 +29,7 @@ class CourseSeeder extends Seeder
         ],
         [
           'title' => 'CSS',
+          'slug' => 'css',
           'icon' => '/storage/icons/css3.svg',
           'description' => '',
           'price' => 950,
@@ -38,6 +40,7 @@ class CourseSeeder extends Seeder
         ],
         [
           'title' => 'Git и командная строка',
+          'slug' => 'git-and-command-line',
           'icon' => '/storage/icons/course-git.svg',
           'description' => '',
           'price' => 1500,
@@ -48,6 +51,7 @@ class CourseSeeder extends Seeder
         ],
         [
           'title' => 'JavaScript',
+          'slug' => 'javascript',
           'icon' => '/storage/icons/javascript.svg',
           'description' => '',
           'price' => 3500,
@@ -58,6 +62,7 @@ class CourseSeeder extends Seeder
         ],
         [
           'title' => 'React',
+          'slug' => 'react',
           'icon' => '/storage/icons/react.svg',
           'description' => '',
           'price' => 5000,
@@ -68,6 +73,7 @@ class CourseSeeder extends Seeder
         ],
         [
           'title' => 'PHP',
+          'slug' => 'php',
           'icon' => '/storage/icons/php.svg',
           'description' => '',
           'price' => 3500,
@@ -78,6 +84,7 @@ class CourseSeeder extends Seeder
         ],
         [
           'title' => 'Vue',
+          'slug' => 'vue',
           'icon' => '/storage/icons/vue.svg',
           'description' => '',
           'price' => 3500,
@@ -88,6 +95,7 @@ class CourseSeeder extends Seeder
         ],
         [
           'title' => 'Docker',
+          'slug' => 'docker',
           'icon' => '/storage/icons/docker.svg',
           'description' => '',
           'price' => 3000,
@@ -98,6 +106,7 @@ class CourseSeeder extends Seeder
         ],
         [
           'title' => 'Figma',
+          'slug' => 'figma',
           'icon' => '/storage/icons/course-figma.svg',
           'description' => '',
           'price' => 2000,
@@ -108,6 +117,7 @@ class CourseSeeder extends Seeder
         ],
         [
           'title' => 'Laravel',
+          'slug' => 'laravel',
           'icon' => '/storage/icons/laravel.svg',
           'description' => '',
           'price' => 5000,

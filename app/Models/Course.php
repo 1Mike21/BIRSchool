@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,15 +11,30 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Course extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $fillable = [
       'title',
+      'slug',
       'icon',
       'description',
       'price',
       'group_id'
     ];
+
+    public function sluggable(): array
+    {
+      return [
+        'slug' => [
+          'source' => 'title'
+        ]
+      ];
+    }
+
+    public function getRouteKeyName(): string
+    {
+      return 'slug';
+    }
 
     public function users(): BelongsToMany {
       return $this->belongsToMany(User::class, 'course_user', 'course_id', 'user_id');

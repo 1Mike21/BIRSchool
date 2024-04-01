@@ -36,7 +36,7 @@
         <h4 class="text-red font-medium text-2xl">{{ group.title }}</h4>
         <h5 class="text-white text-xl underline underline-offset-8 decoration-red">{{ group.level }}</h5>
         <h6 class="text-white text-base">{{ group.description }}</h6>
-        <Link class="btn-more-detail" :href="route('groups.show', group.id)">Подробнее</Link>
+        <Link class="btn-more-detail" :href="route('groups.show', group.slug)">Подробнее</Link>
       </div>
     </div>
   </section>
