@@ -59,7 +59,13 @@
   </section>
   <!-- Slider student portfolio -->
   <section class="indent_section_bottom">
-
+    <Carousel class="carousel" v-slot="{ currentSlide }">
+      <Slide v-for="(slide, index) in carouselSlides" :key="index">
+        <div v-show="currentSlide === index + 1" class="slide-info">
+          <img :src="imgUrls[`${base}img/slider_student_portfolio/${slide}.png`]" alt="">
+        </div>
+      </Slide>
+    </Carousel>
   </section>
   <!-- Slider reviews -->
   <section>
@@ -67,9 +73,26 @@
   </section>
 </template>
 
-<script setup>
+<script>
 import SectionTitle from '@/Components/SectionTitle.vue';
 import { Head } from '@inertiajs/vue3';
+import Carousel from '@/Components/Carousel.vue';
+import Slide from '@/Components/Slide.vue';
+
+const base = import.meta.env.BASE_URL
+const imgUrls = import.meta.glob('../img/slider_student_portfolio/*.png', {
+  import: 'default',
+  eager: true
+})
+
+defineProps(['slide'])
+
+export default {
+  setup () {
+    const carouselSlides = ["w1", "w2", "w3", "w4", "w5"];
+    return { carouselSlides };
+  },
+};
 </script>
 
 <style scoped>
@@ -81,5 +104,8 @@ import { Head } from '@inertiajs/vue3';
   }
   .btn-more-detail {
     @apply border-0 rounded-xl self-center mt-auto bg-red hover:bg-inherit text-white py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:bg-white hover:text-red;
+  }
+  .carousel {
+    @apply max-h-[700px];
   }
 </style>
