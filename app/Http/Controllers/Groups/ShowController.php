@@ -11,10 +11,12 @@ class ShowController extends Controller
 {
     public function __invoke(Group $group)
     {
+      $groupDescription = Group::find($group->id)->polyResources;
+
       $group = Group::find($group->id);
 
       $learningSteps = LearningStep::where('group_id', '=', $group->id)->get();
 
-      return Inertia::render('Groups/Show', compact('group', 'learningSteps'));
+      return Inertia::render('Groups/Show', compact('groupDescription', 'group', 'learningSteps'));
     }
 }
