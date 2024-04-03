@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Group;
+use App\Models\LearningStep;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreGroupRequest;
-use App\Http\Requests\UpdateGroupRequest;
+use App\Http\Requests\StoreLearningStepRequest;
+use App\Http\Requests\UpdateLearningStepRequest;
 
-class GroupController extends Controller
+class LearningStepController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +28,7 @@ class GroupController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreGroupRequest $request)
+    public function store(StoreLearningStepRequest $request)
     {
         //
     }
@@ -36,7 +36,7 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Group $group)
+    public function show(LearningStep $learningStep)
     {
         //
     }
@@ -44,7 +44,7 @@ class GroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Group $group)
+    public function edit(LearningStep $learningStep)
     {
         //
     }
@@ -52,7 +52,7 @@ class GroupController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateGroupRequest $request, Group $group)
+    public function update(UpdateLearningStepRequest $request, LearningStep $learningStep)
     {
         //
     }
@@ -60,7 +60,7 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Group $group)
+    public function destroy(LearningStep $learningStep)
     {
         //
     }

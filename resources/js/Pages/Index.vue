@@ -27,33 +27,16 @@
   <section class="indent_section_bottom">
     <SectionTitle class="mb-11">Получите перспективную творческую профессию в IT</SectionTitle>
     <div class="group-course">
-      <div class="group-course__item">
-        <img class="w-16 mx-auto" src="img/icon/image 1.svg" alt="Иконка группы">
-        <h4 class="text-red font-medium text-2xl">FrontEnd Pro</h4>
-        <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Продвинутый уровень</h5>
-        <h6 class="text-white text-base">Освойте с нуля HTML, CSS, и прокачайте свои знания по JS и React</h6>
-        <a class="btn-more-detail" :href="route('groups.show')">Подробнее</a>
-      </div>
-      <div class="group-course__item">
-        <img class="w-16 mx-auto" src="img/icon/image 2.svg" alt="Иконка группы">
-        <h4 class="text-red font-medium text-2xl">BackEnd Pro</h4>
-        <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Продвинутый уровень</h5>
-        <h6 class="text-white text-base">Освойте с нуля PHP, серверные технологии и фреймворк Laravel</h6>
-        <a class="btn-more-detail" :href="route('groups.show')">Подробнее</a>
-      </div>
-      <div class="group-course__item">
-        <img class="w-16 mx-auto" src="img/icon/image 3.svg" alt="Иконка группы">
-        <h4 class="text-red font-medium text-2xl">Figma для разработчиков</h4>
-        <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Базовый уровень</h5>
-        <h6 class="text-white text-base">Изучите самый популярный дизайнерский инструмент</h6>
-        <a class="btn-more-detail" :href="route('groups.show')">Подробнее</a>
-      </div>
-      <div class="group-course__item">
-        <img class="w-16 mx-auto" src="img/icon/image 4.svg" alt="Иконка группы">
-        <h4 class="text-red font-medium text-2xl">Git и командная строка</h4>
-        <h5 class="text-white text-xl underline underline-offset-8 decoration-red">Базовый уровень</h5>
-        <h6 class="text-white text-base">Выучите два самых важных инструмента для любого программиста</h6>
-        <a class="btn-more-detail" :href="route('groups.show')">Подробнее</a>
+      <div
+        class="group-course__item"
+        v-for="group in groups"
+        :key="group.id"
+      >
+        <img class="w-16 mx-auto" :src="group.icon" alt="Иконка группы">
+        <h4 class="text-red font-medium text-2xl">{{ group.title }}</h4>
+        <h5 class="text-white text-xl underline underline-offset-8 decoration-red">{{ group.level }}</h5>
+        <h6 class="text-white text-base">{{ group.description }}</h6>
+        <Link class="btn-more-detail" :href="route('groups.show', group.slug)">Подробнее</Link>
       </div>
     </div>
   </section>
@@ -69,7 +52,11 @@
 
 <script setup>
 import SectionTitle from '@/Components/SectionTitle.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
+
+const props = defineProps({
+  groups: Array
+});
 </script>
 
 <style scoped>

@@ -11,7 +11,7 @@
         <div class="shrink-0 flex justify-between items-center">
           <!-- Logo -->
           <Link :href="route('index')">
-            <ApplicationLogo class="navbar-brand"/>
+          <ApplicationLogo class="navbar-brand" />
           </Link>
           <!-- Navigation Links -->
           <nav class="hidden grow items-center 2xl:ml-6 md:block">
@@ -31,35 +31,22 @@
             </ul>
           </nav>
         </div>
-        <Link
-          v-if="!$page.props.auth.user"
-          :href="route('index')"
-          @click="login"
-          class="btn-login hidden md:block"
-        >
+        <button v-if="!$page.props.auth.user" @click="showModal" class="btn-login hidden md:block">
           Войти
-        </Link>
+        </button>
 
         <DialogModal :show="loginAndRegModal" max-width="md" @close="closeModal">
           <template #title>
             <ul class="flex items-center">
               <li class="mr-2">
-                <button
-                  :class="{active: isActive == 1}"
-                  :id="isActive"
-                  @click="changeComponent(Login, 1)"
-                  type="button"
-                >
+                <button :class="{active: isActive == 1}" :id="isActive" @click="changeComponent(Login, 1)"
+                  type="button">
                   Авторизация
                 </button>
               </li>
               <li class="mr-2">
-                <button
-                  :class="{active: isActive == 2}"
-                  :id="isActive"
-                  @click="changeComponent(Register, 2)"
-                  type="button"
-                >
+                <button :class="{active: isActive == 2}" :id="isActive" @click="changeComponent(Register, 2)"
+                  type="button">
                   Регистрация
                 </button>
               </li>
@@ -76,7 +63,11 @@
           </template>
           <template #content>
             <KeepAlive>
-              <component :is="nameComponent" @change-component="changeComponent"/>
+              <component
+                :is="nameComponent"
+                @close-modal="closeModal"
+                @change-component="changeComponent"
+              />
             </KeepAlive>
           </template>
         </DialogModal>
@@ -166,14 +157,9 @@
               Контакты
             </ResponsiveNavLink>
           </ul>
-          <Link
-            v-if="!$page.props.auth.user"
-            :href="route('index')"
-            @click="login"
-            class="btn-login"
-          >
+          <button v-if="!$page.props.auth.user" @click="showModal" class="btn-login">
             Войти
-          </Link>
+          </button>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -248,7 +234,8 @@
             class="hover:text-red">Inbox@bir-team.ru</a>
           <div class="flex sm:justify-end gap-3 mt-3">
             <a href="https://vk.com/birteam" target="_blank"><img src="/img/icon/icon_vk.svg" alt="birteam-vk"></a>
-            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg" alt="birteam-telegram"></a>
+            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg"
+                alt="birteam-telegram"></a>
           </div>
         </div>
       </div>
@@ -291,12 +278,12 @@ const showingNavigationDropdown = ref(false);
 
 const loginAndRegModal = ref(false);
 
-const login = () => {
-  loginAndRegModal.value = !loginAndRegModal;
+const showModal = () => {
+  loginAndRegModal.value = true;
 };
 
 const closeModal = () => {
-  loginAndRegModal.value = !loginAndRegModal;
+  loginAndRegModal.value = false;
 };
 
 const logout = () => {

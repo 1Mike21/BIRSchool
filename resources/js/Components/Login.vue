@@ -55,6 +55,8 @@ defineProps({
   // status: String,
 });
 
+const emit = defineEmits(['closeModal']);
+
 const form = useForm({
   email: '',
   password: '',
@@ -66,7 +68,10 @@ const submit = () => {
     ...data,
     remember: form.remember ? 'on' : '',
   })).post(route('login'), {
-    onFinish: () => form.reset('password'),
+    onFinish: () => {
+      form.reset('password');
+      emit('closeModal');
+    },
   });
 };
 </script>

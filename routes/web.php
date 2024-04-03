@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Courses\IndexController as CoursesIndexController;
+use App\Http\Controllers\Courses\ShowController as CoursesShowController;
+use App\Http\Controllers\Groups\ShowController as GroupsShowController;
+use App\Http\Controllers\IndexController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -14,9 +18,7 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-  return Inertia::render('Index');
-})->name('index');
+Route::get('/', IndexController::class)->name('index');
 
 Route::middleware([
     'auth:sanctum',
@@ -33,17 +35,11 @@ Route::get('/contacts', function () {
   return Inertia::render('Contacts');
 })->name('contacts');
 
-Route::get('/groups/group', function () {
-  return Inertia::render('Groups/Show');
-})->name('groups.show');
+Route::get('/groups/{group}', GroupsShowController::class)->name('groups.show');
 
-Route::get('/courses', function () {
-  return Inertia::render('Courses/Index');
-})->name('courses.index');
+Route::get('/courses', CoursesIndexController::class)->name('courses.index');
 
-Route::get('/courses/course', function () {
-  return Inertia::render('Courses/Show');
-})->name('courses.show');
+Route::get('/courses/{course}', CoursesShowController::class)->name('courses.show');
 
 require_once __DIR__ . '/jetstream.php';
 require_once __DIR__ . '/fortify.php';
