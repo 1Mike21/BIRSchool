@@ -22,6 +22,11 @@ class Course extends Model
       'group_id'
     ];
 
+    protected $casts = [
+      'updated_at' => 'date:d.m.Y',
+      'created_at' => 'date:d.m.Y',
+    ];
+
     public function sluggable(): array
     {
       return [

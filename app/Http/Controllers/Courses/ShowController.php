@@ -16,7 +16,7 @@ class ShowController extends Controller
     {
       $course = Course::find($course->id);
 
-      $themes = Theme::where('group_id', '=', $course->id)->get();
+      $themes = Theme::where('course_id', '=', $course->id)->get();
 
       return Inertia::render('Courses/Show', compact('course', 'themes'));
     }
