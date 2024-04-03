@@ -24,17 +24,17 @@ npm i
 ```
 php artisan key:generate
 ```
-6.Перенос базы данных:
+6.Обновление символической ссылки на хранилище:
 ```
-php artisan migrate
+php artisan storage:link
 ```
-7.Запуск фронтсервера:
+7.Перенос и заполнение базы данных:
+```
+php artisan migrate --seed
+```
+8.Запуск фронтсервера:
 ```
 npm run dev
-```
-8.Создание админа:
-```
-php artisan db:seed --class=CreateAdminSeeder
 ```
 ## Полезные ссылки:
 - **[Laravel](https://laravel.com/docs/10.x)**
@@ -44,3 +44,4 @@ php artisan db:seed --class=CreateAdminSeeder
 - **[Inertia js](https://inertiajs.com/)**
 - **[Laravel permission](https://spatie.be/docs/laravel-permission/v6/introduction)**
 - **[Laravel Jetsream](https://jetstream.laravel.com/introduction.html)**
+- **[Redis](https://developer.redis.com/howtos/quick-start)**
