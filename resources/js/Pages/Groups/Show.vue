@@ -5,7 +5,7 @@
   <!-- The running line -->
   <section class="indent_section_bottom">
     <article class="flex whitespace-nowrap overflow-x-hidden">
-      <div class="relative text-red text-[40px]">
+      <div class="relative text-red text-3xl lg:text-[40px]">
         <ul class="flex animate-[marquee_40s_linear_infinite]">
           <li class="m-8">После успешного прохождения курса, Вы можете стать, частью нашей команды.</li>
           <li class="m-8">После успешного прохождения курса, Вы можете стать, частью нашей команды.</li>
@@ -23,23 +23,23 @@
   <template v-for="(section,index) in groupDescription">
     <!-- About group course -->
     <section class="indent_section_bottom" v-if="index == 0">
-      <SectionTitle class="mb-10">{{ section.title }}</SectionTitle>
-      <div class="flex justify-center gap-10">
+      <SectionTitle>{{ section.title }}</SectionTitle>
+      <div class="flex flex-wrap-reverse md:flex-nowrap justify-center gap-10">
         <div class="w-[420px] border-[1px] pb-3 mb-8 border-red rounded-[20px]">
           <p :class="['text-white text-xl p-3', {'text-lg bg-red rounded-[20px]': i == 0 }]"
             v-for="(text,i) in splitText(0)">
             {{ text }}
           </p>
         </div>
-        <img class="w-[427px] h-[427px] rounded-[20px]" :src="section.img" alt="Картинка">
+        <img class="max-w-[350px] lg:max-w-[427px] min-w-[250px] h-full rounded-[20px]" :src="section.img" :alt="section.title">
       </div>
     </section>
 
     <section class="indent_section_bottom" v-if="index == 1">
-      <SectionTitle class="mb-10">{{ section.title }}</SectionTitle>
-      <div class="flex justify-center text-center gap-10">
+      <SectionTitle>{{ section.title }}</SectionTitle>
+      <div class="flex flex-wrap md:flex-nowrap justify-center text-center gap-10">
         <div class="w-[416px] rounded-[15px]" v-for="card in cardGroup()">
-          <img class="w-[290px] h-[200px] inline" :src="card.img" alt="Картинка">
+          <img class="max-w-[290px] max-h-[200px] mx-auto" :src="card.img" :alt="card.title">
           <h3 class="text-red text-xl p-5">{{ card.title }}</h3>
           <p class="text-white">{{ card.text }}</p>
         </div>
@@ -49,7 +49,7 @@
 
   <!-- Stages of training -->
   <section class="indent_section_bottom">
-    <SectionTitle class="mb-10">Этапы обучения</SectionTitle>
+    <SectionTitle>Этапы обучения</SectionTitle>
     <ul class="steps-learning">
       <li class="steps-learning__item steps-learning__line" v-for="step in learningSteps">
         <span class="steps-learning__item-count">{{ step.number }}</span>
@@ -60,13 +60,13 @@
 
   <!-- Certificate -->
   <section>
-    <SectionTitle class="mb-10">После успешного окончания обучения</SectionTitle>
-    <div class="flex justify-between items-center">
+    <SectionTitle>После успешного окончания обучения</SectionTitle>
+    <div class="flex flex-wrap md:flex-nowrap justify-between items-center md:gap-32">
       <div class="w-[600px]">
-        <h3 class="text-white text-[28px]">Сертификат</h3>
-        <p class="text-white text-base">Студенты получают сертификат об успешном окончании курса <span class="text-red">«{{ group.title }} - {{ group.level }}»</span>. Текст документа может быть составлен на английском языке.</p>
+        <h3 class="text-white text-2xl lg:text-[28px] mb-2">Сертификат</h3>
+        <p class="text-white text-base lg:text-lg">Студенты получают сертификат об успешном окончании курса <span class="text-red">«{{ group.title }} - {{ group.level }}»</span>. Текст документа может быть составлен на английском языке.</p>
       </div>
-      <img class="w-[605px]" src="/storage/group_course/sertificate.png" alt="Сертификат">
+      <img class="max-md:mt-6 md:max-w-[605px] min-w-[205px]" src="/storage/group_course/sertificate.png" alt="Сертификат">
     </div>
   </section>
 </template>

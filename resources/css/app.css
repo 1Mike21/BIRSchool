@@ -15,3 +15,6 @@
 .indent_section_top {
   @apply mt-4 sm:mt-8 md:mt-14 lg:mt-85;
 }
+.main_text {
+  @apply text-base lg:text-xl text-white;
+}
