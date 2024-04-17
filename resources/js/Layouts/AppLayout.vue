@@ -248,7 +248,7 @@
 <script setup>
 import { ref, defineAsyncComponent } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
-import {BellIcon} from '@heroicons/vue/24/outline'
+import {BellIcon} from '@heroicons/vue/24/outline';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown.vue';
