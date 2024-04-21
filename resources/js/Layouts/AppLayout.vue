@@ -234,8 +234,7 @@
             class="hover:text-red">Inbox@bir-team.ru</a>
           <div class="flex sm:justify-end gap-3 mt-3">
             <a href="https://vk.com/birteam" target="_blank"><img src="/img/icon/icon_vk.svg" alt="birteam-vk"></a>
-            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg"
-                alt="birteam-telegram"></a>
+            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg" alt="birteam-telegram"></a>
           </div>
         </div>
       </div>
