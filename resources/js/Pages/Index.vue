@@ -1,13 +1,17 @@
 <template>
-  <Head title="Главная страница"/>
+
+  <Head title="Главная страница" />
 
   <!-- About company -->
   <section class="indent_section_bottom">
     <img class="mx-auto blur-none" src="img/About_company.png" alt="Компания">
     <p class="text-white text-2xl text-justify mt-[85px]">
-      Компания Бюро интернет решений занимается разработкой информационных систем с 2023 года. Одним из направлений компании является обучение.
-      Мы ведем обучение в областях разработки сайтов и дизайна уже более двух лет. Обучение подойдет для любого возраста и уровня знаний.
-      В ходе обучения, вы получите сильное коммьюнити, постоянную поддержку от куратора, реальные заказы и официальный сертификат на выходе.
+      Компания Бюро интернет решений занимается разработкой информационных систем с 2023 года. Одним из направлений
+      компании является обучение.
+      Мы ведем обучение в областях разработки сайтов и дизайна уже более двух лет. Обучение подойдет для любого возраста
+      и уровня знаний.
+      В ходе обучения, вы получите сильное коммьюнити, постоянную поддержку от куратора, реальные заказы и официальный
+      сертификат на выходе.
     </p>
     &nbsp;
     <p class="text-white text-2xl">Лучшие ученики смогут начать свою карьеру в нашей компании!</p>
@@ -25,7 +29,7 @@
   </section>
   <!-- Group courses -->
   <section class="indent_section_bottom">
-    <SectionTitle class="mb-11">Получите перспективную творческую профессию в IT</SectionTitle>
+    <SectionTitle class="mb-10">Получите перспективную творческую профессию в IT</SectionTitle>
     <div class="group-course">
       <div class="group-course__item">
         <img class="w-16 mx-auto" src="img/icon/image 1.svg" alt="Иконка группы">
@@ -59,13 +63,8 @@
   </section>
   <!-- Slider student portfolio -->
   <section class="indent_section_bottom">
-    <Carousel class="carousel" v-slot="{ currentSlide }">
-      <Slide v-for="(slide, index) in carouselSlides" :key="index">
-        <div v-show="currentSlide === index + 1" class="slide-info">
-          <img :src="imgUrls[`${base}img/slider_student_portfolio/${slide}.png`]" alt="">
-        </div>
-      </Slide>
-    </Carousel>
+    <SectionTitle class="mb-10">Работы учеников</SectionTitle>
+    <Carousel :slides="slides" :options="options" />
   </section>
   <!-- Slider reviews -->
   <section>
@@ -73,39 +72,62 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import SectionTitle from '@/Components/SectionTitle.vue';
 import { Head } from '@inertiajs/vue3';
 import Carousel from '@/Components/Carousel.vue';
-import Slide from '@/Components/Slide.vue';
 
-const base = import.meta.env.BASE_URL
-const imgUrls = import.meta.glob('../img/slider_student_portfolio/*.png', {
-  import: 'default',
-  eager: true
-})
+const slides = ['w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7'];
 
-defineProps(['slide'])
-
-export default {
-  setup () {
-    const carouselSlides = ["w1", "w2", "w3", "w4", "w5"];
-    return { carouselSlides };
-  },
+const options = {
+  slidesToShow: 3,
+  slidesToScroll: 2,
+  infinite: true,
+  arrows: true,
+  dots: true,
+  responsive: [
+    {
+      breakpoint: '1024',
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        arrows: false,
+        dots: true
+      },
+    },
+    {
+      breakpoint: '600',
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        arrows: false,
+        dots: true
+      },
+    },
+    {
+      breakpoint: '480',
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        arrows: false,
+        dots: true
+      },
+    }
+  ]
 };
 </script>
 
 <style scoped>
-  .group-course {
-    @apply max-w-3xl mx-auto grid grid-cols-2 justify-items-center gap-8;
-  }
-  .group-course__item {
-    @apply bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] min-w-[270px] border-white rounded-28 text-center p-3 pb-5;
-  }
-  .btn-more-detail {
-    @apply border-0 rounded-xl self-center mt-auto bg-red hover:bg-inherit text-white py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:bg-white hover:text-red;
-  }
-  .carousel {
-    @apply max-h-[700px];
-  }
+.group-course {
+  @apply max-w-3xl mx-auto grid grid-cols-2 justify-items-center gap-8;
+}
+.group-course__item {
+  @apply bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] min-w-[270px] border-white rounded-28 text-center p-3 pb-5;
+}
+.btn-more-detail {
+  @apply border-0 rounded-xl self-center mt-auto bg-red hover:bg-inherit text-white py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:bg-white hover:text-red;
+}
 </style>
