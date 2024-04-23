@@ -64,7 +64,6 @@
   <!-- Slider student portfolio -->
   <section class="indent_section_bottom">
     <SectionTitle class="mb-10">Работы учеников</SectionTitle>
-    <Carousel :slides="slides" :options="options" />
   </section>
   <!-- Slider reviews -->
   <section>
@@ -75,49 +74,8 @@
 <script setup>
 import SectionTitle from '@/Components/SectionTitle.vue';
 import { Head } from '@inertiajs/vue3';
-import Carousel from '@/Components/Carousel.vue';
 
 const slides = ['w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7'];
-
-const options = {
-  slidesToShow: 3,
-  slidesToScroll: 2,
-  infinite: true,
-  arrows: true,
-  dots: true,
-  responsive: [
-    {
-      breakpoint: '1024',
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        infinite: true,
-        arrows: false,
-        dots: true
-      },
-    },
-    {
-      breakpoint: '600',
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        arrows: false,
-        dots: true
-      },
-    },
-    {
-      breakpoint: '480',
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        arrows: false,
-        dots: true
-      },
-    }
-  ]
-};
 </script>
 
 <style scoped>
