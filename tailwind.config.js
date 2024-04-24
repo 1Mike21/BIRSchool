@@ -23,6 +23,8 @@ export default {
             colors: {
               darkblue: 'rgb(39,39,58)',
               red: '#BB2649',
+              violetButton: '#323296',
+              violetHoverButton: '#6563FF',
             },
             margin: {
               '85': '85px',
