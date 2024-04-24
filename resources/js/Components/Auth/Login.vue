@@ -43,12 +43,12 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
 import { defineAsyncComponent } from 'vue';
-import Checkbox from '@/Components/Checkbox.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
+import Checkbox from '@/Components/FormElement/Checkbox.vue';
+import InputError from '@/Components/FormElement/InputError.vue';
+import InputLabel from '@/Components/FormElement/InputLabel.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-const ForgotPassword = defineAsyncComponent(() => import("@/Components/ForgotPassword.vue"));
+import TextInput from '@/Components/FormElement/TextInput.vue';
+const ForgotPassword = defineAsyncComponent(() => import("@/Components/Auth/ForgotPassword.vue"));
 
 defineProps({
   // canResetPassword: Boolean,

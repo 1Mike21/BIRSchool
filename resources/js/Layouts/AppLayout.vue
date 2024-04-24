@@ -248,15 +248,15 @@
 import { ref, defineAsyncComponent } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import {BellIcon} from '@heroicons/vue/24/outline';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import ApplicationLogo from '@/Components/Logo/ApplicationLogo.vue';
 import Banner from '@/Components/Banner.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-const DialogModal = defineAsyncComponent(() => import("@/Components/DialogModal.vue"));
-const Login = defineAsyncComponent(() => import("@/Components/Login.vue"));
-const Register = defineAsyncComponent(() => import("@/Components/Register.vue"));
+import Dropdown from '@/Components/Dropdown/Dropdown.vue';
+import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
+import NavLink from '@/Components/NavLink/NavLink.vue';
+import ResponsiveNavLink from '@/Components/NavLink/ResponsiveNavLink.vue';
+const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/DialogModal.vue"));
+const Login = defineAsyncComponent(() => import("@/Components/Auth/Login.vue"));
+const Register = defineAsyncComponent(() => import("@/Components/Auth/Register.vue"));
 
 defineProps({
   title: String,

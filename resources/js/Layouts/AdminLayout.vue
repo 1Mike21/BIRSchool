@@ -127,10 +127,10 @@ import { ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { BellIcon } from '@heroicons/vue/24/solid';
 import Banner from '@/Components/Banner.vue';
-import WhiteApplicationLogo from '@/Components/WhiteApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import WhiteApplicationLogo from '@/Components/Logo/WhiteApplicationLogo.vue';
+import Dropdown from '@/Components/Dropdown/Dropdown.vue';
+import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
+import ResponsiveNavLink from '@/Components/NavLink/ResponsiveNavLink.vue';
 import Sidebar from '@/Components/Sidebar/Sidebar.vue';
 
 const showingNavigationDropdown = ref(false);
