@@ -1,4 +1,5 @@
 import './bootstrap';
+import '@splidejs/vue-splide/css';
 import '../css/app.css';
 
 import { createSSRApp, h } from 'vue';
