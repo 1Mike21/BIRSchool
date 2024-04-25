@@ -92,11 +92,11 @@
 
 <script setup>
 import { Head, useForm } from '@inertiajs/vue3';
-import Checkbox from '@/Components/Checkbox.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Checkbox from '@/Components/FormElement/Checkbox.vue';
+import InputError from '@/Components/FormElement/InputError.vue';
+import InputLabel from '@/Components/FormElement/InputLabel.vue';
+import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
+import TextInput from '@/Components/FormElement/TextInput.vue';
 
 const emit = defineEmits(['closeModal']);
 

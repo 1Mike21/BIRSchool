@@ -25,11 +25,15 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+])->prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
+  Route::get('/', function () {
+    return Inertia::render('Admin/Index');
+  })->name('index');
 });
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->name('dashboard');
 
 Route::get('/contacts', function () {
   return Inertia::render('Contacts');

@@ -1,6 +1,6 @@
 <script setup>
-import SectionDescription from '@/Components/SectionDescription.vue';
-import SectionTitle from '@/Components/SectionTitle.vue';
+import SectionDescription from '@/Components/Section/SectionDescription.vue';
+import SectionTitle from '@/Components/Section/SectionTitle.vue';
 </script>
 
 <template>

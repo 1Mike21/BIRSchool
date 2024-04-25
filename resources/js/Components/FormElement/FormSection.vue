@@ -1,7 +1,7 @@
 <script setup>
 import { computed, useSlots } from 'vue';
-import SectionTitle from './SectionTitle.vue';
-import SectionDescription from '@/Components/SectionDescription.vue';
+import SectionTitle from '../Section/SectionTitle.vue';
+import SectionDescription from '@/Components/Section/SectionDescription.vue';
 
 defineEmits(['submitted']);
 

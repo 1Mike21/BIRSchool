@@ -234,8 +234,7 @@
             class="hover:text-red">Inbox@bir-team.ru</a>
           <div class="flex sm:justify-end gap-3 mt-3">
             <a href="https://vk.com/birteam" target="_blank"><img src="/img/icon/icon_vk.svg" alt="birteam-vk"></a>
-            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg"
-                alt="birteam-telegram"></a>
+            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg" alt="birteam-telegram"></a>
           </div>
         </div>
       </div>
@@ -248,16 +247,16 @@
 <script setup>
 import { ref, defineAsyncComponent } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
-import {BellIcon} from '@heroicons/vue/24/outline'
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import {BellIcon} from '@heroicons/vue/24/outline';
+import ApplicationLogo from '@/Components/Logo/ApplicationLogo.vue';
 import Banner from '@/Components/Banner.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-const DialogModal = defineAsyncComponent(() => import("@/Components/DialogModal.vue"));
-const Login = defineAsyncComponent(() => import("@/Components/Login.vue"));
-const Register = defineAsyncComponent(() => import("@/Components/Register.vue"));
+import Dropdown from '@/Components/Dropdown/Dropdown.vue';
+import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
+import NavLink from '@/Components/NavLink/NavLink.vue';
+import ResponsiveNavLink from '@/Components/NavLink/ResponsiveNavLink.vue';
+const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/DialogModal.vue"));
+const Login = defineAsyncComponent(() => import("@/Components/Auth/Login.vue"));
+const Register = defineAsyncComponent(() => import("@/Components/Auth/Register.vue"));
 
 defineProps({
   title: String,

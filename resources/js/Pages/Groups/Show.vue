@@ -26,7 +26,7 @@
       <SectionTitle>{{ section.title }}</SectionTitle>
       <div class="flex flex-wrap-reverse md:flex-nowrap justify-center gap-10">
         <div class="w-[420px] border-[1px] pb-3 mb-8 border-red rounded-[20px]">
-          <p :class="['text-white text-xl p-3', {'text-lg bg-red rounded-[20px]': i == 0 }]"
+          <p :class="['text-white text-lg p-3', {'text-xl bg-red rounded-[20px]': i == 0}]"
             v-for="(text,i) in splitText(0)">
             {{ text }}
           </p>
@@ -72,7 +72,7 @@
 </template>
 
 <script setup>
-import SectionTitle from '@/Components/SectionTitle.vue';
+import SectionTitle from '@/Components/Section/SectionTitle.vue';
 import { Head } from '@inertiajs/vue3';
 
 const props = defineProps({

@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import SectionTitle from '@/Components/SectionTitle.vue';
+import SectionTitle from '@/Components/Section/SectionTitle.vue';
 import { Head } from '@inertiajs/vue3';
 
 const props = defineProps({
