@@ -12,7 +12,7 @@
 
     <div class="mt-4">
       <InputLabel for="surname" value="Фамилия" />
-      <TextInput id="surname" v-model="form.surname" type="surname" class="mt-1 block w-full" required
+      <TextInput id="surname" v-model="form.surname" type="text" class="mt-1 block w-full" required
         autocomplete="surname" />
       <InputError class="mt-2" :message="form.errors.surname" />
     </div>

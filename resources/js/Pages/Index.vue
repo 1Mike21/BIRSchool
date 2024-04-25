@@ -55,12 +55,11 @@
 <script setup>
 import SectionTitle from '@/Components/Section/SectionTitle.vue';
 import { Head, Link } from '@inertiajs/vue3';
+import Slider from '@/Components/Slider.vue';
 
 const props = defineProps({
   groups: Array
 });
-import Slider from '@/Components/Slider.vue';
-import { Head } from '@inertiajs/vue3';
 
 const slides = [
     '/storage/slider_student_portfolio/w1.png',
