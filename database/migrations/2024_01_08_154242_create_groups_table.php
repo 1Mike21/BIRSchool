@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('icon');
             $table->text('description');
+            $table->boolean('is_active')->default(false);
             $table->string('level');
             $table->timestamps();
         });

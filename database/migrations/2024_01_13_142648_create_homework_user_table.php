@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
             $table->foreignId('homework_id')->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
-            $table->text('answer');
+            $table->text('answer')->nullable();
             $table->boolean('is_checked')->default(false);
-            $table->text('comment');
+            $table->text('comment')->nullable();
+            $table->timestamp('due_date');
             $table->timestamps();
         });
     }
