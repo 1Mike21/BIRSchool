@@ -1,5 +1,6 @@
 <template>
-  <Head title="Главная страница"/>
+
+  <Head title="Главная страница" />
 
   <!-- About company -->
   <section class="indent_section_bottom">
@@ -42,7 +43,8 @@
   </section>
   <!-- Slider student portfolio -->
   <section class="indent_section_bottom">
-
+    <SectionTitle class="mb-10">Работы учеников</SectionTitle>
+    <Slider :options="options" :slides="slides"/>
   </section>
   <!-- Slider reviews -->
   <section>
@@ -57,6 +59,38 @@ import { Head, Link } from '@inertiajs/vue3';
 const props = defineProps({
   groups: Array
 });
+import Slider from '@/Components/Slider.vue';
+import { Head } from '@inertiajs/vue3';
+
+const slides = [
+    '/storage/slider_student_portfolio/w1.png',
+    '/storage/slider_student_portfolio/w2.png',
+    '/storage/slider_student_portfolio/w3.png',
+    '/storage/slider_student_portfolio/w4.png',
+    '/storage/slider_student_portfolio/w5.png',
+    '/storage/slider_student_portfolio/w6.png',
+    '/storage/slider_student_portfolio/w7.png',
+  ];
+
+const options = {
+  type: 'loop',
+  updateOnMove: true,
+  perPage: 3,
+  perMove : 2,
+  gap: '1rem',
+  breakpoints: {
+    1650: {
+      arrows: false,
+    },
+    1200: {
+      perPage: 2,
+    },
+    600: {
+      perPage: 1,
+      perMove: 1,
+    },
+  }
+}
 </script>
 
 <style scoped>

@@ -3,6 +3,8 @@
       {{ status }}
     </div> -->
 
+  <Head title="Авторизация" />
+
   <form @submit.prevent="submit">
     <div>
       <InputLabel for="email" value="Email" />
@@ -12,7 +14,7 @@
     </div>
 
     <div class="mt-4">
-      <InputLabel for="password" value="Password" />
+      <InputLabel for="password" value="Пароль" />
       <TextInput id="password" v-model="form.password" type="password" class="mt-1 block w-full" required
         autocomplete="current-password" />
       <InputError class="mt-2" :message="form.errors.password" />
@@ -21,27 +23,25 @@
     <div class="block mt-4">
       <label class="flex items-center">
         <Checkbox v-model:checked="form.remember" name="remember" />
-        <span class="ms-2 text-sm text-gray-600">Remember me</span>
+        <span class="ms-2 text-sm text-gray-700">Запомнить меня</span>
       </label>
     </div>
 
     <div class="flex items-center justify-end mt-4">
-      <button
-        type="button"
-        @click="$emit('changeComponent', ForgotPassword, 3)"
-        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-      Forgot your password?
+      <button type="button" @click="$emit('changeComponent', ForgotPassword, 3)"
+        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red">
+        Забыли пароль?
       </button>
 
       <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-        Log in
+        Войти
       </PrimaryButton>
     </div>
   </form>
 </template>
 
 <script setup>
-import { useForm } from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import { defineAsyncComponent } from 'vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';

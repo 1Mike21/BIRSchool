@@ -1,3 +1,4 @@
+import '@splidejs/splide/css/core';
 import '../css/app.css';
 
 import { createSSRApp, h } from 'vue';
