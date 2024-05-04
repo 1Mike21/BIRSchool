@@ -63,11 +63,7 @@
           </template>
           <template #content>
             <KeepAlive>
-              <component
-                :is="nameComponent"
-                @close-modal="closeModal"
-                @change-component="changeComponent"
-              />
+              <component :is="nameComponent" @close-modal="closeModal" @change-component="changeComponent" />
             </KeepAlive>
           </template>
         </DialogModal>
@@ -192,9 +188,9 @@
 
             <!-- Authentication -->
             <form method="POST" @submit.prevent="logout">
-              <ResponsiveNavLink>
+              <button type="submit" class="btn-login">
                 Выход
-              </ResponsiveNavLink>
+              </button>
             </form>
           </ul>
         </div>
@@ -234,7 +230,8 @@
             class="hover:text-red">Inbox@bir-team.ru</a>
           <div class="flex sm:justify-end gap-3 mt-3">
             <a href="https://vk.com/birteam" target="_blank"><img src="/img/icon/icon_vk.svg" alt="birteam-vk"></a>
-            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg" alt="birteam-telegram"></a>
+            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg"
+                alt="birteam-telegram"></a>
           </div>
         </div>
       </div>
