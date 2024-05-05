@@ -22,8 +22,8 @@
               <NavLink :href="route('dashboard')">
                 Мои курсы
               </NavLink>
-              <NavLink :href="route('dashboard')">
-                Мой код
+              <NavLink :href="route('code')">
+                Редактор кода
               </NavLink>
               <NavLink :href="route('contacts')" :active="route().current('contacts')">
                 Контакты
@@ -150,8 +150,8 @@
             <ResponsiveNavLink :href="route('dashboard')">
               Мои курсы
             </ResponsiveNavLink>
-            <ResponsiveNavLink :href="route('dashboard')">
-              Мой код
+            <ResponsiveNavLink :href="route('code')">
+              Редактор кода
             </ResponsiveNavLink>
             <ResponsiveNavLink :href="route('contacts')" :active="route().current('contacts')">
               Контакты
@@ -233,14 +233,13 @@
         <div><b class="footer__contact-text">e-mail :</b> <a href="mailto:Inbox@bir-team.ru"
             class="hover:text-red">Inbox@bir-team.ru</a>
           <div class="flex sm:justify-end gap-3 mt-3">
-            <a href="https://vk.com/birteam" target="_blank"><img src="/img/icon/icon_vk.svg" alt="birteam-vk"></a>
-            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg" alt="birteam-telegram"></a>
+            <a href="https://vk.com/birteam" target="_blank"><img src="/img/icons/icon_vk.svg" alt="birteam-vk"></a>
+            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icons/icon_telegram.svg" alt="birteam-telegram"></a>
           </div>
         </div>
       </div>
     </div>
-    <p class="text-sm text-center container mx-auto py-3 border-t border-solid border-white">&copy; BIR, {{currentYear}}
-    </p>
+    <p class="text-sm text-center container mx-auto py-3 border-t border-solid border-white">&copy; BIR, {{currentYear}}</p>
   </footer>
 </template>
 
