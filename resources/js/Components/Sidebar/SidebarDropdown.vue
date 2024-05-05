@@ -1,13 +1,9 @@
 <template>
-  <ul class="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
-    <template v-for="(childItem) in items" :key="index">
+  <ul class="mt-2 mb-3 flex flex-col gap-y-4 pl-4">
+    <template v-for="(childItem, index) in items" :key="index">
       <li>
-        <!-- :active="route().current(item.route)"
-          :href="route(item.route) " -->
-        <Link href="#"
-
-          class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-white duration-300 ease-in-out"
-        >
+        <Link :active="route().current(childItem.route)" :href="route(childItem.route)"
+          class="group relative flex items-center rounded-md px-4 hover:bg-violetButton focus:bg-violetButton font-medium text-sm text-white duration-300 ease-in-out">
         {{ childItem.label }}
         </Link>
       </li>
@@ -27,7 +23,3 @@ const props = defineProps({
 });
 const items = ref(props.items);
 </script>
-
-<style scoped>
-
-</style>

@@ -11,7 +11,9 @@ export default {
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
     ],
-
+    future: {
+      hoverOnlyWhenSupported: true
+    },
     theme: {
         extend: {
             fontFamily: {
