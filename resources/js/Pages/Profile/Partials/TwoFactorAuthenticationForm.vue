@@ -150,7 +150,7 @@
 import { ref, computed, watch } from 'vue';
 import { router, useForm, usePage } from '@inertiajs/vue3';
 import ActionSection from '@/Components/Section/ActionSection.vue';
-import ConfirmsPassword from '@/Components/Auth/ConfirmsPassword.vue';
+import ConfirmsPassword from '@/Pages/Auth/ConfirmsPassword.vue';
 import DangerButton from '@/Components/Button/DangerButton.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import InputLabel from '@/Components/FormElement/InputLabel.vue';
