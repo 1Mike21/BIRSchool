@@ -16,22 +16,13 @@ class CreateAdminSeeder extends Seeder
      */
     public function run(): void
     {
-      $admin = User::create([
+      User::create([
         'name' => 'Admin',
         'surname' => 'Admin',
         'email' => 'admin@yandex.ru',
         'password' => Hash::make('12345678'),
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now(),
-      ]);
-
-      Role::create([
-        'name' => 'admin',
-        'created_at' => Carbon::now(),
-        'updated_at' => Carbon::now(),
-      ]);
-
-      $admin->assignRole('admin');
-
+      ])->assignRole('Администратор');
     }
 }
