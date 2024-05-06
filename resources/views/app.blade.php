@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html
-  class="scrollbar scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-track-[#f1b8c6] scrollbar-thumb-red hover:scrollbar-thumb-[#8d1d37] overflow-y-scroll"
+  class="scrollbar-thumb-[#f1b8c6] scrollbar-thumb-rounded-full"
   lang="{{ str_replace('_', '-', app()->getLocale()) }}"
 >
     <head>
