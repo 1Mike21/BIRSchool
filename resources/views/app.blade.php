@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html
-  class="scrollbar-thumb-[#f1b8c6] scrollbar-thumb-rounded-full"
   lang="{{ str_replace('_', '-', app()->getLocale()) }}"
 >
     <head>
@@ -19,7 +18,7 @@
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
     </head>
-    <body class="bg-darkblue antialiased font-sans scrollbar">
+    <body class="bg-darkblue antialiased font-sans">
         @inertia
     </body>
 </html>
