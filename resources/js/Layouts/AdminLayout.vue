@@ -31,11 +31,15 @@
                 :alt="$page.props.auth.user.name">
             </li>
             <li>
-              <Link href="#" class="flex items-center mr-4 hover:text-blue-100">
-                <span class="inline-flex mr-1">
+              <Link
+                class="flex items-center mr-4 hover:text-blue-100"
+                as="button"
+                @click="logout"
+              >
+                <span class="inline-flex items-center gap-x-2">
+                  Выйти
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
                 </span>
-                Выйти
               </Link>
             </li>
           </ul>
@@ -58,12 +62,7 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import { BellIcon } from '@heroicons/vue/24/solid';
 import Banner from '@/Components/Banner.vue';
 import WhiteApplicationLogo from '@/Components/Logo/WhiteApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown/Dropdown.vue';
-import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
-import ResponsiveNavLink from '@/Components/NavLink/ResponsiveNavLink.vue';
 import Sidebar from '@/Components/Sidebar/Sidebar.vue';
-
-const showingNavigationDropdown = ref(false);
 
 const logout = () => {
   router.post(route('logout'));
