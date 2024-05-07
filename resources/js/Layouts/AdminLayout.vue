@@ -24,7 +24,7 @@
             </li>
             <li class="flex flex-col text-right">
               <span class="text-sm font-medium text-white">{{ $page.props.auth.user.name }}</span>
-              <span class="text-xs font-medium">{{ $page.props.auth.user.role }}</span>
+              <span class="text-xs font-medium">{{ $page.props.auth.user.roles[0] }}</span>
             </li>
             <li>
               <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
