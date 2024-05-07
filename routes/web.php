@@ -26,9 +26,9 @@ Route::middleware([
     'verified',
 
 ])->prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
-  Route::get('/', function () {
-    return Inertia::render('Admin/Index');
-  })->name('index');
+  Route::get('/users', function () {
+    return Inertia::render('Admin/Users/Index');
+  })->name('users.index');
 });
 
 Route::get('/dashboard', function () {
