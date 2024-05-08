@@ -50,7 +50,7 @@
 
     <Sidebar :menuGroups="menuGroups" />
 
-    <main class="h-full ml-14 mt-24 mb-10 md:ml-64">
+    <main :class="[ 'h-full px-10 mt-24 mb-10 transition-all duration-300', isSidebarOpen ? 'ml-64' : 'ml-14', ]">
       <slot />
     </main>
   </div>
@@ -63,10 +63,13 @@ import { BellIcon } from '@heroicons/vue/24/solid';
 import Banner from '@/Components/Banner.vue';
 import WhiteApplicationLogo from '@/Components/Logo/WhiteApplicationLogo.vue';
 import Sidebar from '@/Components/Sidebar/Sidebar.vue';
+import { useSidebar } from '@/Store/sidebar';
 
 const logout = () => {
   router.post(route('logout'));
 };
+
+const { isSidebarOpen } = useSidebar();
 
 const menuGroups = ref([
   {

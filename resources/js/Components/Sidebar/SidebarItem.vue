@@ -50,11 +50,7 @@ const props = defineProps({
     default: '',
   },
   index: Number,
-  isSidebarOpen: {
-    type: Boolean,
-    default: true,
-  }
 });
 
-const { isSubmenuOpen, toggleSubmenu } = useSidebar();
+const { isSidebarOpen, isSubmenuOpen, toggleSubmenu } = useSidebar();
 </script>
