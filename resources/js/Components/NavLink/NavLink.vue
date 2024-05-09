@@ -1,3 +1,11 @@
+<template>
+  <li :class="classes">
+    <Link :href="href">
+      <slot />
+    </Link>
+  </li>
+</template>
+
 <script setup>
 import { computed } from 'vue';
 import { Link } from '@inertiajs/vue3';
@@ -13,11 +21,3 @@ const classes = computed(() => {
         : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent leading-5 text-white hover:text-red focus:outline-none transition duration-150 ease-in-out';
 });
 </script>
-
-<template>
-  <li :class="classes">
-    <Link :href="href">
-      <slot />
-    </Link>
-  </li>
-</template>
