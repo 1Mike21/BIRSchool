@@ -263,5 +263,3 @@ const menuGroups = ref([
   },
 ]);
 </script>
-
-<style></style>
