@@ -31,7 +31,7 @@
             {{ text }}
           </p>
         </div>
-        <img class="max-w-[350px] lg:max-w-[427px] min-w-[250px] h-full rounded-[34px] shadow-md shadow-gray-400 dark:shadow-none border dark:border-none" :src="section.img" :alt="section.title">
+        <img class="max-w-[350px] lg:max-w-[427px] min-w-[250px] h-full rounded-[36px] shadow-lg shadow-gray-400 dark:shadow-none border dark:border-none" :src="section.img" :alt="section.title">
       </div>
     </section>
 
@@ -39,7 +39,7 @@
       <SectionTitle>{{ section.title }}</SectionTitle>
       <div class="flex flex-wrap md:flex-nowrap justify-center text-center gap-10">
         <div class="w-[416px] rounded-[15px]" v-for="card in cardGroup()">
-          <img class="w-[290px] max-h-[200px] rounded-[20px] mx-auto border dark:border-none shadow-lg dark:shadow-none" :src="card.img" :alt="card.title">
+          <img class="w-[290px] max-h-[200px] rounded-[20px] mx-auto border dark:border-none shadow-xl dark:shadow-none" :src="card.img" :alt="card.title">
           <h3 class="text-red text-xl font-semibold p-5">{{ card.title }}</h3>
           <p class="text-black dark:text-white">{{ card.text }}</p>
         </div>
