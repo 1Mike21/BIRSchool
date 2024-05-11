@@ -1,9 +1,9 @@
 <template>
-  <div class="shadow overflow-x-auto rounded-lg">
-    <table class="table-fixed min-w-full divide-y divide-gray-200">
+  <div class="relative flex flex-col shadow-lg overflow-x-auto rounded-lg">
+    <table class="w-full divide-y divide-gray-200">
       <thead class="bg-darkblue">
         <tr>
-          <th class="p-4 text-left text-xs font-medium text-white uppercase" scope="col" v-for="(head, index) in heads"
+          <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase" scope="col" v-for="(head, index) in heads"
             :key="index">
             {{ head }}
           </th>
@@ -24,5 +24,3 @@ const props = defineProps({
   }
 });
 </script>
-
-<style scoped></style>

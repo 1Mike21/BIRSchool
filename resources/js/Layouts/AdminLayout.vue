@@ -10,7 +10,7 @@
     <header class="fixed flex justify-between h-24 w-full z-10">
       <div class="w-full flex items-center justify-between h-24 text-white bg-red p-3">
         <Link :href="route('index')">
-        <WhiteApplicationLogo class="w-60" />
+        <WhiteApplicationLogo class="w-52 sm:w-60" />
         </Link>
         <div class="flex justify-between items-center">
           <ul v-if="$page.props.auth.user" class="flex items-center justify-between gap-x-5 ms-1 xl:ms-6">
@@ -27,19 +27,20 @@
               <span class="text-xs font-medium">{{ $page.props.auth.user.roles[0] }}</span>
             </li>
             <li>
-              <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
+              <img class="h-8 min-w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
                 :alt="$page.props.auth.user.name">
             </li>
             <li>
-              <Link
-                class="flex items-center mr-4 hover:text-blue-100"
-                as="button"
-                @click="logout"
-              >
-                <span class="inline-flex items-center gap-x-2">
-                  Выйти
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-                </span>
+              <Link class="flex items-center mr-4 hover:text-blue-100" as="button" @click="logout">
+              <span class="inline-flex items-center gap-x-2">
+                Выйти
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                  </path>
+                </svg>
+              </span>
               </Link>
             </li>
           </ul>
@@ -50,7 +51,8 @@
 
     <Sidebar :menuGroups="menuGroups" />
 
-    <main :class="[ 'h-full px-10 mt-24 mb-10 transition-all duration-300', isSidebarOpen ? 'ml-64' : 'ml-14', ]">
+    <main
+      :class="[ 'h-full px-10 mt-24 mb-10 transition-all duration-300 ml-10 sm:ml-14', isSidebarOpen ? 'md:ml-64' : 'md:ml-14', ]">
       <slot />
     </main>
   </div>
