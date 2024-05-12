@@ -31,6 +31,7 @@
             </ul>
           </nav>
         </div>
+        <DarkModeSwitcher/>
         <button v-if="!$page.props.auth.user" @click="showModal" class="btn-login hidden md:block">
           Войти
         </button>
@@ -246,6 +247,7 @@ import Dropdown from '@/Components/Dropdown/Dropdown.vue';
 import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
 import NavLink from '@/Components/NavLink/NavLink.vue';
 import ResponsiveNavLink from '@/Components/NavLink/ResponsiveNavLink.vue';
+import DarkModeSwitcher from '@/Components/DarkModeSwitcher.vue';
 const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/DialogModal.vue"));
 const Login = defineAsyncComponent(() => import("@/Components/Auth/Login.vue"));
 const Register = defineAsyncComponent(() => import("@/Components/Auth/Register.vue"));
