@@ -1,31 +1,32 @@
 <template>
-  <Head title="Все курсы"/>
+
+  <Head title="Все курсы" />
 
   <section>
     <SectionTitle>Все курсы</SectionTitle>
-    <div class="mb-7 lg:mb-12 flex justify-between max-sm:flex-wrap max-sm:justify-center">
-      <input class="w-72 md:w-[400px] lg:w-[610px] xl:w-[830px] 2xl:w-[1080px] h-10 rounded-28 ps-5 text-sm md:text-base lg:text-lg focus:border-red focus:ring-red" type="search" placeholder="Поиск...">
-      <div class="max-sm:mt-3">
-        <button class="bg-white w-36 lg:w-44 xl:w-[185px] h-10 rounded-28 text-sm md:text-base lg:text-lg mr-2 sm:mr-3 xl:mr-5">По названию</button>
-        <button class="bg-white w-36 lg:w-44 xl:w-[185px] h-10 rounded-28 text-sm md:text-base lg:text-lg">По группе</button>
+    <div class="flex mb-7 lg:mb-12 gap-4 flex-col sm:flex-row items-center justify-between max-sm:justify-center">
+      <SearchInput />
+      <div class="flex max-[320px]:flex-col gap-y-5">
+        <button
+          class="bg-white min-w-32 px-5 min-h-10 rounded-28 text-sm md:text-base lg:text-lg mr-3 max-[320px]:mr-0 xl:mr-5">По
+          названию</button>
+        <button class="bg-white min-w-32 px-5 min-h-10 rounded-28 text-sm md:text-base lg:text-lg">По
+          группе</button>
       </div>
     </div>
     <div class="all-courses">
-      <div
-        class="all-courses__item"
-        v-for="course in courses"
-        :key="course.id"
-      >
-        <img class="w-16 h-16 mx-auto mt-4 mb-2" :src="course.icon" alt="Иконка курса">
-        <h3 class="text-white text-xl xl:text-2xl font-semibold mb-8">{{ course.title }}</h3>
-        <p class="text-white text-xl xl:text-2xl mb-10">{{ course.price }} ₽</p>
-        <Link class="btn-more-detail text-white mb-6" :href="route('courses.show', course.slug)">Подробнее</Link>
+      <div class="all-courses__item" v-for="course in courses" :key="course.id">
+        <img class="w-16 mx-auto" :src="course.icon" alt="Иконка курса">
+        <h3 class=" font-semibold">{{ course.title }}</h3>
+        <p>{{ course.price }} ₽</p>
+        <Link class="btn-more-detail" :href="route('courses.show', course.slug)">Подробнее</Link>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import SearchInput from '@/Components/FormElement/SearchInput.vue';
 import SectionTitle from '@/Components/Section/SectionTitle.vue';
 import { Head, Link } from '@inertiajs/vue3';
 
@@ -36,12 +37,12 @@ const props = defineProps({
 
 <style scoped>
 .all-courses {
-  @apply grid sm:grid-cols-2 lg:grid-cols-3 justify-items-center text-center gap-14;
+  @apply max-w-screen-2xl grid grid-cols-1 min-[560px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center text-center gap-5;
 }
 .all-courses__item {
-  @apply bg-white bg-opacity-5 border-[3px] border-white rounded-28 w-80 sm:w-72 md:w-[340px] lg:w-72 xl:w-96 2xl:w-[460px] h-72;
+  @apply flex flex-col text-white text-xl xl:text-2xl bg-white bg-opacity-5 p-5 pb-6 gap-y-5 border-[3px] border-white rounded-28 w-full sm:w-[292px] md:w-[357px] lg:w-[315px] xl:w-[295px] 2xl:w-[360px] min-h-72;
 }
 .btn-more-detail {
-  @apply border-0 rounded-28 self-center bg-red text-white py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:shadow-inset;
+  @apply border-0 rounded-28 mt-auto self-center bg-red text-white py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:shadow-inset;
 }
 </style>
