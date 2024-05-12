@@ -83,15 +83,15 @@
 
           <div class="mt-5">
               <div v-if="! twoFactorEnabled">
-                  <ConfirmsPassword @confirmed="enableTwoFactorAuthentication">
+                  <ConfirmPassword @confirmed="enableTwoFactorAuthentication">
                       <PrimaryButton type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling">
                           Enable
                       </PrimaryButton>
-                  </ConfirmsPassword>
+                  </ConfirmPassword>
               </div>
 
               <div v-else>
-                  <ConfirmsPassword @confirmed="confirmTwoFactorAuthentication">
+                  <ConfirmPassword @confirmed="confirmTwoFactorAuthentication">
                       <PrimaryButton
                           v-if="confirming"
                           type="button"
@@ -101,27 +101,27 @@
                       >
                           Confirm
                       </PrimaryButton>
-                  </ConfirmsPassword>
+                  </ConfirmPassword>
 
-                  <ConfirmsPassword @confirmed="regenerateRecoveryCodes">
+                  <ConfirmPassword @confirmed="regenerateRecoveryCodes">
                       <SecondaryButton
                           v-if="recoveryCodes.length > 0 && ! confirming"
                           class="me-3"
                       >
                           Regenerate Recovery Codes
                       </SecondaryButton>
-                  </ConfirmsPassword>
+                  </ConfirmPassword>
 
-                  <ConfirmsPassword @confirmed="showRecoveryCodes">
+                  <ConfirmPassword @confirmed="showRecoveryCodes">
                       <SecondaryButton
                           v-if="recoveryCodes.length === 0 && ! confirming"
                           class="me-3"
                       >
                           Show Recovery Codes
                       </SecondaryButton>
-                  </ConfirmsPassword>
+                  </ConfirmPassword>
 
-                  <ConfirmsPassword @confirmed="disableTwoFactorAuthentication">
+                  <ConfirmPassword @confirmed="disableTwoFactorAuthentication">
                       <SecondaryButton
                           v-if="confirming"
                           :class="{ 'opacity-25': disabling }"
@@ -129,9 +129,9 @@
                       >
                           Cancel
                       </SecondaryButton>
-                  </ConfirmsPassword>
+                  </ConfirmPassword>
 
-                  <ConfirmsPassword @confirmed="disableTwoFactorAuthentication">
+                  <ConfirmPassword @confirmed="disableTwoFactorAuthentication">
                       <DangerButton
                           v-if="! confirming"
                           :class="{ 'opacity-25': disabling }"
@@ -139,7 +139,7 @@
                       >
                           Disable
                       </DangerButton>
-                  </ConfirmsPassword>
+                  </ConfirmPassword>
               </div>
           </div>
       </template>
@@ -150,7 +150,7 @@
 import { ref, computed, watch } from 'vue';
 import { router, useForm, usePage } from '@inertiajs/vue3';
 import ActionSection from '@/Components/Section/ActionSection.vue';
-import ConfirmsPassword from '@/Pages/Auth/ConfirmsPassword.vue';
+import ConfirmPassword from '@/Pages/Auth/ConfirmPassword.vue';
 import DangerButton from '@/Components/Button/DangerButton.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import InputLabel from '@/Components/FormElement/InputLabel.vue';
