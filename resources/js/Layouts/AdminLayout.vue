@@ -23,8 +23,7 @@
               </button>
             </li>
             <li class="flex flex-col text-right">
-              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{
-  $page.props.auth.user.name }}</span>
+              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{ $page.props.auth.user.name }}</span>
               <span class="text-xs font-medium">{{ $page.props.auth.user.roles[0] }}</span>
             </li>
             <li>

@@ -1,9 +1,9 @@
 import { onBeforeUnmount, onMounted, ref } from "vue";
 
 const isSidebarOpen = ref(true);
-const isSubmenuOpen = ref(false);
 
 export function useSidebar () {
+  const isSubmenuOpen = ref(false);
 
   const toggleSidebar = () => isSidebarOpen.value = !isSidebarOpen.value;
 
