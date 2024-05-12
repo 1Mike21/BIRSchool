@@ -16,7 +16,7 @@
         </template>
         <span
           @click="toggleSidebar"
-          class="cursor-pointer"
+          class="cursor-pointer flex"
         >
           <svg :class="{ 'rotate-180': isSidebarOpen }" fill="none" height="25" viewBox="0 0 24 24" width="25"
             xmlns="http://www.w3.org/2000/svg">
@@ -31,6 +31,7 @@
                 fill="#ffffff"></path>
             </g>
           </svg>
+          <p :class="['text-white font-semibold ml-2', { hidden: !isSidebarOpen }]">Свернуть меню</p>
         </span>
       </nav>
       <!-- /Sidebar Menu -->
