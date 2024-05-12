@@ -52,7 +52,7 @@
     <SectionTitle>Этапы обучения</SectionTitle>
     <ul class="steps-learning">
       <li class="steps-learning__item steps-learning__line" v-for="step in learningSteps">
-        <span class="steps-learning__item-count hover:shadow-inset">{{ step.number }}</span>
+        <span class="steps-learning__item-count text-white hover:shadow-inset">{{ step.number }}</span>
         <span class="text-sm font-semibold mt-3">{{ step.title }}</span>
       </li>
     </ul>

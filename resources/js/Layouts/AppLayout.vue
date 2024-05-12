@@ -287,13 +287,13 @@ const logout = () => {
   @apply text-red;
 }
 .header {
-  @apply container mx-auto sticky top-0 px-4 left-0 mb-4 sm:mb-8 md:mb-14 lg:mb-20 mt-5 z-10 bg-white dark:bg-darkblue;
+  @apply container mx-auto sticky top-0 px-4 left-0 mb-4 sm:mb-8 md:mb-14 lg:mb-20 mt-5 z-10 bg-gray-50 dark:bg-darkblue;
 }
 .navbar-brand {
   @apply w-40 h-14 lg:w-64 lg:h-20;
 }
 .btn-login {
-  @apply border-0 rounded-full self-center bg-red hover:bg-inherit text-white hover:text-red dark:hover:text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap hover:shadow-inset;
+  @apply border-0 rounded-full self-center bg-red text-white hover:text-white ms-3 py-2 px-4 lg:py-3 lg:px-8 lg:text-xl font-bold text-center no-underline whitespace-nowrap hover:shadow-inset;
 }
 .footer {
   @apply container mx-auto text-darkblue dark:text-white px-4 mt-4 sm:mt-8 md:mt-14 lg:mt-20;
