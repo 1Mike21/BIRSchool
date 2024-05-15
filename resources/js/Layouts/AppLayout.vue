@@ -104,7 +104,7 @@
                   Управление профилем
                 </div>
 
-                <DropdownLink :href="route('profile.show')">
+                <DropdownLink :href="route('user.profile.show')">
                   Профиль
                 </DropdownLink>
 
@@ -182,7 +182,7 @@
           </div>
 
           <ul class="mt-3 space-y-1">
-            <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
+            <ResponsiveNavLink :href="route('user.profile.show')" :active="route().current('user.profile.show')">
               Профиль
             </ResponsiveNavLink>
 

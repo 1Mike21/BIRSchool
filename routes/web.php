@@ -56,7 +56,7 @@ Route::group( ['auth:sanctum','verified','middleware' => array_values(array_filt
   // User & Profile...
   Route::prefix('user')->name('user.')->group(function ()
   {
-    Route::get('/courses', UserCoursesIndexController::class);
+    Route::get('/courses', UserCoursesIndexController::class)->name('courses.index');
 
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile.show');
 

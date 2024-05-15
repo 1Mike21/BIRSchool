@@ -143,7 +143,7 @@ const updateProfileInformation = () => {
         form.photo = photoInput.value.files[0];
     }
 
-    form.post(route('user-profile-information.update'), {
+    form.post(route('user.user-profile-information.update'), {
         errorBag: 'updateProfileInformation',
         preserveScroll: true,
         onSuccess: () => clearPhotoFileInput(),
@@ -173,7 +173,7 @@ const updatePhotoPreview = () => {
 };
 
 const deletePhoto = () => {
-    router.delete(route('current-user-photo.destroy'), {
+    router.delete(route('user.current-user-photo.destroy'), {
         preserveScroll: true,
         onSuccess: () => {
             photoPreview.value = null;
