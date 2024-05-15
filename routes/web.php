@@ -5,6 +5,7 @@ use App\Http\Controllers\Courses\IndexController as CoursesIndexController;
 use App\Http\Controllers\Courses\ShowController as CoursesShowController;
 use App\Http\Controllers\Groups\ShowController as GroupsShowController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\User\Courses\IndexController as UserCoursesIndexController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Jetstream\Http\Controllers\Inertia\CurrentUserController;
@@ -39,35 +40,34 @@ if (Jetstream::hasTermsAndPrivacyPolicyFeature()) {
   Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])->name('policy.show');
 }
 
-Route::group(['middleware' => array_values(array_filter([$authMiddleware, $authSessionMiddleware]))], function () {
-  Route::middleware([
-    'auth:sanctum',
-    'verified',
-    // Admin
-    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
-      Route::get('/users', function () {
-        return Inertia::render('Admin/Users/Index');
-      })->name('users.index');
+Route::group( ['auth:sanctum','verified','middleware' => array_values(array_filter([$authMiddleware, $authSessionMiddleware]))], function () {
+  // Admin
+  Route::prefix('admin')->name('admin.')->group(function ()
+  {
+    Route::get('/users', function () {
+      return Inertia::render('Admin/Users/Index');
+    })->name('users.index');
 
-      Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-      })->name('dashboard');
-    }),
+    Route::get('/dashboard', function () {
+      return Inertia::render('Dashboard');
+    })->name('dashboard');
+  });
 
-    // User & Profile...
-    Route::prefix('user')->name('user.')->namespace('App\Http\Controllers\User')->group(function () {
-      Route::get('/profile', [UserProfileController::class, 'show'])->name('profile.show');
+  // User & Profile...
+  Route::prefix('user')->name('user.')->group(function ()
+  {
+    Route::get('/courses', UserCoursesIndexController::class);
 
-      Route::delete('/other-browser-sessions', [OtherBrowserSessionsController::class, 'destroy'])->name('other-browser-sessions.destroy');
+    Route::get('/profile', [UserProfileController::class, 'show'])->name('profile.show');
 
-      Route::delete('/profile-photo', [ProfilePhotoController::class, 'destroy'])->name('current-user-photo.destroy');
+    Route::delete('/other-browser-sessions', [OtherBrowserSessionsController::class, 'destroy'])->name('other-browser-sessions.destroy');
 
-      if (Jetstream::hasAccountDeletionFeatures()) {
-        Route::delete('/', [CurrentUserController::class, 'destroy'])
-        ->name('current-user.destroy');
-      }
-    })
-  ]);
+    Route::delete('/profile-photo', [ProfilePhotoController::class, 'destroy'])->name('current-user-photo.destroy');
+
+    if (Jetstream::hasAccountDeletionFeatures()) {
+      Route::delete('/', [CurrentUserController::class, 'destroy'])->name('current-user.destroy');
+    }
+  });
 });
 
 require_once __DIR__ . '/fortify.php';

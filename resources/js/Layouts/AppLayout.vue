@@ -19,10 +19,10 @@
               <NavLink :href="route('courses.index')" :active="route().current('courses.index')">
                 Все курсы
               </NavLink>
-              <NavLink :href="route('dashboard')">
+              <NavLink :href="route('user.courses.index')" :active="route().current('user.courses.index')">
                 Мои курсы
               </NavLink>
-              <NavLink :href="route('dashboard')">
+              <NavLink :href="route('contacts')">
                 Мой код
               </NavLink>
               <NavLink :href="route('contacts')" :active="route().current('contacts')">
@@ -143,10 +143,10 @@
             <ResponsiveNavLink :href="route('courses.index')" :active="route().current('courses.index')">
               Все курсы
             </ResponsiveNavLink>
-            <ResponsiveNavLink :href="route('dashboard')">
+            <ResponsiveNavLink :href="route('user.courses.index')" :active="route().current('user.courses.index')">
               Мои курсы
             </ResponsiveNavLink>
-            <ResponsiveNavLink :href="route('dashboard')">
+            <ResponsiveNavLink :href="route('contacts')">
               Мой код
             </ResponsiveNavLink>
             <ResponsiveNavLink :href="route('contacts')" :active="route().current('contacts')">
