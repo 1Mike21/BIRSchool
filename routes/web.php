@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Courses\IndexController as CoursesIndexController;
 use App\Http\Controllers\Courses\ShowController as CoursesShowController;
 use App\Http\Controllers\Groups\ShowController as GroupsShowController;
@@ -25,10 +26,8 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 
-])->prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
-  Route::get('/users', function () {
-    return Inertia::render('Admin/Users/Index');
-  })->name('users.index');
+])->prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function () {
+  Route::resource('/users', UserController::class);
 });
 
 Route::get('/dashboard', function () {
