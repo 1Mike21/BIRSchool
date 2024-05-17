@@ -40,7 +40,6 @@
               </SecondaryButton>
 
               <SecondaryButton
-                  v-if="user.profile_photo_path"
                   type="button"
                   class="mt-2"
                   @click.prevent="deletePhoto"
