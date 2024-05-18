@@ -2,7 +2,7 @@
   <Head title="Профиль"/>
 
   <div>
-    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="sm:px-6 lg:px-8">
       <div v-if="$page.props.jetstream.canUpdateProfileInformation">
         <UpdateProfileInformationForm :user="$page.props.auth.user" />
 
@@ -34,12 +34,15 @@
 
 <script setup>
 import { Head } from '@inertiajs/vue3';
+import UserLayout from '@/Layouts/UserLayout.vue';
 import DeleteUserForm from '@/Pages/User/Profile/Partials/DeleteUserForm.vue';
 import LogoutOtherBrowserSessionsForm from '@/Pages/User/Profile/Partials/LogoutOtherBrowserSessionsForm.vue';
 import SectionBorder from '@/Components/Section/SectionBorder.vue';
 import TwoFactorAuthenticationForm from '@/Pages/User/Profile/Partials/TwoFactorAuthenticationForm.vue';
 import UpdatePasswordForm from '@/Pages/User/Profile/Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from '@/Pages/User/Profile/Partials/UpdateProfileInformationForm.vue';
+
+defineOptions({ layout: UserLayout })
 
 defineProps({
   confirmsTwoFactorAuthentication: Boolean,
