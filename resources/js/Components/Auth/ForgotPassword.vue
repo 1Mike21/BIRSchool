@@ -1,19 +1,15 @@
 <template>
 
-  <Head title="Восстановление пароля" />
+  <Head title="Сброс пароля" />
 
   <div class="mb-4 text-sm text-gray-600">
     Забыли свой пароль? Без проблем. Просто сообщите нам свой адрес электронной почты, и мы вышлем ссылку для сброса пароля, которая позволит вам выбрать новый.
   </div>
 
-  <!-- <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
-        </div> -->
-
   <form @submit.prevent="submit">
     <div>
       <InputLabel for="email" value="Email" />
-      <TextInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" required autofocus
+      <TextInput id="email" v-model="form.email" type="email" :class="['mt-1 block w-full', {'border-red': form.errors.email}]" autofocus
         autocomplete="username" />
       <InputError class="mt-2" :message="form.errors.email" />
     </div>
@@ -33,10 +29,6 @@ import InputLabel from '@/Components/FormElement/InputLabel.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
 import TextInput from '@/Components/FormElement/TextInput.vue';
 
-defineProps({
-  // status: String,
-});
-
 const emit = defineEmits(['closeModal']);
 
 const form = useForm({
@@ -44,7 +36,9 @@ const form = useForm({
 });
 
 const submit = () => {
-  form.post(route('password.email'));
-  emit('closeModal');
+  form.post(route('password.email'),
+  onSuccess: () => {
+    emit('closeModal');
+  });
 };
 </script>
