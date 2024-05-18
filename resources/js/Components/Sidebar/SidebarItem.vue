@@ -1,10 +1,10 @@
 <template>
   <li>
-    <Link
+    <SidebarLink :dropdown="item.children"
       :active="route().current(item.route)"
       :href="route(item.route)"
       @click.prevent="toggleSubmenu"
-      :class="[ isSidebarOpen ? 'p-2 px-4' : 'p-1 mb-2', 'group relative flex items-center gap-x-4 hover:bg-violetButton focus:bg-violetButton rounded-sm font-medium text-white duration-300 ease-in-out' ]"
+      :class="isSidebarOpen ? 'p-2 px-4' : 'p-1 mb-2'"
     >
     <span v-html="item.icon"></span>
 
@@ -26,7 +26,7 @@
         d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
         fill="" />
     </svg>
-    </Link>
+    </SidebarLink>
 
     <!-- Dropdown Menu Start -->
     <div
@@ -34,15 +34,15 @@
       class="translate transform overflow-hidden"
     >
       <SidebarDropdown v-if="item.children" :items="item.children" />
-      <!-- Dropdown Menu End -->
     </div>
+    <!-- Dropdown Menu End -->
   </li>
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
 import { useSidebar } from '@/Store/sidebar';
 import SidebarDropdown from '@/Components/Sidebar/SidebarDropdown.vue';
+import SidebarLink from '@/Components/Sidebar/SidebarLink.vue';
 
 const props = defineProps({
   item: {
