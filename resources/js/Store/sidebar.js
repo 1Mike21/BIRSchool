@@ -16,9 +16,6 @@ export function useSidebar () {
     mediaQuery.addListener(listener);
   });
 
-  onBeforeUnmount(() => mediaQuery.removeListener(listener));
-
-
   return {
     isSidebarOpen, isSubmenuOpen, toggleSidebar, toggleSubmenu
   }

@@ -1,5 +1,5 @@
 <template>
-  <Modal :show="show" :max-width="maxWidth" :closeable="closeable" @close="close">
+  <Modal :show="show" :max-width="maxWidth" @close="close" @after-leave="redirect">
     <div class="py-4">
       <div class="border-b border-gray-300 font-medium">
         <div class="px-6 flex items-center justify-between pb-3">
@@ -27,26 +27,15 @@
 </template>
 
 <script setup>
-import Modal from './Modal.vue';
-
-const emit = defineEmits(['close']);
+import Modal from '@/Components/Modal/Modal.vue';
+import { useModal } from "inertia-modal";
 
 defineProps({
-  show: {
-    type: Boolean,
-    default: false,
-  },
   maxWidth: {
     type: String,
     default: '2xl',
-  },
-  closeable: {
-    type: Boolean,
-    default: true,
-  },
+  }
 });
 
-const close = () => {
-  emit('close');
-};
+const { show, close } = useModal();
 </script>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Courses\IndexController as CoursesIndexController;
 use App\Http\Controllers\Courses\ShowController as CoursesShowController;
 use App\Http\Controllers\Groups\ShowController as GroupsShowController;
@@ -45,9 +46,7 @@ Route::group( ['auth:sanctum','verified','middleware' => array_values(array_filt
   // Admin
   Route::prefix('admin')->name('admin.')->group(function ()
   {
-    Route::get('/users', function () {
-      return Inertia::render('Admin/Users/Index');
-    })->name('users.index');
+    Route::resource('/users', UserController::class);
 
     Route::get('/dashboard', function () {
       return Inertia::render('Dashboard');

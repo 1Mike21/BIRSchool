@@ -9,8 +9,7 @@
             <h3 :class="['mb-2 ml-4 uppercase text-white', { hidden: !isSidebarOpen }]">{{ menuGroup.name }}</h3>
 
             <ul class="mb-8 flex flex-col gap-x-4">
-              <SidebarItem v-for="(menuItem, index) in menuGroup.menuItems" :item="menuItem" :key="index"
-                :index="index" />
+              <SidebarItem v-for="menuItem in menuGroup.menuItems" :item="menuItem" :key="index" />
             </ul>
           </div>
         </template>
