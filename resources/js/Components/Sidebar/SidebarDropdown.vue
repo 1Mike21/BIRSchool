@@ -3,7 +3,7 @@
     <template v-for="childItem in items" :key="index">
       <li>
         <Link :active="route().current(childItem.route)" :href="route(childItem.route)"
-          class="group relative flex items-center rounded-md p-2 px-5 hover:bg-violetButton focus:bg-violetButton font-medium text-sm text-white duration-300 ease-in-out">
+          class="group relative flex items-center rounded-md p-2 px-5 hover:bg-violetHoverButton focus:bg-violetHoverButton font-medium text-sm text-white duration-300 ease-in-out">
         {{ childItem.label }}
         </Link>
       </li>
