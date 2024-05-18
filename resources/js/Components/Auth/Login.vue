@@ -1,22 +1,18 @@
 <template>
-  <!-- <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-      {{ status }}
-    </div> -->
-
   <Head title="Авторизация" />
 
   <form @submit.prevent="submit">
     <div>
       <InputLabel for="email" value="Email" />
-      <TextInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" required autofocus
-        autocomplete="username" />
+      <TextInput id="email" v-model="form.email" type="email"
+        :class="['mt-1 block w-full', {'border-red': form.errors.email}]" autofocus autocomplete="username" />
       <InputError class="mt-2" :message="form.errors.email" />
     </div>
 
     <div class="mt-4">
       <InputLabel for="password" value="Пароль" />
-      <TextInput id="password" v-model="form.password" type="password" class="mt-1 block w-full" required
-        autocomplete="current-password" />
+      <TextInput id="password" v-model="form.password" type="password"
+        :class="['mt-1 block w-full', {'border-red': form.errors.password}]" autocomplete="current-password" />
       <InputError class="mt-2" :message="form.errors.password" />
     </div>
 
@@ -50,11 +46,6 @@ import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
 import TextInput from '@/Components/FormElement/TextInput.vue';
 const ForgotPassword = defineAsyncComponent(() => import("@/Components/Auth/ForgotPassword.vue"));
 
-defineProps({
-  // canResetPassword: Boolean,
-  // status: String,
-});
-
 const emit = defineEmits(['closeModal']);
 
 const form = useForm({
@@ -70,6 +61,8 @@ const submit = () => {
   })).post(route('login'), {
     onFinish: () => {
       form.reset('password');
+    },
+    onSuccess: () => {
       emit('closeModal');
     },
   });
