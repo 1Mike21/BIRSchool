@@ -104,7 +104,7 @@
                   Управление профилем
                 </div>
 
-                <DropdownLink :href="route('user.profile.show')">
+                <DropdownLink :href="route('user.profile.index')">
                   Профиль
                 </DropdownLink>
 

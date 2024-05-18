@@ -1,6 +1,6 @@
 <template>
 
-  <Head title="Профиль" />
+  <Head title="Личный кабинет" />
 
   <div class="pt-6 px-4">
     <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
