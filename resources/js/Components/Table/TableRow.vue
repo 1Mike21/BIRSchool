@@ -3,8 +3,3 @@
     <slot />
   </tr>
 </template>
-
-<script setup>
-import Checkbox from '@/Components/FormElement/Checkbox.vue';
-
-</script>

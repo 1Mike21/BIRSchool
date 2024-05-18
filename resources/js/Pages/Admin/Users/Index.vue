@@ -32,14 +32,25 @@
                 clip-rule="evenodd">
               </path>
             </svg>
-            Добавить
+            Добавить пользователя
           </AdminButton>
         </div>
       </div>
     </div>
   </div>
+  <h1>Пользователи</h1>
   <!-- Table with Users -->
-  <Table v-if="users.total > 0" :heads="tableHeads">
+  <Table v-if="users.total > 0">
+    <template #header>
+      <TableRow>
+        <TableHeader>Пользователь</TableHeader>
+        <TableHeader>Номер телефона</TableHeader>
+        <TableHeader>Роль</TableHeader>
+        <TableHeader>Статус</TableHeader>
+        <TableHeader>Дата регистрации</TableHeader>
+        <TableHeader></TableHeader>
+      </TableRow>
+    </template>
     <TableRow v-for="user in users.data" :key="user.id">
       <TableColumn class="flex items-center gap-x-3 mr-6">
         <img class="h-10 w-10 rounded-full" :src="user.profile_photo_url" :alt="user.surname + '' + user.name">
@@ -98,11 +109,12 @@ import AdminDangerButton from '@/Components/Button/AdminDangerButton.vue';
 import Table from '@/Components/Table/Table.vue';
 import TableRow from '@/Components/Table/TableRow.vue';
 import TableColumn from '@/Components/Table/TableColumn.vue';
+import TableHeader from '@/Components/Table/TableHeader.vue';
 import Pagination from '@/Components/Pagination.vue';
 import Show from '@/Components/Icons/Show.vue';
 import Edit from '@/Components/Icons/Edit.vue';
 import { useConfirmDeleteModal } from '@/Hooks/confirmDeleteModal';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/DialogModal.vue"));
 import SecondaryButton from '@/Components/Button/SecondaryButton.vue';
 
@@ -115,6 +127,4 @@ const props = defineProps({
 });
 
 const { showConfirmDeleteModal, closeModal, showModal, deleteData } = useConfirmDeleteModal();
-
-const tableHeads = ['Пользователь', 'Номер телефона', 'Роль', 'Статус', 'Дата регистрации', ''];
 </script>
