@@ -49,7 +49,6 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  index: Number,
 });
 
 const { isSidebarOpen, isSubmenuOpen, toggleSubmenu } = useSidebar();
