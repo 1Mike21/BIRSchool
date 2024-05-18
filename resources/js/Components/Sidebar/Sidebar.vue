@@ -1,6 +1,6 @@
 <template>
   <aside
-    :class="[ isSidebarOpen ? 'w-64' : 'w-14', 'fixed flex flex-col top-24 left-0 bg-darkblue h-full transition-all duration-300 z-10' ]">
+    :class="[ isSidebarOpen ? 'w-64' : 'w-14', 'fixed flex flex-col top-24 left-0 dark:bg-white dark:bg-opacity-5 bg-darkblue h-full transition-all duration-300 z-10' ]">
     <div class="no-scrollbar flex flex-col overflow-x-hidden overflow-y-auto duration-300 ease-linear">
       <!-- Sidebar Menu -->
       <nav class="mt-5 py-4 px-4 lg:mt-4">

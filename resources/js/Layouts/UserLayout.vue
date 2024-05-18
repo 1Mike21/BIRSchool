@@ -4,7 +4,7 @@
 
   <Banner />
 
-  <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white">
+  <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased dark:bg-darkblue bg-white">
 
     <!-- Header -->
     <header class="fixed flex justify-between h-24 w-full z-10">
@@ -23,8 +23,7 @@
               </button>
             </li>
             <li class="flex flex-col text-right">
-              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{
-    $page.props.auth.user.name }}</span>
+              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{ $page.props.auth.user.name }}</span>
               <span class="text-xs font-medium">{{ $page.props.auth.user.roles[0] }}</span>
             </li>
             <li>

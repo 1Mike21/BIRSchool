@@ -1,5 +1,5 @@
 <template>
-  <Head title="Профиль"/>
+  <Head title="Настройки профиля" />
 
   <div>
     <div class="sm:px-6 lg:px-8">

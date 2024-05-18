@@ -6,6 +6,7 @@ use App\Http\Controllers\Courses\ShowController as CoursesShowController;
 use App\Http\Controllers\Groups\ShowController as GroupsShowController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\User\Courses\IndexController as UserCoursesIndexController;
+// use App\Http\Controllers\User\Profile\IndexController as UserProfileIndexController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Jetstream\Http\Controllers\Inertia\CurrentUserController;
@@ -57,6 +58,12 @@ Route::group( ['auth:sanctum','verified','middleware' => array_values(array_filt
   Route::prefix('user')->name('user.')->group(function ()
   {
     Route::get('/courses', UserCoursesIndexController::class)->name('courses.index');
+
+    // Route::get('/profile', function () {
+    //   return Inertia::render('User/Profile/Index');
+    // })->name('profile.index');
+
+    // Route::get('/profile', [UserProfileIndexController::class])->name('profile.index');
 
     Route::get('/profile', [UserProfileController::class, 'show'])->name('profile.show');
 
