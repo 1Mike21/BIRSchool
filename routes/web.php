@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Courses\IndexController as CoursesIndexController;
 use App\Http\Controllers\Courses\ShowController as CoursesShowController;
@@ -28,6 +30,8 @@ Route::middleware([
 
 ])->prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function () {
   Route::resource('/users', UserController::class);
+  Route::resource('/roles', RoleController::class);
+  Route::resource('/permissions', PermissionController::class);
 });
 
 Route::get('/dashboard', function () {
