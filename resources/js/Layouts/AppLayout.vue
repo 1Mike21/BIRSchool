@@ -2,8 +2,6 @@
 
   <Head :title="title" />
 
-  <Banner />
-
   <header class="header indent_section_bottom">
     <!-- Navigation Menu -->
     <div class="py-3">
