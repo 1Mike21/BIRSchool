@@ -9,7 +9,7 @@
       </h3>
     </template>
     <template #content>
-      <AdminForm id="update_role_form" @submitted="form.put(route('admin.roles.update', role.id));">
+      <AdminForm id="update_role_form" @submitted="form.put(route('admin.roles.update', role.id))">
         <AdminFormGroup>
           <InputLabel class="mb-2" for="name" value="Название роли" />
           <TextInput v-model="form.name" id="name"

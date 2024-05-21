@@ -8,7 +8,7 @@
       </h3>
     </template>
     <template #content>
-      <AdminForm id="create_role_form" @submitted="form.post(route('admin.roles.store'));">
+      <AdminForm id="create_role_form" @submitted="form.post(route('admin.roles.store'))">
         <AdminFormGroup>
           <InputLabel
             class="mb-2"

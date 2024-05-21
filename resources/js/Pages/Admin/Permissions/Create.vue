@@ -8,7 +8,7 @@
       </h3>
     </template>
     <template #content>
-      <AdminForm id="create_permission_form" @submitted="form.post(route('admin.permissions.store'));">
+      <AdminForm id="create_permission_form" @submitted="form.post(route('admin.permissions.store'))">
         <AdminFormGroup>
           <InputLabel
             class="mb-2"
