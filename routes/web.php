@@ -28,7 +28,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 
-])->prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function () {
+])->prefix('admin')->name('admin.')->group(function () {
   Route::resource('/users', UserController::class);
   Route::resource('/roles', RoleController::class);
   Route::resource('/permissions', PermissionController::class);

@@ -19,9 +19,11 @@ class UserResource extends JsonResource
           'name' => $this->name,
           'surname' => $this->surname,
           'profile_photo_url' => $this->profile_photo_url,
+          'phone_number' => $this->phone_number,
           'email' => $this->email,
           'roles' => $this->getRoleNames(),
           'permissions' => $this->getPermissionNames(),
+          'created_at' => $this->created_at->format('d.m.Y'),
         ];
     }
 }

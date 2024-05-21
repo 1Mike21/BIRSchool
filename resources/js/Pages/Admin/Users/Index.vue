@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="flex items-center ml-auto">
-          <AdminButton as="addButton" hasIcon="true" :href="route('admin.users.create')">
+          <AdminButton as="link" hasIcon="true" :href="route('admin.users.create')">
             <svg class="-ml-1 mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
@@ -40,7 +40,7 @@
   </div>
   <h1>Пользователи</h1>
   <!-- Table with Users -->
-  <Table v-if="users.total > 0">
+  <Table v-if="users.meta.total > 0">
     <template #header>
       <TableRow>
         <TableHeader>Пользователь</TableHeader>
@@ -60,14 +60,14 @@
         </div>
       </TableColumn>
       <TableColumn>{{ user.phone_number }}</TableColumn>
-      <TableColumn>{{ user.roles[0].name }}</TableColumn>
+      <TableColumn>{{ user.roles[0] }}</TableColumn>
       <TableColumn>
         <div class="flex items-center">
           <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
           <div class="h-2.5 w-2.5 rounded-full bg-rose-600 mr-2"></div>
         </div>
       </TableColumn>
-      <TableColumn>05.04.2024</TableColumn>
+      <TableColumn>{{ user.created_at }}</TableColumn>
       <TableColumn class="space-x-2">
         <AdminButton :href="route('admin.users.show', user.id)" class="bg-[#00ADEB] hover:bg-[#24C4FF]">
           <Show />
