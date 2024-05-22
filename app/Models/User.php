@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Jetstream\HasProfilePhoto;
+use App\Traits\HasProfilePhoto;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
