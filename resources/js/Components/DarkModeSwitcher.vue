@@ -1,5 +1,5 @@
 <template>
-  <label class="relative m-0 block rounded-full cursor-pointer h-8 w-14 bg-red">
+  <label :class="['relative m-0 block rounded-full cursor-pointer h-8 w-14 bg-red', { 'bg-slate-500': darkMode }]">
     <input type="checkbox" class="w-full h-full m-0 cursor-pointer opacity-0" @click="toggleTheme">
     <span :class="{ 'translate-x-full': darkMode }"
       class="absolute top-1/2 left-1 flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center justify-center rounded-full bg-white shadow-switcher duration-75 ease-linear">
