@@ -35,8 +35,8 @@
       >
         <img class="w-16 mx-auto" :src="group.icon" :alt="group.title">
         <h4 class="text-red font-medium text-2xl">{{ group.title }}</h4>
-        <h5 class="text-white text-lg underline underline-offset-8 decoration-red">{{ group.level }}</h5>
-        <h6 class="text-white text-base">{{ group.description }}</h6>
+        <h5 class="text-black dark:text-white text-lg underline underline-offset-8 decoration-red">{{ group.level }}</h5>
+        <h6 class="text-black dark:text-white text-base">{{ group.description }}</h6>
         <Link class="btn-more-detail" :href="route('groups.show', group.slug)">Подробнее</Link>
       </div>
     </div>
@@ -48,7 +48,8 @@
   </section>
   <!-- Slider reviews -->
   <section>
-
+    <SectionTitle class="mb-10">Отзывы</SectionTitle>
+    <Slider :options="options" :slides="slides"/>
   </section>
 </template>
 
@@ -97,9 +98,9 @@ const options = {
   @apply max-w-4xl mx-auto grid sm:grid-cols-2 justify-items-center gap-8;
 }
 .group-course__item {
-  @apply bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] min-w-[270px] max-sm:max-w-[330px] border-white rounded-28 text-center p-3 pb-5;
+  @apply bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] min-w-[270px] max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl;
 }
 .btn-more-detail {
-  @apply border-0 rounded-xl self-center mt-auto bg-red hover:bg-inherit text-white py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:bg-white hover:text-red;
+  @apply border-0 rounded-xl self-center mt-auto bg-red text-white py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:bg-[#941433] dark:hover:bg-white dark:hover:text-red;
 }
 </style>

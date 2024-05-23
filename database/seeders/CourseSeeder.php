@@ -87,7 +87,7 @@ class CourseSeeder extends Seeder
           'slug' => 'vue',
           'icon' => '/storage/icons/vue.svg',
           'description' => '',
-          'price' => 3500,
+          'price' => 4000,
           'is_active' => 1,
           'group_id' => 1,
           'created_at' => Carbon::now(),

@@ -26,12 +26,12 @@
       <SectionTitle>{{ section.title }}</SectionTitle>
       <div class="flex flex-wrap-reverse md:flex-nowrap justify-center gap-10">
         <div class="w-[420px] border-[1px] pb-3 mb-8 border-red rounded-[20px]">
-          <p :class="['text-white text-lg p-3', {'text-xl bg-red rounded-[20px]': i == 0}]"
+          <p :class="['text-red dark:text-white text-lg p-3', {'text-white text-xl bg-red rounded-[20px]': i == 0}]"
             v-for="(text,i) in splitText(0)">
             {{ text }}
           </p>
         </div>
-        <img class="max-w-[350px] lg:max-w-[427px] min-w-[250px] h-full rounded-[20px]" :src="section.img" :alt="section.title">
+        <img class="max-w-[350px] lg:max-w-[427px] min-w-[250px] h-full rounded-[36px] shadow-lg shadow-gray-400 dark:shadow-none border dark:border-none" :src="section.img" :alt="section.title">
       </div>
     </section>
 
@@ -39,9 +39,9 @@
       <SectionTitle>{{ section.title }}</SectionTitle>
       <div class="flex flex-wrap md:flex-nowrap justify-center text-center gap-10">
         <div class="w-[416px] rounded-[15px]" v-for="card in cardGroup()">
-          <img class="max-w-[290px] max-h-[200px] mx-auto" :src="card.img" :alt="card.title">
-          <h3 class="text-red text-xl p-5">{{ card.title }}</h3>
-          <p class="text-white">{{ card.text }}</p>
+          <img class="w-[290px] max-h-[200px] rounded-[20px] mx-auto border dark:border-none shadow-xl dark:shadow-none" :src="card.img" :alt="card.title">
+          <h3 class="text-red text-xl font-semibold p-5">{{ card.title }}</h3>
+          <p class="text-black dark:text-white">{{ card.text }}</p>
         </div>
       </div>
     </section>
@@ -52,7 +52,7 @@
     <SectionTitle>Этапы обучения</SectionTitle>
     <ul class="steps-learning">
       <li class="steps-learning__item steps-learning__line" v-for="step in learningSteps">
-        <span class="steps-learning__item-count">{{ step.number }}</span>
+        <span class="steps-learning__item-count text-white hover:shadow-inset">{{ step.number }}</span>
         <span class="text-sm font-semibold mt-3">{{ step.title }}</span>
       </li>
     </ul>
@@ -63,10 +63,10 @@
     <SectionTitle>После успешного окончания обучения</SectionTitle>
     <div class="flex flex-wrap md:flex-nowrap justify-between items-center md:gap-32">
       <div class="w-[600px]">
-        <h3 class="text-white text-2xl lg:text-[28px] mb-2">Сертификат</h3>
-        <p class="text-white text-base lg:text-lg">Студенты получают сертификат об успешном окончании курса <span class="text-red">«{{ group.title }} - {{ group.level }}»</span>. Текст документа может быть составлен на английском языке.</p>
+        <h3 class="text-darkblue dark:text-white text-2xl lg:text-[28px] mb-2">Сертификат</h3>
+        <p class="text-black dark:text-white text-base lg:text-lg">Студенты получают сертификат об успешном окончании курса <span class="text-red font-medium">«{{ group.title }} - {{ group.level }}»</span>. Текст документа может быть составлен на английском языке.</p>
       </div>
-      <img class="max-md:mt-6 md:max-w-[605px] min-w-[205px]" src="/storage/group_course/sertificate.png" alt="Сертификат">
+      <img class="max-md:mt-6 md:max-w-[605px] min-w-[205px] border dark:border-none shadow-xl dark:shadow-none" src="/storage/group_course/sertificate.png" alt="Сертификат">
     </div>
   </section>
 </template>
@@ -92,7 +92,7 @@ const cardGroup = () => {
 
 <style scoped>
 .steps-learning {
-  @apply text-white flex py-5 px-2 relative overflow-x-auto scrollbar max-w-7xl mx-auto;
+  @apply text-darkblue dark:text-white flex py-5 px-2 relative overflow-x-auto scrollbar max-w-7xl mx-auto;
 }
 .steps-learning__item {
   @apply flex flex-col text-center px-5 min-w-44 max-w-full relative after:content-[""] after:absolute after:left-0 after:top-5 after:bg-red after:w-full after:h-[2px] after:translate-x-1/2 after:-z-10 last:after:w-0;

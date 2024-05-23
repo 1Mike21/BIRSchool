@@ -16,7 +16,7 @@
   @apply mt-4 sm:mt-8 md:mt-14 lg:mt-85;
 }
 .main_text {
-  @apply text-base lg:text-xl text-white;
+  @apply text-base lg:text-xl text-black dark:text-white;
 }
 .splide__arrow {
   @apply w-10 h-10 bg-red rounded-full cursor-pointer;

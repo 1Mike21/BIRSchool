@@ -8,7 +8,7 @@
       <div class="min-w-[200px] sm:w-[500px] xl:w-[750px]">
         <p class="main_text">{{ course.description }}</p>
       </div>
-      <div class="flex flex-col items-center justify-center bg-white border-[3px] border-red rounded-28 min-w-72 max-w-[300px] max-h-[404px] py-3 px-7 sm:py-6 sm:px-14">
+      <div class="flex flex-col items-center justify-center bg-white border-[3px] border-red rounded-28 min-w-72 max-w-[300px] max-h-[404px] py-3 px-7 sm:py-6 sm:px-14 shadow-2xl">
         <img class="w-20 md:w-24 h-20 md:h-24 mb-6 mx-auto" :src="course.icon" :alt="course.title">
         <p class="text-2xl md:text-3xl mb-5">{{ course.price }} ₽</p>
         <a class="btn-buy" href="#">Купить</a>
@@ -21,7 +21,7 @@
   <section>
     <SectionTitle>Программа курса</SectionTitle>
     <p
-      class="bg-white text-xl md:text-2xl font-semibold flex items-center rounded-28 max-sm:rounded-[36px] max-sm:h-20 ps-5 py-3 mb-6"
+      class="bg-slate-200 dark:bg-white border shadow-inner text-xl md:text-2xl font-semibold flex items-center rounded-28 max-sm:rounded-[36px] max-sm:h-20 ps-5 py-3 mb-6"
       v-for="theme in themes"
       :key="theme.id"
     >
