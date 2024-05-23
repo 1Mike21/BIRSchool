@@ -1,10 +1,10 @@
 <template>
 
-  <Head :title="title" />
+  <Head :title="title"/>
 
   <Banner />
 
-  <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white">
+  <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased dark:bg-darkblue bg-white">
 
     <!-- Header -->
     <header class="fixed flex justify-between h-24 w-full z-10">

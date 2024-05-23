@@ -1,6 +1,6 @@
 <template>
 
-  <Head :title="title" />
+  <Head :title="title"/>
 
   <Banner />
 
@@ -91,10 +91,6 @@
 
               <template #content>
                 <!-- Account Management -->
-                <div class="block px-4 py-2 text-xs text-gray-400">
-                  Управление профилем
-                </div>
-
                 <DropdownLink :href="route('user.profile.index')">
                   Профиль
                 </DropdownLink>
@@ -173,7 +169,7 @@
           </div>
 
           <ul class="mt-3 space-y-1">
-            <ResponsiveNavLink :href="route('user.profile.show')" :active="route().current('user.profile.show')">
+            <ResponsiveNavLink :href="route('user.profile.index')" :active="route().current('user.profile.index')">
               Профиль
             </ResponsiveNavLink>
 

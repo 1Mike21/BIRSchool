@@ -1,6 +1,5 @@
 <template>
-
-  <Head title="Главная страница" />
+  <Head title="Главная страница"/>
 
   <!-- About company -->
   <section class="indent_section_bottom">
