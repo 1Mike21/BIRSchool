@@ -18,7 +18,10 @@ export default {
               sans: ['Montserrat Alternates', ...defaultTheme.fontFamily.sans],
             },
             boxShadow: {
-              inset: '0 0 10px 0 rgb(187 38 73) inset, 0 0 10px 4px rgb(187 38 73)'
+              inset: '0 0 10px 0 rgb(187 38 73) inset, 0 0 10px 4px rgb(187 38 73)',
+              switcher:
+                '0px 2px 4px rgba(0, 0, 0, 0.2), inset 0px 2px 2px #FFFFFF, inset 0px -1px 1px rgba(0, 0, 0, 0.1)',
+              'switch-1': '0px 0px 5px rgba(0, 0, 0, 0.15)',
             },
             colors: {
               darkblue: 'rgb(39,39,58)',

@@ -7,19 +7,20 @@
   <header class="header indent_section_bottom">
     <!-- Navigation Menu -->
     <div class="py-3">
-      <div class="gap-4 flex justify-between mb-8 lg:mb-0">
+      <div class="gap-4 flex justify-between items-center mb-8 lg:mb-0">
         <div class="shrink-0 flex justify-between items-center">
           <!-- Logo -->
           <Link :href="route('index')">
-            <ApplicationLogo class="navbar-brand" />
+          <ApplicationLogo class="hidden dark:block navbar-brand" />
+          <BlackApplicationLogo class="dark:hidden navbar-brand"/>
           </Link>
           <!-- Navigation Links -->
-          <nav class="hidden grow items-center 2xl:ml-6 md:block">
-            <ul class="hidden mb-2 lg:mb-0 space-x-5 lg:space-x-14 sm:-my-px sm:ms-6 xl:ms-10 sm:flex">
+          <nav class="hidden grow items-center 2xl:ml-6 lg:block">
+            <ul class="hidden mb-2 lg:mb-0 space-x-5 lg:space-x-7 sm:-my-px sm:ms-6 xl:ms-10 sm:flex">
               <NavLink :href="route('courses.index')" :active="route().current('courses.index')">
                 Все курсы
               </NavLink>
-              <NavLink :href="route('dashboard')">
+              <NavLink v-if="$page.props.auth.user" :href="route('dashboard')">
                 Мои курсы
               </NavLink>
               <NavLink :href="route('dashboard')">
@@ -31,10 +32,12 @@
             </ul>
           </nav>
         </div>
-        <DarkModeSwitcher/>
-        <button v-if="!$page.props.auth.user" @click="showModal" class="btn-login hidden md:block">
-          Войти
-        </button>
+        <div v-if="!$page.props.auth.user" class="flex items-center gap-x-3">
+          <DarkModeSwitcher />
+          <button @click="showModal" class="btn-login hidden lg:block">
+            Войти
+          </button>
+        </div>
 
         <DialogModal :show="loginAndRegModal" max-width="md" @close="closeModal">
           <template #title>
@@ -69,15 +72,18 @@
           </template>
         </DialogModal>
 
-        <div v-if="$page.props.auth.user" class="hidden md:flex sm:items-center ms-1 xl:ms-6">
-          <button type="button"
-            class="relative rounded-full p-1 text-[#404063] dark:text-gray-300 hover:text-darkblue dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-darkblue dark:focus:ring-white">
-            <span class="absolute -inset-1.5" />
-            <span class="sr-only">View notifications</span>
-            <BellIcon class="h-6 w-6" aria-hidden="true" />
-          </button>
+        <DarkModeSwitcher v-if="$page.props.auth.user" />
+        <ul v-if="$page.props.auth.user" class="hidden lg:flex sm:items-center gap-x-2 ms-1 xl:ms-6">
+          <li>
+            <button type="button"
+              class="relative rounded-full p-1 text-[#404063] dark:text-gray-300 hover:text-darkblue dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-darkblue dark:focus:ring-white">
+              <span class="absolute -inset-1.5" />
+              <span class="sr-only">View notifications</span>
+              <BellIcon class="h-6 w-6" aria-hidden="true" />
+            </button>
+          </li>
           <!-- Profile Dropdown -->
-          <div class="ms-3 relative">
+          <li class="ms-3 relative">
             <Dropdown align="right" width="48">
               <template #trigger>
                 <button v-if="$page.props.jetstream.managesProfilePhotos"
@@ -115,11 +121,11 @@
                 </form>
               </template>
             </Dropdown>
-          </div>
-        </div>
+          </li>
+        </ul>
 
         <!-- Hamburger -->
-        <div class="-me-2 flex items-center md:hidden">
+        <div class="-me-2 flex items-center lg:hidden">
           <button
             class="inline-flex items-center justify-center p-2 rounded-md text-red dark:text-gray-400 hover:text-red dark:hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-red dark:focus:text-gray-500 transition duration-150 ease-in-out"
             @click="showingNavigationDropdown = !showingNavigationDropdown">
@@ -134,13 +140,13 @@
       </div>
 
       <!-- Responsive Navigation Menu -->
-      <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }" class="md:hidden">
+      <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }" class="lg:hidden">
         <div class="pt-2 pb-6 space-y-1">
           <ul class="mb-2 pb-2 lg:mb-0 sm:-my-px lg:flex">
             <ResponsiveNavLink :href="route('courses.index')" :active="route().current('courses.index')">
               Все курсы
             </ResponsiveNavLink>
-            <ResponsiveNavLink :href="route('dashboard')">
+            <ResponsiveNavLink v-if="$page.props.auth.user" :href="route('dashboard')">
               Мои курсы
             </ResponsiveNavLink>
             <ResponsiveNavLink :href="route('dashboard')">
@@ -227,12 +233,14 @@
             class="hover:text-red">Inbox@bir-team.ru</a>
           <div class="flex sm:justify-end gap-3 mt-3">
             <a href="https://vk.com/birteam" target="_blank"><img src="/img/icon/icon_vk.svg" alt="birteam-vk"></a>
-            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg" alt="birteam-telegram"></a>
+            <a href="https://t.me/birteamru" target="_blank"><img src="/img/icon/icon_telegram.svg"
+                alt="birteam-telegram"></a>
           </div>
         </div>
       </div>
     </div>
-    <p class="text-sm text-center container mx-auto py-3 border-t border-solid border-darkblue dark:border-white">&copy; BIR, {{currentYear}}
+    <p class="text-sm text-center container mx-auto py-3 border-t border-solid border-darkblue dark:border-white">&copy;
+      BIR, {{currentYear}}
     </p>
   </footer>
 </template>
@@ -248,6 +256,7 @@ import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
 import NavLink from '@/Components/NavLink/NavLink.vue';
 import ResponsiveNavLink from '@/Components/NavLink/ResponsiveNavLink.vue';
 import DarkModeSwitcher from '@/Components/DarkModeSwitcher.vue';
+import BlackApplicationLogo from '@/Components/Logo/BlackApplicationLogo.vue';
 const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/DialogModal.vue"));
 const Login = defineAsyncComponent(() => import("@/Components/Auth/Login.vue"));
 const Register = defineAsyncComponent(() => import("@/Components/Auth/Register.vue"));
