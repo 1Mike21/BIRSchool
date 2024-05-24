@@ -1,6 +1,6 @@
 <template>
 
-  <Head title="Пользователи" />
+  <Head title="Разрешения" />
   <div class="p-4 sm:flex items-center justify-between lg:mt-1.5">
     <div class="mb-1 w-full">
       <div class="sm:flex">
@@ -25,77 +25,55 @@
           </div>
         </div>
         <div class="flex items-center ml-auto">
-          <AdminButton as="link" hasIcon="true" :href="route('admin.users.create')">
+          <AdminButton as="link" hasIcon="true" :href="route('admin.permissions.create')">
             <svg class="-ml-1 mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                 clip-rule="evenodd">
               </path>
             </svg>
-            Добавить пользователя
+            Новое разрешение
           </AdminButton>
         </div>
       </div>
     </div>
   </div>
-  <h1>Пользователи</h1>
-  <!-- Table with Users -->
-  <Table v-if="users.meta.total > 0">
+  <h1>Разрешения</h1>
+  <!-- Table with Permissions -->
+  <Table v-if="permissions.length > 0">
     <template #header>
       <TableRow>
-        <TableHeader>Пользователь</TableHeader>
-        <TableHeader>Номер телефона</TableHeader>
-        <TableHeader>Роль</TableHeader>
-        <TableHeader>Статус</TableHeader>
-        <TableHeader>Дата регистрации</TableHeader>
+        <TableHeader>Разрешение</TableHeader>
         <TableHeader></TableHeader>
       </TableRow>
     </template>
-    <TableRow v-for="user in users.data" :key="user.id">
-      <TableColumn class="flex items-center gap-x-3 mr-6">
-        <img class="h-10 w-10 rounded-full" :src="user.profile_photo_url" :alt="user.surname + '' + user.name">
-        <div class="text-sm font-normal text-gray-500">
-          <div class="text-base font-semibold text-black">{{ user.surname }} {{ user.name }}</div>
-          <div class="text-sm font-normal text-gray-700">{{ user.email }}</div>
-        </div>
-      </TableColumn>
-      <TableColumn>{{ user.phone_number }}</TableColumn>
-      <TableColumn>{{ user.roles[0] }}</TableColumn>
-      <TableColumn>
-        <div class="flex items-center">
-          <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
-          <div class="h-2.5 w-2.5 rounded-full bg-rose-600 mr-2"></div>
-        </div>
-      </TableColumn>
-      <TableColumn>{{ user.created_at }}</TableColumn>
+    <TableRow v-for="permission in permissions" :key="permission.id">
+      <TableColumn>{{ permission.name }}</TableColumn>
       <TableColumn class="space-x-2">
-        <AdminButton :href="route('admin.users.show', user.id)" class="bg-[#00ADEB] hover:bg-[#24C4FF]">
-          <Show />
-        </AdminButton>
-        <AdminButton :href="route('admin.users.edit', user.id)" class="bg-[#08B581] hover:bg-[#08DD9C]">
+        <AdminButton :href="route('admin.permissions.edit', permission.id)" class="bg-[#08B581] hover:bg-[#08DD9C]">
           <Edit />
         </AdminButton>
-        <AdminDangerButton @click="showModal" />
+        <AdminDangerButton @click="showModal(permission.id)" />
       </TableColumn>
     </TableRow>
-    <template #pagination>
-      <Pagination :links="users.links" />
-    </template>
   </Table>
+
   <div v-else class="text-center font-bold text-xl">
-    Пользователей пока нет
+    Разрешений пока нет
   </div>
 
-  <!-- Delete User Modal -->
+  <!-- Delete Permission Modal -->
   <DialogModal :show="showConfirmDeleteModal" max-width="md" @close="closeModal">
     <template #title />
     <template #content>
       <img src="/img/icon/exclamation-mark.svg" alt="delete" class="h-36 w-36 mx-auto">
-      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить этого пользователя?
+      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить выбранное разрешение?
       </h3>
     </template>
     <template #footer>
-      <AdminButton as="button" @click="deleteData(user.id, route('admin.users.destroy'))">Да</AdminButton>
+      <AdminButton as="link" method="DELETE" :href="route('admin.permissions.destroy', parameter)" @click="closeModal">
+        Да
+      </AdminButton>
       <SecondaryButton @click="closeModal">Нет</SecondaryButton>
     </template>
   </DialogModal>
@@ -110,8 +88,6 @@ import Table from '@/Components/Table/Table.vue';
 import TableRow from '@/Components/Table/TableRow.vue';
 import TableColumn from '@/Components/Table/TableColumn.vue';
 import TableHeader from '@/Components/Table/TableHeader.vue';
-import Pagination from '@/Components/Pagination.vue';
-import Show from '@/Components/Icons/Show.vue';
 import Edit from '@/Components/Icons/Edit.vue';
 import { useConfirmDeleteModal } from '@/Hooks/confirmDeleteModal';
 import { Head } from '@inertiajs/vue3';
@@ -121,10 +97,11 @@ import SecondaryButton from '@/Components/Button/SecondaryButton.vue';
 defineOptions({ layout: AdminLayout });
 
 const props = defineProps({
-  users: {
-    type: Array,
+  permissions: {
+    type: Object,
+    require: true,
   }
 });
 
-const { showConfirmDeleteModal, closeModal, showModal, deleteData } = useConfirmDeleteModal();
+const { showConfirmDeleteModal, closeModal, showModal, parameter } = useConfirmDeleteModal();
 </script>

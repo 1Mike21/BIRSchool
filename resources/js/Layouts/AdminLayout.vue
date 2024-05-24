@@ -2,10 +2,7 @@
 
   <Head :title="title"/>
 
-  <Banner />
-
   <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased dark:bg-darkblue bg-white">
-
     <!-- Header -->
     <header class="fixed flex justify-between h-24 w-full z-10">
       <div class="w-full flex items-center justify-between h-24 text-white bg-red p-3">
@@ -23,7 +20,8 @@
               </button>
             </li>
             <li class="flex flex-col text-right">
-              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{ $page.props.auth.user.name }}</span>
+              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{
+                $page.props.auth.user.name }}</span>
               <span class="text-xs font-medium">{{ $page.props.auth.user.roles[0] }}</span>
             </li>
             <li>
@@ -51,13 +49,14 @@
     </header>
     <!-- /Header -->
 
-    <Sidebar :menuGroups="menuGroups" :key="route()"/>
+    <Sidebar :menuGroups="menuGroups" :key="route()" />
 
     <main
       :class="[ 'h-full px-10 mt-24 mb-10 transition-all duration-300 ml-10 sm:ml-14', isSidebarOpen ? 'md:ml-64' : 'md:ml-14', ]">
+      <Banner />
       <slot />
     </main>
-    <Modal/>
+    <Modal />
   </div>
 </template>
 
@@ -248,3 +247,5 @@ const menuGroups = ref([
   },
 ]);
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>

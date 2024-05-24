@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Courses\IndexController as CoursesIndexController;
 use App\Http\Controllers\Courses\ShowController as CoursesShowController;
@@ -43,17 +45,21 @@ if (Jetstream::hasTermsAndPrivacyPolicyFeature()) {
   Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])->name('policy.show');
 }
 
+Route::middleware([
+  'auth:sanctum',
+  config('jetstream.auth_session'),
+  'verified',
+
+])->prefix('admin')->name('admin.')->group(function () {
+Route::resource('/users', UserController::class);
+Route::resource('/roles', RoleController::class);
+Route::resource('/permissions', PermissionController::class);
+Route::get('/dashboard', function () {
+  return Inertia::render('Dashboard');
+})->name('dashboard');
+});
+
 Route::group( ['auth:sanctum','verified','middleware' => array_values(array_filter([$authMiddleware, $authSessionMiddleware]))], function () {
-  // Admin
-  Route::prefix('admin')->name('admin.')->group(function ()
-  {
-    Route::resource('/users', UserController::class);
-
-    Route::get('/dashboard', function () {
-      return Inertia::render('Dashboard');
-    })->name('dashboard');
-  });
-
   // User & Profile...
   Route::prefix('user')->name('user.')->group(function ()
   {

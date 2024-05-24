@@ -1,24 +1,17 @@
 import { ref } from "vue";
-import { useForm } from '@inertiajs/vue3';
-
-const form = useForm({})
 
 export const useConfirmDeleteModal = () => {
   const showConfirmDeleteModal = ref(false);
+  const parameter = ref({});
 
   const closeModal = () => {
     showConfirmDeleteModal.value = false;
   }
 
-  const showModal = () => {
+  const showModal = (id) => {
     showConfirmDeleteModal.value = true;
+    parameter.value = id;
   }
 
-  const deleteData = (id, route) => {
-    form.delete(route, {
-      onSuccess: () => closeModal()
-    });
-  }
-
-  return { showConfirmDeleteModal, closeModal, showModal, deleteData }
+  return { showConfirmDeleteModal, closeModal, showModal, parameter }
 }

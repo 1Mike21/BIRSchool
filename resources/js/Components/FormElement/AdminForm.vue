@@ -7,9 +7,5 @@
 </template>
 
 <script setup>
-
+defineEmits(['submitted']);
 </script>
-
-<style scoped>
-
-</style>
