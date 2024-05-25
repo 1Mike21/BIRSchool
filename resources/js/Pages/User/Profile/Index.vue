@@ -6,7 +6,7 @@
       <div class="md:flex md:justify-around">
         <div class="text-center">
           <img class="max-h-48 max-w-48 rounded-full mx-auto" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name">
-          <p class="dark:text-white mt-4 mb-5">Дата регистрации: <!--{{ user.created_at }}--></p>
+          <p class="dark:text-white mt-4 mb-5">Дата регистрации: {{ $page.props.auth.user.created_at }}</p>
         </div>
         <div class="dark:text-white text-center space-y-3">
           <h2 class="text-2xl">{{ $page.props.auth.user.surname }} {{ $page.props.auth.user.name }}</h2>

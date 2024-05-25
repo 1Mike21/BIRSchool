@@ -90,7 +90,7 @@
               <template #content>
                 <!-- Account Management -->
                 <DropdownLink :href="route('user.profile.index')">
-                  Профиль
+                  Личный кабинет
                 </DropdownLink>
 
                 <div class="border-t border-gray-200" />
@@ -168,7 +168,7 @@
 
           <ul class="mt-3 space-y-1">
             <ResponsiveNavLink :href="route('user.profile.index')" :active="route().current('user.profile.index')">
-              Профиль
+              Личный кабинет
             </ResponsiveNavLink>
 
             <!-- Authentication -->

@@ -10,12 +10,12 @@
 
       <template #content>
           <div class="max-w-xl text-sm text-gray-600">
-              Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.
+            Как только ваша учетная запись будет удалена, все ее ресурсы и данные будут удалены безвозвратно. Перед удалением вашей учетной записи, пожалуйста, загрузите любые данные или информацию, которые вы хотите сохранить.
           </div>
 
           <div class="mt-5">
               <DangerButton @click="confirmUserDeletion">
-                  Delete Account
+                  Удалить аккаунт
               </DangerButton>
           </div>
 
@@ -26,7 +26,7 @@
               </template>
 
               <template #content>
-                  Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
+                Вы уверены, что хотите удалить свою учетную запись? Как только ваша учетная запись будет удалена, все ее ресурсы и данные будут удалены безвозвратно. Пожалуйста, введите свой пароль, чтобы подтвердить, что вы хотите удалить свою учетную запись безвозвратно.
 
                   <div class="mt-4">
                       <TextInput
@@ -45,7 +45,7 @@
 
               <template #footer>
                   <SecondaryButton @click="closeModal">
-                      Cancel
+                      Отмена
                   </SecondaryButton>
 
                   <DangerButton
@@ -54,7 +54,7 @@
                       :disabled="form.processing"
                       @click="deleteUser"
                   >
-                      Delete Account
+                      Удалить аккаунт
                   </DangerButton>
               </template>
           </DialogModal>
