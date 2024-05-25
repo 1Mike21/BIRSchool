@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Resources\RoleResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-      $users = UserResource::collection(User::paginate(10))->response()->getData(true);
+      $users = User::with('roles');
+      $users = UserResource::collection($users->paginate(10))->response()->getData(true);
       return Inertia::render('Admin/Users/Index', compact('users'));
     }
 
@@ -37,13 +39,17 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-      User::create([
+      $user = User::create([
         'name' => $request->name,
         'surname' => $request->surname,
         'email' => $request->email,
         'phone_number' => $request->phone_number,
         'password' => Hash::make($request->password),
       ]);
+
+      if ($request->has('role')) {
+        $user->assignRole($request->input('role.name'));
+      }
 
       session()->flash('flash.banner', 'Пользователь успешно добавлен');
       session()->flash('flash.bannerStyle', 'success');
@@ -64,15 +70,33 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-      return Inertia::modal('Admin/Users/Edit')->baseRoute('admin.users.index');
+      $user->load('roles');
+      $user = new UserResource($user);
+      $roles = RoleResource::collection(Role::all());
+
+      return Inertia::modal('Admin/Users/Edit', compact('user', 'roles'))->baseRoute('admin.users.index');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+      $user->update([
+        'name' => $request->name,
+        'surname' => $request->surname,
+        'email' => $request->email,
+        'phone_number' => $request->phone_number,
+      ]);
+
+      if ($request->has('role')) {
+        $user->syncRoles($request->input('role.name'));
+      }
+
+      session()->flash('flash.banner', 'Данные пользователя успешно изменены');
+      session()->flash('flash.bannerStyle', 'success');
+
+      return to_route('admin.users.index');
     }
 
     /**
@@ -80,8 +104,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
+      $user->delete();
 
-        return to_route('admin.users.index');
+      session()->flash('flash.banner', 'Пользователь удален!');
+      session()->flash('flash.bannerStyle', 'danger');
+
+      return to_route('admin.users.index');
     }
 }

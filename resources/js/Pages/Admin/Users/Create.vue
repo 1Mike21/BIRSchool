@@ -68,7 +68,7 @@
             :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.phone_number}]"
             v-model="form.phone_number"
             id="phone_number"
-            type="phone_number"
+            type="text"
             placeholder="+7 (926) 345-67-89"
             autocomplete="phone_number"
           />
@@ -85,7 +85,6 @@
             v-model="form.password"
             id="password"
             type="password"
-            placeholder="********"
             autocomplete="new-password"
           />
           <InputError class="mt-2" :message="form.errors.password"/>
@@ -102,7 +101,6 @@
             id="password_confirmation"
             autocomplete="new-password"
             type="password"
-            placeholder="********"
           />
           <InputError class="mt-2" :message="form.errors.password_confirmation" />
         </AdminFormGroup>
@@ -113,7 +111,7 @@
             value="Роль"
           />
           <MultiSelect
-            v-model="form.roles"
+            v-model="form.role"
             :options="roles"
             id="role"
             label="name"
@@ -123,18 +121,9 @@
             placeholder="Выберите роль"
             :searchable="false"
           />
+          <InputError class="mt-2" :message="form.errors.role"/>
         </AdminFormGroup>
       </AdminForm>
-        <!-- <div class="col-span-6 sm:col-span-3">
-          <label for="role_id" class="text-sm font-medium text-black block mb-2">Роль</label>
-          <select name="role_id" id="role_id"
-            class="shadow-sm bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-violetButton focus:border-violetButton block w-full p-2.5">
-            <option value="">-- Выберите роль --</option>
-            <option value="">Админ</option>
-            <option value="">Куратор</option>
-            <option value="">Ученик</option>
-          </select>
-        </div> -->
     </template>
     <template #footer>
       <AdminButton as="button" :submitted="form.processing" :disabled="form.processing" form="create_user_form" type="submit">
@@ -174,7 +163,7 @@ const form = useForm({
   surname: '',
   email: '',
   phone_number: '',
-  roles: [],
+  role: [],
   password: '',
   password_confirmation: '',
 });
