@@ -44,11 +44,24 @@
     <template #header>
       <TableRow>
         <TableHeader>Роль</TableHeader>
+        <TableHeader>Разрешения</TableHeader>
         <TableHeader></TableHeader>
       </TableRow>
     </template>
     <TableRow v-for="role in roles" :key="role.id">
       <TableColumn>{{ role.name }}</TableColumn>
+      <TableColumn class="flex gap-x-3">
+        <p class="bg-red px-5 pr-3 py-1 flex items-center text-white text-sm font-semibold rounded-lg"
+          v-for="permission in role.permissions">
+          {{ permission.name }}
+          <Link :href="route('admin.roles.permissions.destroy', [role.id, permission.id])" method="DELETE" class="pl-3 cursor-pointer hover:text-black text-base"><svg xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16" fill="currentColor" class="size-4">
+              <path
+                d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22Z" />
+            </svg>
+          </Link>
+        </p>
+      </TableColumn>
       <TableColumn class="space-x-2">
         <AdminButton :href="route('admin.roles.edit', role.id)" class="bg-[#08B581] hover:bg-[#08DD9C]">
           <Edit />
@@ -89,7 +102,7 @@ import TableColumn from '@/Components/Table/TableColumn.vue';
 import TableHeader from '@/Components/Table/TableHeader.vue';
 import Edit from '@/Components/Icons/Edit.vue';
 import { useConfirmDeleteModal } from '@/Hooks/confirmDeleteModal';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/DialogModal.vue"));
 import SecondaryButton from '@/Components/Button/SecondaryButton.vue';
 

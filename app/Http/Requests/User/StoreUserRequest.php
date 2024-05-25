@@ -14,7 +14,7 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth('web')->check();
+      return auth('web')->check();
     }
 
     /**
@@ -28,8 +28,9 @@ class StoreUserRequest extends FormRequest
           'name' => ['required', 'string', 'max:255'],
           'surname' => ['required', 'string', 'max:255'],
           'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-          'phone_number' => ['nullable', 'string', 'min:10', 'unigue:users'],
+          'phone_number' => ['nullable', 'string', 'min:10', 'unique:users'],
           'password' => $this->passwordRules(),
+          'role' => ['required', 'array'],
         ];
     }
 }

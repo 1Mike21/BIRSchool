@@ -60,7 +60,7 @@
         </div>
       </TableColumn>
       <TableColumn>{{ user.phone_number }}</TableColumn>
-      <TableColumn>{{ user.roles[0] }}</TableColumn>
+      <TableColumn>{{ user.roles[0].name }}</TableColumn>
       <TableColumn>
         <div class="flex items-center">
           <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
@@ -69,13 +69,10 @@
       </TableColumn>
       <TableColumn>{{ user.created_at }}</TableColumn>
       <TableColumn class="space-x-2">
-        <AdminButton :href="route('admin.users.show', user.id)" class="bg-[#00ADEB] hover:bg-[#24C4FF]">
-          <Show />
-        </AdminButton>
         <AdminButton :href="route('admin.users.edit', user.id)" class="bg-[#08B581] hover:bg-[#08DD9C]">
           <Edit />
         </AdminButton>
-        <AdminDangerButton @click="showModal" />
+        <AdminDangerButton @click="showModal(user.id)" />
       </TableColumn>
     </TableRow>
     <template #pagination>
@@ -91,11 +88,12 @@
     <template #title />
     <template #content>
       <img src="/img/icon/exclamation-mark.svg" alt="delete" class="h-36 w-36 mx-auto">
-      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить этого пользователя?
+      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить выбранного пользователя?
       </h3>
     </template>
     <template #footer>
-      <AdminButton as="button" @click="deleteData(user.id, route('admin.users.destroy'))">Да</AdminButton>
+      <AdminButton as="link" method="DELETE" :href="route('admin.users.destroy', parameter)" @click="closeModal">Да
+      </AdminButton>
       <SecondaryButton @click="closeModal">Нет</SecondaryButton>
     </template>
   </DialogModal>
@@ -126,5 +124,5 @@ const props = defineProps({
   }
 });
 
-const { showConfirmDeleteModal, closeModal, showModal, deleteData } = useConfirmDeleteModal();
+const { showConfirmDeleteModal, closeModal, showModal, parameter } = useConfirmDeleteModal();
 </script>

@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Role\StoreRoleRequest;
 use App\Http\Requests\Role\UpdateRoleRequest;
+use App\Http\Resources\PermissionResource;
 use App\Http\Resources\RoleResource;
 use Inertia\Inertia;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -16,7 +18,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-      $roles = RoleResource::collection(Role::all());
+      $rolesPermissions = Role::with('permissions')->get();
+      $roles = RoleResource::collection($rolesPermissions);
       return Inertia::render('Admin/Roles/Index', compact('roles'));
     }
 
@@ -25,7 +28,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-      return Inertia::modal('Admin/Roles/Create')->baseRoute('admin.roles.index');
+      $permissions = PermissionResource::collection(Permission::all());
+
+      return Inertia::modal('Admin/Roles/Create', compact('permissions'))->baseRoute('admin.roles.index');
     }
 
     /**
@@ -33,10 +38,14 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
-      Role::create([
+      $role = Role::create([
         'name' => $request->name,
         'guard_name' => 'web'
       ]);
+
+      if ($request->has('permissions')) {
+        $role->syncPermissions($request->input('permissions.*.name'));
+      }
 
       session()->flash('flash.banner', 'Новая роль успешно добавлена');
       session()->flash('flash.bannerStyle', 'success');
@@ -58,8 +67,10 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
       $role = new RoleResource($role);
+      $role->load('permissions');
+      $permissions = PermissionResource::collection(Permission::all());
 
-      return Inertia::modal('Admin/Roles/Edit', compact('role'))->baseRoute('admin.roles.index');
+      return Inertia::modal('Admin/Roles/Edit', compact('role', 'permissions'))->baseRoute('admin.roles.index');
     }
 
     /**
@@ -70,6 +81,8 @@ class RoleController extends Controller
       $role->update([
         'name' => $request->name,
       ]);
+
+      $role->syncPermissions($request->input('permissions.*.name'));
 
       session()->flash('flash.banner', 'Роль успешно обновлена');
       session()->flash('flash.bannerStyle', 'success');

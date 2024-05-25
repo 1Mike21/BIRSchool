@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RevokePermissionFromRoleController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Courses\IndexController as CoursesIndexController;
@@ -42,22 +43,30 @@ Route::get('/courses/{course}', CoursesShowController::class)->name('courses.sho
 
 if (Jetstream::hasTermsAndPrivacyPolicyFeature()) {
   Route::get('/terms-of-service', [TermsOfServiceController::class, 'show'])->name('terms.show');
+
   Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])->name('policy.show');
 }
 
+// Admin
 Route::middleware([
   'auth:sanctum',
   config('jetstream.auth_session'),
   'verified',
+  ])->prefix('admin')->name('admin.')->group(function ()
+  {
+    Route::resource('/users', UserController::class);
 
-])->prefix('admin')->name('admin.')->group(function () {
-Route::resource('/users', UserController::class);
-Route::resource('/roles', RoleController::class);
-Route::resource('/permissions', PermissionController::class);
-Route::get('/dashboard', function () {
-  return Inertia::render('Dashboard');
-})->name('dashboard');
-});
+    Route::resource('/roles', RoleController::class);
+
+    Route::resource('/permissions', PermissionController::class);
+
+    Route::delete('/roles/{role}/permissions/{permission}', RevokePermissionFromRoleController::class)->name('roles.permissions.destroy');
+
+    Route::get('/dashboard', function () {
+      return Inertia::render('Dashboard');
+    })->name('dashboard');
+  }
+);
 
 Route::group( ['auth:sanctum','verified','middleware' => array_values(array_filter([$authMiddleware, $authSessionMiddleware]))], function () {
   // User & Profile...
