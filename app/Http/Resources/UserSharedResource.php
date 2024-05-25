@@ -22,7 +22,7 @@ class UserSharedResource extends JsonResource
         'phone_number' => $this->phone_number,
         'email' => $this->email,
         'roles' => $this->getRoleNames(),
-        'permissions' => $this->getPermissionNames(),
+        'permissions' => $this->getAllPermissions()->pluck('name'),
         'created_at' => $this->created_at->format('d.m.Y'),
       ];
     }
