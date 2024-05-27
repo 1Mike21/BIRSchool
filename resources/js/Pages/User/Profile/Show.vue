@@ -1,7 +1,7 @@
 <template>
   <Head title="Настройки профиля"/>
 
-  <div>
+  <div class="">
     <div class="sm:px-6 lg:px-8">
       <div v-if="$page.props.jetstream.canUpdateProfileInformation">
         <UpdateProfileInformationForm :user="$page.props.auth.user" />

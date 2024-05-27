@@ -1,11 +1,11 @@
 <template>
   <FormSection @submitted="updateProfileInformation">
     <template #title>
-      Profile Information
+      Информация о вас
     </template>
 
     <template #description>
-      Update your account's profile information and email address.
+      Обновите информацию профиля вашей учетной записи.
     </template>
 
     <template #form>
@@ -16,7 +16,7 @@
 
         <!-- Current Profile Photo -->
         <div v-show="!photoPreview" class="mt-2">
-          <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
+          <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-48 w-48 object-cover mx-auto">
         </div>
 
         <!-- New Profile Photo Preview -->
@@ -25,13 +25,14 @@
             :style="'background-image: url(\'' + photoPreview + '\');'" />
         </div>
 
-        <SecondaryButton class="mt-2 me-2" type="button" @click.prevent="selectNewPhoto">
-          Обновить фотографию
-        </SecondaryButton>
-
-        <SecondaryButton type="button" class="mt-2" @click.prevent="deletePhoto">
-          Удалить фотографию
-        </SecondaryButton>
+        <div class="flex justify-center">
+          <SecondaryButton class="mt-2 me-4" type="button" @click.prevent="selectNewPhoto">
+            Обновить фотографию
+          </SecondaryButton>
+          <SecondaryButton type="button" class="mt-2" @click.prevent="deletePhoto">
+            Удалить фотографию
+          </SecondaryButton>
+        </div>
 
         <InputError :message="form.errors.photo" class="mt-2" />
       </div>
@@ -39,21 +40,21 @@
       <!-- Name -->
       <div class="col-span-6 sm:col-span-4">
         <InputLabel for="name" value="Имя" />
-        <TextInput id="name" v-model="form.name" type="text" class="mt-1 block w-full" required autocomplete="name" />
+        <TextInput id="name" v-model="form.name" type="text" class="mt-1 block w-full" autocomplete="name" />
         <InputError :message="form.errors.name" class="mt-2" />
       </div>
 
       <!-- Surname -->
       <div class="col-span-6 sm:col-span-4">
         <InputLabel for="surname" value="Фамилия" />
-        <TextInput id="surname" v-model="form.surname" type="text" class="mt-1 block w-full" required autocomplete="surname" />
+        <TextInput id="surname" v-model="form.surname" type="text" class="mt-1 block w-full" autocomplete="surname" />
         <InputError :message="form.errors.surname" class="mt-2" />
       </div>
 
       <!-- Email -->
       <div class="col-span-6 sm:col-span-4">
         <InputLabel for="email" value="Email" />
-        <TextInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" required autocomplete="email" />
+        <TextInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" autocomplete="email" />
         <InputError :message="form.errors.email" class="mt-2" />
 
         <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
@@ -63,7 +64,7 @@
             <Link :href="route('verification.send')" method="post" as="button"
               class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               @click.prevent="sendEmailVerification">
-              Нажмите здесь, чтобы повторно отправить электронное письмо с подтверждением.
+            Нажмите здесь, чтобы повторно отправить электронное письмо с подтверждением.
             </Link>
           </p>
 
@@ -76,14 +77,15 @@
       <!-- Phone number -->
       <div class="col-span-6 sm:col-span-4">
         <InputLabel for="phone_number" value="Номер телефона" />
-        <TextInput id="phone_number" v-model="form.phone_number" type="text" class="mt-1 block w-full" required autocomplete="phone_number" />
+        <TextInput id="phone_number" v-model="form.phone_number" type="text" class="mt-1 block w-full"
+          autocomplete="phone_number" />
         <InputError :message="form.errors.phone_number" class="mt-2" />
       </div>
     </template>
 
     <template #actions>
       <ActionMessage :on="form.recentlySuccessful" class="me-3">
-        Saved.
+        Сохранено
       </ActionMessage>
 
       <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

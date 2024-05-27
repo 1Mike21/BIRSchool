@@ -1,64 +1,56 @@
 <template>
   <ActionSection>
-      <template #title>
-          Delete Account
-      </template>
+    <template #title>
+      Удаление аккаунта
+    </template>
 
-      <template #description>
-          Permanently delete your account.
-      </template>
+    <template #description>
+      Безвозвратно удалите свою учетную запись.
+    </template>
 
-      <template #content>
-          <div class="max-w-xl text-sm text-gray-600">
-            Как только ваша учетная запись будет удалена, все ее ресурсы и данные будут удалены безвозвратно. Перед удалением вашей учетной записи, пожалуйста, загрузите любые данные или информацию, которые вы хотите сохранить.
+    <template #content>
+      <div class="max-w-xl text-sm text-gray-600">
+        После удаления вашей учетной записи, все содержащиеся в ней ресурсы и данные будут безвозвратно удалены. Перед
+        удалением вашей учетной записи, пожалуйста, сохраните себе информацию.
+      </div>
+
+      <div class="mt-5">
+        <DangerButton @click="confirmUserDeletion">
+          Удалить аккаунт
+        </DangerButton>
+      </div>
+
+      <!-- Delete Account Confirmation Modal -->
+      <DialogModal :show="confirmingUserDeletion" @close="closeModal">
+        <template #title>
+          Удаление аккаунта
+        </template>
+
+        <template #content>
+          Вы уверены, что хотите удалить свою учетную запись? Как только ваша учетная запись будет удалена, все ее
+          ресурсы и данные будут удалены безвозвратно. Пожалуйста, введите свой пароль, чтобы подтвердить, что вы хотите
+          удалить свою учетную запись безвозвратно.
+
+          <div class="mt-4">
+            <TextInput ref="passwordInput" v-model="form.password" type="password" class="mt-1 block w-3/4"
+              placeholder="Пароль" autocomplete="current-password" @keyup.enter="deleteUser" />
+
+            <InputError :message="form.errors.password" class="mt-2" />
           </div>
+        </template>
 
-          <div class="mt-5">
-              <DangerButton @click="confirmUserDeletion">
-                  Удалить аккаунт
-              </DangerButton>
-          </div>
+        <template #footer>
+          <SecondaryButton @click="closeModal" class="font-semibold text-xs uppercase">
+            Отмена
+          </SecondaryButton>
 
-          <!-- Delete Account Confirmation Modal -->
-          <DialogModal :show="confirmingUserDeletion" @close="closeModal">
-              <template #title>
-                  Delete Account
-              </template>
-
-              <template #content>
-                Вы уверены, что хотите удалить свою учетную запись? Как только ваша учетная запись будет удалена, все ее ресурсы и данные будут удалены безвозвратно. Пожалуйста, введите свой пароль, чтобы подтвердить, что вы хотите удалить свою учетную запись безвозвратно.
-
-                  <div class="mt-4">
-                      <TextInput
-                          ref="passwordInput"
-                          v-model="form.password"
-                          type="password"
-                          class="mt-1 block w-3/4"
-                          placeholder="Password"
-                          autocomplete="current-password"
-                          @keyup.enter="deleteUser"
-                      />
-
-                      <InputError :message="form.errors.password" class="mt-2" />
-                  </div>
-              </template>
-
-              <template #footer>
-                  <SecondaryButton @click="closeModal">
-                      Отмена
-                  </SecondaryButton>
-
-                  <DangerButton
-                      class="ms-3"
-                      :class="{ 'opacity-25': form.processing }"
-                      :disabled="form.processing"
-                      @click="deleteUser"
-                  >
-                      Удалить аккаунт
-                  </DangerButton>
-              </template>
-          </DialogModal>
-      </template>
+          <DangerButton class="ms-3" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
+            @click="deleteUser">
+            Удалить аккаунт
+          </DangerButton>
+        </template>
+      </DialogModal>
+    </template>
   </ActionSection>
 </template>
 
@@ -76,27 +68,27 @@ const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
 
 const form = useForm({
-    password: '',
+  password: '',
 });
 
 const confirmUserDeletion = () => {
-    confirmingUserDeletion.value = true;
+  confirmingUserDeletion.value = true;
 
-    setTimeout(() => passwordInput.value.focus(), 250);
+  setTimeout(() => passwordInput.value.focus(), 250);
 };
 
 const deleteUser = () => {
-    form.delete(route('current-user.destroy'), {
-        preserveScroll: true,
-        onSuccess: () => closeModal(),
-        onError: () => passwordInput.value.focus(),
-        onFinish: () => form.reset(),
-    });
+  form.delete(route('current-user.destroy'), {
+    preserveScroll: true,
+    onSuccess: () => closeModal(),
+    onError: () => passwordInput.value.focus(),
+    onFinish: () => form.reset(),
+  });
 };
 
 const closeModal = () => {
-    confirmingUserDeletion.value = false;
+  confirmingUserDeletion.value = false;
 
-    form.reset();
+  form.reset();
 };
 </script>
