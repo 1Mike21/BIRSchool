@@ -89,7 +89,11 @@
 
               <template #content>
                 <!-- Account Management -->
-                <DropdownLink :href="route('user.profile.index')">
+                <DropdownLink v-if="hasRole('Администратор')" :href="route('admin.users.index')">
+                  Админ панель
+                </DropdownLink>
+
+                <DropdownLink v-else :href="route('user.profile.index')">
                   Личный кабинет
                 </DropdownLink>
 
@@ -167,7 +171,11 @@
           </div>
 
           <ul class="mt-3 space-y-1">
-            <ResponsiveNavLink :href="route('user.profile.index')" :active="route().current('user.profile.index')">
+            <ResponsiveNavLink v-if="hasRole('Администратор')" :href="route('user.profile.index')" :active="route().current('user.profile.index')">
+              Панель администратора
+            </ResponsiveNavLink>
+
+            <ResponsiveNavLink v-else :href="route('user.profile.index')" :active="route().current('user.profile.index')">
               Личный кабинет
             </ResponsiveNavLink>
 
@@ -231,11 +239,11 @@ import { ref, defineAsyncComponent } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import {BellIcon} from '@heroicons/vue/24/outline';
 import ApplicationLogo from '@/Components/Logo/ApplicationLogo.vue';
-import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown/Dropdown.vue';
 import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
 import NavLink from '@/Components/NavLink/NavLink.vue';
 import ResponsiveNavLink from '@/Components/NavLink/ResponsiveNavLink.vue';
+import { useAccessControl } from '@/Hooks/accessControl';
 const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/DialogModal.vue"));
 const Login = defineAsyncComponent(() => import("@/Components/Auth/Login.vue"));
 const Register = defineAsyncComponent(() => import("@/Components/Auth/Register.vue"));
@@ -243,6 +251,8 @@ const Register = defineAsyncComponent(() => import("@/Components/Auth/Register.v
 defineProps({
   title: String,
 });
+
+const { hasRole } = useAccessControl();
 
 const nameComponent = ref(Login);
 
