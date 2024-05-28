@@ -1,6 +1,7 @@
 <template>
   <li>
-    <SidebarLink :dropdown="item.children"
+    <SidebarLink
+      :dropdown="item.children"
       :active="route().current(item.route)"
       :href="route(item.route)"
       @click.prevent="toggleSubmenu"
@@ -40,7 +41,7 @@
 </template>
 
 <script setup>
-import { useSidebar } from '@/Store/sidebar';
+import { useSidebar } from '@/Hooks/sidebar';
 import SidebarDropdown from '@/Components/Sidebar/SidebarDropdown.vue';
 import SidebarLink from '@/Components/Sidebar/SidebarLink.vue';
 

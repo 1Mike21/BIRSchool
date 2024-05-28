@@ -1,6 +1,7 @@
 <template>
 
-  <Head title="Пользователи" />
+  <Head title="Управление группами" />
+
   <div class="p-4 sm:flex items-center justify-between lg:mt-1.5">
     <div class="mb-1 w-full">
       <div class="sm:flex">
@@ -25,77 +26,49 @@
           </div>
         </div>
         <div class="flex items-center ml-auto">
-          <AdminButton as="link" hasIcon="true" :href="route('admin.users.create')">
+          <AdminButton as="link" hasIcon="true" :href="route('admin.groups.create') ">
             <svg class="-ml-1 mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                 clip-rule="evenodd">
               </path>
             </svg>
-            Добавить пользователя
+            Добавить группу
           </AdminButton>
+        </div>
+      </div>
+      <div class="group-course indent_section_top">
+        <div class="group-course__item" v-for="group in groups" :key="group.id">
+          <img class="w-16 mx-auto" :src="group.icon" :alt="group.title">
+          <h4 class="text-red font-medium text-2xl">{{ group.title }}</h4>
+          <h5 class="text-white dark:text-darkblue text-lg underline underline-offset-8 decoration-red">{{ group.level
+            }}
+          </h5>
+          <h6 class="text-white dark:text-darkblue text-base">{{ group.description }}</h6>
+          <div class="flex flex-col mx-auto gap-y-3">
+            <AdminButton :href="route('admin.users.edit', group.slug)" class="bg-[#08B581] hover:bg-[#08DD9C]">
+              <Edit />
+              Редактировать
+            </AdminButton>
+            <AdminDangerButton @click="showModal(group.id)">
+              Удалить
+            </AdminDangerButton>
+            <Link class="btn-more-detail" :href="route('admin.groups.show', group.slug)">Добавить описание</Link>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <h1>Пользователи</h1>
-  <!-- Table with Users -->
-  <Table v-if="users.meta.total > 0">
-    <template #header>
-      <TableRow>
-        <TableHeader>Пользователь</TableHeader>
-        <TableHeader>Номер телефона</TableHeader>
-        <TableHeader>Роль</TableHeader>
-        <TableHeader>Статус</TableHeader>
-        <TableHeader>Дата регистрации</TableHeader>
-        <TableHeader></TableHeader>
-      </TableRow>
-    </template>
-    <TableRow v-for="user in users.data" :key="user.id">
-      <TableColumn class="flex items-center gap-x-3 mr-6">
-        <img class="h-10 w-10 rounded-full" :src="user.profile_photo_url" :alt="user.surname + '' + user.name">
-        <div class="text-sm font-normal text-gray-500">
-          <div class="text-base font-semibold text-black">{{ user.surname }} {{ user.name }}</div>
-          <div class="text-sm font-normal text-gray-700">{{ user.email }}</div>
-        </div>
-      </TableColumn>
-      <TableColumn>{{ user.phone_number }}</TableColumn>
-      <TableColumn>{{ user.roles[0].name }}</TableColumn>
-      <TableColumn>
-        <div class="flex items-center">
-          <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
-          <div class="h-2.5 w-2.5 rounded-full bg-rose-600 mr-2"></div>
-        </div>
-      </TableColumn>
-      <TableColumn>{{ user.created_at }}</TableColumn>
-      <TableColumn class="space-x-2">
-        <AdminButton v-show="user.roles[0].name == 'Ученик'" :href="route('admin.users.show', user.id) " class="bg-[#00ADEB] hover:bg-[#24C4FF]">
-          <Show />
-        </AdminButton>
-        <AdminButton :href="route('admin.users.edit', user.id)" class="bg-[#08B581] hover:bg-[#08DD9C]">
-          <Edit />
-        </AdminButton>
-        <AdminDangerButton @click="showModal(user.id)" />
-      </TableColumn>
-    </TableRow>
-    <template #pagination>
-      <Pagination :links="users.links" />
-    </template>
-  </Table>
-  <div v-else class="text-center font-bold text-xl">
-    Пользователей пока нет
-  </div>
-
   <!-- Delete User Modal -->
   <DialogModal :show="showConfirmDeleteModal" max-width="md" @close="closeModal">
     <template #title />
     <template #content>
       <img src="/img/icon/exclamation-mark.svg" alt="delete" class="h-36 w-36 mx-auto">
-      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить выбранного пользователя?
+      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить группу?
       </h3>
     </template>
     <template #footer>
-      <AdminButton as="link" method="DELETE" :href="route('admin.users.destroy', parameter)" @click="closeModal">Да
+      <AdminButton as="link" method="DELETE" :href="route('admin.groups.destroy', parameter)" @click="closeModal">Да
       </AdminButton>
       <SecondaryButton @click="closeModal">Нет</SecondaryButton>
     </template>
@@ -103,29 +76,36 @@
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import AdminButton from '@/Components/Button/AdminButton.vue';
 import AdminDangerButton from '@/Components/Button/AdminDangerButton.vue';
 import SecondaryButton from '@/Components/Button/SecondaryButton.vue';
-import Table from '@/Components/Table/Table.vue';
-import TableRow from '@/Components/Table/TableRow.vue';
-import TableColumn from '@/Components/Table/TableColumn.vue';
-import TableHeader from '@/Components/Table/TableHeader.vue';
-import Pagination from '@/Components/Pagination.vue';
 import Edit from '@/Components/Icons/Edit.vue';
-import Show from '@/Components/Icons/Show.vue';
 import { useConfirmDeleteModal } from '@/Hooks/confirmDeleteModal';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
+import { defineAsyncComponent } from 'vue';
+
 const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/DialogModal.vue"));
 
 defineOptions({ layout: AdminLayout });
 
 const props = defineProps({
-  users: {
-    type: Array,
-  }
+  groups: Array
 });
 
 const { showConfirmDeleteModal, closeModal, showModal, parameter } = useConfirmDeleteModal();
 </script>
+
+<style scoped>
+.group-course {
+  @apply mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-items-center gap-8;
+}
+
+.group-course__item {
+  @apply dark:bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] min-w-[270px] max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl;
+}
+
+.btn-more-detail {
+  @apply border-0 rounded-xl self-center mt-auto bg-[#00ADEB] text-white py-2 px-4 lg:px-6 text-center no-underline whitespace-nowrap hover:bg-[#24C4FF];
+}
+</style>
