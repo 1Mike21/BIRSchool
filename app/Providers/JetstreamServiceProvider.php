@@ -25,6 +25,12 @@ class JetstreamServiceProvider extends ServiceProvider
    */
   public function boot(): void
   {
+    // register new LoginResponse
+    $this->app->singleton(
+      \Laravel\Fortify\Contracts\LoginResponse::class,
+      \App\Http\Responses\LoginResponse::class
+    );
+
     Fortify::resetPasswordView(function (Request $request) {
       return Inertia::render('Auth/ResetPassword', [
         'email' => $request->input('email'),
