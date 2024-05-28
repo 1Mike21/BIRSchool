@@ -25,8 +25,8 @@
             :style="'background-image: url(\'' + photoPreview + '\');'" />
         </div>
 
-        <div class="flex justify-center">
-          <SecondaryButton class="mt-2 me-4" type="button" @click.prevent="selectNewPhoto">
+        <div class="flex gap-x-4 mt-2 items-center flex-col sm:flex-row md:flex-col justify-center lg:flex-row lg:gap-y-2">
+          <SecondaryButton class="mt-2" type="button" @click.prevent="selectNewPhoto">
             Обновить фотографию
           </SecondaryButton>
           <SecondaryButton type="button" class="mt-2" @click.prevent="deletePhoto">

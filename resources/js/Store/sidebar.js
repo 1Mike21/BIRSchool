@@ -10,7 +10,7 @@ export function useSidebar () {
   const toggleSubmenu = () => isSubmenuOpen.value = !isSubmenuOpen.value;
 
   onMounted(() => {
-    const mediaQuery = window.matchMedia("(min-width:768px)");
+    const mediaQuery = window.matchMedia("(min-width:1280px)");
     isSidebarOpen.value = mediaQuery.matches;
     const listener = e => isSidebarOpen.value = e.matches;
     mediaQuery.addListener(listener);

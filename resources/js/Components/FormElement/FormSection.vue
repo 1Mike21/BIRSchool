@@ -1,5 +1,4 @@
 <template>
-  <div class="md:grid md:grid-cols md:gap-6 max-w-[800px]">
   <div class="mt-7 mb-3">
     <SectionFormTitle>
       <slot name="title" />
@@ -10,20 +9,19 @@
     </SectionDescription>
   </div>
 
-      <form @submit.prevent="$emit('submitted')">
-        <div class="px-4 py-5 bg-white sm:p-6 shadow"
-          :class="hasActions ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md'">
-          <div class="grid gap-6">
-            <slot name="form" />
-          </div>
-        </div>
+  <form @submit.prevent="$emit('submitted')">
+    <div class="px-4 py-5 bg-white sm:p-6 shadow"
+      :class="hasActions ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md'">
+      <div class="grid gap-6">
+        <slot name="form" />
+      </div>
+    </div>
 
-        <div v-if="hasActions"
-          class="flex items-center justify-end px-4 py-3 bg-gray-50 text-end sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
-          <slot name="actions" />
-        </div>
-      </form>
-  </div>
+    <div v-if="hasActions"
+      class="flex items-center justify-end px-4 py-3 bg-gray-50 text-end sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
+      <slot name="actions" />
+    </div>
+  </form>
 </template>
 
 <script setup>

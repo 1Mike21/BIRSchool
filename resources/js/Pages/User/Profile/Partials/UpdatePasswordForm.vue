@@ -1,12 +1,11 @@
 <template>
   <FormSection @submitted="updatePassword">
     <template #title>
-      Обновить пароль
+      Обновление пароля
     </template>
 
     <template #description>
-      Убедитесь, что в вашем аккаунте используется сложный пароль, включающий различные символы, для обеспечения
-      безопасности.
+      Убедитесь, что в вашем аккаунте используется сложный пароль.
     </template>
 
     <template #form>
