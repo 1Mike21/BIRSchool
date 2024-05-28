@@ -18,6 +18,7 @@ class Course extends Model
       'slug',
       'icon',
       'description',
+      'is_active',
       'price',
       'group_id'
     ];

@@ -64,7 +64,7 @@ class User extends Authenticatable
     }
 
     public function homeworks(): BelongsToMany {
-      return $this->belongsToMany(Homework::class, 'homework_user', 'user_id', 'homework_id')->withPivot('answer', 'is_checked', 'comment');
+      return $this->belongsToMany(Homework::class, 'homework_user', 'user_id', 'homework_id')->withPivot('answer', 'is_checked', 'comment', 'due_date');
     }
 
     public function codeSpaces(): HasMany {

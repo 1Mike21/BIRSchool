@@ -1,6 +1,5 @@
 <template>
-
-  <Head title="Все курсы" />
+  <Head title="Все курсы"/>
 
   <section>
     <SectionTitle>Все курсы</SectionTitle>

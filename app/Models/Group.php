@@ -17,6 +17,7 @@ class Group extends Model
       'slug',
       'icon',
       'description',
+      'is_active',
       'level',
     ];
 

@@ -4,121 +4,51 @@
 
   <Banner />
 
-  <Sidebar :menuGroups="menuGroups" />
-  <div class="h-full bg-white">
+  <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased dark:bg-darkblue bg-white">
+    <!-- Header -->
     <header class="fixed flex justify-between h-24 w-full z-10">
       <div class="w-full flex items-center justify-between h-24 text-white bg-red p-3">
-        <div class="flex items-center justify-start pl-3 w-14 md:w-64 h-14 border-none">
-          <Link :href="route('index')">
-          <WhiteApplicationLogo class="navbar-brand" />
-          </Link>
-        </div>
-        <!-- Settings Options -->
-        <div class="flex justify-between items-center h-14 header-right gap-4">
-          <div v-if="$page.props.auth.user" class="hidden sm:flex sm:items-center ms-1 xl:ms-6">
-            <button type="button"
-              class="relative rounded-full p-1 text-white focus:outline-none focus:ring-2 focus:ring-white">
-              <span class="absolute -inset-1.5" />
-              <span class="sr-only">View notifications</span>
-              <BellIcon class="h-6 w-6" aria-hidden="true" />
-            </button>
-            <!-- Profile Dropdown -->
-            <div class="ms-3 relative">
-              <Dropdown align="right" width="48">
-                <template #trigger>
-                  <button v-if="$page.props.jetstream.managesProfilePhotos"
-                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                    <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
-                      :alt="$page.props.auth.user.name">
-                  </button>
-                  <span v-else class="inline-flex rounded-md">
-                    <button type="button"
-                      class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                      {{ $page.props.auth.user.name }}
-                      <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                      </svg>
-                    </button>
-                  </span>
-                </template>
-                <template #content>
-                  <!-- Account Management -->
-                  <div class="block px-4 py-2 text-xs text-gray-400">
-                    Управление профилем
-                  </div>
-                  <DropdownLink :href="route('profile.show')">
-                    Профиль
-                  </DropdownLink>
-                  <div class="border-t border-gray-200" />
-                  <!-- Authentication -->
-                  <form @submit.prevent="logout">
-                    <DropdownLink as="button">
-                      Выход
-                    </DropdownLink>
-                  </form>
-                </template>
-              </Dropdown>
-            </div>
-          </div>
-          <!-- Hamburger -->
-          <div class="-me-2 flex items-center sm:hidden">
-            <button
-              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-              @click="showingNavigationDropdown = !showingNavigationDropdown">
-              <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                <path :class="{ 'hidden': showingNavigationDropdown, 'inline-flex': !showingNavigationDropdown }"
-                  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                <path :class="{ 'hidden': !showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }"
-                  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- Responsive Navigation Menu -->
-      <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }" class="sm:hidden">
-        <div v-if="$page.props.auth.user" class="pt-4 pb-1 border-t border-gray-200">
-          <div class="flex flex-col sm:flex-row sm:items-center px-4">
-            <div class="flex justify-between">
-              <div v-if="$page.props.jetstream.managesProfilePhotos" class="shrink-0 me-5">
-                <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
-                  :alt="$page.props.auth.user.name">
-              </div>
+        <Link :href="route('index')">
+        <WhiteApplicationLogo class="w-52 sm:w-60" />
+        </Link>
+        <div class="flex justify-between items-center">
+          <ul v-if="$page.props.auth.user" class="flex items-center justify-between gap-x-5 ms-1 xl:ms-6">
+            <li>
               <button type="button"
-                class="relative mt-2 sm:ml-auto rounded-full p-1 text-white  focus:outline-none focus:ring-2 focus:ring-white">
+                class="relative rounded-full p-1 text-white focus:outline-none focus:ring-2 focus:ring-white">
                 <span class="absolute -inset-1.5" />
                 <span class="sr-only">View notifications</span>
                 <BellIcon class="h-6 w-6" aria-hidden="true" />
               </button>
-            </div>
-            <div class="mt-2">
-              <div class="font-medium text-base text-white">
-                {{ $page.props.auth.user.name }}
-              </div>
-              <div class="font-medium text-sm text-white">
-                {{ $page.props.auth.user.email }}
-              </div>
-            </div>
-          </div>
-          <ul class="mt-3 space-y-1">
-            <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
-              Профиль
-            </ResponsiveNavLink>
-            <!-- Authentication -->
-            <form method="POST" @submit.prevent="logout">
-              <ResponsiveNavLink>
-                Выход
-              </ResponsiveNavLink>
-            </form>
+            </li>
+            <li class="flex flex-col text-right">
+              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{
+                $page.props.auth.user.name }}</span>
+              <span class="text-xs font-medium">{{ $page.props.auth.user.roles[0] }}</span>
+            </li>
+            <li>
+              <img class="h-8 min-w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
+                :alt="$page.props.auth.user.name">
+            </li>
+            <li>
+              <form @submit.prevent="logout">
+                <LogoutButton>Выйти</LogoutButton>
+              </form>
+            </li>
           </ul>
         </div>
       </div>
     </header>
+    <!-- /Header -->
 
-    <main class="h-full ml-14 mt-24 mb-10 md:ml-64">
+    <Sidebar :menuGroups="menuGroups" :key="route()" />
+
+    <main
+      :class="[ 'h-full px-10 mt-24 mb-10 transition-all duration-300 ml-10 sm:ml-14', isSidebarOpen ? 'md:ml-64' : 'md:ml-14', ]">
+      <Banner />
       <slot />
     </main>
+    <Modal />
   </div>
 </template>
 
@@ -128,21 +58,34 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import { BellIcon } from '@heroicons/vue/24/solid';
 import Banner from '@/Components/Banner.vue';
 import WhiteApplicationLogo from '@/Components/Logo/WhiteApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown/Dropdown.vue';
-import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
-import ResponsiveNavLink from '@/Components/NavLink/ResponsiveNavLink.vue';
 import Sidebar from '@/Components/Sidebar/Sidebar.vue';
-
-const showingNavigationDropdown = ref(false);
+import LogoutButton from '@/Components/Button/LogoutButton.vue';
+import { useSidebar } from '@/Store/sidebar';
+import { Modal } from "inertia-modal";
 
 const logout = () => {
   router.post(route('logout'));
 };
 
+const { isSidebarOpen } = useSidebar();
+
 const menuGroups = ref([
   {
-    name: 'Панель админа',
+    name: 'Меню',
     menuItems: [
+      {
+        icon: `<svg width="18" height="18" viewBox="0 0 1024.00 1024.00" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff" stroke-width="18.432">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="SVGRepo_iconCarrier">
+          <path d="M928.1 881v44H95.9V99h44v782z" fill="#ffffff"/>
+          <path d="M352 435.7v403.4H204V435.7h148m22-22H182v447.4h192V413.7zM608 307.9v531.2H460V307.9h148m22-22H438v575.2h192V285.9z" fill="#ffffff"/>
+          <path d="M866.1 177.3v663.9H714V177.3h152.1m20-20H694v703.9h192V157.3h0.1z" fill="#ffffff"/>
+          </g>
+          </svg>`,
+        label: 'Dashboard',
+        route: 'admin.users.index'
+      },
       {
         icon: `<svg
           width="18"
@@ -159,7 +102,25 @@ const menuGroups = ref([
           </defs>
           </svg>`,
         label: 'Пользователи',
-        route: '#',
+        route: 'admin.users.index',
+      },
+      {
+        icon: `<svg width="18" height="18" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="SVGRepo_iconCarrier"> <path d="M7 16V11.3615C7 10.8518 7.10026 10.3624 7.28451 9.90769M17 13.5V12.8154M9.22222 7.73446C10.0167 7.27055 10.9721 7 12 7C14.2795 7 16.2027 8.33062 16.8046 10.15" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M10 17V14.8235M14 17V11.8529C14 10.8296 13.1046 10 12 10C10.8954 10 10 10.8296 10 11.8529V12.6471" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M14 21.8C13.3538 21.9311 12.6849 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 12.254 21.9905 12.5057 21.9719 12.7549" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M21.1667 18.5H21.4C21.7314 18.5 22 18.7686 22 19.1V21.4C22 21.7314 21.7314 22 21.4 22H17.6C17.2686 22 17 21.7314 17 21.4V19.1C17 18.7686 17.2686 18.5 17.6 18.5H17.8333M21.1667 18.5V16.75C21.1667 16.1667 20.8333 15 19.5 15C18.1667 15 17.8333 16.1667 17.8333 16.75V18.5M21.1667 18.5H17.8333" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+        </svg>`,
+        label: 'Роли',
+        route: 'admin.roles.index',
+      },
+      {
+        icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="SVGRepo_iconCarrier"> <path d="M12.3212 10.6852L4 19L6 21M7 16L9 18M20 7.5C20 9.98528 17.9853 12 15.5 12C13.0147 12 11 9.98528 11 7.5C11 5.01472 13.0147 3 15.5 3C17.9853 3 20 5.01472 20 7.5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+        </svg>`,
+        label: 'Разрешения',
+        route: 'admin.permissions.index',
       },
       {
         icon: `<svg width="16" height="16" viewBox="0 0 24.00 24.00" xmlns="http://www.w3.org/2000/svg" mirror-in-rtl="true" fill="#000000" stroke="#000000" stroke-width="0.00024000000000000003">
@@ -168,19 +129,17 @@ const menuGroups = ref([
           <g id="SVGRepo_iconCarrier"> <path fill="#ffffff" d="M7.857 10H2.142C.962 10 0 9.04 0 7.857V2.143C0 .96.96 0 2.142 0h5.715C9.04 0 10 .96 10 2.143v5.714C10 9.04 9.04 10 7.857 10zM2.142 2C2.066 2 2 2.067 2 2.143v5.714c0 .076.066.143.142.143h5.715C7.933 8 8 7.933 8 7.857V2.143C8 2.067 7.933 2 7.857 2H2.142zM7.857 24H2.142C.962 24 0 23.04 0 21.857v-5.715C0 14.962.96 14 2.142 14h5.715C9.04 14 10 14.96 10 16.143v5.715C10 23.038 9.04 24 7.857 24zm-5.715-8c-.076 0-.142.066-.142.143v5.715c0 .076.066.142.142.142h5.715c.076 0 .143-.066.143-.143v-5.715c0-.076-.067-.142-.143-.142H2.142zM21.857 24h-5.715C14.96 24 14 23.04 14 21.857v-5.715C14 14.96 14.96 14 16.142 14h5.715C23.04 14 24 14.96 24 16.14v5.715C24 23.04 23.037 24 21.856 24zm-5.715-8c-.076 0-.143.066-.143.143v5.715c0 .076.065.143.142.143h5.715c.076 0 .143-.065.143-.142v-5.715c0-.076-.066-.143-.143-.143h-5.715zM17.818 12.364c-.55 0-1.098-.208-1.516-.626l-4.04-4.04c-.837-.836-.837-2.196 0-3.03L16.3.625c.808-.808 2.225-.807 3.03 0l4.04 4.04c.837.835.837 2.195 0 3.03l-4.04 4.04c-.418.42-.967.628-1.514.628zm0-10.364c-.028 0-.067.007-.102.04l-4.04 4.04c-.055.055-.055.15 0 .203l4.04 4.04c.055.055.147.056.202 0l4.04-4.04c.055-.054.055-.148 0-.202l-4.04-4.04c-.034-.033-.073-.04-.1-.04z"/> </g>
           </svg>`,
         label: 'Группы курсов',
-        route: '#',
         children: [
-          { label: 'Список', route: '#' },
-          { label: 'Описание', route: '#' }
+          { label: 'Список', route: 'admin.users.index' },
+          { label: 'Описание', route: 'admin.users.index' }
         ]
       },
       {
         icon: `<svg
-          class="fill-current"
           width="18"
           height="18"
           viewBox="0 0 18 18"
-          fill="none"
+          fill="#ffffff"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -209,11 +168,10 @@ const menuGroups = ref([
           />
         </svg>`,
         label: 'Курсы',
-        route: '#',
         children: [
-          { label: 'Список', route: '#' },
-          { label: 'Описание', route: '#' },
-          { label: 'Лекции', route: '#' }
+          { label: 'Список', route: 'admin.users.index' },
+          { label: 'Описание', route: 'admin.users.index' },
+          { label: 'Лекции', route: 'admin.users.index' }
         ]
       },
       {
@@ -226,7 +184,7 @@ const menuGroups = ref([
           </g>
           </svg>`,
         label: 'Задания',
-        route: '#'
+        route: 'admin.users.index'
       },
       {
         icon: `<svg width="19" height="19" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -235,7 +193,21 @@ const menuGroups = ref([
           <g id="SVGRepo_iconCarrier"> <path d="M16 10H16.01M12 10H12.01M8 10H8.01M3 10C3 4.64706 5.11765 3 12 3C18.8824 3 21 4.64706 21 10C21 15.3529 18.8824 17 12 17C11.6592 17 11.3301 16.996 11.0124 16.9876L7 21V16.4939C4.0328 15.6692 3 13.7383 3 10Z" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
           </svg>`,
         label: 'Отзывы',
-        route: '#'
+        route: 'admin.users.index'
+      },
+    ]
+  },
+  {
+    name: 'Настройки',
+    menuItems: [
+      {
+        icon: `<svg fill="#ffffff" width="18" height="18" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="15.36">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="SVGRepo_iconCarrier"> <path d="m1739.34 1293.414-105.827 180.818-240.225-80.188-24.509 22.25c-69.91 63.586-150.211 109.666-238.644 136.771l-32.076 9.94-49.468 244.065H835.584l-49.468-244.179-32.076-9.939c-88.432-27.105-168.734-73.185-238.644-136.771l-24.508-22.25-240.226 80.189-105.826-180.82 189.74-164.442-7.453-32.978c-10.39-45.742-15.586-91.483-15.586-135.869 0-44.386 5.195-90.127 15.586-135.868l7.454-32.979-189.741-164.442 105.826-180.819 240.226 80.075 24.508-22.25c69.91-63.585 150.212-109.665 238.644-136.884l32.076-9.826 49.468-244.066h213.007l49.468 244.18 32.076 9.825c88.433 27.219 168.734 73.186 238.644 136.885l24.509 22.25 240.225-80.189 105.826 180.819-189.74 164.442 7.453 32.98c10.39 45.74 15.586 91.481 15.586 135.867 0 44.386-5.195 90.127-15.586 135.869l-7.454 32.978 189.741 164.556Zm-53.76-333.403c0-41.788-3.84-84.48-11.634-127.284l210.184-182.062-199.454-340.856-265.186 88.433c-66.974-55.567-143.322-99.388-223.85-128.414L1140.977.01H743.198l-54.663 269.704c-81.431 29.139-156.424 72.282-223.963 128.414L199.5 309.809.045 650.665l210.07 182.062c-7.68 42.804-11.52 85.496-11.52 127.284 0 41.789 3.84 84.48 11.52 127.172L.046 1269.357 199.5 1610.214l265.186-88.546c66.974 55.68 143.323 99.388 223.85 128.527l54.663 269.816h397.779l54.663-269.703c81.318-29.252 156.424-72.283 223.85-128.527l265.186 88.546 199.454-340.857-210.184-182.174c7.793-42.805 11.633-85.496 11.633-127.285ZM942.075 564.706C724.1 564.706 546.782 742.024 546.782 960c0 217.976 177.318 395.294 395.294 395.294 217.977 0 395.294-177.318 395.294-395.294 0-217.976-177.317-395.294-395.294-395.294m0 677.647c-155.633 0-282.353-126.72-282.353-282.353s126.72-282.353 282.353-282.353S1224.43 804.367 1224.43 960s-126.72 282.353-282.353 282.353" fill-rule="evenodd"/> </g>
+          </svg>`,
+        label: 'Профиль',
+        route: 'admin.users.index'
       },
       {
         icon: `<svg fill="#ffffff" width="18" height="18" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="15.36">
@@ -243,23 +215,12 @@ const menuGroups = ref([
           <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
           <g id="SVGRepo_iconCarrier"> <path d="m1739.34 1293.414-105.827 180.818-240.225-80.188-24.509 22.25c-69.91 63.586-150.211 109.666-238.644 136.771l-32.076 9.94-49.468 244.065H835.584l-49.468-244.179-32.076-9.939c-88.432-27.105-168.734-73.185-238.644-136.771l-24.508-22.25-240.226 80.189-105.826-180.82 189.74-164.442-7.453-32.978c-10.39-45.742-15.586-91.483-15.586-135.869 0-44.386 5.195-90.127 15.586-135.868l7.454-32.979-189.741-164.442 105.826-180.819 240.226 80.075 24.508-22.25c69.91-63.585 150.212-109.665 238.644-136.884l32.076-9.826 49.468-244.066h213.007l49.468 244.18 32.076 9.825c88.433 27.219 168.734 73.186 238.644 136.885l24.509 22.25 240.225-80.189 105.826 180.819-189.74 164.442 7.453 32.98c10.39 45.74 15.586 91.481 15.586 135.867 0 44.386-5.195 90.127-15.586 135.869l-7.454 32.978 189.741 164.556Zm-53.76-333.403c0-41.788-3.84-84.48-11.634-127.284l210.184-182.062-199.454-340.856-265.186 88.433c-66.974-55.567-143.322-99.388-223.85-128.414L1140.977.01H743.198l-54.663 269.704c-81.431 29.139-156.424 72.282-223.963 128.414L199.5 309.809.045 650.665l210.07 182.062c-7.68 42.804-11.52 85.496-11.52 127.284 0 41.789 3.84 84.48 11.52 127.172L.046 1269.357 199.5 1610.214l265.186-88.546c66.974 55.68 143.323 99.388 223.85 128.527l54.663 269.816h397.779l54.663-269.703c81.318-29.252 156.424-72.283 223.85-128.527l265.186 88.546 199.454-340.857-210.184-182.174c7.793-42.805 11.633-85.496 11.633-127.285ZM942.075 564.706C724.1 564.706 546.782 742.024 546.782 960c0 217.976 177.318 395.294 395.294 395.294 217.977 0 395.294-177.318 395.294-395.294 0-217.976-177.317-395.294-395.294-395.294m0 677.647c-155.633 0-282.353-126.72-282.353-282.353s126.72-282.353 282.353-282.353S1224.43 804.367 1224.43 960s-126.72 282.353-282.353 282.353" fill-rule="evenodd"/> </g>
           </svg>`,
-        label: 'Настройки',
-        route: '#'
+        label: 'Уведомления',
+        route: 'admin.users.index'
       },
-      {
-        icon: `<svg width="18" height="18" viewBox="0 0 1024.00 1024.00" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff" stroke-width="18.432">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-          <g id="SVGRepo_iconCarrier">
-          <path d="M928.1 881v44H95.9V99h44v782z" fill="#ffffff"/>
-          <path d="M352 435.7v403.4H204V435.7h148m22-22H182v447.4h192V413.7zM608 307.9v531.2H460V307.9h148m22-22H438v575.2h192V285.9z" fill="#ffffff"/>
-          <path d="M866.1 177.3v663.9H714V177.3h152.1m20-20H694v703.9h192V157.3h0.1z" fill="#ffffff"/>
-          </g>
-          </svg>`,
-        label: 'Статистика',
-        route: '#'
-      }
     ]
   },
 ]);
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>

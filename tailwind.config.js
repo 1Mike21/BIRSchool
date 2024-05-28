@@ -12,6 +12,9 @@ export default {
         './resources/js/**/*.vue',
     ],
     darkMode: 'class',
+    future: {
+      hoverOnlyWhenSupported: true
+    },
     theme: {
         extend: {
             fontFamily: {

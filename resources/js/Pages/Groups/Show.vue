@@ -1,6 +1,5 @@
 <template>
-
-  <Head :title="group.title" />
+  <Head :title="group.title"/>
 
   <!-- The running line -->
   <section class="indent_section_bottom">

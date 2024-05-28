@@ -2,8 +2,6 @@
 
   <Head :title="title" />
 
-  <Banner />
-
   <header class="header indent_section_bottom">
     <!-- Navigation Menu -->
     <div class="py-3">
@@ -11,8 +9,8 @@
         <div class="shrink-0 flex justify-between items-center">
           <!-- Logo -->
           <Link :href="route('index')">
-          <ApplicationLogo class="hidden dark:block navbar-brand" />
-          <BlackApplicationLogo class="dark:hidden navbar-brand"/>
+            <ApplicationLogo class="hidden dark:block navbar-brand" />
+            <BlackApplicationLogo class="dark:hidden navbar-brand" />
           </Link>
           <!-- Navigation Links -->
           <nav class="hidden grow items-center 2xl:ml-6 lg:block">
@@ -20,7 +18,8 @@
               <NavLink :href="route('courses.index')" :active="route().current('courses.index')">
                 Все курсы
               </NavLink>
-              <NavLink v-if="$page.props.auth.user" :href="route('dashboard')">
+              <NavLink v-if="$page.props.auth.user" :href="route('user.courses.index')"
+                :active="route().current('user.courses.index')">
                 Мои курсы
               </NavLink>
               <NavLink :href="route('dashboard')">
@@ -55,15 +54,6 @@
                 </button>
               </li>
             </ul>
-
-            <button
-              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-              @click="closeModal">
-              <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
           </template>
           <template #content>
             <KeepAlive>
@@ -107,8 +97,12 @@
 
               <template #content>
                 <!-- Account Management -->
-                <DropdownLink :href="route('profile.show')">
-                  Профиль
+                <DropdownLink v-if="hasRole('Администратор')" :href="route('admin.users.index')">
+                  Админ панель
+                </DropdownLink>
+
+                <DropdownLink v-else :href="route('user.profile.index')">
+                  Личный кабинет
                 </DropdownLink>
 
                 <div class="border-t border-gray-200" />
@@ -146,7 +140,7 @@
             <ResponsiveNavLink :href="route('courses.index')" :active="route().current('courses.index')">
               Все курсы
             </ResponsiveNavLink>
-            <ResponsiveNavLink v-if="$page.props.auth.user" :href="route('dashboard')">
+            <ResponsiveNavLink v-if="$page.props.auth.user" :href="route('user.courses.index')" :active="route().current('user.courses.index')">
               Мои курсы
             </ResponsiveNavLink>
             <ResponsiveNavLink :href="route('dashboard')">
@@ -185,8 +179,14 @@
           </div>
 
           <ul class="mt-3 space-y-1">
-            <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
-              Профиль
+            <ResponsiveNavLink v-if="hasRole('Администратор')" :href="route('user.profile.index')"
+              :active="route().current('user.profile.index')">
+              Панель администратора
+            </ResponsiveNavLink>
+
+            <ResponsiveNavLink v-else :href="route('user.profile.index')"
+              :active="route().current('user.profile.index')">
+              Личный кабинет
             </ResponsiveNavLink>
 
             <!-- Authentication -->
@@ -250,7 +250,6 @@ import { ref, defineAsyncComponent } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import {BellIcon} from '@heroicons/vue/24/outline';
 import ApplicationLogo from '@/Components/Logo/ApplicationLogo.vue';
-import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown/Dropdown.vue';
 import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
 import NavLink from '@/Components/NavLink/NavLink.vue';
@@ -264,6 +263,8 @@ const Register = defineAsyncComponent(() => import("@/Components/Auth/Register.v
 defineProps({
   title: String,
 });
+
+const { hasRole } = useAccessControl();
 
 const nameComponent = ref(Login);
 
