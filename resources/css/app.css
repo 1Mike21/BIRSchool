@@ -37,4 +37,12 @@
   @apply bg-red opacity-100;
 }
 
+.slider_projects .splide__track .splide__list .splide__slide {
+  @apply max-h-[300px] md:max-h-[400px];
+}
+
+.slider_reviews .splide__track .splide__list .splide__slide {
+  @apply max-h-[864px];
+}
+
 

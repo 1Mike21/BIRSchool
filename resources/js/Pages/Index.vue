@@ -1,13 +1,17 @@
 <template>
-  <Head title="Главная страница"/>
+
+  <Head title="Главная страница" />
 
   <!-- About company -->
   <section class="indent_section_bottom">
     <img class="mx-auto blur-none" src="/img/About_company.png" alt="Компания">
     <p class="main_text max-sm:text-left text-justify indent_section_top">
-      Компания Бюро интернет решений занимается разработкой информационных систем с 2023 года. Одним из направлений компании является обучение.
-      Мы ведем обучение в областях разработки сайтов и дизайна уже более двух лет. Обучение подойдет для любого возраста и уровня знаний.
-      В ходе обучения, вы получите сильное коммьюнити, постоянную поддержку от куратора, реальные заказы и официальный сертификат на выходе.
+      Компания Бюро интернет решений занимается разработкой информационных систем с 2023 года. Одним из направлений
+      компании является обучение.
+      Мы ведем обучение в областях разработки сайтов и дизайна уже более двух лет. Обучение подойдет для любого возраста
+      и уровня знаний.
+      В ходе обучения, вы получите сильное коммьюнити, постоянную поддержку от куратора, реальные заказы и официальный
+      сертификат на выходе.
     </p>
     &nbsp;
     <p class="main_text">Лучшие ученики смогут начать свою карьеру в нашей компании!</p>
@@ -15,7 +19,8 @@
   <!-- About teacher -->
   <section class="indent_section_bottom">
     <div class="flex items-center justify-center flex-wrap md:flex-nowrap md:gap-24 xl:gap-52">
-      <img class="w-52 h-52 sm:w-72 sm:h-72 lg:w-[400px] lg:h-[400px] max-sm:mb-4 max-md:mb-8" src="/img/Angelina_1.png" alt="Преподаватель">
+      <img class="w-52 h-52 sm:w-72 sm:h-72 lg:w-[400px] lg:h-[400px] max-sm:mb-4 max-md:mb-8" src="/img/Angelina_1.png"
+        alt="Преподаватель">
       <p class="main_text">
         Один из наших ведущих преподавателей и основатель компании - Петелина Ангелина.
         Ангелина ведущий дипломированный специалист в области веб разработки.
@@ -27,14 +32,11 @@
   <section class="indent_section_bottom">
     <SectionTitle>Получите перспективную творческую профессию в IT</SectionTitle>
     <div class="group-course">
-      <div
-        class="group-course__item"
-        v-for="group in groups"
-        :key="group.id"
-      >
+      <div class="group-course__item" v-for="group in groups" :key="group.id">
         <img class="w-16 mx-auto" :src="group.icon" :alt="group.title">
         <h4 class="text-red font-medium text-2xl">{{ group.title }}</h4>
-        <h5 class="text-black dark:text-white text-lg underline underline-offset-8 decoration-red">{{ group.level }}</h5>
+        <h5 class="text-black dark:text-white text-lg underline underline-offset-8 decoration-red">{{ group.level }}
+        </h5>
         <h6 class="text-black dark:text-white text-base">{{ group.description }}</h6>
         <Link class="btn-more-detail" :href="route('groups.show', group.slug)">Подробнее</Link>
       </div>
@@ -43,12 +45,12 @@
   <!-- Slider student portfolio -->
   <section class="indent_section_bottom">
     <SectionTitle class="mb-10">Работы учеников</SectionTitle>
-    <Slider :options="options" :slides="slides"/>
+    <Slider :options="optionsProjectsSlider" class="slider_projects" :slides="studentsProjects" />
   </section>
   <!-- Slider reviews -->
-  <section>
+  <section class="indent_section_top indent_section_bottom">
     <SectionTitle class="mb-10">Отзывы</SectionTitle>
-    <Slider :options="options" :slides="slides"/>
+    <Slider :options="optionsReviewsSlider" class="slider_reviews" :slides="reviews" />
   </section>
 </template>
 
@@ -58,24 +60,36 @@ import { Head, Link } from '@inertiajs/vue3';
 import Slider from '@/Components/Slider.vue';
 
 const props = defineProps({
-  groups: Array
+  groups: Array,
+  studentsProjects: Array,
+  reviews: Array,
 });
 
-const slides = [
-    '/storage/slider_student_portfolio/w1.png',
-    '/storage/slider_student_portfolio/w2.png',
-    '/storage/slider_student_portfolio/w3.png',
-    '/storage/slider_student_portfolio/w4.png',
-    '/storage/slider_student_portfolio/w5.png',
-    '/storage/slider_student_portfolio/w6.png',
-    '/storage/slider_student_portfolio/w7.png',
-  ];
-
-const options = {
+const optionsProjectsSlider = {
   type: 'loop',
   updateOnMove: true,
   perPage: 3,
   perMove : 2,
+  gap: '1rem',
+  breakpoints: {
+    1650: {
+      arrows: false,
+    },
+    1200: {
+      perPage: 2,
+    },
+    600: {
+      perPage: 1,
+      perMove: 1,
+    },
+  }
+}
+
+const optionsReviewsSlider = {
+  type: 'loop',
+  updateOnMove: true,
+  perPage: 3,
+  perMove : 1,
   gap: '1rem',
   breakpoints: {
     1650: {

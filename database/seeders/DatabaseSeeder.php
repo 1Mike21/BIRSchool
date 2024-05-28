@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
           CourseSeeder::class,
           ThemeSeeder::class,
           PolyResourceSeeder::class,
+          StudentsProjectsSeeder::class,
+          ReviewSeeder::class,
         ]
       );
     }
