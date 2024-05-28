@@ -40,7 +40,7 @@
     </header>
     <!-- /Header -->
 
-    <Sidebar :menuGroups="menuGroups" />
+    <Sidebar :menuGroups="menuGroups" :key="route().current()" />
 
     <main
       :class="['h-full px-10 mt-24 mb-10 transition-all duration-300 ml-10 sm:ml-14', isSidebarOpen ? 'md:ml-64' : 'md:ml-14', ]">

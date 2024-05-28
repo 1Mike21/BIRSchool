@@ -66,7 +66,7 @@ Route::middleware([
     Route::delete('/roles/{role}/permissions/{permission}', RevokePermissionFromRoleController::class)->name('roles.permissions.destroy');
 
     Route::get('/dashboard', function () {
-      return Inertia::render('Dashboard');
+      return Inertia::render('Admin/Dashboard');
     })->name('dashboard');
   }
 );
