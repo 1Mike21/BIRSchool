@@ -44,22 +44,6 @@
           <Checkbox id="terms" v-model:checked="form.terms" name="terms" required />
 
           <div class="ms-2">
-            I agree to the
-            <a
-              :href="route('terms.show')"
-              class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              target="_blank"
-            >
-              Terms of Service
-            </a>
-            and
-            <a
-              :href="route('policy.show')"
-              class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              target="_blank"
-            >
-              Privacy Policy
-            </a>
             Я согласен с
             <a
               :href="route('terms.show')"

@@ -16,6 +16,7 @@ return [
     'features' => [
         Features::profilePhotos(),
         Features::accountDeletion(),
+        Features::termsAndPrivacyPolicy(),
     ],
 
     'profile_photo_disk' => 'public',
