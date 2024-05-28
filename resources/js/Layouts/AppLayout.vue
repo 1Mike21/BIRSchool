@@ -22,7 +22,7 @@
                 :active="route().current('user.courses.index')">
                 Мои курсы
               </NavLink>
-              <NavLink :href="route('dashboard')">
+              <NavLink href="">
                 Редактор кода
               </NavLink>
               <NavLink :href="route('contacts')" :active="route().current('contacts')">
@@ -62,8 +62,10 @@
           </template>
         </DialogModal>
 
-        <DarkModeSwitcher v-if="$page.props.auth.user" />
         <ul v-if="$page.props.auth.user" class="hidden lg:flex sm:items-center gap-x-2 ms-1 xl:ms-6">
+          <li>
+            <DarkModeSwitcher v-if="$page.props.auth.user" />
+          </li>
           <li>
             <button type="button"
               class="relative rounded-full p-1 text-[#404063] dark:text-gray-300 hover:text-darkblue dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-darkblue dark:focus:ring-white">
@@ -97,7 +99,7 @@
 
               <template #content>
                 <!-- Account Management -->
-                <DropdownLink v-if="hasRole('Администратор')" :href="route('admin.users.index')">
+                <DropdownLink v-if="hasRoles(['Администратор', 'Куратор'])" :href="route('admin.users.index')">
                   Админ панель
                 </DropdownLink>
 
@@ -143,7 +145,7 @@
             <ResponsiveNavLink v-if="$page.props.auth.user" :href="route('user.courses.index')" :active="route().current('user.courses.index')">
               Мои курсы
             </ResponsiveNavLink>
-            <ResponsiveNavLink :href="route('dashboard')">
+            <ResponsiveNavLink href="">
               Редактор кода
             </ResponsiveNavLink>
             <ResponsiveNavLink :href="route('contacts')" :active="route().current('contacts')">
@@ -179,7 +181,7 @@
           </div>
 
           <ul class="mt-3 space-y-1">
-            <ResponsiveNavLink v-if="hasRole('Администратор')" :href="route('user.profile.index')"
+            <ResponsiveNavLink v-if="hasRoles(['Администратор', 'Куратор'])" :href="route('user.profile.index')"
               :active="route().current('user.profile.index')">
               Панель администратора
             </ResponsiveNavLink>
@@ -256,6 +258,7 @@ import NavLink from '@/Components/NavLink/NavLink.vue';
 import ResponsiveNavLink from '@/Components/NavLink/ResponsiveNavLink.vue';
 import DarkModeSwitcher from '@/Components/DarkModeSwitcher.vue';
 import BlackApplicationLogo from '@/Components/Logo/BlackApplicationLogo.vue';
+import { useAccessControl } from '@/Hooks/accessControl';
 const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/DialogModal.vue"));
 const Login = defineAsyncComponent(() => import("@/Components/Auth/Login.vue"));
 const Register = defineAsyncComponent(() => import("@/Components/Auth/Register.vue"));
@@ -264,7 +267,7 @@ defineProps({
   title: String,
 });
 
-const { hasRole } = useAccessControl();
+const { hasRoles } = useAccessControl();
 
 const nameComponent = ref(Login);
 
