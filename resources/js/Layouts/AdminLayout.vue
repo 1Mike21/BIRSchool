@@ -1,6 +1,6 @@
 <template>
 
-  <Head :title="title"/>
+  <Head :title="title" />
 
   <Banner />
 
@@ -32,17 +32,7 @@
             </li>
             <li>
               <form @submit.prevent="logout">
-                <Link class="flex items-center mr-4 hover:text-blue-100" as="button">
-                <span class="inline-flex items-center gap-x-2">
-                  Выйти
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
-                    </path>
-                  </svg>
-                </span>
-                </Link>
+                <LogoutButton>Выйти</LogoutButton>
               </form>
             </li>
           </ul>
@@ -69,6 +59,7 @@ import { BellIcon } from '@heroicons/vue/24/solid';
 import Banner from '@/Components/Banner.vue';
 import WhiteApplicationLogo from '@/Components/Logo/WhiteApplicationLogo.vue';
 import Sidebar from '@/Components/Sidebar/Sidebar.vue';
+import LogoutButton from '@/Components/Button/LogoutButton.vue';
 import { useSidebar } from '@/Store/sidebar';
 import { Modal } from "inertia-modal";
 
