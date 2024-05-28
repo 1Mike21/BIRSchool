@@ -6,6 +6,8 @@ use App\Models\Group;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
+use App\Models\LearningStep;
+use Inertia\Inertia;
 
 class GroupController extends Controller
 {
@@ -14,7 +16,9 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+      $groups = Group::all();
+
+      return Inertia::render('Admin/Groups/Index', compact('groups'));
     }
 
     /**
@@ -22,7 +26,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+      return Inertia::modal('Admin/Groups/Create')->baseRoute('admin.groups.index');
     }
 
     /**
@@ -38,7 +42,13 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        //
+      $groupDescription = Group::find($group->id)->polyResources;
+
+      $group = Group::find($group->id);
+
+      $learningSteps = LearningStep::where('group_id', '=', $group->id)->get();
+
+      return Inertia::render('Admin/Groups/Show', compact('groupDescription', 'group', 'learningSteps'));
     }
 
     /**

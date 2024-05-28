@@ -11,7 +11,7 @@
   </Link>
 
   <Link v-else :href="href"
-    class="text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
+    class="text-white focus:ring-4 max-w-60 focus:ring-gray-300 gap-x-4 font-medium rounded-lg inline-flex justify-center items-center px-3 py-2 text-center">
   <slot />
   </Link>
 </template>

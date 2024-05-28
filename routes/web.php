@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RevokePermissionFromRoleController;
 use App\Http\Controllers\Admin\RoleController;
@@ -33,6 +34,7 @@ Route::middleware([
   Route::resource('/users', UserController::class);
   Route::resource('/roles', RoleController::class);
   Route::resource('/permissions', PermissionController::class);
+  Route::resource('/groups', GroupController::class);
   Route::delete('/roles/{role}/permissions/{permission}', RevokePermissionFromRoleController::class)->name('roles.permissions.destroy');
 });
 
