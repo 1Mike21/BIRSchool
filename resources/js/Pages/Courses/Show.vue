@@ -1,5 +1,5 @@
 <template>
-  <Head title="Описание курса"/>
+  <Head :title="course.title"/>
 
   <!-- About course -->
   <section class="indent_section_bottom">

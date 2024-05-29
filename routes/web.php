@@ -36,6 +36,10 @@ Route::get('/', IndexController::class)->name('index');
 
 Route::get('/contacts', ContactsController::class)->name('contacts');
 
+Route::get('/code', function () {
+  return Inertia::render('CodeEditor');
+})->name('code');
+
 Route::get('/groups/{group}', GroupsShowController::class)->name('groups.show');
 
 Route::get('/courses', CoursesIndexController::class)->name('courses.index');
