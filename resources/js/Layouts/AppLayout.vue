@@ -22,7 +22,7 @@
                 :active="route().current('user.courses.index')">
                 Мои курсы
               </NavLink>
-              <NavLink :href="route('code')">
+              <NavLink :href="route('code-editor')" :active="route().current('code-editor')">
                 Редактор кода
               </NavLink>
               <NavLink :href="route('contacts')" :active="route().current('contacts')">
@@ -145,7 +145,7 @@
             <ResponsiveNavLink v-if="$page.props.auth.user" :href="route('user.courses.index')" :active="route().current('user.courses.index')">
               Мои курсы
             </ResponsiveNavLink>
-            <ResponsiveNavLink :href="route('code')">
+            <ResponsiveNavLink :href="route('code-editor')" :active="route().current('code-editor')">
               Редактор кода
             </ResponsiveNavLink>
             <ResponsiveNavLink :href="route('contacts')" :active="route().current('contacts')">

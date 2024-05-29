@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\CodeEditorController;
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RevokePermissionFromRoleController;
@@ -36,9 +37,7 @@ Route::get('/', IndexController::class)->name('index');
 
 Route::get('/contacts', ContactsController::class)->name('contacts');
 
-Route::get('/code', function () {
-  return Inertia::render('CodeEditor');
-})->name('code');
+Route::get('/code-editor', CodeEditorController::class)->name('code-editor');
 
 Route::get('/groups/{group}', GroupsShowController::class)->name('groups.show');
 
