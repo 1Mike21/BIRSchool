@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Theme;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreThemeRequest;
 use App\Http\Requests\UpdateThemeRequest;
+use App\Models\Course;
+use Inertia\Inertia;
 
 class ThemeController extends Controller
 {
@@ -14,7 +16,9 @@ class ThemeController extends Controller
      */
     public function index()
     {
-        //
+      $courses = Course::where('is_active', '=', 1)->get();
+
+      return Inertia::render('Admin/Courses/Index', compact('courses'));
     }
 
     /**
