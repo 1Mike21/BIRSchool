@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\CodeEditorController;
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\HomeworkController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -39,6 +40,8 @@ $authSessionMiddleware = config('jetstream.auth_session', false)
 Route::get('/', IndexController::class)->name('index');
 
 Route::get('/contacts', ContactsController::class)->name('contacts');
+
+Route::get('/code-editor', CodeEditorController::class)->name('code-editor');
 
 Route::get('/groups/{group}', GroupsShowController::class)->name('groups.show');
 

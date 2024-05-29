@@ -2,7 +2,7 @@
 
   <Head title="Управление группами" />
 
-  <div class="p-4 sm:flex items-center justify-between lg:mt-1.5">
+  <div class="py-4 sm:flex items-center justify-between lg:mt-1.5">
     <div class="mb-1 w-full">
       <div class="sm:flex">
         <div class="hidden sm:flex items-center sm:divide-x sm:divide-gray-100 mb-3 sm:mb-0">
@@ -14,16 +14,6 @@
                 placeholder="Поиск...">
             </div>
           </form>
-          <div class="flex space-x-1 pl-0 sm:pl-2 mt-3 sm:mt-0">
-            <a href="#"
-              class="text-gray-500 hover:text-rose-800 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                  clip-rule="evenodd"></path>
-              </svg>
-            </a>
-          </div>
         </div>
         <div class="flex items-center ml-auto">
           <AdminButton as="link" hasIcon="true" :href="route('admin.groups.create') ">
@@ -41,10 +31,10 @@
         <div class="group-course__item" v-for="group in groups" :key="group.id">
           <img class="w-16 mx-auto" :src="group.icon" :alt="group.title">
           <h4 class="text-red font-medium text-2xl">{{ group.title }}</h4>
-          <h5 class="text-white dark:text-darkblue text-lg underline underline-offset-8 decoration-red">{{ group.level
+          <h5 class="dark:text-white text-black text-lg underline underline-offset-8 decoration-red">{{ group.level
             }}
           </h5>
-          <h6 class="text-white dark:text-darkblue text-base">{{ group.description }}</h6>
+          <h6 class="dark:text-white text-black text-base">{{ group.description }}</h6>
           <div class="flex flex-col mx-auto gap-y-3">
             <AdminButton :href="route('admin.users.edit', group.slug)" class="bg-[#08B581] hover:bg-[#08DD9C]">
               <Edit />
@@ -102,7 +92,7 @@ const { showConfirmDeleteModal, closeModal, showModal, parameter } = useConfirmD
 }
 
 .group-course__item {
-  @apply dark:bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] min-w-[270px] max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl;
+  @apply bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] min-w-[270px] max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl;
 }
 
 .btn-more-detail {
