@@ -52,7 +52,7 @@
       <TableColumn>{{ role.name }}</TableColumn>
       <TableColumn class="flex gap-x-3">
         <p class="bg-red px-5 pr-3 py-1 flex items-center text-white text-sm font-semibold rounded-lg"
-          v-for="permission in role.permissions">
+          v-for="permission in role.permissions" :key="permission.id">
           {{ permission.name }}
           <Link :href="route('admin.roles.permissions.destroy', [role.id, permission.id])" method="DELETE" class="pl-3 cursor-pointer hover:text-black text-base"><svg xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16" fill="currentColor" class="size-4">

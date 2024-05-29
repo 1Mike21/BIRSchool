@@ -60,23 +60,31 @@
         </div>
       </TableColumn>
       <TableColumn>{{ user.phone_number }}</TableColumn>
-      <TableColumn>{{ user.roles[0].name }}</TableColumn>
-      <TableColumn>
-        <div class="flex items-center">
-          <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
-          <div class="h-2.5 w-2.5 rounded-full bg-rose-600 mr-2"></div>
-        </div>
-      </TableColumn>
-      <TableColumn>{{ user.created_at }}</TableColumn>
-      <TableColumn class="space-x-2">
-        <AdminButton v-show="user.roles[0].name == 'Ученик'" :href="route('admin.users.show', user.id) " class="bg-[#00ADEB] hover:bg-[#24C4FF]">
-          <Show />
-        </AdminButton>
-        <AdminButton :href="route('admin.users.edit', user.id)" class="bg-[#08B581] hover:bg-[#08DD9C]">
-          <Edit />
-        </AdminButton>
-        <AdminDangerButton @click="showModal(user.id)" />
-      </TableColumn>
+      <template v-for="role in user.roles" :key="role.id">
+        <TableColumn>
+          {{ role.name }}
+        </TableColumn>
+        <TableColumn>
+          <div class="flex justify-center">
+            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
+            <!-- <div class="h-2.5 w-2.5 rounded-full bg-rose-600 mr-2"></div> -->
+          </div>
+        </TableColumn>
+        <TableColumn>{{ user.created_at }}</TableColumn>
+        <TableColumn class="space-x-2">
+          <AdminButton
+            v-show="role.name == 'Ученик'"
+            :href="route('admin.users.show', user.id) "
+            class="bg-[#00ADEB] hover:bg-[#24C4FF]"
+          >
+            <Show />
+          </AdminButton>
+          <AdminButton :href="route('admin.users.edit', user.id)" class="bg-[#08B581] hover:bg-[#08DD9C]">
+            <Edit />
+          </AdminButton>
+          <AdminDangerButton @click="showModal(user.id)" />
+        </TableColumn>
+      </template>
     </TableRow>
     <template #pagination>
       <Pagination :links="users.links" />
