@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 
 class CodeEditorController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
-    {
-      return Inertia::render('CodeEditor');
-    }
+  public function __invoke()
+  {
+    return Inertia::render('CodeEditor');
+  }
 }

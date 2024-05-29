@@ -62,9 +62,6 @@ onMounted(() => {
   editor.css = localStorage.css_code;
   editor.js = localStorage.js_code;
 });
-
-// // const bar = document.querySelector('.bar');
-// // const code_editor = document.querySelector('.code-editor');
 </script>
 
 <style scoped>
@@ -72,6 +69,6 @@ onMounted(() => {
   @apply text-white font-semibold my-4;
 }
 .textarea-code {
-  @apply w-full bg-white h-[calc(100%-4rem)] border-none text-black resize-none scrollbar-thin;
+  @apply w-full bg-white dark:bg-slate-900 h-[calc(100%-4rem)] border-none text-black dark:text-white resize-none scrollbar-thin;
 }
 </style>
