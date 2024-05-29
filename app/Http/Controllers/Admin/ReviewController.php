@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Review;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
+use App\Models\Course;
+use Inertia\Inertia;
 
 class ReviewController extends Controller
 {
@@ -14,7 +16,9 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+      $courses = Course::where('is_active', '=', 1)->get();
+
+      return Inertia::render('Admin/Courses/Index', compact('courses'));
     }
 
     /**

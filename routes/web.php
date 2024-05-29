@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\CodeEditorController;
 use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\HomeworkController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\RevokePermissionFromRoleController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Courses\IndexController as CoursesIndexController;
 use App\Http\Controllers\Courses\ShowController as CoursesShowController;
@@ -65,6 +69,14 @@ Route::middleware([
     Route::resource('/permissions', PermissionController::class);
 
     Route::resource('/groups', GroupController::class);
+
+    Route::resource('/courses', CourseController::class);
+
+    Route::resource('/homeworks', HomeworkController::class);
+
+    Route::resource('/themes', ThemeController::class);
+
+    Route::resource('/reviews', ReviewController::class);
 
     Route::delete('/roles/{role}/permissions/{permission}', RevokePermissionFromRoleController::class)->name('roles.permissions.destroy');
 
