@@ -38,7 +38,6 @@
       </div>
     </div>
   </div>
-  <h1>Пользователи</h1>
   <!-- Table with Users -->
   <Table v-if="users.meta.total > 0">
     <template #header>

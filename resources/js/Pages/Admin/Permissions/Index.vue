@@ -38,7 +38,6 @@
       </div>
     </div>
   </div>
-  <h1>Разрешения</h1>
   <!-- Table with Permissions -->
   <Table v-if="permissions.length > 0">
     <template #header>

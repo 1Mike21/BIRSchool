@@ -14,6 +14,9 @@
         <div class="flex justify-between items-center">
           <ul v-if="$page.props.auth.user" class="flex items-center justify-between gap-x-5 ms-1 xl:ms-6">
             <li>
+              <DarkModeSwitcher />
+            </li>
+            <li>
               <button type="button"
                 class="relative rounded-full p-1 text-white focus:outline-none focus:ring-2 focus:ring-white">
                 <span class="absolute -inset-1.5" />
@@ -62,6 +65,7 @@ import Sidebar from '@/Components/Sidebar/Sidebar.vue';
 import LogoutButton from '@/Components/Button/LogoutButton.vue';
 import { useSidebar } from '@/Hooks/sidebar';
 import { Modal } from "inertia-modal";
+import DarkModeSwitcher from '@/Components/DarkModeSwitcher.vue';
 
 const logout = () => {
   router.post(route('logout'));

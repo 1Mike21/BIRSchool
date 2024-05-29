@@ -38,7 +38,6 @@
       </div>
     </div>
   </div>
-  <h1>Роли</h1>
   <!-- Table with Roles -->
   <Table v-if="roles.length > 0">
     <template #header>
