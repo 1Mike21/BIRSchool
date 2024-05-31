@@ -2,7 +2,7 @@
   <li>
     <SidebarLink
       :dropdown="item.children"
-      v-if="hasRoles(item.role)"
+      v-if="hasRoles(item.roles)"
       :active="route().current(item.route)"
       :href="route(item.route)"
       @click.prevent="toggleSubmenu"
