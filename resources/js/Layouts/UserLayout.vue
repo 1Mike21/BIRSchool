@@ -1,6 +1,6 @@
 <template>
 
-  <Head :title="title"/>
+  <Head :title="title" />
 
   <Banner />
 
@@ -25,7 +25,8 @@
               </button>
             </li>
             <li class="flex flex-col text-right">
-              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{ $page.props.auth.user.name }}</span>
+              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{
+                $page.props.auth.user.name }}</span>
               <span class="text-xs font-medium">{{ $page.props.auth.user.roles[0] }}</span>
             </li>
             <li>
@@ -43,7 +44,7 @@
     </header>
     <!-- /Header -->
 
-    <Sidebar :menuGroups="menuGroups" :key="route().current()" />
+    <Sidebar :menuGroups="menuGroups" checkRoles="false" :key="route().current()" />
 
     <main
       :class="['h-full px-10 mt-24 mb-10 transition-all duration-300 ml-10 sm:ml-14', isSidebarOpen ? 'md:ml-64' : 'md:ml-14', ]">
