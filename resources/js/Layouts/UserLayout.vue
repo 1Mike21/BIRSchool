@@ -60,7 +60,7 @@ import Banner from '@/Components/Banner.vue';
 import WhiteApplicationLogo from '@/Components/Logo/WhiteApplicationLogo.vue';
 import Sidebar from '@/Components/Sidebar/Sidebar.vue';
 import LogoutButton from '@/Components/Button/LogoutButton.vue';
-import { useSidebar } from '@/Store/sidebar';
+import { useSidebar } from '@/Hooks/sidebar';
 
 const logout = () => {
   router.post(route('logout'));

@@ -8,10 +8,16 @@ class LoginResponse implements LoginResponseContract
 {
   public function toResponse($request)
   {
-    return $request->wantsJson()
-      ? response()->json()
-      : redirect()->intended(
-        auth()->user()->roles->pluck('name')[0] === 'Администратор' || 'Куратор' ? route('admin.dashboard') : route('index')
-      );
+    $role = auth()->user()->roles->pluck('name')[0];
+
+    if ($role === 'Администратор') {
+      return redirect()->route('admin.dashboard');
+    }
+
+    elseif ($role === 'Куратор') {
+      return redirect()->route('admin.homeworks.index');
+    }
+
+    return redirect()->route('index');
   }
 }
