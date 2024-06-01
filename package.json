@@ -26,6 +26,7 @@
         "@headlessui/vue": "^1.7.18",
         "@heroicons/vue": "^2.1.1",
         "@splidejs/vue-splide": "^0.6.12",
+        "@vueuse/core": "^10.10.0",
         "inertia-modal": "github:emargareten/inertia-modal"
     }
 }
