@@ -2,7 +2,6 @@
   <li>
     <SidebarLink
       :dropdown="item.children"
-      v-if="hasRoles(item.roles)"
       :active="route().current(item.route)"
       :href="route(item.route)"
       @click.prevent="toggleSubmenu"
@@ -46,15 +45,24 @@ import { useSidebar } from '@/Hooks/sidebar';
 import SidebarDropdown from '@/Components/Sidebar/SidebarDropdown.vue';
 import SidebarLink from '@/Components/Sidebar/SidebarLink.vue';
 import { useAccessControl } from '@/Hooks/accessControl';
+import { watch } from 'vue';
 
 const props = defineProps({
   item: {
     type: String,
     default: '',
   },
+  checkRoles: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const { hasRoles } = useAccessControl();
+
+watch(() => props.checkRoles, newCheckRoles => {
+  if (newCheckRoles) hasRoles(props.item.roles);
+});
 
 const { isSidebarOpen, isSubmenuOpen, toggleSubmenu } = useSidebar();
 </script>
