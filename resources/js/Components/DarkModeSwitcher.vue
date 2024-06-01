@@ -1,8 +1,9 @@
 <template>
-  <label :class="['relative m-0 block rounded-full cursor-pointer h-8 w-14 bg-slate-500']">
-    <input type="checkbox" class="w-full h-full m-0 cursor-pointer opacity-0" @click="toggleTheme">
-    <span :class="{ 'translate-x-full': darkMode }"
-      class="absolute top-1/2 left-1 flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center justify-center rounded-full bg-white shadow-switcher duration-75 ease-linear">
+  <label
+    :class="['relative m-0 block rounded-full cursor-pointer h-8 w-14', { 'bg-violetButton': isDark, 'bg-slate-300': !isDark }]">
+    <input type="checkbox" class="w-full h-full m-0 cursor-pointer opacity-0" @click="toggleDark()">
+    <span :class="{ 'translate-x-full': isDark }"
+      class="absolute top-1/2 left-1 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-switcher duration-75 ease-linear">
       <span class="dark:hidden">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -25,7 +26,8 @@
 </template>
 
 <script setup>
-import { useTheme } from '@/Hooks/theme';
+import { useDark, useToggle } from '@vueuse/core';
 
-const { darkMode, toggleTheme } = useTheme();
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 </script>
