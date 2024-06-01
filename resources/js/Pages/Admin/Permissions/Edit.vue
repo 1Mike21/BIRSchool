@@ -2,7 +2,7 @@
 
   <Head title="Редактирование разрешения" />
 
-  <ModalPage max-width="2xl">
+  <ModalPage max-width="md">
     <template #title>
       <h3 class="text-xl font-semibold">
         Редактирование разрешения

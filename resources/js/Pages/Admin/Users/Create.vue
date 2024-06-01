@@ -8,7 +8,7 @@
       </h3>
     </template>
     <template #content>
-      <AdminForm id="create_user_form" @submitted="submit">
+      <AdminForm id="create_user_form" @submitted="submit" class="grid-cols-6">
         <AdminFormGroup>
           <InputLabel
           class="mb-2"
@@ -22,6 +22,7 @@
           autocomplete="surname"
           placeholder="Введите фамилию"
           type="text"
+          autofocus
           />
           <InputError class="mt-2" :message="form.errors.surname"/>
         </AdminFormGroup>
@@ -38,7 +39,6 @@
             autocomplete="name"
             type="text"
             placeholder="Введите имя"
-            autofocus
           />
           <InputError class="mt-2" :message="form.errors.name"/>
         </AdminFormGroup>

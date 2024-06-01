@@ -1,5 +1,5 @@
 <template>
-  <ModalPage>
+  <ModalPage max-width="md">
     <template #title>
       <h3 class="text-xl font-semibold">
         Редактирование информации пользователя
@@ -11,14 +11,14 @@
           <InputLabel class="mb-2" for="surname" value="Фамилия" />
           <TextInput
             :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', { 'border-red': form.errors.surname }]"
-            v-model="form.surname" id="surname" autocomplete="surname" placeholder="Введите фамилию" type="text" />
+            v-model="form.surname" id="surname" autocomplete="surname" autofocus placeholder="Введите фамилию" type="text" />
           <InputError class="mt-2" :message="form.errors.surname" />
         </AdminFormGroup>
         <AdminFormGroup>
           <InputLabel class="mb-2" for="name" value="Имя" />
           <TextInput v-model="form.name" id="name"
             :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', { 'border-red': form.errors.name }]"
-            autocomplete="name" type="text" placeholder="Введите имя" autofocus />
+            autocomplete="name" type="text" placeholder="Введите имя" />
           <InputError class="mt-2" :message="form.errors.name" />
         </AdminFormGroup>
         <AdminFormGroup>
@@ -36,7 +36,7 @@
             autocomplete="phone_number" />
           <InputError class="mt-2" :message="form.errors.phone_number" />
         </AdminFormGroup>
-        <AdminFormGroup class="min-w-96">
+        <AdminFormGroup>
           <InputLabel class="mb-2" for="role" value="Роль" />
           <MultiSelect v-model="form.role" :options="roles" id="role" label="name" :allow-empty="false"
             :close-on-select="true" track-by="id" placeholder="Выберите роль" :searchable="false" />

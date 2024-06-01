@@ -1,7 +1,7 @@
 <template>
   <Head title="Создание разрешения" />
 
-  <ModalPage max-width="2xl">
+  <ModalPage max-width="md">
     <template #title>
       <h3 class="text-xl font-semibold">
         Создание разрешения
