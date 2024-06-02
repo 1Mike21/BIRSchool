@@ -1,12 +1,12 @@
 <template>
   <button v-if="as == 'button'"
-    :class="['bg-violetButton min-w-16 hover:bg-violetHoverButton focus:ring-4 focus:ring-gray-300 rounded-lg text-white font-medium text-sm mr-3 justify-center px-3 py-2 sm:w-auto md:text-base text-center', { 'inline-flex items-center': hasIcon }, { 'opacity-75': submitted }]"
+    :class="['bg-violetButton min-w-16 hover:bg-violetHoverButton focus:ring-4 focus:ring-gray-300 rounded-lg text-white font-medium text-sm justify-center px-3 py-2 sm:w-auto md:text-base text-center', { 'inline-flex items-center': hasIcon }, { 'opacity-75': submitted }]"
     :type="type">
     <slot />
   </button>
 
   <Link v-else-if="as == 'link'" :href="href"
-    :class="['bg-violetButton min-w-16 hover:bg-violetHoverButton focus:ring-4 focus:ring-gray-300 rounded-lg text-white font-medium text-sm mr-3 justify-center px-3 py-2 sm:w-auto md:text-base text-center', { 'inline-flex items-center': hasIcon }]">
+    :class="['bg-violetButton min-w-16 hover:bg-violetHoverButton focus:ring-4 focus:ring-gray-300 rounded-lg text-white font-medium text-sm justify-center px-3 py-2 sm:w-auto md:text-base text-center', { 'inline-flex items-center': hasIcon }]">
   <slot />
   </Link>
 

@@ -1,15 +1,16 @@
 <template>
 
   <Head title="Роли" />
-  <div class="py-4 sm:flex items-center justify-between lg:mt-1.5">
+
+  <div class="mt-3 mb-5 sm:flex items-center justify-between">
     <div class="mb-1 w-full">
       <div class="sm:flex">
-        <div class="hidden sm:flex items-center sm:divide-x sm:divide-gray-100 mb-3 sm:mb-0">
+        <div class="sm:flex items-center sm:divide-x sm:divide-gray-100 mb-3 sm:mb-0">
           <form class="lg:pr-3" action="#" method="GET">
             <label for="users-search" class="sr-only">Search</label>
-            <div class="mt-1 relative lg:w-64 xl:w-96">
+            <div class="relative lg:w-64 xl:w-96">
               <input type="text" name="email" id="users-search"
-                class="bg-white border-2 border-darkblue text-black sm:text-sm rounded-lg focus:ring-violetButton focus:border-violetButton block w-full p-2.5"
+                class="bg-white border-2 border-darkblue text-black sm:text-sm rounded-lg focus:ring-violetButton focus:border-violetButton w-full p-2.5"
                 placeholder="Поиск...">
             </div>
           </form>
@@ -51,7 +52,7 @@
           </Link>
         </p>
       </TableColumn>
-      <TableColumn class="space-x-2">
+      <TableColumn class="space-x-3 text-right">
         <AdminButton :href="route('admin.roles.edit', role.id)" class="bg-[#08B581] hover:bg-[#08DD9C]">
           <Edit />
         </AdminButton>
@@ -68,13 +69,12 @@
   <DialogModal :show="showConfirmDeleteModal" max-width="md" @close="closeModal">
     <template #title />
     <template #content>
-      <img src="/img/icon/exclamation-mark.svg" alt="delete" class="h-36 w-36 mx-auto">
+      <img src="/img/icons/exclamation-mark.svg" alt="delete" class="h-36 w-36 mx-auto">
       <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить выбранную роль?
       </h3>
     </template>
     <template #footer>
-      <AdminButton as="link" method="DELETE" :href="route('admin.roles.destroy', parameter)" @click="closeModal">Да
-      </AdminButton>
+      <AdminButton as="link" method="DELETE" :href="route('admin.roles.destroy', parameter)" @click="closeModal" class="mr-3">Да</AdminButton>
       <SecondaryButton @click="closeModal">Нет</SecondaryButton>
     </template>
   </DialogModal>
