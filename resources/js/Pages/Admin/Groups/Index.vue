@@ -90,7 +90,7 @@ const { showConfirmDeleteModal, closeModal, showModal, parameter } = useConfirmD
   @apply mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8;
 }
 .group-course__item {
-  @apply flex flex-col gap-y-3 bg-white dark:bg-opacity-5 border-2 min-h-[310px] min-w-[270px] max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl;
+  @apply flex flex-col gap-y-3 bg-white dark:bg-opacity-5 border-2 min-h-[310px] min-w-[270px] max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl dark:shadow-none;
 }
 .btn-more-detail {
   @apply border-0 rounded-lg self-center mt-auto bg-[#00ADEB] text-white py-2 px-4 lg:px-6 text-center no-underline whitespace-nowrap hover:bg-[#24C4FF];
