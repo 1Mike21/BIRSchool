@@ -26,12 +26,12 @@
         </div>
 
         <div class="flex gap-x-4 mt-2 items-center flex-col sm:flex-row md:flex-col justify-center lg:flex-row lg:gap-y-2">
-          <SecondaryButton class="mt-2" type="button" @click.prevent="selectNewPhoto">
+          <ProfileSecondaryButton class="mt-2" type="button" @click.prevent="selectNewPhoto">
             Обновить фотографию
-          </SecondaryButton>
-          <SecondaryButton type="button" class="mt-2" @click.prevent="deletePhoto">
+          </ProfileSecondaryButton>
+          <ProfileSecondaryButton class="mt-2" type="button" @click.prevent="deletePhoto">
             Удалить фотографию
-          </SecondaryButton>
+          </ProfileSecondaryButton>
         </div>
 
         <InputError :message="form.errors.photo" class="mt-2" />
@@ -39,22 +39,22 @@
 
       <!-- Name -->
       <div class="col-span-6 sm:col-span-4">
-        <InputLabel for="name" value="Имя" />
-        <TextInput id="name" v-model="form.name" type="text" class="mt-1 block w-full" autocomplete="name" />
+        <InputLabel for="name" value="Имя" class="text-black dark:text-white"/>
+        <TextInput id="name" v-model="form.name" type="text" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="name" />
         <InputError :message="form.errors.name" class="mt-2" />
       </div>
 
       <!-- Surname -->
       <div class="col-span-6 sm:col-span-4">
-        <InputLabel for="surname" value="Фамилия" />
-        <TextInput id="surname" v-model="form.surname" type="text" class="mt-1 block w-full" autocomplete="surname" />
+        <InputLabel for="surname" value="Фамилия" class="text-black dark:text-white"/>
+        <TextInput id="surname" v-model="form.surname" type="text" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="surname" />
         <InputError :message="form.errors.surname" class="mt-2" />
       </div>
 
       <!-- Email -->
       <div class="col-span-6 sm:col-span-4">
-        <InputLabel for="email" value="Email" />
-        <TextInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" autocomplete="email" />
+        <InputLabel for="email" value="Email" class="text-black dark:text-white"/>
+        <TextInput id="email" v-model="form.email" type="email" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="email" />
         <InputError :message="form.errors.email" class="mt-2" />
 
         <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
@@ -76,9 +76,8 @@
 
       <!-- Phone number -->
       <div class="col-span-6 sm:col-span-4">
-        <InputLabel for="phone_number" value="Номер телефона" />
-        <TextInput id="phone_number" v-model="form.phone_number" type="text" class="mt-1 block w-full"
-          autocomplete="phone_number" />
+        <InputLabel for="phone_number" value="Номер телефона" class="text-black dark:text-white"/>
+        <TextInput id="phone_number" v-model="form.phone_number" type="text" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="phone_number" />
         <InputError :message="form.errors.phone_number" class="mt-2" />
       </div>
     </template>
@@ -88,7 +87,7 @@
         Сохранено
       </ActionMessage>
 
-      <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+      <PrimaryButton class="hover:bg-gray-700 focus:bg-gray-700 dark:hover:bg-gray-900 dark:focus:bg-gray-900" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
         Сохранить
       </PrimaryButton>
     </template>
@@ -103,7 +102,7 @@ import FormSection from '@/Components/FormElement/FormSection.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import InputLabel from '@/Components/FormElement/InputLabel.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
-import SecondaryButton from '@/Components/Button/SecondaryButton.vue';
+import ProfileSecondaryButton from '@/Components/Button/ProfileSecondaryButton.vue';
 import TextInput from '@/Components/FormElement/TextInput.vue';
 
 const props = defineProps({

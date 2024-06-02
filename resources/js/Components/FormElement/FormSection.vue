@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-7 mb-3">
+  <div class="mt-2 mb-3">
     <SectionFormTitle>
       <slot name="title" />
     </SectionFormTitle>
@@ -10,15 +10,15 @@
   </div>
 
   <form @submit.prevent="$emit('submitted')">
-    <div class="px-4 py-5 bg-white sm:p-6 shadow"
-      :class="hasActions ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md'">
+    <div class="px-4 py-5 bg-white dark:bg-opacity-5 sm:p-6 shadow-xl border dark:border-none"
+      :class="hasActions ? 'rounded-tl-lg rounded-tr-lg' : 'rounded-lg'">
       <div class="grid gap-6">
         <slot name="form" />
       </div>
     </div>
 
     <div v-if="hasActions"
-      class="flex items-center justify-end px-4 py-3 bg-gray-50 text-end sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
+      class="flex items-center justify-end px-4 py-3 bg-gray-100 dark:bg-white dark:bg-opacity-10 text-end sm:px-6 shadow-xl border dark:border-none rounded-bl-lg rounded-br-lg">
       <slot name="actions" />
     </div>
   </form>

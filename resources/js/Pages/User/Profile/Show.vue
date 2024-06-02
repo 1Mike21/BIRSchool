@@ -1,12 +1,12 @@
 <template>
   <Head title="Настройки профиля"/>
 
-    <div class="sm:px-6 lg:px-8 grid grid-cols-1 gap-x-10 md:grid-cols-2">
+    <div class="grid grid-cols-1 gap-x-10 md:grid-cols-2">
       <div v-if="$page.props.jetstream.canUpdateProfileInformation">
         <UpdateProfileInformationForm :user="$page.props.auth.user" />
       </div>
 
-      <div class="flex flex-col justify-between">
+      <div class="flex flex-col justify-between max-md:mt-6">
         <div v-if="$page.props.jetstream.canUpdatePassword">
           <UpdatePasswordForm class="mt-10 sm:mt-0" />
         </div>
