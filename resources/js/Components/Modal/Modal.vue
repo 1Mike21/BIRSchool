@@ -1,7 +1,7 @@
 <template>
   <teleport to="body">
     <transition leave-active-class="duration-200" @after-leave="redirect">
-      <div v-show="show" class="fixed inset-0 overflow-y-auto px-4 py-28 sm:px-0 z-50" scroll-region>
+      <div v-show="show" ref="modal" class="fixed inset-0 overflow-y-auto px-4 py-28 sm:px-0 z-50" scroll-region>
         <transition enter-active-class="ease-out duration-300" enter-from-class="opacity-0" enter-to-class="opacity-100"
           leave-active-class="ease-in duration-200" leave-from-class="opacity-100" leave-to-class="opacity-0">
           <div v-show="show" class="fixed inset-0 transform transition-all" @click="close">
@@ -14,8 +14,7 @@
           enter-to-class="opacity-100 translate-y-0 sm:scale-100" leave-active-class="ease-in duration-200"
           leave-from-class="opacity-100 translate-y-0 sm:scale-100"
           leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-          <div v-show="show"
-            class="mb-6 bg-white rounded-lg overflow-visible shadow-xl transform transition-all sm:w-full sm:mx-auto"
+          <div v-show="show" class="mb-6 bg-white rounded-lg shadow-xl transform transition-all sm:w-full sm:mx-auto"
             :class="maxWidthClass">
             <slot v-if="show" />
           </div>
@@ -26,8 +25,9 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, watch } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useModal } from "inertia-modal";
+import { watchThrottled } from '@vueuse/core';
 
 const { redirect } = useModal();
 
@@ -46,15 +46,9 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['close']);
+const modal = ref(null);
 
-watch(() => props.show, () => {
-  if (props.show) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = null;
-  }
-});
+const emit = defineEmits(['close']);
 
 const close = () => {
   if (props.closeable) {
@@ -68,11 +62,25 @@ const closeOnEscape = (e) => {
   }
 };
 
-onMounted(() => document.addEventListener('keydown', closeOnEscape));
+onMounted(() => {
+  document.addEventListener('keydown', closeOnEscape);
+
+  watchThrottled(() => props.show, (newShow) => {
+    let paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
+
+    if (newShow) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.paddingRight = paddingOffset;
+      return
+    }
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.paddingRight = '0px';
+  }, { immediate: true, throttle: 100 });
+});
 
 onUnmounted(() => {
   document.removeEventListener('keydown', closeOnEscape);
-  document.body.style.overflow = null;
+  document.documentElement.style.overflow = 'auto';
 });
 
 const maxWidthClass = computed(() => {
