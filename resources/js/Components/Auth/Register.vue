@@ -1,4 +1,5 @@
 <template>
+
   <Head title="Регистрация" />
 
   <form @submit.prevent="submit">
@@ -25,24 +26,20 @@
 
     <div class="mt-4">
       <InputLabel for="password" value="Пароль" />
-      <TextInput id="password" v-model="form.password" type="password"
-        :class="['mt-1 block w-full', {'border-red': form.errors.password}]" autocomplete="new-password" />
+      <HideShowPassword v-model="form.password" :errors="form.errors.password" autocomplete="new-password" />
       <InputError class="mt-2" :message="form.errors.password" />
     </div>
 
     <div class="mt-4">
       <InputLabel for="password_confirmation" value="Подтвердите пароль" />
-      <TextInput id="password_confirmation" v-model="form.password_confirmation" type="password"
-        :class="['mt-1 block w-full', {'border-red': form.errors.password_confirmation}]"
-        autocomplete="new-password" />
+      <HideShowPassword id="password_confirmation" v-model="form.password_confirmation" :errors="form.errors.password_confirmation" autocomplete="new-password" />
       <InputError class="mt-2" :message="form.errors.password_confirmation" />
     </div>
 
     <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="mt-4">
       <InputLabel for="terms">
         <div class="flex items-center">
-          <Checkbox id="terms" v-model:checked="form.terms" :class="{ 'border-red': form.errors.terms }" name="terms"
-           />
+          <Checkbox id="terms" v-model:checked="form.terms" :class="{ 'border-red': form.errors.terms }" name="terms" />
 
           <div class="ms-2">
             Я согласен с
@@ -78,6 +75,7 @@ import InputError from '@/Components/FormElement/InputError.vue';
 import InputLabel from '@/Components/FormElement/InputLabel.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
 import TextInput from '@/Components/FormElement/TextInput.vue';
+import HideShowPassword from '@/Components/FormElement/HideShowPassword.vue';
 
 const emit = defineEmits(['closeModal']);
 
