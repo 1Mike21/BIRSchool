@@ -90,7 +90,7 @@ class UserController extends Controller
       ]);
 
       if ($request->has('role')) {
-        $user->syncRoles($request->input('role.name'));
+        $user->syncRoles($request->input('role.*.name'));
       }
 
       session()->flash('flash.banner', 'Данные пользователя успешно изменены');
