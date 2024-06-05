@@ -4,8 +4,8 @@
     :options="options"
     @splide:dragging="isDragging=true"
     >
-    <SplideSlide v-for="(slide, index) in slides" :key="index" class="rounded-lg">
-      <img class="w-full object-cover object-top" :src="slide" alt="">
+    <SplideSlide v-for="(slide, index) in slides" :key="index">
+      <img class="w-full object-cover object-top rounded-sm" :src="slide" alt="">
     </SplideSlide>
   </Splide>
 </template>

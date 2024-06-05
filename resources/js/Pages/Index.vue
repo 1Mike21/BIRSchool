@@ -57,7 +57,7 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import SectionTitle from '@/Components/Section/SectionTitle.vue';
-import Slider from '@/Components/Slider.vue';
+import Slider from '@/Components/Slider/Slider.vue';
 
 const props = defineProps({
   groups: Array,
@@ -69,7 +69,7 @@ const optionsProjectsSlider = {
   type: 'loop',
   updateOnMove: true,
   perPage: 3,
-  perMove : 2,
+  perMove: 2,
   gap: '1rem',
   breakpoints: {
     1650: {

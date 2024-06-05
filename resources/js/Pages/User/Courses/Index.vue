@@ -26,9 +26,9 @@
 </template>
 
 <script setup>
+import { Head } from '@inertiajs/vue3';
 import SearchInput from '@/Components/FormElement/SearchInput.vue';
 import SectionTitle from '@/Components/Section/SectionTitle.vue';
-import { Head, Link } from '@inertiajs/vue3';
 
 const props = defineProps({
   course: Array

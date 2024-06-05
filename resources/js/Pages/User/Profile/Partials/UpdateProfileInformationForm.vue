@@ -21,7 +21,7 @@
 
         <!-- New Profile Photo Preview -->
         <div v-show="photoPreview" class="mt-2">
-          <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
+          <span class="block rounded-full mx-auto w-48 h-48 bg-cover bg-no-repeat bg-center"
             :style="'background-image: url(\'' + photoPreview + '\');'" />
         </div>
 
