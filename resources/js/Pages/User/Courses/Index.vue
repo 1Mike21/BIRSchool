@@ -14,19 +14,21 @@
       </div>
     </div>
     <div class="all-courses">
-      <div class="all-courses__item">
-        <img class="w-16 mx-auto" :src="course.icon" alt="Иконка курса">
-        <h3 class="font-semibold">{{ course.title }}</h3>
-        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 mt-auto">
-          <div class="bg-green-600 text-xs font-semibold text-white text-center p-1 leading-none rounded-full" style="width: 45%">45%</div>
+      <Link :href="route('user.courses.show', course.slug)">
+        <div class="all-courses__item">
+          <img class="w-16 mx-auto" :src="course.icon" :alt="course.title">
+          <h3 class="font-semibold">{{ course.title }}</h3>
+          <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 mt-auto">
+            <div class="bg-green-600 text-xs font-semibold text-white text-center p-1 leading-none rounded-full" style="width: 45%">45%</div>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   </section>
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import SearchInput from '@/Components/FormElement/SearchInput.vue';
 import SectionTitle from '@/Components/Section/SectionTitle.vue';
 

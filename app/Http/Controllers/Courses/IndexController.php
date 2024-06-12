@@ -8,9 +8,6 @@ use Inertia\Inertia;
 
 class IndexController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke()
     {
       $courses = Course::where('is_active', '=', 1)->get();

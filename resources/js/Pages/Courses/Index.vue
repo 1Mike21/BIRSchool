@@ -15,7 +15,7 @@
     </div>
     <div class="all-courses">
       <div class="all-courses__item" v-for="course in courses" :key="course.id">
-        <img class="w-16 mx-auto" :src="course.icon" alt="Иконка курса">
+        <img class="w-16 mx-auto" :src="course.icon" :alt="course.title">
         <h3 class="font-semibold">{{ course.title }}</h3>
         <p>{{ course.price }} ₽</p>
         <Link class="btn-more-detail" :href="route('courses.show', course.slug)">Подробнее</Link>

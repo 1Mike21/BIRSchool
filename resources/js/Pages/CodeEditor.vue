@@ -10,11 +10,11 @@
     <div class="code-editor flex justify-between min-h-[800px] border dark:border-none">
       <div class="code grid grid-rows-3 overflow-y-auto p-4 bg-gray-300 dark:bg-white dark:bg-opacity-5 w-[50%]">
         <div>
-          <h2 class="title-text"><img src="/img/icons/html-5.svg" alt="HTML" class="w-6 mr-3 inline">HTML</h2>
+          <h2 class="title-text"><img src="/img/icons/html5-white.svg" alt="HTML" class="w-6 mr-3 hidden dark:inline"><img src="/img/icons/html5-black.svg" alt="HTML" class="w-6 mr-3 dark:hidden inline">HTML</h2>
           <textarea @keyup="run" v-model="editor.html" class="textarea-code"></textarea>
         </div>
         <div>
-          <h2 class="title-text"><img src="/img/icons/css-3.svg" alt="CSS" class="w-6 mr-3 inline">CSS</h2>
+          <h2 class="title-text"><img src="/img/icons/css3-white.svg" alt="CSS" class="w-6 mr-3 hidden dark:inline"><img src="/img/icons/css3-black.svg" alt="CSS" class="w-6 mr-3 dark:hidden inline">CSS</h2>
           <textarea @keyup="run" v-model="editor.css" class="textarea-code"></textarea>
         </div>
         <div>

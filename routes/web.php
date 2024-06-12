@@ -16,6 +16,7 @@ use App\Http\Controllers\Courses\ShowController as CoursesShowController;
 use App\Http\Controllers\Groups\ShowController as GroupsShowController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\User\Courses\IndexController as UserCoursesIndexController;
+use App\Http\Controllers\User\Courses\ShowController as UserCoursesShowController;
 use App\Http\Controllers\User\Profile\IndexController as UserProfileIndexController;
 use App\Http\Controllers\User\Profile\CertificateController as UserProfileCertificateController;
 use Illuminate\Support\Facades\Route;
@@ -91,6 +92,8 @@ Route::group( ['auth:sanctum','verified','middleware' => array_values(array_filt
   Route::prefix('user')->name('user.')->group(function ()
   {
     Route::get('/courses', UserCoursesIndexController::class)->name('courses.index');
+
+    Route::get('/courses/show', UserCoursesShowController::class)->name('courses.show');
 
     Route::get('/profile', UserProfileIndexController::class)->name('profile.index');
 
