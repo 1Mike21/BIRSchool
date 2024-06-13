@@ -27,7 +27,7 @@
           </AdminButton>
         </div>
       </div>
-      <div class="group-course indent_section_top">
+      <div class="group-course mt-10">
         <div class="group-course__item" v-for="group in groups" :key="group.id">
           <img class="w-16 mx-auto" :src="group.icon" :alt="group.title">
           <h4 class="text-red font-medium text-2xl">{{ group.title }}</h4>
@@ -35,8 +35,8 @@
             }}
           </h5>
           <h6 class="dark:text-white text-black text-base">{{ group.description }}</h6>
-          <div class="flex flex-col mx-auto gap-y-3">
-            <AdminButton :href="route('admin.users.edit', group.slug)" class="bg-[#08B581] hover:bg-[#08DD9C]">
+          <div class="flex flex-col mt-auto mx-auto gap-y-3">
+            <AdminButton :href="route('admin.groups.edit', group.slug)" class="bg-[#08B581] hover:bg-[#08DD9C]">
               <Edit />
               Редактировать
             </AdminButton>
@@ -79,7 +79,7 @@ const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/Dialog
 
 defineOptions({ layout: AdminLayout });
 
-const props = defineProps({
+defineProps({
   groups: Array
 });
 
@@ -92,10 +92,10 @@ const { showConfirmDeleteModal, closeModal, showModal, parameter } = useConfirmD
 }
 
 .group-course__item {
-  @apply bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] min-w-[270px] max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl;
+  @apply bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] w-full max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl;
 }
 
 .btn-more-detail {
-  @apply border-0 rounded-xl self-center mt-auto bg-[#00ADEB] text-white py-2 px-4 lg:px-6 text-center no-underline whitespace-nowrap hover:bg-[#24C4FF];
+  @apply border-0 rounded-xl self-center bg-[#00ADEB] text-white py-2 px-4 lg:px-6 text-center no-underline whitespace-nowrap hover:bg-[#24C4FF];
 }
 </style>
