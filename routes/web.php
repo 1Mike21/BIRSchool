@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\CodeEditorController;
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\HomeworkController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -17,6 +17,8 @@ use App\Http\Controllers\Groups\ShowController as GroupsShowController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\User\Courses\IndexController as UserCoursesIndexController;
 use App\Http\Controllers\User\Courses\ShowController as UserCoursesShowController;
+use App\Http\Controllers\User\HomeworkController as UserHomeworkController;
+use App\Http\Controllers\User\Themes\ShowController as UserThemesShowController;
 use App\Http\Controllers\User\Profile\IndexController as UserProfileIndexController;
 use App\Http\Controllers\User\Profile\CertificateController as UserProfileCertificateController;
 use Illuminate\Support\Facades\Route;
@@ -94,6 +96,10 @@ Route::group( ['auth:sanctum','verified','middleware' => array_values(array_filt
     Route::get('/courses', UserCoursesIndexController::class)->name('courses.index');
 
     Route::get('/courses/show', UserCoursesShowController::class)->name('courses.show');
+
+    Route::get('/themes/show', UserThemesShowController::class)->name('themes.show');
+
+    Route::resource('/homeworks', UserHomeworkController::class);
 
     Route::get('/profile', UserProfileIndexController::class)->name('profile.index');
 
