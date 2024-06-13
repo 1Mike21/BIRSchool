@@ -16,7 +16,7 @@ class GroupSeeder extends Seeder
     {
       DB::table('groups')->insert([
         [
-          'icon' => '/storage/icons/frontend.svg',
+          'icon' => '/icons/frontend.svg',
           'title' => 'FrontEnd Pro',
           'slug' => 'frontend-pro',
           'level' => 'Продвинутый уровень',
@@ -25,7 +25,7 @@ class GroupSeeder extends Seeder
           'updated_at' => Carbon::now(),
         ],
         [
-          'icon' => '/storage/icons/backend.svg',
+          'icon' => '/icons/backend.svg',
           'title' => 'BackEnd Pro',
           'slug' => 'backend-pro',
           'level' => 'Продвинутый уровень',
@@ -34,7 +34,7 @@ class GroupSeeder extends Seeder
           'updated_at' => Carbon::now(),
         ],
         [
-          'icon' => '/storage/icons/figma.svg',
+          'icon' => '/icons/figma.svg',
           'title' => 'Figma для разработчиков',
           'slug' => 'figma-for-developers',
           'level' => 'Базовый уровень',
@@ -43,7 +43,7 @@ class GroupSeeder extends Seeder
           'updated_at' => Carbon::now(),
         ],
         [
-          'icon' => '/storage/icons/git.svg',
+          'icon' => '/icons/git.svg',
           'title' => 'Git и командная строка',
           'slug' => 'git-and-command-line',
           'level' => 'Базовый уровень',
