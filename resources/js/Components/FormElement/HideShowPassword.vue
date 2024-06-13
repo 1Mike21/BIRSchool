@@ -29,6 +29,7 @@
     </span>
     <TextInput :id="id" :value="modelValue" :type="checkType"
       @input="$emit('update:modelValue', $event.target.value)"
+      :ref="passwordInput"
       :class="['mt-1 block w-full', { 'border-red': errors }]"
       :autocomplete="autocomplete" />
   </div>
@@ -40,6 +41,7 @@ import { useHidePassword } from '@/Hooks/hidePassword';
 
 defineProps({
   modelValue: String,
+  passwordInput: String,
   errors: Array,
   autocomplete: String,
   id: {

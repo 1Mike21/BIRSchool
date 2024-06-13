@@ -11,19 +11,19 @@
     <template #form>
       <div class="col-span-6 sm:col-span-4">
         <InputLabel for="current_password" value="Текущий пароль" class="text-black dark:text-white"/>
-        <TextInput id="current_password" ref="currentPasswordInput" v-model="form.current_password" type="password" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="current-password" />
+        <HideShowPassword id="current_password" ref="currentPasswordInput" v-model="form.current_password" :errors="form.errors.current_password" autocomplete="current-password"/>
         <InputError :message="form.errors.current_password" class="mt-2" />
       </div>
 
       <div class="col-span-6 sm:col-span-4">
         <InputLabel for="password" value="Новый пароль" class="text-black dark:text-white"/>
-        <TextInput id="password" ref="passwordInput" v-model="form.password" type="password" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="new-password" />
+        <HideShowPassword ref="passwordInput" v-model="form.password" :errors="form.errors.password" autocomplete="new-password"/>
         <InputError :message="form.errors.password" class="mt-2" />
       </div>
 
       <div class="col-span-6 sm:col-span-4">
         <InputLabel for="password_confirmation" value="Подтвердите пароль" class="text-black dark:text-white"/>
-        <TextInput id="password_confirmation" v-model="form.password_confirmation" type="password" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="new-password" />
+        <HideShowPassword id="password_confirmation" v-model="form.password_confirmation" :errors="form.errors.password_confirmation" autocomplete="new-password"/>
         <InputError :message="form.errors.password_confirmation" class="mt-2" />
       </div>
     </template>
@@ -48,7 +48,7 @@ import FormSection from '@/Components/FormElement/FormSection.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import InputLabel from '@/Components/FormElement/InputLabel.vue';
 import PrimaryButton from '@/Components/Button/PrimaryButton.vue';
-import TextInput from '@/Components/FormElement/TextInput.vue';
+import HideShowPassword from '@/Components/FormElement/HideShowPassword.vue';
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);

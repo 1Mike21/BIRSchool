@@ -32,9 +32,8 @@
           удалить свою учетную запись безвозвратно.
 
           <div class="mt-4">
-            <TextInput ref="passwordInput" v-model="form.password" type="password" class="mt-1 block w-3/4"
-              placeholder="Пароль" autocomplete="current-password" @keyup.enter="deleteUser" />
-
+            <HideShowPassword ref="passwordInput" v-model="form.password" autocomplete="current-password"
+              @keyup.enter="deleteUser" />
             <InputError :message="form.errors.password" class="mt-2" />
           </div>
         </template>
@@ -63,6 +62,7 @@ import DialogModal from '@/Components/Modal/DialogModal.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import SecondaryButton from '@/Components/Button/SecondaryButton.vue';
 import TextInput from '@/Components/FormElement/TextInput.vue';
+import HideShowPassword from '@/Components/FormElement/HideShowPassword.vue';
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);

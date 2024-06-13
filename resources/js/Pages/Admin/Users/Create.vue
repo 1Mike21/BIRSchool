@@ -11,50 +11,49 @@
       <AdminForm id="create_user_form" @submitted="submit">
         <AdminFormGroup>
           <InputLabel
-          class="mb-2"
+          class="mb-2 after:content-['*'] after:text-red"
           for="surname"
           value="Фамилия"
           />
           <TextInput
-          :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.surname}]"
+          :class="['border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.surname}]"
           v-model="form.surname"
           id="surname"
-          autocomplete="surname"
           placeholder="Введите фамилию"
           type="text"
+          autocomplete="surname"
           />
           <InputError class="mt-2" :message="form.errors.surname"/>
         </AdminFormGroup>
         <AdminFormGroup>
           <InputLabel
-            class="mb-2"
+            class="mb-2 after:content-['*'] after:text-red"
             for="name"
             value="Имя"
           />
           <TextInput
             v-model="form.name"
             id="name"
-            :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.name}]"
-            autocomplete="name"
-            type="text"
+            :class="['border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.name}]"
             placeholder="Введите имя"
-            autofocus
+            type="text"
+            autocomplete="name"
           />
           <InputError class="mt-2" :message="form.errors.name"/>
         </AdminFormGroup>
         <AdminFormGroup>
           <InputLabel
-            class="mb-2"
+            class="mb-2 after:content-['*'] after:text-red"
             for="email"
             value="Email"
           />
           <TextInput
-            :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.email}]"
+            :class="['border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.email}]"
             v-model="form.email"
             id="email"
-            type="email"
             placeholder="example@yandex.ru"
-            autocomplete="username"
+            type="email"
+            autocomplete="email"
           />
           <InputError class="mt-2" :message="form.errors.email"/>
         </AdminFormGroup>
@@ -65,48 +64,36 @@
             value="Номер телефона"
           />
           <TextInput
-            :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.phone_number}]"
+            :class="['border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.phone_number}]"
             v-model="form.phone_number"
             id="phone_number"
-            type="text"
             placeholder="+7 (926) 345-67-89"
+            type="text"
             autocomplete="phone_number"
           />
           <InputError class="mt-2" :message="form.errors.phone_number"/>
         </AdminFormGroup>
         <AdminFormGroup>
           <InputLabel
-            class="mb-2"
+            class="mb-2 after:content-['*'] after:text-red"
             for="password"
             value="Пароль"
           />
-          <TextInput
-            :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.password}]"
-            v-model="form.password"
-            id="password"
-            type="password"
-            autocomplete="new-password"
-          />
+          <HideShowPassword v-model="form.password" :errors="form.errors.password" autocomplete="new-password" />
           <InputError class="mt-2" :message="form.errors.password"/>
         </AdminFormGroup>
         <AdminFormGroup>
           <InputLabel
-            class="mb-2"
+            class="mb-2 after:content-['*'] after:text-red"
             for="password_confirmation"
             value="Подтвердите пароль"
           />
-          <TextInput
-            v-model="form.password_confirmation"
-            :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', {'border-red': form.errors.password_confirmation}]"
-            id="password_confirmation"
-            autocomplete="new-password"
-            type="password"
-          />
+          <HideShowPassword id="password_confirmation" v-model="form.password_confirmation" :errors="form.errors.password_confirmation" autocomplete="new-password"/>
           <InputError class="mt-2" :message="form.errors.password_confirmation" />
         </AdminFormGroup>
         <AdminFormGroup class="min-w-96">
           <InputLabel
-            class="mb-2"
+            class="mb-2 after:content-['*'] after:text-red"
             for="role"
             value="Роль"
           />
@@ -139,6 +126,7 @@ import AdminForm from '@/Components/FormElement/AdminForm.vue';
 import AdminFormGroup from '@/Components/FormElement/AdminFormGroup.vue';
 import InputLabel from '@/Components/FormElement/InputLabel.vue';
 import TextInput from '@/Components/FormElement/TextInput.vue';
+import HideShowPassword from '@/Components/FormElement/HideShowPassword.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import ModalPage from '@/Components/Modal/ModalPage.vue';
 import { useForm } from '@inertiajs/vue3';

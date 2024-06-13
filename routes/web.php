@@ -21,6 +21,7 @@ use App\Http\Controllers\User\HomeworkController as UserHomeworkController;
 use App\Http\Controllers\User\Themes\ShowController as UserThemesShowController;
 use App\Http\Controllers\User\Profile\IndexController as UserProfileIndexController;
 use App\Http\Controllers\User\Profile\CertificateController as UserProfileCertificateController;
+use App\Http\Controllers\User\Profile\CodeSpaces\IndexController as UserProfileCodeSpacesIndexController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Jetstream\Http\Controllers\Inertia\CurrentUserController;
@@ -104,6 +105,8 @@ Route::group( ['auth:sanctum','verified','middleware' => array_values(array_filt
     Route::get('/profile', UserProfileIndexController::class)->name('profile.index');
 
     Route::get('/profile/certificates', UserProfileCertificateController::class)->name('profile.certificates');
+
+    Route::get('profile/code-spaces', UserProfileCodeSpacesIndexController::class)->name('profile.code-spaces.index');
 
     Route::get('/profile/settings', [UserProfileController::class, 'show'])->name('profile.show');
 

@@ -18,14 +18,14 @@
           <InputLabel class="mb-2" for="name" value="Имя" />
           <TextInput v-model="form.name" id="name"
             :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', { 'border-red': form.errors.name }]"
-            autocomplete="name" type="text" placeholder="Введите имя" autofocus />
+            autocomplete="name" type="text" placeholder="Введите имя" />
           <InputError class="mt-2" :message="form.errors.name" />
         </AdminFormGroup>
         <AdminFormGroup>
           <InputLabel class="mb-2" for="email" value="Email" />
           <TextInput
             :class="['bg-gray-50 border text-black sm:text-sm block w-full p-2.5', { 'border-red': form.errors.email }]"
-            v-model="form.email" id="email" type="email" placeholder="example@yandex.ru" autocomplete="username" />
+            v-model="form.email" id="email" type="email" placeholder="example@yandex.ru" autocomplete="email" />
           <InputError class="mt-2" :message="form.errors.email" />
         </AdminFormGroup>
         <AdminFormGroup>

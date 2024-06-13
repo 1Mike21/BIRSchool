@@ -37,24 +37,24 @@
         <InputError :message="form.errors.photo" class="mt-2" />
       </div>
 
-      <!-- Name -->
-      <div class="col-span-6 sm:col-span-4">
-        <InputLabel for="name" value="Имя" class="text-black dark:text-white"/>
-        <TextInput id="name" v-model="form.name" type="text" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="name" />
-        <InputError :message="form.errors.name" class="mt-2" />
-      </div>
-
       <!-- Surname -->
       <div class="col-span-6 sm:col-span-4">
         <InputLabel for="surname" value="Фамилия" class="text-black dark:text-white"/>
-        <TextInput id="surname" v-model="form.surname" type="text" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="surname" />
+        <TextInput id="surname" v-model="form.surname" type="text" :class="['mt-1 block w-full bg-white', {'border-red': form.errors.surname}]" autocomplete="surname" />
         <InputError :message="form.errors.surname" class="mt-2" />
+      </div>
+
+      <!-- Name -->
+      <div class="col-span-6 sm:col-span-4">
+        <InputLabel for="name" value="Имя" class="text-black dark:text-white"/>
+        <TextInput id="name" v-model="form.name" type="text" :class="['mt-1 block w-full bg-white', {'border-red': form.errors.name}]" autocomplete="name" />
+        <InputError :message="form.errors.name" class="mt-2" />
       </div>
 
       <!-- Email -->
       <div class="col-span-6 sm:col-span-4">
         <InputLabel for="email" value="Email" class="text-black dark:text-white"/>
-        <TextInput id="email" v-model="form.email" type="email" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="email" />
+        <TextInput id="email" v-model="form.email" type="email" :class="['mt-1 block w-full bg-white', {'border-red': form.errors.email}]" autocomplete="email" />
         <InputError :message="form.errors.email" class="mt-2" />
 
         <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
@@ -77,7 +77,7 @@
       <!-- Phone number -->
       <div class="col-span-6 sm:col-span-4">
         <InputLabel for="phone_number" value="Номер телефона" class="text-black dark:text-white"/>
-        <TextInput id="phone_number" v-model="form.phone_number" type="text" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="phone_number" />
+        <TextInput id="phone_number" v-model="form.phone_number" type="text" :class="['mt-1 block w-full bg-white', {'border-red': form.errors.phone_number}]" autocomplete="phone_number" />
         <InputError :message="form.errors.phone_number" class="mt-2" />
       </div>
     </template>
