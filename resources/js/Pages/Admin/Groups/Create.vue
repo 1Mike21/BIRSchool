@@ -37,7 +37,7 @@
           <InputError class="mt-2" :message="form.errors.level" />
         </AdminFormGroup>
         <AdminFormGroup>
-          <InputLabel class="mb-2" for="is_active" value="Видимость группы" />
+          <InputLabel class="mb-2 mr-3" for="is_active" value="Видимость группы" />
           <Checkbox id="is_active" class="w-6 h-6" v-model:checked="form.is_active"
             :class="{ 'border-red': form.errors.is_active }" />
           <InputError class="mt-2" :message="form.errors.is_active" />

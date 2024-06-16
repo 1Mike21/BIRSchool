@@ -1,7 +1,7 @@
 <template>
   <div @dragenter.prevent="toggleActive" @dragleave.prevent="toggleActive" @dragover.prevent @drop.prevent="onDropFile"
     @change="onFileSelect" :class="{ 'active_dropzone': activeDropZone }"
-    class="flex flex-col justify-center bg-gray-50 text-block sm:text-sm p-2.5 transition-all duration-[.3s] items-center gap-y-4 border-2 border-dashed border-violetHoverButton">
+    class="flex flex-col justify-center bg-gray-50 text-block sm:text-sm p-2.5 transition-all duration-[.3s] items-center gap-y-4 border-2 border-dashed border-violetHoverButton rounded-md">
     <span>Перетащите файлы сюда</span>
     <span>ИЛИ</span>
     <label class="px-3 py-2 rounded-lg font-medium text-white bg-violetButton transition-all duration-[.3s]"
