@@ -63,7 +63,7 @@ import TextArea from '@/Components/FormElement/TextArea.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import ModalPage from '@/Components/Modal/ModalPage.vue';
 import DropZone from '@/Components/DropZone.vue';
-import { useForm } from '@inertiajs/vue3';
+import { useForm, router } from '@inertiajs/vue3';
 import Checkbox from '@/Components/FormElement/Checkbox.vue';
 
 const props = defineProps({
@@ -75,20 +75,23 @@ const loadFiles = (files, images) => {
   form.icon = images.value[0];
 };
 
-// const submit = () => {
-//   Inertia.post(route('admin.groups.update', group.slug), {
-//     _method: 'put',
-
-//   })
-//   form.put()
-// };
-
 const form = useForm({
-  _method: 'put',
+  _method: 'PUT',
   title: props.group.title,
   icon: null,
   description: props.group.description,
   is_active: props.group.is_active,
   level: props.group.level,
 });
+
+// const submit = () => {
+//   router.post(route('admin.groups.update', group.slug), {
+//     _method: 'put',
+//     title: form.title,
+//     icon: form.icon,
+//     description: form.description,
+//     is_active: form.is_active,
+//     level: form.level,
+//   })
+// };
 </script>
