@@ -1,5 +1,5 @@
 <template>
-  <Head title="Все курсы"/>
+  <Head title="Управление курсами"/>
 
   <section>
     <SectionTitle>Все курсы</SectionTitle>
@@ -42,7 +42,7 @@ const props = defineProps({
   @apply max-w-screen-2xl grid grid-cols-1 min-[560px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center text-center gap-5;
 }
 .all-courses__item {
-  @apply flex flex-col text-black dark:text-white text-xl xl:text-2xl bg-white bg-opacity-5 p-5 pb-6 gap-y-5 border-[3px] border-darkblue dark:border-white rounded-28 w-full sm:w-[292px] md:w-[357px] lg:w-[315px] xl:w-[295px] 2xl:w-[360px] min-h-72 shadow-2xl;
+  @apply flex flex-col text-black dark:text-white text-xl xl:text-2xl bg-white dark:bg-opacity-5 p-5 pb-6 gap-y-5 border-[3px] border-darkblue dark:border-white rounded-28 w-full sm:w-[292px] md:w-[357px] lg:w-[315px] xl:w-[295px] 2xl:w-[360px] min-h-72 shadow-2xl;
 }
 .btn-more-detail {
   @apply border-0 rounded-28 mt-auto self-center bg-red text-white py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:shadow-inset;

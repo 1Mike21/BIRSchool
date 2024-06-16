@@ -2,15 +2,15 @@
 
   <Head title="Управление группами" />
 
-  <div class="py-4 sm:flex items-center justify-between lg:mt-1.5">
+  <div class="mt-3 mb-5 sm:flex items-center justify-between">
     <div class="mb-1 w-full">
       <div class="sm:flex">
-        <div class="hidden sm:flex items-center sm:divide-x sm:divide-gray-100 mb-3 sm:mb-0">
+        <div class="sm:flex items-center sm:divide-x sm:divide-gray-100 mb-3 sm:mb-0">
           <form class="lg:pr-3" action="#" method="GET">
             <label for="users-search" class="sr-only">Search</label>
-            <div class="mt-1 relative lg:w-64 xl:w-96">
+            <div class="relative lg:w-64 xl:w-96">
               <input type="text" name="email" id="users-search"
-                class="bg-white border-2 border-darkblue text-black sm:text-sm rounded-lg focus:ring-violetButton focus:border-violetButton block w-full p-2.5"
+                class="bg-white border-2 border-darkblue text-black sm:text-sm rounded-lg focus:ring-violetButton focus:border-violetButton w-full p-2.5"
                 placeholder="Поиск...">
             </div>
           </form>
@@ -27,7 +27,7 @@
           </AdminButton>
         </div>
       </div>
-      <div class="group-course mt-10">
+      <div class="group-course mt-8">
         <div class="group-course__item" v-for="group in groups" :key="group.id">
           <img class="w-16 mx-auto" :src="group.icon" :alt="group.title">
           <h4 class="text-red font-medium text-2xl">{{ group.title }}</h4>
@@ -35,15 +35,15 @@
             }}
           </h5>
           <h6 class="dark:text-white text-black text-base">{{ group.description }}</h6>
-          <div class="flex flex-col mt-auto mx-auto gap-y-3">
-            <AdminButton :href="route('admin.groups.edit', group.slug)" class="bg-[#08B581] hover:bg-[#08DD9C]">
+          <div class="flex flex-col mx-auto gap-y-3">
+            <Link class="btn-more-detail" :href="route('admin.groups.show', group.slug)">Добавить описание</Link>
+            <AdminButton :href="route('admin.users.edit', group.slug)" class="bg-[#08B581] hover:bg-[#08DD9C]">
               <Edit />
               Редактировать
             </AdminButton>
             <AdminDangerButton @click="showModal(group.id)">
               Удалить
             </AdminDangerButton>
-            <Link class="btn-more-detail" :href="route('admin.groups.show', group.slug)">Добавить описание</Link>
           </div>
         </div>
       </div>
@@ -53,13 +53,12 @@
   <DialogModal :show="showConfirmDeleteModal" max-width="md" @close="closeModal">
     <template #title />
     <template #content>
-      <img src="/img/icon/exclamation-mark.svg" alt="delete" class="h-36 w-36 mx-auto">
+      <img src="/img/icons/exclamation-mark.svg" alt="delete" class="h-36 w-36 mx-auto">
       <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить группу?
       </h3>
     </template>
     <template #footer>
-      <AdminButton as="link" method="DELETE" :href="route('admin.groups.destroy', parameter)" @click="closeModal">Да
-      </AdminButton>
+      <AdminButton as="link" method="DELETE" :href="route('admin.groups.destroy', parameter)" @click="closeModal" class="mr-3">Да</AdminButton>
       <SecondaryButton @click="closeModal">Нет</SecondaryButton>
     </template>
   </DialogModal>
@@ -88,13 +87,11 @@ const { showConfirmDeleteModal, closeModal, showModal, parameter } = useConfirmD
 
 <style scoped>
 .group-course {
-  @apply mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-items-center gap-8;
+  @apply mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8;
 }
-
 .group-course__item {
-  @apply bg-white flex flex-col gap-y-3 bg-opacity-5 border-2 min-h-[310px] w-full max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl;
+  @apply flex flex-col gap-y-3 bg-white dark:bg-opacity-5 border-2 min-h-[310px] w-full max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl dark:shadow-none;
 }
-
 .btn-more-detail {
   @apply border-0 rounded-xl self-center bg-[#00ADEB] text-white py-2 px-4 lg:px-6 text-center no-underline whitespace-nowrap hover:bg-[#24C4FF];
 }

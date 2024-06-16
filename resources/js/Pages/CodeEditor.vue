@@ -2,13 +2,13 @@
 
   <Head title="Редактор кода" />
 
-  <div class="rounded-2xl overflow-hidden">
+  <div class="rounded-2xl overflow-hidden shadow-xl dark:shadow-none">
     <div class="bg-red h-14 flex align-middle px-2">
       <button @click="clearCode" title="Очистить все"><img class="w-12" src="/img/icons/clear.svg" alt="Очистить"></button>
       <button title="Сохранить"><img class="w-8" src="/img/icons/save.svg" alt="Сохранить"></button>
     </div>
-    <div class="code-editor flex justify-between min-h-[800px]">
-      <div class="code grid grid-rows-3 overflow-y-auto p-4 bg-white bg-opacity-10 w-[50%]">
+    <div class="code-editor flex justify-between min-h-[800px] border dark:border-none">
+      <div class="code grid grid-rows-3 overflow-y-auto p-4 bg-gray-300 dark:bg-white dark:bg-opacity-5 w-[50%]">
         <div>
           <h2 class="title-text"><img src="/img/icons/html-5.svg" alt="HTML" class="w-6 mr-3 inline">HTML</h2>
           <textarea @keyup="run" v-model="editor.html" class="textarea-code"></textarea>
@@ -66,7 +66,7 @@ onMounted(() => {
 
 <style scoped>
 .title-text {
-  @apply text-white font-semibold my-4;
+  @apply text-black dark:text-white font-semibold my-4;
 }
 .textarea-code {
   @apply w-full bg-white dark:bg-slate-900 h-[calc(100%-4rem)] border-none text-black dark:text-white resize-none scrollbar-thin;

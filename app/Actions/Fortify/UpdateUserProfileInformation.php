@@ -35,7 +35,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         } else {
             $user->forceFill([
                 'name' => $input['name'],
+                'surname' => $input['surname'],
                 'email' => $input['email'],
+                'phone_number' => $input['phone_number'],
             ])->save();
         }
     }
@@ -49,8 +51,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         $user->forceFill([
             'name' => $input['name'],
+            'surname' => $input['surname'],
             'email' => $input['email'],
             'email_verified_at' => null,
+            'phone_number' => $input['phone_number'],
         ])->save();
 
         $user->sendEmailVerificationNotification();

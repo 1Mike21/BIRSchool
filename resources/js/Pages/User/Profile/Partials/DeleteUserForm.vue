@@ -9,12 +9,12 @@
     </template>
 
     <template #content>
-      <div class="max-w-xl text-gray-600">
+      <div class="text-black dark:text-white text-lg text py-2">
         После удаления вашей учетной записи, все содержащиеся в ней ресурсы и данные будут безвозвратно удалены. Перед
         удалением вашей учетной записи, пожалуйста, сохраните себе информацию.
       </div>
 
-      <div class="mt-5">
+      <div class="mt-5 text-right">
         <DangerButton @click="confirmUserDeletion">
           Удалить аккаунт
         </DangerButton>

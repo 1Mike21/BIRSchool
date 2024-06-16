@@ -10,23 +10,20 @@
 
     <template #form>
       <div class="col-span-6 sm:col-span-4">
-        <InputLabel for="current_password" value="Текущий пароль" />
-        <TextInput id="current_password" ref="currentPasswordInput" v-model="form.current_password" type="password"
-          class="mt-1 block w-full" autocomplete="current-password" />
+        <InputLabel for="current_password" value="Текущий пароль" class="text-black dark:text-white"/>
+        <TextInput id="current_password" ref="currentPasswordInput" v-model="form.current_password" type="password" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="current-password" />
         <InputError :message="form.errors.current_password" class="mt-2" />
       </div>
 
       <div class="col-span-6 sm:col-span-4">
-        <InputLabel for="password" value="Новый пароль" />
-        <TextInput id="password" ref="passwordInput" v-model="form.password" type="password" class="mt-1 block w-full"
-          autocomplete="new-password" />
+        <InputLabel for="password" value="Новый пароль" class="text-black dark:text-white"/>
+        <TextInput id="password" ref="passwordInput" v-model="form.password" type="password" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="new-password" />
         <InputError :message="form.errors.password" class="mt-2" />
       </div>
 
       <div class="col-span-6 sm:col-span-4">
-        <InputLabel for="password_confirmation" value="Подтвердите пароль" />
-        <TextInput id="password_confirmation" v-model="form.password_confirmation" type="password"
-          class="mt-1 block w-full" autocomplete="new-password" />
+        <InputLabel for="password_confirmation" value="Подтвердите пароль" class="text-black dark:text-white"/>
+        <TextInput id="password_confirmation" v-model="form.password_confirmation" type="password" class="mt-1 block w-full dark:text-white bg-white dark:bg-opacity-15" autocomplete="new-password" />
         <InputError :message="form.errors.password_confirmation" class="mt-2" />
       </div>
     </template>
@@ -36,7 +33,7 @@
         Сохранено
       </ActionMessage>
 
-      <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+      <PrimaryButton class="hover:bg-gray-700 focus:bg-gray-700 dark:hover:bg-gray-900 dark:focus:bg-gray-900" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
         Сохранить
       </PrimaryButton>
     </template>

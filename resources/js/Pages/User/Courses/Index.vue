@@ -40,6 +40,6 @@ const props = defineProps({
   @apply max-w-screen-2xl grid grid-cols-1 min-[560px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center text-center gap-5;
 }
 .all-courses__item {
-  @apply flex flex-col text-black dark:text-white text-xl xl:text-2xl bg-white bg-opacity-5 px-5 py-10 gap-y-4 border-[3px] border-red rounded-28 w-full sm:w-[292px] md:w-[357px] lg:w-[315px] xl:w-[295px] 2xl:w-[360px] min-h-72;
+  @apply flex flex-col text-black dark:text-white text-xl xl:text-2xl bg-white dark:bg-opacity-5 px-5 py-10 gap-y-4 border-[3px] border-red rounded-28 w-full sm:w-[292px] md:w-[357px] lg:w-[315px] xl:w-[295px] 2xl:w-[360px] min-h-72 shadow-2xl dark:shadow-none;
 }
 </style>

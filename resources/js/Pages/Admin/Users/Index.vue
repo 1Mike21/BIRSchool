@@ -1,15 +1,16 @@
 <template>
 
   <Head title="Пользователи" />
-  <div class="py-4 sm:flex items-center justify-between lg:mt-1.5">
+
+  <div class="mt-3 mb-5 sm:flex items-center justify-between">
     <div class="mb-1 w-full">
       <div class="sm:flex">
-        <div class="hidden sm:flex items-center sm:divide-x sm:divide-gray-100 mb-3 sm:mb-0">
+        <div class="sm:flex items-center sm:divide-x sm:divide-gray-100 mb-3 sm:mb-0">
           <form class="lg:pr-3" action="#" method="GET">
             <label for="users-search" class="sr-only">Search</label>
-            <div class="mt-1 relative lg:w-64 xl:w-96">
+            <div class="relative lg:w-64 xl:w-96">
               <input type="text" name="email" id="users-search"
-                class="bg-white border-2 border-darkblue text-black sm:text-sm rounded-lg focus:ring-violetButton focus:border-violetButton block w-full p-2.5"
+                class="bg-white border-2 border-darkblue text-black sm:text-sm rounded-lg focus:ring-violetButton focus:border-violetButton w-full p-2.5"
                 placeholder="Поиск...">
             </div>
           </form>
@@ -43,9 +44,9 @@
     <TableRow v-for="user in users.data" :key="user.id">
       <TableColumn class="flex items-center gap-x-3 mr-6">
         <img class="h-10 w-10 rounded-full" :src="user.profile_photo_url" :alt="user.surname + '' + user.name">
-        <div class="text-sm font-normal text-gray-500">
-          <div class="text-base font-semibold text-black">{{ user.surname }} {{ user.name }}</div>
-          <div class="text-sm font-normal text-gray-700">{{ user.email }}</div>
+        <div class="text-sm font-normal">
+          <div class="text-base font-semibold">{{ user.surname }} {{ user.name }}</div>
+          <div class="text-sm font-normal text-gray-700 dark:text-gray-300">{{ user.email }}</div>
         </div>
       </TableColumn>
       <TableColumn>{{ user.phone_number }}</TableColumn>
@@ -54,18 +55,13 @@
           {{ role.name }}
         </TableColumn>
         <TableColumn>
-          <div class="flex justify-center">
-            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
-            <!-- <div class="h-2.5 w-2.5 rounded-full bg-rose-600 mr-2"></div> -->
-          </div>
+          <div class="h-2.5 w-2.5 rounded-full bg-green-500"></div>
+          <!-- <div class="h-2.5 w-2.5 rounded-full bg-rose-600"></div> -->
         </TableColumn>
         <TableColumn>{{ user.created_at }}</TableColumn>
-        <TableColumn class="space-x-2">
-          <AdminButton
-            v-show="role.name == 'Ученик'"
-            :href="route('admin.users.show', user.id) "
-            class="bg-[#00ADEB] hover:bg-[#24C4FF]"
-          >
+        <TableColumn class="space-x-3 text-right">
+          <AdminButton v-show="role.name == 'Ученик'" :href="route('admin.users.show', user.id)"
+            class="bg-[#00ADEB] hover:bg-[#24C4FF]">
             <Show />
           </AdminButton>
           <AdminButton :href="route('admin.users.edit', user.id)" class="bg-[#08B581] hover:bg-[#08DD9C]">
@@ -92,8 +88,7 @@
       </h3>
     </template>
     <template #footer>
-      <AdminButton as="link" method="DELETE" :href="route('admin.users.destroy', parameter)" @click="closeModal">Да
-      </AdminButton>
+      <AdminButton as="link" method="DELETE" :href="route('admin.users.destroy', parameter)" @click="closeModal" class="mr-3">Да</AdminButton>
       <SecondaryButton @click="closeModal">Нет</SecondaryButton>
     </template>
   </DialogModal>

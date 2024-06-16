@@ -4,7 +4,7 @@
       <thead class="bg-darkblue dark:bg-red">
         <slot name="header" />
       </thead>
-      <tbody class="bg-white hover:*:bg-gray-100 divide-y divide-gray-200">
+      <tbody class="bg-white dark:bg-opacity-5 hover:*:bg-gray-100 dark:hover:*:bg-opacity-10 divide-y divide-gray-200">
         <slot />
       </tbody>
     </table>

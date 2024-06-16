@@ -19,13 +19,13 @@
     <div class="block mt-4">
       <label class="flex items-center">
         <Checkbox v-model:checked="form.remember" name="remember" />
-        <span class="ms-2 text-sm text-gray-700">Запомнить меня</span>
+        <span class="ms-2 text-sm text-black">Запомнить меня</span>
       </label>
     </div>
 
     <div class="flex items-center justify-end mt-4">
       <button type="button" @click="$emit('changeComponent', ForgotPassword, 3)"
-        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red">
+        class="underline text-sm text-black rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red">
         Забыли пароль?
       </button>
 

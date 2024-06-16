@@ -2,7 +2,7 @@
 
   <Head :title="title" />
 
-  <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased dark:bg-darkblue bg-white">
+  <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased">
     <!-- Header -->
     <header class="fixed flex justify-between h-24 w-full z-10">
       <div class="w-full flex items-center justify-between h-24 text-white bg-red p-3">
@@ -45,7 +45,7 @@
     <Sidebar :menuGroups="menuGroups" checkRoles="true" :key="route().current()" />
 
     <main
-      :class="[ 'h-full px-10 mt-24 mb-10 transition-all duration-300 ml-10 sm:ml-14', isSidebarOpen ? 'md:ml-64' : 'md:ml-14', ]">
+      :class="[ 'h-full px-10 mt-28 mb-10 transition-all duration-300 ml-10 sm:ml-14', isSidebarOpen ? 'md:ml-64' : 'md:ml-14', ]">
       <Banner />
       <slot />
     </main>
@@ -61,9 +61,9 @@ import Banner from '@/Components/Banner.vue';
 import WhiteApplicationLogo from '@/Components/Logo/WhiteApplicationLogo.vue';
 import Sidebar from '@/Components/Sidebar/Sidebar.vue';
 import LogoutButton from '@/Components/Button/LogoutButton.vue';
+import DarkModeSwitcher from '@/Components/DarkModeSwitcher.vue';
 import { useSidebar } from '@/Hooks/sidebar';
 import { Modal } from "inertia-modal";
-import DarkModeSwitcher from '@/Components/DarkModeSwitcher.vue';
 
 const logout = () => {
   router.post(route('logout'));
