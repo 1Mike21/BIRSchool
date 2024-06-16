@@ -62,63 +62,58 @@
           </template>
         </DialogModal>
 
-        <ul v-if="$page.props.auth.user" class="hidden lg:flex sm:items-center gap-x-2 ms-1 xl:ms-6">
-          <li>
-            <DarkModeSwitcher v-if="$page.props.auth.user" />
-          </li>
-          <li>
-            <button type="button"
-              class="relative rounded-full p-1 text-[#404063] dark:text-gray-300 hover:text-darkblue dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-darkblue dark:focus:ring-white">
-              <span class="absolute -inset-1.5" />
-              <span class="sr-only">View notifications</span>
-              <BellIcon class="h-6 w-6" aria-hidden="true" />
-            </button>
-          </li>
-          <!-- Profile Dropdown -->
-          <li class="ms-3 relative">
-            <Dropdown align="right" width="48">
-              <template #trigger>
-                <button v-if="$page.props.jetstream.managesProfilePhotos"
-                  class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                  <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
-                    :alt="$page.props.auth.user.name">
-                </button>
 
-                <span v-else class="inline-flex rounded-md">
-                  <button type="button"
-                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                    {{ $page.props.auth.user.name }}
-
-                    <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                      stroke-width="1.5" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                    </svg>
+        <div v-if="$page.props.auth.user" class="flex items-center">
+          <DarkModeSwitcher />
+          <ul class="hidden lg:flex sm:items-center gap-x-2 ms-1 xl:ms-6">
+            <li>
+              <button type="button"
+                class="relative rounded-full p-1 text-[#404063] dark:text-gray-300 hover:text-darkblue dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-darkblue dark:focus:ring-white">
+                <span class="absolute -inset-1.5" />
+                <span class="sr-only">View notifications</span>
+                <BellIcon class="h-6 w-6" aria-hidden="true" />
+              </button>
+            </li>
+            <!-- Profile Dropdown -->
+            <li class="ms-3 relative">
+              <Dropdown align="right" width="48">
+                <template #trigger>
+                  <button v-if="$page.props.jetstream.managesProfilePhotos"
+                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                    <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
+                      :alt="$page.props.auth.user.name">
                   </button>
-                </span>
-              </template>
-
-              <template #content>
-                <!-- Account Management -->
-                <DropdownLink v-if="hasRoles(['Администратор', 'Куратор'])" :href="route('admin.users.index')">
-                  Админ панель
-                </DropdownLink>
-
-                <DropdownLink v-else :href="route('user.profile.index')">
-                  Личный кабинет
-                </DropdownLink>
-
-                <div class="border-t border-gray-200" />
-
-                <!-- Authentication -->
-                <form @submit.prevent="logout">
-                  <DropdownLink as="button">
-                    Выход
+                  <span v-else class="inline-flex rounded-md">
+                    <button type="button"
+                      class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                      {{ $page.props.auth.user.name }}
+                      <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </button>
+                  </span>
+                </template>
+                <template #content>
+                  <!-- Account Management -->
+                  <DropdownLink v-if="hasRoles(['Администратор', 'Куратор'])" :href="route('admin.users.index')">
+                    Админ панель
                   </DropdownLink>
-                </form>
-              </template>
-            </Dropdown>
-          </li>
-        </ul>
+                  <DropdownLink v-else :href="route('user.profile.index')">
+                    Личный кабинет
+                  </DropdownLink>
+                  <div class="border-t border-gray-200" />
+                  <!-- Authentication -->
+                  <form @submit.prevent="logout">
+                    <DropdownLink as="button">
+                      Выход
+                    </DropdownLink>
+                  </form>
+                </template>
+              </Dropdown>
+            </li>
+          </ul>
+        </div>
 
         <!-- Hamburger -->
         <div class="-me-2 flex items-center lg:hidden">
@@ -166,6 +161,7 @@
             </div>
             <div class="mt-2">
               <div class="font-medium text-base text-darkblue dark:text-white">
+                {{ $page.props.auth.user.surname }}
                 {{ $page.props.auth.user.name }}
               </div>
               <div class="font-medium text-sm text-darkblue dark:text-white">
@@ -181,8 +177,8 @@
           </div>
 
           <ul class="mt-3 space-y-1">
-            <ResponsiveNavLink v-if="hasRoles(['Администратор', 'Куратор'])" :href="route('user.profile.index')"
-              :active="route().current('user.profile.index')">
+            <ResponsiveNavLink v-if="hasRoles(['Администратор', 'Куратор'])" :href="route('admin.users.index')"
+              :active="route().current('admin.users.index')">
               Панель администратора
             </ResponsiveNavLink>
 

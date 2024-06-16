@@ -2,21 +2,17 @@
 
   <Head :title="title" />
 
-  <Banner />
-
-  <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased">
+  <div class="min-h-screen flex flex-col flex-auto flex-shrink-0">
     <!-- Header -->
-    <header class="fixed flex justify-between h-24 w-full z-10">
-      <div class="w-full flex items-center justify-between h-24 text-white bg-red p-3">
+    <header class="fixed h-24 w-full z-20">
+      <div class="flex items-center justify-between w-full h-24 text-white bg-red p-3 lg:mb-0">
         <Link :href="route('index')">
-        <WhiteApplicationLogo class="w-52 sm:w-60" />
+        <WhiteApplicationLogo class="w-40 h-14 md:w-64 md:h-20" />
         </Link>
-        <div class="flex justify-between items-center">
-          <ul v-if="$page.props.auth.user" class="flex items-center justify-between gap-x-5 ms-1 xl:ms-6">
-            <li>
-              <DarkModeSwitcher />
-            </li>
-            <li>
+        <div v-if="$page.props.auth.user" class="flex items-center">
+          <DarkModeSwitcher />
+          <ul class="flex sm:items-center gap-x-2 ms-1 xl:ms-3">
+            <li class="max-md:hidden">
               <button type="button"
                 class="relative rounded-full p-1 text-white focus:outline-none focus:ring-2 focus:ring-white">
                 <span class="absolute -inset-1.5" />
@@ -24,16 +20,60 @@
                 <BellIcon class="h-6 w-6" aria-hidden="true" />
               </button>
             </li>
-            <li class="flex flex-col text-right">
-              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{
-                $page.props.auth.user.name }}</span>
-              <span class="text-xs font-medium">{{ $page.props.auth.user.roles[0] }}</span>
+            <li class="max-md:hidden">
+              <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{ $page.props.auth.user.name }}</span>
             </li>
-            <li>
+            <li class="max-md:hidden md:mr-3">
               <img class="h-8 min-w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
                 :alt="$page.props.auth.user.name">
             </li>
-            <li>
+            <!-- Profile Dropdown -->
+            <li class="md:hidden ms-3 relative">
+              <Dropdown align="right" width="48">
+                <template #trigger>
+                  <button v-if="$page.props.jetstream.managesProfilePhotos"
+                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                    <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
+                      :alt="$page.props.auth.user.name">
+                  </button>
+                  <span v-else class="inline-flex rounded-md">
+                    <button type="button"
+                      class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                      {{ $page.props.auth.user.name }}
+                      <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </button>
+                  </span>
+                </template>
+                <template #content>
+                  <!-- Account Management -->
+                  <DropdownLink>
+                    <span class="text-sm font-medium text-black">{{ $page.props.auth.user.surname }} {{ $page.props.auth.user.name }}</span>
+                  </DropdownLink>
+                  <div class="border-t border-gray-200" />
+                  <DropdownLink>
+                    <div class="flex items-center">
+                      <p class="text-nowrap">Уведомления</p>
+                      <button type="button"
+                        class="relative rounded-full p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-700">
+                        <span class="absolute -inset-1.5" />
+                        <span class="sr-only">View notifications</span>
+                        <BellIcon class="h-5 w-5" aria-hidden="true" />
+                      </button>
+                    </div>
+                  </DropdownLink>
+                  <div class="border-t border-gray-200" />
+                  <form @submit.prevent="logout">
+                    <DropdownLink as="button">
+                      <LogoutButton>Выйти</LogoutButton>
+                    </DropdownLink>
+                  </form>
+                </template>
+              </Dropdown>
+            </li>
+            <li class="max-md:hidden">
               <form @submit.prevent="logout">
                 <LogoutButton>Выйти</LogoutButton>
               </form>
@@ -47,7 +87,7 @@
     <Sidebar :menuGroups="menuGroups" checkRoles="false" :key="route().current()" />
 
     <main
-      :class="['h-full px-10 mt-28 mb-10 transition-all duration-300 ml-10 sm:ml-14', isSidebarOpen ? 'md:ml-64' : 'md:ml-14', ]">
+      :class="[ 'h-full px-10 mt-28 mb-10 transition-all duration-300 ml-10 sm:ml-14', isSidebarOpen ? 'md:ml-64' : 'md:ml-14', ]">
       <slot />
     </main>
   </div>
@@ -57,8 +97,9 @@
 import { ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { BellIcon } from '@heroicons/vue/24/solid';
-import Banner from '@/Components/Banner.vue';
 import WhiteApplicationLogo from '@/Components/Logo/WhiteApplicationLogo.vue';
+import Dropdown from '@/Components/Dropdown/Dropdown.vue';
+import DropdownLink from '@/Components/Dropdown/DropdownLink.vue';
 import Sidebar from '@/Components/Sidebar/Sidebar.vue';
 import LogoutButton from '@/Components/Button/LogoutButton.vue';
 import DarkModeSwitcher from '@/Components/DarkModeSwitcher.vue';
@@ -92,7 +133,7 @@ const menuGroups = ref([
           <g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#ffffff" stroke-width="1.464" stroke-linecap="round"/> </g>
           </svg>`,
         label: 'Календарь',
-        route: 'admin.users.index'
+        route: 'user.profile.calendar'
       },
       {
         icon: `<svg
