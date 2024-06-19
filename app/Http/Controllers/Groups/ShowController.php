@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Groups;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\GroupResource;
+use App\Http\Resources\LearningStepResource;
+use App\Http\Resources\PolyResourceResource;
 use App\Models\Group;
 use App\Models\LearningStep;
 use Inertia\Inertia;
@@ -11,11 +14,11 @@ class ShowController extends Controller
 {
     public function __invoke(Group $group)
     {
-      $groupDescription = Group::find($group->id)->polyResources;
+      $group = new GroupResource($group);
 
-      $group = Group::find($group->id);
+      $groupDescription = PolyResourceResource::collection($group->polyResources);
 
-      $learningSteps = LearningStep::where('group_id', '=', $group->id)->get();
+      $learningSteps = LearningStepResource::collection($group->learningSteps);
 
       return Inertia::render('Groups/Show', compact('groupDescription', 'group', 'learningSteps'));
     }
