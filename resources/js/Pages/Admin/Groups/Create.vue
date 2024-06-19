@@ -19,7 +19,7 @@
         </AdminFormGroup>
         <AdminFormGroup>
           <InputLabel class="mb-2" for="icon" value="Иконка" />
-          <DropZone @load="loadFiles" :class="{ '!border-red':form.errors.icon }" />
+          <Dropzone @load="loadFiles" :class="{ '!border-red':form.errors.icon }" />
           <InputError class="mt-2" :message="form.errors.icon" />
         </AdminFormGroup>
         <AdminFormGroup>
@@ -62,7 +62,7 @@ import TextInput from '@/Components/FormElement/TextInput.vue';
 import TextArea from '@/Components/FormElement/TextArea.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import ModalPage from '@/Components/Modal/ModalPage.vue';
-import DropZone from '@/Components/DropZone.vue';
+import Dropzone from '@/Components/Dropzone/Dropzone.vue';
 import { useForm } from '@inertiajs/vue3';
 import Checkbox from '@/Components/FormElement/Checkbox.vue';
 

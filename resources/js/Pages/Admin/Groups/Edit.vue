@@ -62,7 +62,7 @@ import TextInput from '@/Components/FormElement/TextInput.vue';
 import TextArea from '@/Components/FormElement/TextArea.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import ModalPage from '@/Components/Modal/ModalPage.vue';
-import DropZone from '@/Components/DropZone.vue';
+import DropZone from '@/Components/Dropzone/Dropzone.vue';
 import { useForm, router } from '@inertiajs/vue3';
 import Checkbox from '@/Components/FormElement/Checkbox.vue';
 

@@ -26,6 +26,7 @@ class Course extends Model
     protected $casts = [
       'updated_at' => 'date:d.m.Y',
       'created_at' => 'date:d.m.Y',
+      'is_active' => 'boolean'
     ];
 
     public function sluggable(): array

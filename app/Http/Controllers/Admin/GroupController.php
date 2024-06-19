@@ -37,6 +37,7 @@ class GroupController extends Controller
      */
     public function store(StoreGroupRequest $request)
     {
+      dd($request->validated());
       Group::create([
         'title' => $request->title,
         'icon' => $request->file('icon')->store('icons', 'public'),

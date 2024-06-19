@@ -21,6 +21,10 @@ class Group extends Model
       'level',
     ];
 
+    protected $casts = [
+      'is_active' => 'boolean',
+    ];
+
     public function sluggable(): array
     {
       return [
