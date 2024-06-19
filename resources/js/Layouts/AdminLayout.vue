@@ -28,7 +28,7 @@
               <span class="text-xs font-medium">{{ $page.props.auth.user.roles[0] }}</span>
             </li>
             <li>
-              <img class="h-8 min-w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
+              <img class="h-10 min-w-10 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
                 :alt="$page.props.auth.user.name">
             </li>
             <li>
