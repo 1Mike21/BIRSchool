@@ -16,8 +16,11 @@ class IndexController extends Controller
      */
     public function __invoke()
     {
-      $groups = GroupResource::collection(Group::all());
+      $groups = Group::where('is_active', '=', 1)->get();
+      $groups = GroupResource::collection($groups);
+
       $studentsProjects = PolyResource::where('img', 'like', '/storage/slider_student_portfolio/%')->latest()->pluck('img');
+
       $reviews = Review::where('comment', 'like', '/storage/slider_reviews/%')->where('is_published', '=', 1)->latest()->pluck('comment');
       return Inertia::render('Index', compact('groups', 'studentsProjects', 'reviews'));
     }
