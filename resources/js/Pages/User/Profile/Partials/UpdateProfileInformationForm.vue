@@ -16,12 +16,12 @@
 
         <!-- Current Profile Photo -->
         <div v-show="!photoPreview" class="mt-2">
-          <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-48 w-48 object-cover mx-auto">
+          <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full w-36 sm:w-48 h-36 sm:h-48 object-cover mx-auto">
         </div>
 
         <!-- New Profile Photo Preview -->
         <div v-show="photoPreview" class="mt-2">
-          <span class="block rounded-full mx-auto w-48 h-48 bg-cover bg-no-repeat bg-center"
+          <span class="block rounded-full mx-auto w-36 sm:w-48 h-36 sm:h-48 bg-cover bg-no-repeat bg-center"
             :style="'background-image: url(\'' + photoPreview + '\');'" />
         </div>
 

@@ -9,7 +9,7 @@
     </template>
 
     <template #content>
-      <div class="text-black dark:text-white text-lg text py-2">
+      <div class="text-black dark:text-white text-base lg:text-lg py-2">
         После удаления вашей учетной записи, все содержащиеся в ней ресурсы и данные будут безвозвратно удалены. Перед
         удалением вашей учетной записи, пожалуйста, сохраните себе информацию.
       </div>

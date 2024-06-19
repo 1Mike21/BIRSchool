@@ -28,6 +28,6 @@ const isOpen = ref(false);
 
 <style scoped>
 button {
-  @apply flex items-center justify-between w-full h-[96px] py-11 ps-6 pe-3 mb-6 bg-white rounded-28 text-2xl font-medium;
+  @apply flex items-center justify-between w-full h-[96px] py-11 ps-6 pe-3 mb-6 bg-slate-200 dark:bg-white shadow-lg dark:shadow-none rounded-28 text-lg sm:text-xl md:text-2xl font-medium;
 }
 </style>

@@ -20,6 +20,7 @@ use App\Http\Controllers\User\Courses\ShowController as UserCoursesShowControlle
 use App\Http\Controllers\User\HomeworkController as UserHomeworkController;
 use App\Http\Controllers\User\Themes\ShowController as UserThemesShowController;
 use App\Http\Controllers\User\Profile\IndexController as UserProfileIndexController;
+use App\Http\Controllers\User\Profile\CalendarController;
 use App\Http\Controllers\User\Profile\CertificateController as UserProfileCertificateController;
 use App\Http\Controllers\User\Profile\CodeSpaces\IndexController as UserProfileCodeSpacesIndexController;
 use Illuminate\Support\Facades\Route;
@@ -103,6 +104,8 @@ Route::group( ['auth:sanctum','verified','middleware' => array_values(array_filt
     Route::resource('/homeworks', UserHomeworkController::class);
 
     Route::get('/profile', UserProfileIndexController::class)->name('profile.index');
+
+    Route::get('/profile/calendar',CalendarController::class)->name('profile.calendar');
 
     Route::get('/profile/certificates', UserProfileCertificateController::class)->name('profile.certificates');
 

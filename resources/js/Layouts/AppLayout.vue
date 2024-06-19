@@ -236,7 +236,7 @@
         </div>
       </div>
     </div>
-    <p class="text-sm text-center container mx-auto py-3 border-t border-solid border-white">&copy; BIR, {{currentYear}}</p>
+    <p class="text-sm text-center container mx-auto py-3 border-t border-solid border-darkblue dark:border-white">&copy; BIR, {{currentYear}}</p>
   </footer>
 </template>
 

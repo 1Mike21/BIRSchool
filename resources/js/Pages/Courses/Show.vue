@@ -21,7 +21,7 @@
   <section>
     <SectionTitle>Программа курса</SectionTitle>
     <p
-      class="bg-slate-200 dark:bg-white border shadow-inner text-xl md:text-2xl font-semibold flex items-center rounded-28 max-sm:rounded-[36px] max-sm:h-20 ps-5 py-3 mb-6"
+      class="bg-slate-200 dark:bg-white border shadow-inner text-xl md:text-2xl font-semibold flex items-center rounded-28 max-sm:rounded-[36px] max-sm:h-28 ps-5 py-3 mb-6"
       v-for="theme in themes"
       :key="theme.id"
     >
