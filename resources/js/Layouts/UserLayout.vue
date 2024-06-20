@@ -63,7 +63,6 @@ import Sidebar from '@/Components/Sidebar/Sidebar.vue';
 import LogoutButton from '@/Components/Button/LogoutButton.vue';
 import DarkModeSwitcher from '@/Components/DarkModeSwitcher.vue';
 import { useSidebar } from '@/Hooks/sidebar';
-import DarkModeSwitcher from '@/Components/DarkModeSwitcher.vue';
 
 const logout = () => {
   router.post(route('logout'));
