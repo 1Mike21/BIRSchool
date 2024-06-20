@@ -2,57 +2,9 @@
 
   <Head :title="group.title" />
 
-  <div v-if="!groupDescription.length">
-    <!-- About group course -->
-    <section class="indent_section_bottom">
-      <SectionTitle>Далеко-далеко за словесными горами в стране.</SectionTitle>
-      <div class="flex flex-wrap-reverse md:flex-nowrap justify-center gap-10">
-        <div class="w-[420px] border-[1px] pb-3 mb-8 border-red rounded-[22px]">
-          <p class="dark:text-white p-3 text-white text-xl bg-red rounded-[20px]">
-            Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Свой однажды осталось
-            которой страну назад гор мир ее знаках.
-          </p>
-          <p class="text-red dark:text-white text-lg p-3">
-            Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Свой однажды осталось
-            которой страну назад гор мир ее знаках.
-          </p>
-        </div>
-        <DropZone @load="loadFiles" class="w-full max-w-[300px] max-h-[300px] rounded-[36px]" />
-        <InputError class="mt-2" message="" />
-      </div>
-    </section>
-    <section class="indent_section_bottom">
-      <SectionTitle>Далеко-далеко за словесными горами в стране.</SectionTitle>
-      <div class="flex flex-wrap md:flex-nowrap justify-center text-center gap-10">
-        <div class="w-[416px] rounded-[15px]">
-          <img class="w-[290px] max-h-[200px] rounded-[20px] mx-auto border dark:border-none shadow-xl dark:shadow-none"
-            src="" alt="">
-          <h3 class="text-red text-xl font-semibold p-5">Далеко-далеко за словесными горами, в стране гласных и
-            согласных живут рыбные тексты.</h3>
-          <p class="text-black dark:text-white">Далеко-далеко за словесными горами в стране гласных и согласных живут
-            рыбные тексты. Свой мир рот безопасную большого буквенных, назад предупреждал на берегу себя путь продолжил
-            деревни гор толку подзаголовок собрал имени. Дал, дороге!</p>
-        </div>
-        <div class="w-[416px] rounded-[15px]">
-          <img class="w-[290px] max-h-[200px] rounded-[20px] mx-auto border dark:border-none shadow-xl dark:shadow-none"
-            src="" alt="">
-          <h3 class="text-red text-xl font-semibold p-5">Далеко-далеко за словесными горами, в стране гласных и
-            согласных живут рыбные тексты.</h3>
-          <p class="text-black dark:text-white">Далеко-далеко за словесными горами в стране гласных и согласных живут
-            рыбные тексты. Свой мир рот безопасную большого буквенных, назад предупреждал на берегу себя путь продолжил
-            деревни гор толку подзаголовок собрал имени. Дал, дороге!</p>
-        </div>
-        <div class="w-[416px] rounded-[15px]">
-          <img class="w-[290px] max-h-[200px] rounded-[20px] mx-auto border dark:border-none shadow-xl dark:shadow-none"
-            src="" alt="">
-          <h3 class="text-red text-xl font-semibold p-5">Далеко-далеко за словесными горами, в стране гласных и
-            согласных живут рыбные тексты.</h3>
-          <p class="text-black dark:text-white">Далеко-далеко за словесными горами в стране гласных и согласных живут
-            рыбные тексты. Свой мир рот безопасную большого буквенных, назад предупреждал на берегу себя путь продолжил
-            деревни гор толку подзаголовок собрал имени. Дал, дороге!</p>
-        </div>
-      </div>
-    </section>
+  <div class="flex justify-between">
+    <Link class="text-white text-xl" :href="route('admin.groups.index')">Назад</Link>
+    <Link class="text-white text-xl" :href="route('admin.groups.description.create', group.slug)">Добавить описание</Link>
   </div>
 
   <template v-for="(section,index) in groupDescription">
@@ -60,7 +12,7 @@
     <section class="indent_section_bottom" v-if="index == 0">
       <SectionTitle>{{ section.title }}</SectionTitle>
       <div class="flex flex-wrap-reverse md:flex-nowrap justify-center gap-10">
-        <div class="w-[420px] border-[1px] pb-3 mb-8 border-red rounded-[22px]">
+        <div class="w-[420px] border-[1px] mb-8 border-red rounded-[22px]">
           <p :class="['text-red dark:text-white text-lg p-3', {'text-white text-xl bg-red rounded-[20px]': i == 0}]"
             v-for="(text,i) in splitText(0)">
             {{ text }}
@@ -113,11 +65,9 @@
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import SectionTitle from '@/Components/Section/SectionTitle.vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
-import DropZone from '@/Components/Dropzone/Dropzone.vue';
-import InputError from '@/Components/FormElement/InputError.vue';
 
 defineOptions({ layout: AdminLayout });
 

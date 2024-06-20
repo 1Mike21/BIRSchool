@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Group\StoreGroupRequest;
 use App\Http\Requests\Group\UpdateGroupRequest;
 use App\Http\Resources\GroupResource;
+use App\Http\Resources\LearningStepResource;
+use App\Http\Resources\PolyResourceResource;
 use App\Models\LearningStep;
 use GuzzleHttp\Psr7\MimeType;
 use Illuminate\Support\Facades\Storage;
@@ -37,7 +39,6 @@ class GroupController extends Controller
      */
     public function store(StoreGroupRequest $request)
     {
-      dd($request->validated());
       Group::create([
         'title' => $request->title,
         'icon' => $request->file('icon')->store('icons', 'public'),
@@ -57,11 +58,11 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-      $groupDescription = Group::find($group->id)->polyResources;
+      $group = new GroupResource($group);
 
-      $group = Group::find($group->id);
+      $groupDescription = PolyResourceResource::collection($group->polyResources);
 
-      $learningSteps = LearningStep::where('group_id', '=', $group->id)->get();
+      $learningSteps = LearningStepResource::collection($group->learningSteps);
 
       return Inertia::render('Admin/Groups/Show', compact('groupDescription', 'group', 'learningSteps'));
     }

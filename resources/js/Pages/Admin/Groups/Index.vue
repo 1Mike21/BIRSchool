@@ -35,13 +35,14 @@
             }}
           </h5>
           <h6 class="dark:text-white text-black text-base">{{ group.description }}</h6>
+          <h6 class="dark:text-white text-black text-base">Статус: {{ checkStatusGroup(group.is_active) }}</h6>
           <div class="flex flex-col mx-auto gap-y-3">
-            <Link class="btn-more-detail" :href="route('admin.groups.show', group.slug)">Добавить описание</Link>
-            <AdminButton :href="route('admin.users.edit', group.slug)" class="bg-[#08B581] hover:bg-[#08DD9C]">
+            <Link class="btn-more-detail" :href="route('admin.groups.show', group.slug)">Описание группы</Link>
+            <AdminButton :href="route('admin.groups.edit', group.slug)" class="bg-[#08B581] hover:bg-[#08DD9C]">
               <Edit />
               Редактировать
             </AdminButton>
-            <AdminDangerButton @click="showModal(group.id)">
+            <AdminDangerButton @click="showModal(group.slug)">
               Удалить
             </AdminDangerButton>
           </div>
@@ -82,6 +83,10 @@ defineProps({
 });
 
 const { showConfirmDeleteModal, closeModal, showModal, parameter } = useConfirmDeleteModal();
+
+const checkStatusGroup = (status) => {
+  return status ? 'Активна' : 'Не активна';
+}
 </script>
 
 <style scoped>
