@@ -54,6 +54,7 @@
 </template>
 
 <script setup>
+import { Head } from '@inertiajs/vue3';
 import AdminButton from '@/Components/Button/AdminButton.vue';
 import AdminForm from '@/Components/FormElement/AdminForm.vue';
 import AdminFormGroup from '@/Components/FormElement/AdminFormGroup.vue';

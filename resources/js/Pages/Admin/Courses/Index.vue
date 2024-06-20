@@ -33,26 +33,35 @@
   <Table v-if="courses.meta.total > 0">
     <template #header>
       <TableRow>
-        <TableHeader>Пользователь</TableHeader>
-        <TableHeader>Номер телефона</TableHeader>
-        <TableHeader>Роль</TableHeader>
-        <TableHeader>Статус</TableHeader>
-        <TableHeader>Дата регистрации</TableHeader>
+        <TableHeader>Курс</TableHeader>
+        <TableHeader>Описание</TableHeader>
+        <TableHeader>Цена</TableHeader>
+        <TableHeader>Группа</TableHeader>
+        <TableHeader>Видимость</TableHeader>
         <TableHeader></TableHeader>
       </TableRow>
     </template>
     <TableRow v-for="course in courses.data" :key="course.id">
-      <TableColumn class="flex items-center gap-x-3 mr-6">
-        <img class="h-10 w-10 rounded-full">
-        <div class="text-sm font-normal">
-          <div class="text-base font-semibold"></div>
-          <div class="text-sm font-normal text-gray-700 dark:text-gray-300"></div>
-        </div>
+      <TableColumn class="flex items-center gap-x-3">
+        <img class="h-10 w-10" :src="course.icon" :alt="course.title">
+        <span class="max-w-20 text-wrap">{{ course.title }}</span>
+      </TableColumn>
+      <TableColumn class="max-h-5 text-wrap truncate">
+        {{ course.description }}
       </TableColumn>
       <TableColumn>
-
+        {{ course.price }}
+      </TableColumn>
+      <TableColumn>
+        {{ course.group.title }}
+      </TableColumn>
+      <TableColumn>
+        <!-- {{ course. }} -->
       </TableColumn>
       <TableColumn class="space-x-3 text-right">
+        <AdminButton :href="route('admin.courses.show', course.id)" class="bg-[#00ADEB] hover:bg-[#24C4FF]">
+          <Show />
+        </AdminButton>
         <AdminButton :href="route('admin.courses.edit', course.id)" class="bg-[#08B581] hover:bg-[#08DD9C]">
           <Edit />
         </AdminButton>
@@ -63,6 +72,7 @@
       <Pagination :meta="courses.meta" />
     </template>
   </Table>
+
   <div v-else class="text-center font-bold text-xl dark:text-white">
     Курсов пока нет
   </div>
@@ -72,8 +82,7 @@
     <template #title />
     <template #content>
       <img src="/img/icons/exclamation-mark.svg" alt="delete" class="h-36 w-36 mx-auto">
-      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить выбранного пользователя?
-      </h3>
+      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить выбранный курс?</h3>
     </template>
     <template #footer>
       <AdminButton as="link" method="DELETE" :href="route('admin.courses.destroy', parameter)" @click="closeModal"
@@ -95,7 +104,9 @@ import TableColumn from '@/Components/Table/TableColumn.vue';
 import TableHeader from '@/Components/Table/TableHeader.vue';
 import Pagination from '@/Components/Pagination.vue';
 import Edit from '@/Components/Icons/Edit.vue';
+import Show from '@/Components/Icons/Show.vue';
 import { useConfirmDeleteModal } from '@/Hooks/confirmDeleteModal';
+import { defineAsyncComponent } from 'vue';
 
 defineOptions({ layout: AdminLayout });
 

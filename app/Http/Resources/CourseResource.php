@@ -21,8 +21,8 @@ class CourseResource extends JsonResource
           'icon' => asset('storage/' . $this->icon),
           'description' => $this->description,
           'price' => $this->price,
+          'group' => new GroupResource ($this->group),
           'is_active' => $this->is_active,
-          'group_id' => $this->group_id,
         ];
     }
 }

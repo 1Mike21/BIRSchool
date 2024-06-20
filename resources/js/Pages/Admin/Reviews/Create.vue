@@ -12,7 +12,7 @@
       <AdminForm id="create_review_form" @submitted="form.post(route('admin.reviews.store'))">
         <AdminFormGroup>
           <InputLabel class="mb-2" for="comment" value="Отзыв" />
-          <DropZone @load="loadFiles" :class="{ '!border-red': form.errors.comment }" />
+          <Dropzone @load="loadFiles" :class="{ '!border-red': form.errors.comment }" />
           <InputError class="mt-2" :message="form.errors.comment" />
         </AdminFormGroup>
         <AdminFormGroup>
@@ -39,7 +39,7 @@ import AdminFormGroup from '@/Components/FormElement/AdminFormGroup.vue';
 import InputLabel from '@/Components/FormElement/InputLabel.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import ModalPage from '@/Components/Modal/ModalPage.vue';
-import DropZone from '@/Components/DropZone.vue';
+import Dropzone from '@/Components/Dropzone/Dropzone.vue';
 import Checkbox from '@/Components/FormElement/Checkbox.vue';
 
 const loadFiles = (files, images) => {
