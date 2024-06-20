@@ -111,7 +111,7 @@ const optionsReviewsSlider = {
   @apply max-w-4xl mx-auto grid sm:grid-cols-2 justify-items-center gap-8;
 }
 .group-course__item {
-  @apply flex flex-col gap-y-3 bg-white dark:bg-opacity-5 border-2 min-h-[310px] min-w-[270px] max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl dark:shadow-none;
+  @apply flex flex-col gap-y-3 bg-white dark:bg-opacity-5 border-2 min-h-[310px] w-full max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl dark:shadow-none;
 }
 .btn-more-detail {
   @apply border-0 rounded-xl self-center mt-auto bg-red text-white py-2 px-4 lg:px-6 lg:text-xl text-center no-underline whitespace-nowrap hover:bg-[#941433] dark:hover:bg-white dark:hover:text-red;

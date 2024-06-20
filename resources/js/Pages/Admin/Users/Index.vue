@@ -72,7 +72,7 @@
       </template>
     </TableRow>
     <template #pagination>
-      <Pagination :links="users.links" />
+      <Pagination :meta="users.meta" />
     </template>
   </Table>
   <div v-else class="text-center font-bold text-xl dark:text-white">

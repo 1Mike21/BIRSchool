@@ -1,18 +1,26 @@
 <template>
+
   <Head :title="group.title" />
+
+  <div class="flex justify-between">
+    <Link class="text-white text-xl" :href="route('admin.groups.index')">Назад</Link>
+    <Link class="text-white text-xl" :href="route('admin.groups.description.create', group.slug)">Добавить описание</Link>
+  </div>
 
   <template v-for="(section,index) in groupDescription">
     <!-- About group course -->
     <section class="indent_section_bottom" v-if="index == 0">
       <SectionTitle>{{ section.title }}</SectionTitle>
       <div class="flex flex-wrap-reverse md:flex-nowrap justify-center gap-10">
-        <div class="w-[420px] border-[1px] pb-3 mb-8 border-red rounded-[22px]">
+        <div class="w-[420px] border-[1px] mb-8 border-red rounded-[22px]">
           <p :class="['text-red dark:text-white text-lg p-3', {'text-white text-xl bg-red rounded-[20px]': i == 0}]"
             v-for="(text,i) in splitText(0)">
             {{ text }}
           </p>
         </div>
-        <img class="max-w-[350px] lg:max-w-[427px] min-w-[250px] h-full rounded-[36px] shadow-lg shadow-gray-400 dark:shadow-none border dark:border-none" :src="section.img" :alt="section.title">
+        <img
+          class="max-w-[350px] lg:max-w-[427px] min-w-[250px] h-full rounded-[36px] shadow-lg shadow-gray-400 dark:shadow-none border dark:border-none"
+          :src="section.img" :alt="section.title">
       </div>
     </section>
 
@@ -20,7 +28,8 @@
       <SectionTitle>{{ section.title }}</SectionTitle>
       <div class="flex flex-wrap md:flex-nowrap justify-center text-center gap-10">
         <div class="w-[416px] rounded-[15px]" v-for="card in cardGroup()">
-          <img class="w-[290px] max-h-[200px] rounded-[20px] mx-auto border dark:border-none shadow-xl dark:shadow-none" :src="card.img" :alt="card.title">
+          <img class="w-[290px] max-h-[200px] rounded-[20px] mx-auto border dark:border-none shadow-xl dark:shadow-none"
+            :src="card.img" :alt="card.title">
           <h3 class="text-red text-xl font-semibold p-5">{{ card.title }}</h3>
           <p class="text-black dark:text-white">{{ card.text }}</p>
         </div>
@@ -45,15 +54,18 @@
     <div class="flex flex-wrap md:flex-nowrap justify-between items-center md:gap-32">
       <div class="w-[600px]">
         <h3 class="text-darkblue dark:text-white text-2xl lg:text-[28px] mb-2">Сертификат</h3>
-        <p class="text-black dark:text-white text-base lg:text-lg">Студенты получают сертификат об успешном окончании курса <span class="text-red font-medium">«{{ group.title }} - {{ group.level }}»</span>. Текст документа может быть составлен на английском языке.</p>
+        <p class="text-black dark:text-white text-base lg:text-lg">Студенты получают сертификат об успешном окончании
+          курса <span class="text-red font-medium">«{{ group.title }} - {{ group.level }}»</span>. Текст документа может
+          быть составлен на английском языке.</p>
       </div>
-      <img class="max-md:mt-6 md:max-w-[605px] min-w-[205px] border dark:border-none shadow-xl dark:shadow-none" src="/storage/group_course/sertificate.png" alt="Сертификат">
+      <img class="max-md:mt-6 md:max-w-[605px] min-w-[205px] border dark:border-none shadow-xl dark:shadow-none"
+        src="/storage/group_course/sertificate.png" alt="Сертификат">
     </div>
   </section>
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import SectionTitle from '@/Components/Section/SectionTitle.vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 

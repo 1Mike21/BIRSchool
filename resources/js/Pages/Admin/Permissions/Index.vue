@@ -6,9 +6,9 @@
       <div class="sm:flex">
         <div class="sm:flex items-center sm:divide-x sm:divide-gray-100 mb-3 sm:mb-0">
           <form class="lg:pr-3" action="#" method="GET">
-            <label for="users-search" class="sr-only">Search</label>
+            <label for="permissions-search" class="sr-only">Search</label>
             <div class="relative lg:w-64 xl:w-96">
-              <input type="text" name="email" id="users-search"
+              <input type="text" name="email" id="permissions-search"
                 class="bg-white border-2 border-darkblue text-black sm:text-sm rounded-lg focus:ring-violetButton focus:border-violetButton w-full p-2.5"
                 placeholder="Поиск...">
             </div>

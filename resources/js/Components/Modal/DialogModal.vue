@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import Modal from './Modal.vue';
+import Modal from '@/Components/Modal/Modal.vue';
 
 const emit = defineEmits(['close']);
 

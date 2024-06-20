@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Group;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -11,7 +11,7 @@ class UpdateGroupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+      return auth('web')->check();
     }
 
     /**
@@ -21,8 +21,12 @@ class UpdateGroupRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+      return [
+        'title' => ['required', 'string', 'max:255'],
+        'icon' => ['sometimes', 'mimes:jpg,jpeg,png,svg', 'max:5120'],
+        'description' => ['required', 'min:5', 'max:1000'],
+        'is_active' => ['nullable', 'boolean'],
+        'level' => ['required', 'string', 'max:255',],
+      ];
     }
 }

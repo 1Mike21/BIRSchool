@@ -7,9 +7,9 @@
       <div class="sm:flex">
         <div class="sm:flex items-center sm:divide-x sm:divide-gray-100 mb-3 sm:mb-0">
           <form class="lg:pr-3" action="#" method="GET">
-            <label for="users-search" class="sr-only">Search</label>
+            <label for="groups-search" class="sr-only">Search</label>
             <div class="relative lg:w-64 xl:w-96">
-              <input type="text" name="email" id="users-search"
+              <input type="text" name="email" id="groups-search"
                 class="bg-white border-2 border-darkblue text-black sm:text-sm rounded-lg focus:ring-violetButton focus:border-violetButton w-full p-2.5"
                 placeholder="Поиск...">
             </div>
@@ -35,13 +35,14 @@
             }}
           </h5>
           <h6 class="dark:text-white text-black text-base">{{ group.description }}</h6>
+          <h6 class="dark:text-white text-black text-base">Статус: {{ checkStatusGroup(group.is_active) }}</h6>
           <div class="flex flex-col mx-auto gap-y-3">
-            <Link class="btn-more-detail" :href="route('admin.groups.show', group.slug)">Добавить описание</Link>
-            <AdminButton :href="route('admin.users.edit', group.slug)" class="bg-[#08B581] hover:bg-[#08DD9C]">
+            <Link class="btn-more-detail" :href="route('admin.groups.show', group.slug)">Описание группы</Link>
+            <AdminButton :href="route('admin.groups.edit', group.slug)" class="bg-[#08B581] hover:bg-[#08DD9C]">
               <Edit />
               Редактировать
             </AdminButton>
-            <AdminDangerButton @click="showModal(group.id)">
+            <AdminDangerButton @click="showModal(group.slug)">
               Удалить
             </AdminDangerButton>
           </div>
@@ -49,13 +50,12 @@
       </div>
     </div>
   </div>
-  <!-- Delete User Modal -->
+  <!-- Delete Group Modal -->
   <DialogModal :show="showConfirmDeleteModal" max-width="md" @close="closeModal">
     <template #title />
     <template #content>
       <img src="/img/icons/exclamation-mark.svg" alt="delete" class="h-36 w-36 mx-auto">
-      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить группу?
-      </h3>
+      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить группу?</h3>
     </template>
     <template #footer>
       <AdminButton as="link" method="DELETE" :href="route('admin.groups.destroy', parameter)" @click="closeModal" class="mr-3">Да</AdminButton>
@@ -78,11 +78,15 @@ const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/Dialog
 
 defineOptions({ layout: AdminLayout });
 
-const props = defineProps({
+defineProps({
   groups: Array
 });
 
 const { showConfirmDeleteModal, closeModal, showModal, parameter } = useConfirmDeleteModal();
+
+const checkStatusGroup = (status) => {
+  return status ? 'Активна' : 'Не активна';
+}
 </script>
 
 <style scoped>
@@ -90,9 +94,9 @@ const { showConfirmDeleteModal, closeModal, showModal, parameter } = useConfirmD
   @apply mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8;
 }
 .group-course__item {
-  @apply flex flex-col gap-y-3 bg-white dark:bg-opacity-5 border-2 min-h-[310px] min-w-[270px] max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl dark:shadow-none;
+  @apply flex flex-col gap-y-3 bg-white dark:bg-opacity-5 border-2 min-h-[310px] w-full max-sm:max-w-[330px] border-darkblue dark:border-white rounded-28 text-center p-3 pb-5 shadow-2xl dark:shadow-none;
 }
 .btn-more-detail {
-  @apply border-0 rounded-lg self-center mt-auto bg-[#00ADEB] text-white py-2 px-4 lg:px-6 text-center no-underline whitespace-nowrap hover:bg-[#24C4FF];
+  @apply border-0 rounded-lg self-center bg-[#00ADEB] text-white py-2 px-4 lg:px-6 text-center no-underline whitespace-nowrap hover:bg-[#24C4FF];
 }
 </style>

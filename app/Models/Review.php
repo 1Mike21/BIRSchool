@@ -16,6 +16,10 @@ class Review extends Model
       'user_id'
     ];
 
+    protected $casts = [
+      'is_published' => 'boolean',
+    ];
+
     public function user(): BelongsTo {
       return $this->belongsTo(User::class);
     }

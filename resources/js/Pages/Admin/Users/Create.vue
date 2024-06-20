@@ -8,7 +8,7 @@
       </h3>
     </template>
     <template #content>
-      <AdminForm id="create_user_form" @submitted="submit">
+      <AdminForm id="create_user_form" @submitted="submit" class="grid-cols-6">
         <AdminFormGroup>
           <InputLabel
           class="mb-2 after:content-['*'] after:text-red"

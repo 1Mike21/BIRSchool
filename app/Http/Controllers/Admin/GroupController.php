@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Group;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreGroupRequest;
-use App\Http\Requests\UpdateGroupRequest;
+use App\Http\Requests\Group\StoreGroupRequest;
+use App\Http\Requests\Group\UpdateGroupRequest;
+use App\Http\Resources\GroupResource;
+use App\Http\Resources\LearningStepResource;
+use App\Http\Resources\PolyResourceResource;
 use App\Models\LearningStep;
+use GuzzleHttp\Psr7\MimeType;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class GroupController extends Controller
@@ -16,7 +21,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-      $groups = Group::all();
+      $groups = GroupResource::collection(Group::all());
 
       return Inertia::render('Admin/Groups/Index', compact('groups'));
     }
@@ -34,7 +39,18 @@ class GroupController extends Controller
      */
     public function store(StoreGroupRequest $request)
     {
-        //
+      Group::create([
+        'title' => $request->title,
+        'icon' => $request->file('icon')->store('icons', 'public'),
+        'description' => $request->description,
+        'level' => $request->level,
+        'is_active' => $request->is_active
+      ]);
+
+      session()->flash('flash.banner', 'Группа успешно добавлена');
+      session()->flash('flash.bannerStyle', 'success');
+
+      return to_route('admin.groups.index');
     }
 
     /**
@@ -42,11 +58,11 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-      $groupDescription = Group::find($group->id)->polyResources;
+      $group = new GroupResource($group);
 
-      $group = Group::find($group->id);
+      $groupDescription = PolyResourceResource::collection($group->polyResources);
 
-      $learningSteps = LearningStep::where('group_id', '=', $group->id)->get();
+      $learningSteps = LearningStepResource::collection($group->learningSteps);
 
       return Inertia::render('Admin/Groups/Show', compact('groupDescription', 'group', 'learningSteps'));
     }
@@ -56,7 +72,15 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        //
+      $icon = [
+        'url' => Storage::url($group->icon),
+        'name' => basename($group->icon),
+        'type' => MimeType::fromFilename(basename($group->icon))
+      ];
+
+      $group = new GroupResource($group);
+
+      return Inertia::modal('Admin/Groups/Edit', compact('group', 'icon'))->baseRoute('admin.groups.index');
     }
 
     /**
@@ -64,7 +88,23 @@ class GroupController extends Controller
      */
     public function update(UpdateGroupRequest $request, Group $group)
     {
-        //
+      $icon = $group->icon;
+      if ($request->hasFile('icon')) {
+        Storage::disk('public')->delete($group->icon);
+        $icon = $request->file('icon')->store('icons', 'public');
+      }
+      $group->update([
+        'title' => $request->title,
+        'icon' => $icon,
+        'description' => $request->description,
+        'level' => $request->level,
+        'is_active' => $request->is_active
+      ]);
+
+      session()->flash('flash.banner', 'Группа успешно обновлена');
+      session()->flash('flash.bannerStyle', 'success');
+
+      return to_route('admin.groups.index');
     }
 
     /**
@@ -72,6 +112,12 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        //
+      Storage::disk('public')->delete($group->icon);
+      $group->delete();
+
+      session()->flash('flash.banner', 'Группа удалена!');
+      session()->flash('flash.bannerStyle', 'danger');
+
+      return to_route('admin.groups.index');
     }
 }

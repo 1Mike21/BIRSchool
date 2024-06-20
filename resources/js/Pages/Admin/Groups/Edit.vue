@@ -1,15 +1,15 @@
 <template>
 
-  <Head title="Добавление группы" />
+  <Head title="Редактирование группы" />
 
   <ModalPage max-width="md">
     <template #title>
       <h3 class="text-xl font-semibold">
-        Добавление группы
+        Редактирование группы
       </h3>
     </template>
     <template #content>
-      <AdminForm id="create_group_form" @submitted="form.post(route('admin.groups.store'))">
+      <AdminForm id="update_group_form" @submitted="form.post(route('admin.groups.update', group.slug))">
         <AdminFormGroup>
           <InputLabel class="mb-2" for="title" value="Название группы" />
           <TextInput v-model="form.title" id="title"
@@ -19,7 +19,7 @@
         </AdminFormGroup>
         <AdminFormGroup>
           <InputLabel class="mb-2" for="icon" value="Иконка" />
-          <Dropzone @load="loadFiles" :class="{ '!border-red':form.errors.icon }" />
+          <Dropzone @load="loadFiles" :preview="icon" :class="{ '!border-red':form.errors.icon }" />
           <InputError class="mt-2" :message="form.errors.icon" />
         </AdminFormGroup>
         <AdminFormGroup>
@@ -37,7 +37,7 @@
           <InputError class="mt-2" :message="form.errors.level" />
         </AdminFormGroup>
         <AdminFormGroup>
-          <InputLabel class="mb-2 mr-3" for="is_active" value="Видимость группы" />
+          <InputLabel class="mb-2" for="is_active" value="Видимость группы" />
           <Checkbox id="is_active" class="w-6 h-6" v-model:checked="form.is_active"
             :class="{ 'border-red': form.errors.is_active }" />
           <InputError class="mt-2" :message="form.errors.is_active" />
@@ -45,9 +45,9 @@
       </AdminForm>
     </template>
     <template #footer>
-      <AdminButton as="button" :submitted="form.processing" :disabled="form.processing" form="create_group_form"
+      <AdminButton as="button" :submitted="form.processing" :disabled="form.processing" form="update_group_form"
         type="submit">
-        Добавить
+        Обновить
       </AdminButton>
     </template>
   </ModalPage>
@@ -67,15 +67,21 @@ import Dropzone from '@/Components/Dropzone/Dropzone.vue';
 import { useForm } from '@inertiajs/vue3';
 import Checkbox from '@/Components/FormElement/Checkbox.vue';
 
+const props = defineProps({
+  group: Object,
+  icon: Object
+});
+
 const loadFiles = (files, images) => {
   form.icon = images.value[0];
 };
 
 const form = useForm({
-  title: '',
+  _method: 'PUT',
+  title: props.group.title,
   icon: null,
-  description: '',
-  is_active: false,
-  level: '',
+  description: props.group.description,
+  is_active: props.group.is_active,
+  level: props.group.level,
 });
 </script>

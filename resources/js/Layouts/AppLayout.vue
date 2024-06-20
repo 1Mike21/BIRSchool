@@ -62,7 +62,6 @@
           </template>
         </DialogModal>
 
-
         <div v-if="$page.props.auth.user" class="flex items-center">
           <DarkModeSwitcher />
           <ul class="hidden lg:flex sm:items-center gap-x-2 ms-1 xl:ms-6">
