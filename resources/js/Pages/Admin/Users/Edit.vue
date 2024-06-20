@@ -74,7 +74,7 @@ const props = defineProps({
 });
 
 onMounted(() => {
-  form.role = props.user?.roles;
+  form.role = props.user?.roles[0];
 });
 
 const form = useForm({
