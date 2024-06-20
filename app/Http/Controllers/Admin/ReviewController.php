@@ -6,7 +6,6 @@ use App\Models\Review;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
-use App\Models\Course;
 use Inertia\Inertia;
 
 class ReviewController extends Controller
@@ -16,9 +15,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-      $courses = Course::where('is_active', '=', 1)->get();
-
-      return Inertia::render('Admin/Courses/Index', compact('courses'));
+      return Inertia::render('Admin/Reviews/Index');
     }
 
     /**
@@ -26,7 +23,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+      return Inertia::modal('Admin/Reviews/Create')->baseRoute('admin.reviews.index');
     }
 
     /**
@@ -34,7 +31,15 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $request)
     {
-        //
+      Review::create([
+        'comment' => $request->file('comment')->store('slider_reviews', 'public'),
+        'is_published' => $request->is_published
+      ]);
+
+      session()->flash('flash.banner', 'Отзыв успешно добавлен');
+      session()->flash('flash.bannerStyle', 'success');
+
+      return to_route('admin.reviews.index');
     }
 
     /**
