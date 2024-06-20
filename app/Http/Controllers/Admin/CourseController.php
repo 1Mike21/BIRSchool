@@ -22,7 +22,7 @@ class CourseController extends Controller
   {
     $courses = Course::with('group:id,title');
     $courses = CourseResource::collection($courses->paginate(10))->response()->getData(true);
-    // dd($courses);
+
     return Inertia::render('Admin/Courses/Index', compact('courses'));
   }
 

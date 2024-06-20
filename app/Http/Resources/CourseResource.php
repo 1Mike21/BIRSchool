@@ -23,6 +23,7 @@ class CourseResource extends JsonResource
           'price' => $this->price,
           'group' => new GroupResource ($this->group),
           'is_active' => $this->is_active,
+          'updated_at' => $this->updated_at->format('d.m.Y'),
         ];
     }
 }

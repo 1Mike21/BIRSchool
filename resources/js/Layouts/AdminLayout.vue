@@ -20,12 +20,12 @@
                 <BellIcon class="h-6 w-6" aria-hidden="true" />
               </button>
             </li>
-            <li class="flex flex-col text-right">
+            <li class="max-md:hidden flex flex-col text-right">
               <span class="text-sm font-medium text-white">{{ $page.props.auth.user.surname }} {{ $page.props.auth.user.name }}</span>
               <span class="text-xs font-medium">{{ $page.props.auth.user.roles[0] }}</span>
             </li>
-            <li>
-              <img class="h-10 min-w-10 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
+            <li class="max-md:hidden md:mr-3">
+              <img class="h-8 min-w-8 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url"
                 :alt="$page.props.auth.user.name">
             </li>
             <!-- Profile Dropdown -->
