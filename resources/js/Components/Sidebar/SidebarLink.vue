@@ -24,7 +24,3 @@ const classes = computed(() => {
     : 'group relative flex items-center gap-x-4 hover:bg-violetHoverButton focus:bg-violetHoverButton rounded-md font-medium text-white duration-300 ease-in-out';
 });
 </script>
-
-<style scoped>
-
-</style>

@@ -40,14 +40,14 @@
 
         <DialogModal :show="loginAndRegModal" max-width="md" @close="closeModal">
           <template #title>
-            <ul class="flex items-center">
+            <ul class="flex items-center max-[360px]:text-sm">
               <li class="mr-2">
                 <button :class="{active: isActive == 1}" :id="isActive" @click="changeComponent(Login, 1)"
                   type="button">
                   Авторизация
                 </button>
               </li>
-              <li class="mr-2">
+              <li class="mr-1">
                 <button :class="{active: isActive == 2}" :id="isActive" @click="changeComponent(Register, 2)"
                   type="button">
                   Регистрация
@@ -306,7 +306,7 @@ const logout = () => {
   @apply container mx-auto text-darkblue dark:text-white px-4 mt-4 sm:mt-8 md:mt-14 lg:mt-20;
 }
 .footer__contact {
-  @apply grid justify-center gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 pb-3;
+  @apply grid gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 pb-3;
 }
 .footer__contact-item {
   @apply col-span-full sm:col-span-1 md:col-span-2 lg:col-span-4;

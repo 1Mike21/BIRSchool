@@ -43,13 +43,13 @@
     </div>
   </section>
   <!-- Slider student portfolio -->
-  <section class="indent_section_bottom">
-    <SectionTitle class="mb-10">Работы учеников</SectionTitle>
+  <section class="indent_section_bottom max-lg:mb-20">
+    <SectionTitle>Работы учеников</SectionTitle>
     <Slider :options="optionsProjectsSlider" class="slider_projects" :slides="studentsProjects" />
   </section>
   <!-- Slider reviews -->
-  <section class="indent_section_top indent_section_bottom">
-    <SectionTitle class="mb-10">Отзывы</SectionTitle>
+  <section class="indent_section_bottom max-md:mb-14">
+    <SectionTitle>Отзывы</SectionTitle>
     <Slider :options="optionsReviewsSlider" class="slider_reviews" :slides="reviews" />
   </section>
 </template>

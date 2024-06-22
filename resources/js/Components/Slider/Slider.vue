@@ -5,7 +5,7 @@
     @splide:dragging="isDragging=true"
     >
     <SplideSlide v-for="(slide, index) in slides" :key="index">
-      <img class="w-full object-cover object-top rounded-sm" :src="slide" alt="">
+      <img class="w-full h-full object-cover object-top rounded-md border dark:border-none" :src="slide" alt="">
     </SplideSlide>
   </Splide>
 </template>
