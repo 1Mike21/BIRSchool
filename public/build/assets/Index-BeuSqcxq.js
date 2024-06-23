@@ -1,0 +1,1 @@
+import{e,u as t,o as a,Z as o}from"./app-BXMhQWYf.js";import{_ as r}from"./UserLayout-OBuM6jVa.js";import"./LogoutButton-BZv969PD.js";const i=Object.assign({layout:r},{__name:"Index",setup(s){return(_,c)=>(a(),e(t(o),{title:"Мой код"}))}});export{i as default};

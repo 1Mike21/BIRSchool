@@ -1,0 +1,1 @@
+import{h as o,o as s,c as t,s as n}from"./app-BXMhQWYf.js";const r={},c={class:"w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"};function a(e,d){return s(),t("div",c,[n(e.$slots,"default")])}const m=o(r,[["render",a]]);export{m as A};

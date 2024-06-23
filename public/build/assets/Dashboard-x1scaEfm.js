@@ -1,0 +1,1 @@
+import{e as a,u as o,o as r,Z as t}from"./app-BXMhQWYf.js";import{_ as e}from"./AdminLayout-Q7Ba3tvs.js";import"./LogoutButton-BZv969PD.js";const i=Object.assign({layout:e},{__name:"Dashboard",setup(s){return(_,c)=>(r(),a(o(t),{title:"Dashboard"}))}});export{i as default};

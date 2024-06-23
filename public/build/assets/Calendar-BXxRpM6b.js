@@ -1,0 +1,1 @@
+import{e as a,u as e,o as t,Z as r}from"./app-BXMhQWYf.js";import{_ as o}from"./UserLayout-OBuM6jVa.js";import"./LogoutButton-BZv969PD.js";const i=Object.assign({layout:o},{__name:"Calendar",setup(s){return(_,c)=>(t(),a(e(r),{title:"Календарь"}))}});export{i as default};
