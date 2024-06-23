@@ -4,7 +4,7 @@
 
   <ModalPage max-width="md">
     <template #title>
-      <h3 class="text-xl font-semibold">
+      <h3 class="text-lg md:text-xl font-semibold">
         Добавление курса
       </h3>
     </template>
@@ -58,7 +58,7 @@
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import AdminButton from '@/Components/Button/AdminButton.vue';
 import AdminForm from '@/Components/FormElement/AdminForm.vue';
 import AdminFormGroup from '@/Components/FormElement/AdminFormGroup.vue';
@@ -68,7 +68,6 @@ import TextArea from '@/Components/FormElement/TextArea.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import ModalPage from '@/Components/Modal/ModalPage.vue';
 import Dropzone from '@/Components/Dropzone/Dropzone.vue';
-import { useForm } from '@inertiajs/vue3';
 import Checkbox from '@/Components/FormElement/Checkbox.vue';
 
 const loadFiles = (files, images) => {

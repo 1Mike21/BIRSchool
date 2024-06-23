@@ -4,7 +4,7 @@
 
   <ModalPage max-width="md">
     <template #title>
-      <h3 class="text-xl font-semibold">
+      <h3 class="text-lg md:text-xl font-semibold">
         Создание роли
       </h3>
     </template>
@@ -34,6 +34,7 @@
 </template>
 
 <script setup>
+import { Head, useForm } from '@inertiajs/vue3';
 import AdminButton from '@/Components/Button/AdminButton.vue';
 import AdminForm from '@/Components/FormElement/AdminForm.vue';
 import AdminFormGroup from '@/Components/FormElement/AdminFormGroup.vue';
@@ -41,7 +42,6 @@ import InputLabel from '@/Components/FormElement/InputLabel.vue';
 import TextInput from '@/Components/FormElement/TextInput.vue';
 import InputError from '@/Components/FormElement/InputError.vue';
 import ModalPage from '@/Components/Modal/ModalPage.vue';
-import { useForm } from '@inertiajs/vue3';
 
 defineProps({
   permissions: {

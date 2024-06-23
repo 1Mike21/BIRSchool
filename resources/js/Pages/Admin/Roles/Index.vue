@@ -72,8 +72,7 @@
     <template #title />
     <template #content>
       <img src="/img/icons/exclamation-mark.svg" alt="delete" class="h-36 w-36 mx-auto">
-      <h3 class="text-black text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить выбранную роль?
-      </h3>
+      <h3 class="text-black text-lg md:text-xl font-normal mt-5 mb-6">Вы уверены, что хотите удалить выбранную роль?</h3>
     </template>
     <template #footer>
       <AdminButton as="link" method="DELETE" :href="route('admin.roles.destroy', parameter)" @click="closeModal"
@@ -84,6 +83,7 @@
 </template>
 
 <script setup>
+import { Head, Link } from '@inertiajs/vue3';
 import { defineAsyncComponent } from 'vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import AdminButton from '@/Components/Button/AdminButton.vue';
@@ -94,7 +94,6 @@ import TableColumn from '@/Components/Table/TableColumn.vue';
 import TableHeader from '@/Components/Table/TableHeader.vue';
 import Edit from '@/Components/Icons/Edit.vue';
 import { useConfirmDeleteModal } from '@/Hooks/confirmDeleteModal';
-import { Head, Link } from '@inertiajs/vue3';
 const DialogModal = defineAsyncComponent(() => import("@/Components/Modal/DialogModal.vue"));
 import SecondaryButton from '@/Components/Button/SecondaryButton.vue';
 
