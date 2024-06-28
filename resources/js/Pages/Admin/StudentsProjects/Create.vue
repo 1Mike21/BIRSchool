@@ -1,30 +1,30 @@
 <template>
 
-  <Head title="Добавление отзыва" />
+  <Head title="Добавление работы ученика" />
 
   <ModalPage max-width="md">
     <template #title>
       <h3 class="text-lg md:text-xl font-semibold">
-        Добавление отзыва
+        Добавление работы ученика
       </h3>
     </template>
     <template #content>
-      <AdminForm id="create_review_form" @submitted="form.post(route('admin.reviews.store'))">
+      <AdminForm id="create_student_project_form" @submitted="form.post(route('admin.students-projects.store'))">
         <AdminFormGroup>
-          <InputLabel class="mb-2" for="comment" value="Отзыв" />
-          <Dropzone @load="loadFiles" :class="{ '!border-red': form.errors.comment }" />
-          <InputError class="mt-2" :message="form.errors.comment" />
+          <InputLabel class="mb-2" for="img" value="Работа ученика" />
+          <Dropzone @load="loadFiles" :class="{ '!border-red': form.errors.img }" />
+          <InputError class="mt-2" :message="form.errors.img" />
         </AdminFormGroup>
         <AdminFormGroup>
-          <InputLabel class="mb-2 mr-3" for="is_published" value="Видимость отзыва" />
-          <Checkbox id="is_published" class="w-6 h-6" v-model:checked="form.is_published"
-            :class="{ 'border-red': form.errors.is_published }" />
-          <InputError class="mt-2" :message="form.errors.is_published" />
+          <InputLabel class="mb-2 mr-3" for="is_active" value="Видимость работы" />
+          <Checkbox id="is_active" class="w-6 h-6" v-model:checked="form.is_active"
+            :class="{ 'border-red': form.errors.is_active }" />
+          <InputError class="mt-2" :message="form.errors.is_active" />
         </AdminFormGroup>
       </AdminForm>
     </template>
     <template #footer>
-      <AdminButton as="button" :submitted="form.processing" :disabled="form.processing" form="create_review_form" type="submit">
+      <AdminButton as="button" :submitted="form.processing" :disabled="form.processing" form="create_student_project_form" type="submit">
         Добавить
       </AdminButton>
     </template>
@@ -47,7 +47,7 @@ const loadFiles = (files, images) => {
 };
 
 const form = useForm({
-  comment: null,
-  is_published: false,
+  img: null,
+  is_active: false,
 });
 </script>
